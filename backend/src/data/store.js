@@ -13,7 +13,12 @@ const defaultStore = () => ({
   audio_generations: [],
   feedback_logs: [],
   projects: [],
-  assets: []
+  assets: [],
+  videos: [],
+  clip_jobs: [],
+  clips: [],
+  captions: [],
+  exports: []
 });
 
 const ensureStore = async () => {

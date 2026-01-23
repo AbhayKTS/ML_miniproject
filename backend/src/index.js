@@ -5,6 +5,7 @@ const generateRoutes = require("./routes/generate");
 const feedbackRoutes = require("./routes/feedback");
 const memoryRoutes = require("./routes/memory");
 const projectRoutes = require("./routes/projects");
+const videoRoutes = require("./routes/video");
 const { attachUser } = require("./utils/auth");
 
 const app = express();
@@ -22,6 +23,7 @@ app.use("/generate", generateRoutes);
 app.use("/feedback", feedbackRoutes);
 app.use("/memory", memoryRoutes);
 app.use("/projects", projectRoutes);
+app.use("/", videoRoutes);
 
 app.use((err, _req, res, _next) => {
   console.error(err);

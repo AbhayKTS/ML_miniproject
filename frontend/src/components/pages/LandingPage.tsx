@@ -7,40 +7,37 @@ const LandingPage = () => {
     <div>
       <section className="hero">
         <div>
-          <span className="tag">Adaptive Multi-Modal Creative Intelligence</span>
-          <h2>Chhaya — Your Creative Shadow.</h2>
+          <span className="tag">AI Video Clipping Platform</span>
+          <h2>Chhaya — QuickReel-style highlights in minutes.</h2>
           <p>
-            Chhaya collaborates with you to craft stories, imagery, and soundscapes
-            that evolve with your style. It listens, remembers, and refines with
-            every creative cycle.
+            Upload long-form content and let Chhaya detect viral moments, auto
+            caption, and export platform-ready clips with smart framing and
+            templates.
           </p>
           <div style={{ marginTop: 24, display: "flex", gap: 16 }}>
-            <Link className="button-primary" to="/app">
-              Enter Studio
+            <Link className="button-primary" to="/upload">
+              Start clipping
             </Link>
-            <span className="tag">Live memory + feedback loops</span>
+            <span className="tag">Auto captions + smart crop</span>
           </div>
         </div>
         <div className="showcase">
           <div className="showcase-card">
-            <h3>Multi-Modal Narrative</h3>
+            <h3>Highlight Detection</h3>
             <p style={{ color: "var(--text-muted)", marginTop: 8 }}>
-              A coastal sci-fi tale with tonal harmony across text, imagery, and
-              ambient audio cues.
+              Detect speaker activity, excitement, and silence for 15–60s clips.
             </p>
           </div>
           <div className="showcase-card" style={{ animationDelay: "1s" }}>
-            <h3>Creative Refinement Cycles</h3>
+            <h3>Auto Captions</h3>
             <p style={{ color: "var(--text-muted)", marginTop: 8 }}>
-              Iterate with adaptive constraints, originality sliders, and
-              cultural context filters.
+              Whisper-powered transcription with karaoke, bold, and emoji styles.
             </p>
           </div>
           <div className="showcase-card" style={{ animationDelay: "2s" }}>
-            <h3>Living Memory Core</h3>
+            <h3>Smart Editing</h3>
             <p style={{ color: "var(--text-muted)", marginTop: 8 }}>
-              Chhaya learns your narrative arcs, visual styles, and sonic
-              palette over time.
+              Face tracking, auto-zoom emphasis, and export-ready templates.
             </p>
           </div>
         </div>
@@ -48,24 +45,24 @@ const LandingPage = () => {
 
       <section className="page">
         <SectionHeader
-          title="Creative Modules"
-          subtitle="Each workspace stays aligned with your creative intent and memory."
+          title="Clipping Modules"
+          subtitle="Upload, process, review, and export in one streamlined flow."
         />
         <div className="cards">
           <Card
-            title="Text Studio"
-            description="Generate scripts, stories, and campaigns with tone and structure controls."
-            footer={<span className="tag">Narrative arcs + tone sliders</span>}
+            title="Upload & Process"
+            description="Drag, drop, and validate long-form content with progress tracking."
+            footer={<span className="tag">Scene + silence detection</span>}
           />
           <Card
-            title="Image Studio"
-            description="Produce concept art with cultural filters and style libraries."
-            footer={<span className="tag">Reference + variation engine</span>}
+            title="Clip Review"
+            description="Audit clips, rename, regenerate captions, and send to editor."
+            footer={<span className="tag">Highlight scoring</span>}
           />
           <Card
-            title="Audio Studio"
-            description="Design sonic worlds with mood, tempo, and instrumentation presets."
-            footer={<span className="tag">Scene-based ambience</span>}
+            title="Editor + Export"
+            description="Apply templates, overlays, and export multiple formats."
+            footer={<span className="tag">9:16, 1:1, 16:9</span>}
           />
         </div>
       </section>

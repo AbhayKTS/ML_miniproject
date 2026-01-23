@@ -88,3 +88,56 @@ CREATE TABLE assets (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (project_id) REFERENCES projects(id)
 );
+
+CREATE TABLE videos (
+  id TEXT PRIMARY KEY,
+  user_id TEXT NOT NULL,
+  filename TEXT,
+  source_path TEXT,
+  status TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE clip_jobs (
+  id TEXT PRIMARY KEY,
+  video_id TEXT NOT NULL,
+  status TEXT,
+  progress INTEGER,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (video_id) REFERENCES videos(id)
+);
+
+CREATE TABLE clips (
+  id TEXT PRIMARY KEY,
+  video_id TEXT NOT NULL,
+  title TEXT,
+  start_time REAL,
+  end_time REAL,
+  aspect_ratio TEXT,
+  status TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (video_id) REFERENCES videos(id)
+);
+
+CREATE TABLE captions (
+  id TEXT PRIMARY KEY,
+  clip_id TEXT NOT NULL,
+  style TEXT,
+  transcript TEXT,
+  word_timestamps TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (clip_id) REFERENCES clips(id)
+);
+
+CREATE TABLE exports (
+  id TEXT PRIMARY KEY,
+  clip_id TEXT NOT NULL,
+  format TEXT,
+  resolution TEXT,
+  aspect_ratio TEXT,
+  output_path TEXT,
+  status TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (clip_id) REFERENCES clips(id)
+);

@@ -6,23 +6,23 @@ const DashboardPage = () => {
     <div className="page">
       <SectionHeader
         title="Welcome back, Creator."
-        subtitle="Your creative memory has been synced with the last three sessions."
+        subtitle="Your latest video is ready for highlight detection and captioning."
       />
       <div className="cards">
         <Card
-          title="Ongoing Project: Sky Harbor Anthology"
-          description="Drafting Chapter 4 with cinematic pacing and warm futurism."
-          footer={<span className="tag">Last updated 2 hours ago</span>}
+          title="Current Project: Podcast Episode 12"
+          description="42-minute episode · 5 highlight clips pending review."
+          footer={<span className="tag">Processing 68%</span>}
         />
         <Card
-          title="Quick Create"
-          description="Start a new creative session with adaptive defaults and mood presets."
-          footer={<button className="button-primary">Launch</button>}
+          title="Quick Upload"
+          description="Drag & drop a new video to auto-generate clips and captions."
+          footer={<button className="button-primary">Upload video</button>}
         />
         <Card
-          title="Creative Preferences"
-          description="Tone: reflective + hopeful. Visuals: painterly neon. Audio: airy synth."
-          footer={<span className="tag">Memory confidence 92%</span>}
+          title="Clip Style Defaults"
+          description="Aspect: 9:16 · Captions: Karaoke Glow · Templates: Viral"
+          footer={<span className="tag">Auto-zoom enabled</span>}
         />
       </div>
     </div>

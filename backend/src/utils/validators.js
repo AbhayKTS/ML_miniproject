@@ -40,6 +40,24 @@ const projectSchema = z.object({
   description: z.string().optional()
 });
 
+const clipRequestSchema = z.object({
+  videoId: z.string().min(1),
+  minDuration: z.number().optional(),
+  maxDuration: z.number().optional()
+});
+
+const captionRequestSchema = z.object({
+  clipId: z.string().min(1),
+  style: z.string().optional()
+});
+
+const exportRequestSchema = z.object({
+  clipId: z.string().min(1),
+  format: z.string().default("mp4"),
+  resolution: z.string().default("1080p"),
+  aspectRatio: z.string().default("9:16")
+});
+
 const validate = (schema, payload) => {
   const result = schema.safeParse(payload);
   if (!result.success) {
@@ -53,5 +71,8 @@ module.exports = {
   feedbackSchema,
   memoryUpdateSchema,
   projectSchema,
+  clipRequestSchema,
+  captionRequestSchema,
+  exportRequestSchema,
   validate
 };
