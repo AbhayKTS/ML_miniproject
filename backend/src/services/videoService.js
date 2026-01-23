@@ -1,6 +1,7 @@
 const path = require("path");
 const fs = require("fs/promises");
 const { updateStore, getStore } = require("../data/store");
+const { supabaseAdmin, isSupabaseEnabled } = require("./supabaseClient");
 const { v4: uuid } = require("uuid");
 
 const uploadsDir = path.join(process.cwd(), "data", "uploads");
@@ -29,6 +30,17 @@ const createVideo = async ({ userId, filename, tempPath }) => {
     store.videos.push(video);
     return store;
   });
+
+  if (isSupabaseEnabled() && supabaseAdmin) {
+    await supabaseAdmin.from("videos").insert({
+      id: video.id,
+      user_id: userId,
+      filename: video.filename,
+      source_path: video.sourcePath,
+      status: video.status,
+      created_at: video.createdAt
+    });
+  }
 
   return video;
 };

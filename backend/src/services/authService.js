@@ -1,8 +1,21 @@
 const { updateStore, getStore } = require("../data/store");
 const { hashPassword, verifyPassword, signToken } = require("../utils/auth");
+const { supabase, isSupabaseEnabled } = require("./supabaseClient");
 const { v4: uuid } = require("uuid");
 
 const signUp = async ({ email, password, name }) => {
+  if (isSupabaseEnabled()) {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { data: { name } }
+    });
+    if (error) {
+      throw new Error(error.message);
+    }
+    return { user: data.user, token: data.session?.access_token };
+  }
+
   const store = await getStore();
   if (store.users.find((user) => user.email === email)) {
     throw new Error("User already exists");
@@ -23,6 +36,17 @@ const signUp = async ({ email, password, name }) => {
 };
 
 const login = async ({ email, password }) => {
+  if (isSupabaseEnabled()) {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+    if (error) {
+      throw new Error(error.message);
+    }
+    return { user: data.user, token: data.session?.access_token };
+  }
+
   const store = await getStore();
   const user = store.users.find((entry) => entry.email === email);
   if (!user) {

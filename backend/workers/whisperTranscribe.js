@@ -1,4 +1,25 @@
+const { getModel, isGeminiEnabled } = require("../src/services/geminiClient");
+
 const transcribeWithWhisper = async (_clipPath) => {
+  if (isGeminiEnabled()) {
+    const model = getModel();
+    const prompt = "Generate a concise transcript with timestamps for a 30-second highlight clip.";
+    try {
+      const result = await model.generateContent(prompt);
+      const text = result.response.text();
+      return {
+        text,
+        words: text.split(" ").map((word, index) => ({
+          word,
+          start: index * 0.3,
+          end: index * 0.3 + 0.25
+        }))
+      };
+    } catch (error) {
+      console.warn("Gemini transcription fallback triggered.");
+    }
+  }
+
   return {
     text: "This moment was incredible and the audience reaction spiked right here.",
     words: [
