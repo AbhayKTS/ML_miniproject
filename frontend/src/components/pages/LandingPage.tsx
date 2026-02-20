@@ -1,69 +1,86 @@
 import { Link } from "react-router-dom";
-import Card from "../Card";
-import SectionHeader from "../SectionHeader";
 
 const LandingPage = () => {
   return (
-    <div>
-      <section className="hero">
-        <div>
-          <span className="tag">AI Video Clipping Platform</span>
-          <h2>Chhaya — QuickReel-style highlights in minutes.</h2>
-          <p>
-            Upload long-form content and let Chhaya detect viral moments, auto
-            caption, and export platform-ready clips with smart framing and
-            templates.
-          </p>
-          <div style={{ marginTop: 24, display: "flex", gap: 16 }}>
-            <Link className="button-primary" to="/upload">
-              Start clipping
-            </Link>
-            <span className="tag">Auto captions + smart crop</span>
+    <div className="landing-root">
+      <header className="hero-landing">
+        <div className="hero-overlay" />
+        <div className="hero-content">
+          <div className="hero-top">
+            <div className="logo">quickreel</div>
+            <nav className="hero-nav">
+              <a>Home</a>
+              <a>Pricing</a>
+              <a>Blog</a>
+            </nav>
+            <div className="hero-actions">
+              <Link className="ghost-button" to="/app">
+                Sign In
+              </Link>
+              <Link className="button-primary" to="/upload">
+                Sign Up — It's Free
+              </Link>
+            </div>
           </div>
-        </div>
-        <div className="showcase">
-          <div className="showcase-card">
-            <h3>Highlight Detection</h3>
-            <p style={{ color: "var(--text-muted)", marginTop: 8 }}>
-              Detect speaker activity, excitement, and silence for 15–60s clips.
-            </p>
-          </div>
-          <div className="showcase-card" style={{ animationDelay: "1s" }}>
-            <h3>Auto Captions</h3>
-            <p style={{ color: "var(--text-muted)", marginTop: 8 }}>
-              Whisper-powered transcription with karaoke, bold, and emoji styles.
-            </p>
-          </div>
-          <div className="showcase-card" style={{ animationDelay: "2s" }}>
-            <h3>Smart Editing</h3>
-            <p style={{ color: "var(--text-muted)", marginTop: 8 }}>
-              Face tracking, auto-zoom emphasis, and export-ready templates.
-            </p>
-          </div>
-        </div>
-      </section>
 
-      <section className="page">
-        <SectionHeader
-          title="Clipping Modules"
-          subtitle="Upload, process, review, and export in one streamlined flow."
-        />
-        <div className="cards">
-          <Card
-            title="Upload & Process"
-            description="Drag, drop, and validate long-form content with progress tracking."
-            footer={<span className="tag">Scene + silence detection</span>}
-          />
-          <Card
-            title="Clip Review"
-            description="Audit clips, rename, regenerate captions, and send to editor."
-            footer={<span className="tag">Highlight scoring</span>}
-          />
-          <Card
-            title="Editor + Export"
-            description="Apply templates, overlays, and export multiple formats."
-            footer={<span className="tag">9:16, 1:1, 16:9</span>}
-          />
+          <div className="hero-main">
+            <div className="hero-copy">
+              <div className="hero-kicker">#1 AI VIDEO CLIPPING TOOL</div>
+              <h1 className="hero-title">
+                Convert Your Long Video Into
+                <br /> Viral Short Videos in 1 minute
+              </h1>
+              <p className="hero-sub">
+                Create engaging and high quality clips from your long video with
+                one click, by Chhaya
+              </p>
+
+              <div className="hero-cta">
+                <div className="hero-input">
+                  <input
+                    aria-label="Paste YouTube link or upload file"
+                    placeholder="Paste YouTube Link"
+                  />
+                  <button className="ghost-button small">📎</button>
+                </div>
+                <button className="button-primary">Create free clips</button>
+              </div>
+            </div>
+
+            <div className="hero-preview">
+              <div className="preview-rail">
+                <div className="preview-large">
+                  <div className="thumb big" />
+                </div>
+                <div className="preview-row">
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <div className="thumb small" key={i} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="hero-gallery">
+            <div className="gallery-cards">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <div className="vertical-card" key={i}>
+                  <div className="vc-thumb" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section className="features-row">
+        <div className="features">
+          <span className="feature-pill">AI clipping</span>
+          <span className="feature-pill">AI editing</span>
+          <span className="feature-pill">AI captioning</span>
+          <span className="feature-pill">AI B-Roll</span>
+          <span className="feature-pill">AI BGM</span>
+          <span className="feature-pill muted">Silence & filler word remover</span>
         </div>
       </section>
     </div>
