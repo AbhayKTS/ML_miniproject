@@ -1,32 +1,60 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SectionHeader from "../SectionHeader";
 import UploadDropzone from "../UploadDropzone";
 import ProgressList from "../ProgressList";
-import { uploadVideo } from "../../api";
+import { uploadVideo, requestClipGeneration } from "../../api";
 
 const UploadPage = () => {
+  const navigate = useNavigate();
   const [files, setFiles] = useState<File[]>([]);
   const [progress, setProgress] = useState(0);
-  const [uploadedId, setUploadedId] = useState<string | null>(null);
+  const [videoId, setVideoId] = useState<string | null>(null);
+  const [clipJobId, setClipJobId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [stage, setStage] = useState<"idle" | "uploading" | "done" | "clipping" | "ready">("idle");
 
   const handleFiles = async (fileList: FileList) => {
     const selected = Array.from(fileList);
+    if (!selected[0]) return;
     setFiles(selected);
     setError(null);
     setProgress(0);
-
-    if (!selected[0]) {
-      return;
-    }
+    setStage("uploading");
 
     try {
       const result = await uploadVideo(selected[0], setProgress);
-      setUploadedId(result.id);
+      setVideoId(result.id);
+      setStage("done");
     } catch (err) {
-      setError("Upload failed. Please try again.");
+      setError("Upload failed. Is the backend running on port 4000?");
+      setStage("idle");
     }
   };
+
+  const handleGenerateClips = async () => {
+    if (!videoId) return;
+    setStage("clipping");
+    setError(null);
+    try {
+      const job = await requestClipGeneration(videoId, 15, 60);
+      setClipJobId(job.jobId);
+      setStage("ready");
+    } catch (err: any) {
+      setError(err.message || "Clip generation failed");
+      setStage("done");
+    }
+  };
+
+  const handleGoToProcessing = () => navigate("/processing");
+
+  const progressItems = stage === "uploading" || stage === "done" || stage === "clipping" || stage === "ready"
+    ? [
+      { label: "Uploading", value: stage === "uploading" ? progress : 100 },
+      { label: "Validating format", value: stage === "done" || stage === "clipping" || stage === "ready" ? 100 : 40 },
+      { label: "Generating clips", value: stage === "clipping" ? 55 : stage === "ready" ? 100 : 0 },
+    ]
+    : [];
 
   return (
     <div className="page">
@@ -39,23 +67,44 @@ const UploadPage = () => {
           onFilesSelected={handleFiles}
           hint="Supported: mp4, mov, mkv, webm · max 2GB"
         />
-        <div className="panel">
+        <div className="panel" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           <h3>Upload Status</h3>
-          <p style={{ color: "var(--text-muted)", marginTop: 8 }}>
+          <p style={{ color: "var(--text-muted)" }}>
             {files.length ? files[0].name : "No file selected yet."}
           </p>
-          {error && <p style={{ color: "#ff9b9b", marginTop: 12 }}>{error}</p>}
-          {files.length > 0 && (
-            <ProgressList
-              items={[
-                { label: "Uploading", value: progress },
-                { label: "Validating", value: uploadedId ? 100 : 40 }
-              ]}
-            />
+
+          {error && <p style={{ color: "#ff9b9b" }}>⚠ {error}</p>}
+
+          {progressItems.length > 0 && (
+            <ProgressList items={progressItems} />
           )}
-          {uploadedId && (
-            <div style={{ marginTop: 16 }}>
-              <span className="tag">Upload complete · Video ID {uploadedId}</span>
+
+          {videoId && (
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+              <span className="tag">✓ Video ID: {videoId.slice(0, 8)}…</span>
+            </div>
+          )}
+
+          {stage === "done" && (
+            <button className="button-primary" onClick={handleGenerateClips}>
+              ✂️ Generate Clips
+            </button>
+          )}
+
+          {stage === "clipping" && (
+            <div>
+              <p style={{ color: "var(--text-muted)", fontSize: 14 }}>Analysing video for highlight segments…</p>
+            </div>
+          )}
+
+          {stage === "ready" && (
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              <span className="tag" style={{ alignSelf: "flex-start" }}>
+                ✓ Clip job started · {clipJobId?.slice(0, 8)}
+              </span>
+              <button className="button-primary" onClick={handleGoToProcessing}>
+                View Processing →
+              </button>
             </div>
           )}
         </div>
