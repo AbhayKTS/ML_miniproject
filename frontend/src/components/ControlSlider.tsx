@@ -21,7 +21,7 @@ const ControlSlider = ({ label, value: initValue, onChange }: ControlSliderProps
         <span>{label}</span>
         <span style={{ opacity: 0.6, fontSize: 12 }}>{val}%</span>
       </label>
-      <input type="range" min={0} max={100} value={val} onChange={handleChange} />
+      <input aria-label={`${label} slider`} type="range" min={0} max={100} value={val} onChange={handleChange} />
     </div>
   );
 };
