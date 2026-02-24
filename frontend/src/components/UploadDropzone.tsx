@@ -30,7 +30,7 @@ const UploadDropzone = ({ onFilesSelected, hint }: UploadDropzoneProps) => {
       <div>
         <h3>Drag & drop your video</h3>
         <p style={{ color: "var(--text-muted)", marginTop: 8 }}>
-          {hint || "MP4, MOV, MKV, or WEBM · up to 2GB"}
+          {hint || "MP4, MOV, MKV, or WEBM · up to 2GB — we'll auto-transcode if needed"}
         </p>
       </div>
       <label className="button-primary" style={{ marginTop: 16 }}>
