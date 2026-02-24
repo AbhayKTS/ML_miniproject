@@ -65,7 +65,7 @@ const UploadPage = () => {
       <div className="cards">
         <UploadDropzone
           onFilesSelected={handleFiles}
-          hint="Supported: mp4, mov, mkv, webm · max 2GB"
+          hint="Supported: MP4, MOV, MKV, WEBM — max 2GB; contact admin for larger uploads"
         />
         <div className="panel" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           <h3>Upload Status</h3>
