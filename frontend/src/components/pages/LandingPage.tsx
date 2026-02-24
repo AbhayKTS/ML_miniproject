@@ -2,26 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const YT_VIDEOS = [
-  {
-    id: "eM8Mjuq4MwQ",
-    title: "Long Video 1",
-  },
-  {
-    id: "XgdY_s1LsZc",
-    title: "Long Video 2",
-  },
-  {
-    id: "Pkh8UtuejGw",
-    title: "Long Video 3",
-  },
-  {
-    id: "G4P-w_ewaJ4",
-    title: "Long Video 4",
-  },
-  {
-    id: "BQ0mxQXmLsk",
-    title: "Long Video 5",
-  },
+  { id: "-mKSeBJ_okY", title: "Example Video A" },
+  { id: "XgdY_s1LsZc", title: "Example Video B" },
+  { id: "DAYszemgPxc", title: "Example Video C" },
+  { id: "pSV4JskWtvk", title: "Example Video D" },
+  { id: "Pkh8UtuejGw", title: "Example Video E" },
 ];
 
 function getYtThumbnail(id: string) {
