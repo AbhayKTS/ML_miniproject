@@ -38,6 +38,7 @@ const DashboardPage = () => {
         title="Welcome back, Creator."
         subtitle="Chhaya is ready to co-create. Choose a workspace or upload a video to get started."
       />
+      <p style={{ color: "var(--text-muted)", marginTop: 8, marginBottom: 16, fontSize: 14 }}>Your creative session continues where you left off.</p>
 
       {/* Backend status badge */}
       <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 8 }}>
