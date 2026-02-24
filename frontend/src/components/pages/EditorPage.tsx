@@ -20,7 +20,7 @@ const EditorPage = () => {
           <div className="panel" style={{ display: "grid", gap: 12 }}>
             <h3>Overlay Controls</h3>
             <label>Headline</label>
-            <input type="text" placeholder="This was insane..." />
+            <input type="text" placeholder="Enter headline to overlay on clip" />
             <label>Color + Font</label>
             <div style={{ display: "flex", gap: 12 }}>
               <select>
