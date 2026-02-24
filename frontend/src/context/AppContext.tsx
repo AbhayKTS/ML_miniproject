@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { CreativeMemory, Generation, getMemory, checkHealth } from "../api";
-
+// Context for global app state, including user info, backend status, creative memory, and last generation.
 interface AppState {
     userId: string;
     backendOnline: boolean;
