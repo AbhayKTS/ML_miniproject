@@ -27,7 +27,7 @@ const UploadPage = () => {
       setVideoId(result.id);
       setStage("done");
     } catch (err) {
-      setError("Upload failed. Is the backend running on port 4000?");
+      setError("Upload failed. Make sure the backend is running and the file is a valid video format.");
       setStage("idle");
     }
   };
