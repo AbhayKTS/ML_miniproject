@@ -9,6 +9,7 @@ const ExportPage = () => {
       />
       <div className="split">
         <div className="panel controls">
+          <p style={{ color: "var(--text-muted)", marginBottom: 16, fontSize: 13 }}>Customize your clip before downloading</p>
           <div className="control-group">
             <label>Format</label>
             <select>
