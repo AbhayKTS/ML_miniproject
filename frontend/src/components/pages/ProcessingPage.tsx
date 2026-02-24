@@ -16,6 +16,7 @@ const INITIAL_STAGES: PipelineStage[] = [
   { label: "Highlight extraction", value: 0 },
   { label: "Silence removal", value: 0 },
   { label: "Caption generation", value: 0 },
+  { label: "Quality check", value: 0 },
 ];
 
 const LIVE_NOTES = [
