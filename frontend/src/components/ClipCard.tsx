@@ -4,7 +4,10 @@ type ClipCardProps = {
   status: string;
 };
 
+// ClipCard: displays a generated clip with quick actions (play, rename, captions, edit).
+// Keep UI simple here; the editor receives the clip for deeper editing.
 const ClipCard = ({ title, duration, status }: ClipCardProps) => {
+  // Note: status shows the active caption style for quick scanning by editors.
   return (
     <div className="card">
       <div style={{ display: "flex", justifyContent: "space-between" }}>
