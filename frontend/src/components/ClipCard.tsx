@@ -16,10 +16,10 @@ const ClipCard = ({ title, duration, status }: ClipCardProps) => {
       </div>
       <p style={{ color: "var(--text-muted)", marginTop: 8 }}>{status}</p>
       <div style={{ display: "flex", gap: 12, marginTop: 16, flexWrap: "wrap" }}>
-        <button className="button-primary">Play</button>
-        <button className="ghost-button">Rename</button>
+        <button className="button-primary">Preview</button>
+        <button className="ghost-button">Edit title</button>
         <button className="ghost-button">Regenerate captions</button>
-        <button className="ghost-button">Send to editor</button>
+        <button className="ghost-button">Open in editor</button>
       </div>
     </div>
   );
