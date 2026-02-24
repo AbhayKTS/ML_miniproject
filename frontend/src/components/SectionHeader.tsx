@@ -6,7 +6,7 @@ type SectionHeaderProps = {
 const SectionHeader = ({ title, subtitle }: SectionHeaderProps) => {
   return (
     <div>
-      <h2 style={{ fontSize: 24 }}>{title}</h2>
+      <h2 style={{ fontSize: 26 }}>{title}</h2>
       <p style={{ color: "var(--text-muted)", marginTop: 6 }}>{subtitle}</p>
     </div>
   );
