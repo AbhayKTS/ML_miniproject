@@ -8,7 +8,7 @@ type CardProps = {
 
 const Card = ({ title, description, footer }: CardProps) => {
   return (
-    <div className="card" role="group" aria-label={`module: ${title}`}>
+    <div className="card" role="article" aria-label={`Card: ${title}`}>
       <h3>{title}</h3>
       <p style={{ color: "var(--text-muted)", marginTop: 8 }}>{description}</p>
       {footer && <div style={{ marginTop: 12 }}>{footer}</div>}
