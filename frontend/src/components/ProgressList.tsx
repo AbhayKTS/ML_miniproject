@@ -4,7 +4,7 @@ type ProgressListProps = {
 
 const ProgressList = ({ items }: ProgressListProps) => {
   return (
-    <div className="panel" style={{ display: "grid", gap: 16 }}>
+    <div className="panel" style={{ display: "grid", gap: 16 }} aria-live="polite" role="status">
       {items.map((item) => (
         <div key={item.label}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -12,7 +12,7 @@ const ProgressList = ({ items }: ProgressListProps) => {
             <span style={{ color: "var(--text-muted)" }}>{item.value}%</span>
           </div>
           <div className="progress-bar">
-            <div className="progress" style={{ width: `${item.value}%` }} />
+            <div className="progress" style={{ width: `${item.value}%` }} aria-valuenow={item.value} aria-valuemin={0} aria-valuemax={100} role="progressbar" />
           </div>
         </div>
       ))}
