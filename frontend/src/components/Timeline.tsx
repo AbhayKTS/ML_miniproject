@@ -1,6 +1,6 @@
 const Timeline = () => {
   return (
-    <div className="timeline">
+    <div className="timeline" role="region" aria-label="Clip timeline">
       <div className="timeline-track" />
       <div className="timeline-clip" style={{ left: "10%", width: "20%" }}>
         Hook
