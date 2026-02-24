@@ -5,6 +5,8 @@ import App from "./App";
 import { AppProvider } from "./context/AppContext";
 import "./styles.css";
 
+// bootstrap: mount React app
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
