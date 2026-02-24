@@ -5,6 +5,8 @@ type UploadDropzoneProps = {
   hint?: string;
 };
 
+// Note: This dropzone is intentionally small and focused — it accepts video files only.
+// The server enforces file-size limits and accepted codecs; client-side hints help the user.
 const UploadDropzone = ({ onFilesSelected, hint }: UploadDropzoneProps) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
