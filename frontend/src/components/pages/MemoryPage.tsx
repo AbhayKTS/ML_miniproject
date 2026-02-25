@@ -150,7 +150,7 @@ const MemoryPage = () => {
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 <div>
                   <p style={{ fontSize: 11, opacity: 0.5, marginBottom: 4 }}>TONE</p>
-                  <span className="tag">{tone || "—"}</span>
+                    <span className="tag" style={{ textTransform: "capitalize" }}>{tone || "—"}</span>
                 </div>
                 <div>
                   <p style={{ fontSize: 11, opacity: 0.5, marginBottom: 4 }}>THEMES</p>
