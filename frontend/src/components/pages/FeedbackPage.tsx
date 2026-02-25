@@ -78,7 +78,7 @@ const FeedbackPage = () => {
       <div className="cards">
         {/* Star Rating */}
         <div className="card">
-          <h3>Rate this output</h3>
+          <h3>Rate this result</h3>
           <div style={{ display: "flex", gap: 8, fontSize: 32, cursor: "pointer", marginTop: 12 }}>
             {[1, 2, 3, 4, 5].map((s) => (
               <span
