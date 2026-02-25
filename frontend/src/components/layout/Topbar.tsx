@@ -2,7 +2,7 @@ const Topbar = () => {
   return (
     <header className="topbar">
       <div>
-        <strong>Chhaya — Your Creative Shadow</strong>
+  <strong>Chhaya: Your Creative Shadow</strong>
       </div>
       <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
         <span className="tag">Creative sync: Active</span>
