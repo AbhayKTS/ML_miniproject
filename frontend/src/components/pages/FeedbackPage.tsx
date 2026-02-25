@@ -96,7 +96,7 @@ const FeedbackPage = () => {
             ))}
           </div>
           <p style={{ color: "var(--text-muted)", marginTop: 8, fontSize: 13 }}>
-            {rating === 0 ? "Click to rate" : rating >= 4 ? "Great! Chhaya will reinforce this style." : "Got it — Chhaya will adapt."}
+            {rating === 0 ? "Click a star to rate" : rating >= 4 ? "Great! Chhaya will reinforce this style." : "Got it — Chhaya will adapt."}
           </p>
 
           <div className="control-group" style={{ marginTop: 16 }}>
