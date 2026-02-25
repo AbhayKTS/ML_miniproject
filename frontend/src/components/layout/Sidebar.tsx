@@ -31,7 +31,7 @@ const Sidebar = () => {
             borderRadius: 10, display: "flex", alignItems: "center",
             justifyContent: "center", fontSize: 14, flexShrink: 0
           }}>▶</div>
-          <h1 style={{ fontSize: 17 }}>Chhaya Studio</h1>
+          <h1 style={{ fontSize: 17, letterSpacing: 1 }}>Chhaya Studio</h1>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 8 }}>
           <span style={{
