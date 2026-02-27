@@ -5,7 +5,7 @@ import { generateText, submitFeedback, Generation } from "../../api";
 import { useApp } from "../../context/AppContext";
 import { useLocation } from "react-router-dom";
 
-const THEMES = ["Mythic futurism", "Urban folklore", "Hopepunk discovery", "Solarpunk utopia", "Biopunk nature"];
+const THEMES = ["Latin romance", "Friday party", "Mythic futurism", "Urban folklore", "Hopepunk discovery", "Solarpunk utopia", "Biopunk nature"];
 const TONES = ["Warm visionary", "Minimalist poetic", "Energetic optimistic", "Dark contemplative", "Playful surreal"];
 const CULTURES = ["South Asian coastal", "Afro-futurist diaspora", "Nordic myth remix", "East Asian celestial", "Latin American magical"];
 const GENRES = ["Short story", "Marketing copy", "Script / screenplay", "Essay / blog", "Song lyrics"];
