@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const SHOWCASE_ITEMS = [
-  { id: "M7lc1UVf-VE", title: "Adaptive Storytelling" },
-  { id: "dQw4w9WgXcQ", title: "Visual Style Synced" },
-  { id: "jNQXAC9IVRw", title: "Ambient Audio Engine" },
-  { id: "9bZkp7q19f0", title: "Cultural Context Filter" },
-  { id: "Pkh8UtuejGw", title: "Creative Memory" },
+  { id: "dQw4w9WgXcQ", title: "Never Gonna Give You Up - AI Enhanced" },
+  { id: "9bZkp7q19f0", title: "Gangnam Style - Adaptive Remix" },
+  { id: "hT_nvWreIhg", title: "One Dance - AI Vocal Blend" },
+  { id: "7wtfhZwyrcc", title: "Believer - Synthwave AI Reimagining" },
+  { id: "kJQP7kiw5Fk", title: "Despacito - AI Cultural Fusion" },
 ];
 
 function getYtThumbnail(id: string) {
