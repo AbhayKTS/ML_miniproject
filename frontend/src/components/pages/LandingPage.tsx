@@ -161,14 +161,14 @@ const LandingPage = () => {
           <span className="lp-input-icon">✨</span>
           <input
             type="text"
-            placeholder="Paste YouTube Link"
+            placeholder="Describe your creative vision (e.g., A cyberpunk poem)"
             value={ytLink}
             onChange={(e) => setYtLink(e.target.value)}
-            aria-label="Paste YouTube link"
+            aria-label="Describe your vision"
             className="lp-input"
           />
           <span className="lp-clip-icon">📎</span>
-          <button className="lp-create-btn">Create free clips</button>
+          <button className="lp-create-btn">Start Co-creating </button>
         </div>
 
         {/* ── Active YT preview ── */}
