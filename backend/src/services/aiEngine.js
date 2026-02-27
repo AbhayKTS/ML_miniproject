@@ -90,11 +90,16 @@ const generateOutput = async (modality, intent) => {
 };
 
 const buildGenerationPlan = async ({ modality, prompt, controls, constraints, memory }) => {
+  console.log(`Building generation plan for ${modality}...`);
   const intent = analyzeIntent({ prompt, controls, memory });
   const constrained = applyConstraints(intent, constraints);
   const aligned = alignCulture(constrained);
   const crossModal = crossModalPlan(aligned);
+
+  console.log(`Intent analyzed for user: ${JSON.stringify(aligned)}`);
+
   const output = await generateOutput(modality, aligned);
+  console.log(`Generation complete for ${modality}. Output length: ${output.length} chars.`);
 
   return {
     id: aligned.id,
