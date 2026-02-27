@@ -151,8 +151,8 @@ const LandingPage = () => {
       <header className="lp-nav">
         <div className="lp-nav-inner">
           <Link to="/" className="lp-logo">
-            <span className="lp-logo-icon">â–¶</span>
-            <span>CHHAYA</span>
+            <span className="lp-logo-icon">▶</span>
+            <span>CHHAYA <small style={{ opacity: 0.6, fontSize: '0.6em', verticalAlign: 'middle' }}>ADAPTIVE</small></span>
           </Link>
           <nav className="lp-nav-links">
             <Link to="/app">Dashboard</Link>
