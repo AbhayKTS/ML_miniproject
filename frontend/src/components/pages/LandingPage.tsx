@@ -146,7 +146,7 @@ const LandingPage = () => {
 
       {/* ══════════════ HERO ══════════════ */}
       <section className="lp-hero">
-        <p className="lp-kicker">#1 AI VIDEO CLIPPING TOOL</p>
+        <p className="lp-kicker">ADAPTIVE GENERATIVE AI PLATFORM</p>
         <h1 className="lp-headline">
           Adaptive Creative<br />
           Content Generation
