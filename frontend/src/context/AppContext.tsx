@@ -58,11 +58,29 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
                 setBackendOnline(false);
                 setMemory(defaultMemory);
             });
+
+        const saved = localStorage.getItem("chhaya_last_gen");
+        if (saved) {
+            try { setLastGeneration(JSON.parse(saved)); } catch { /* ignore */ }
+        }
     }, []);
+
+    const handleSetLastGeneration = (g: Generation) => {
+        setLastGeneration(g);
+        localStorage.setItem("chhaya_last_gen", JSON.stringify(g));
+    };
 
     return (
         <AppContext.Provider
-            value={{ userId, backendOnline, memory, lastGeneration, setMemory, setLastGeneration, refreshMemory }}
+            value={{
+                userId,
+                backendOnline,
+                memory,
+                lastGeneration,
+                setMemory,
+                setLastGeneration: handleSetLastGeneration,
+                refreshMemory
+            }}
         >
             {children}
         </AppContext.Provider>
