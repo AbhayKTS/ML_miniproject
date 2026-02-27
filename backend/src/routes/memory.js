@@ -16,6 +16,7 @@ router.post("/update", async (req, res) => {
     return res.status(400).json({ error: "Invalid payload", details: validation.errors });
   }
   const userId = req.user?.id || validation.data.userId || "guest";
+  console.log(`Updating memory for user: ${userId}`);
   await updateMemory(userId, validation.data.updates);
   const updated = await getMemory(userId);
   res.json(updated);
