@@ -20,7 +20,6 @@ const defaultMemory: CreativeMemory = {
     culturalContext: "coastal ritual",
     lock: false,
     updatedAt: new Date().toISOString(),
-    lastUsedAt: new Date().toISOString(),
 };
 
 const AppContext = createContext<AppState>({
