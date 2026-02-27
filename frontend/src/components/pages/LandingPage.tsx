@@ -2,11 +2,11 @@
 import { Link, useNavigate } from "react-router-dom";
 
 const SHOWCASE_ITEMS = [
-  { id: "dQw4w9WgXcQ", title: "Never Gonna Give You Up - AI Enhanced" },
-  { id: "9bZkp7q19f0", title: "Gangnam Style - Adaptive Remix" },
-  { id: "hT_nvWreIhg", title: "One Dance - AI Vocal Blend" },
-  { id: "7wtfhZwyrcc", title: "Believer - Synthwave AI Reimagining" },
-  { id: "kJQP7kiw5Fk", title: "Despacito - AI Cultural Fusion" },
+  { id: "Pkh8UtuejGw", title: "Señorita - AI Vocal Synergy" },
+  { id: "dQw4w9WgXcQ", title: "Never Gonna Give You Up - HQ Restored" },
+  { id: "9bZkp7q19f0", title: "Gangnam Style - Adaptive Flow" },
+  { id: "kfVsfOSbNY0", title: "Friday (Party Remix) - AI Bass Boost" },
+  { id: "kJQP7kiw5Fk", title: "Despacito - Neural Translation" },
 ];
 
 function getYtThumbnail(id: string) {
@@ -249,49 +249,4 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
-// commit sync 1
-// commit sync 2
-// commit sync 3
-// commit sync 4
-// commit sync 5
-// commit sync 6
-// commit sync 7
-// commit sync 8
-// commit sync 9
-// commit sync 10
-// commit sync 11
-// commit sync 12
-// commit sync 13
-// commit sync 14
-// commit sync 15
-// commit sync 16
-// commit sync 17
-// commit sync 18
-// commit sync 19
-// commit sync 20
-// commit sync 21
-// commit sync 22
-// commit sync 23
-// commit sync 24
-// commit sync 25
-// commit sync 26
-// commit sync 27
-// commit sync 28
-// commit sync 29
-// commit sync 30
-// commit sync 31
-// commit sync 32
-// commit sync 33
-// commit sync 34
-// commit sync 35
-// commit sync 36
-// commit sync 37
-// commit sync 38
-// commit sync 39
-// commit sync 40
-// commit sync 41
-// commit sync 42
-// commit sync 43
-// commit sync 44
-// commit sync 45
-// commit sync 46
+
