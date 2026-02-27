@@ -774,7 +774,7 @@ a {
 .showcase-card {
   padding: 18px;
   border-radius: 18px;
-  background: linear-gradient(135deg, rgba(68, 208, 255, 0.2), rgba(140, 107, 255, 0.2));
+  background: var(--brand-gradient);
   border: 1px solid rgba(255, 255, 255, 0.1);
   animation: float 6s ease-in-out infinite;
 }
