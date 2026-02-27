@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-const YT_VIDEOS = [
-  { id: "-mKSeBJ_okY", title: "Example Video A" },
-  { id: "XgdY_s1LsZc", title: "Example Video B" },
-  { id: "DAYszemgPxc", title: "Example Video C" },
-  { id: "pSV4JskWtvk", title: "Example Video D" },
-  { id: "Pkh8UtuejGw", title: "Example Video E" },
+const SHOWCASE_ITEMS = [
+  { id: "M7lc1UVf-VE", title: "Adaptive Storytelling" },
+  { id: "dQw4w9WgXcQ", title: "Visual Style Synced" },
+  { id: "jNQXAC9IVRw", title: "Ambient Audio Engine" },
+  { id: "9bZkp7q19f0", title: "Cultural Context Filter" },
+  { id: "Pkh8UtuejGw", title: "Creative Memory" },
 ];
 
 function getYtThumbnail(id: string) {
@@ -92,13 +92,13 @@ const FEATURE_PILLS = [
 
 const LandingPage = () => {
   const [ytLink, setYtLink] = useState("");
-  const [activeVideo, setActiveVideo] = useState(0);
+  const [activeItem, setActiveItem] = useState(0);
   const railRef = useRef<HTMLDivElement>(null);
 
-  // Auto-cycle active video preview
+  // Auto-cycle active items preview
   useEffect(() => {
     const id = setInterval(() => {
-      setActiveVideo((v) => (v + 1) % YT_VIDEOS.length);
+      setActiveItem((v) => (v + 1) % SHOWCASE_ITEMS.length);
     }, 4000);
     return () => clearInterval(id);
   }, []);
@@ -171,12 +171,12 @@ const LandingPage = () => {
           <button className="lp-create-btn">Start Co-creating </button>
         </div>
 
-        {/* ── Active YT preview ── */}
+        {/* ── Active item preview ── */}
         <div className="lp-yt-featured">
           <div className="lp-yt-featured-thumb">
             <img
-              src={getYtThumbnail(YT_VIDEOS[activeVideo].id)}
-              alt={YT_VIDEOS[activeVideo].title}
+              src={getYtThumbnail(SHOWCASE_ITEMS[activeItem].id)}
+              alt={SHOWCASE_ITEMS[activeItem].title}
               className="lp-yt-thumb-img"
             />
             <div className="lp-yt-overlay">
@@ -185,14 +185,13 @@ const LandingPage = () => {
           </div>
         </div>
 
-        {/* ── Video rail ── */}
         <div className="lp-yt-rail-wrap">
           <div className="lp-yt-rail" ref={railRef}>
-            {YT_VIDEOS.map((v, i) => (
+            {SHOWCASE_ITEMS.map((v: { id: string; title: string }, i: number) => (
               <button
                 key={v.id}
-                className={`lp-yt-card${activeVideo === i ? " lp-yt-card--active" : ""}`}
-                onClick={() => setActiveVideo(i)}
+                className={`lp-yt-card${activeItem === i ? " lp-yt-card--active" : ""}`}
+                onClick={() => setActiveItem(i)}
                 aria-label={`Preview ${v.title}`}
               >
                 <img
@@ -203,10 +202,8 @@ const LandingPage = () => {
                 />
                 <div className="lp-yt-card-overlay">
                   <span className="lp-yt-views">
-                    <span className="lp-views-label">VIEWS</span>
-                    <span className="lp-views-num">1M+</span>
+                    <span className="lp-views-label">{v.title}</span>
                   </span>
-                  <span className="lp-platform-dot lp-platform-yt">▶</span>
                 </div>
               </button>
             ))}
