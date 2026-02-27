@@ -96,31 +96,31 @@ body {
 
 .si-yt-wrap {
   top: 15%;
-  left: 24%;
+  left: calc(320px + 60px);
   animation-delay: 0s;
 }
 
 .si-tiktok-wrap {
   top: 75%;
-  left: 22%;
+  left: calc(320px + 40px);
   animation-delay: 1.2s;
 }
 
 .si-insta-wrap {
   top: 15%;
-  right: 24%;
+  right: calc(320px + 60px);
   animation-delay: 0.6s;
 }
 
 .si-li-wrap {
   top: 50%;
-  right: 26%;
+  right: calc(320px + 80px);
   animation-delay: 1.8s;
 }
 
 .si-fb-wrap {
-  top: 80%;
-  right: 22%;
+  top: 85%;
+  right: calc(320px + 40px);
   animation-delay: 2.4s;
 }
 
