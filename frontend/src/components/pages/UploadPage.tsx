@@ -59,7 +59,7 @@ const UploadPage = () => {
   return (
     <div className="page">
       <SectionHeader
-        title="Upload Source Video"
+        title="Creative Source Ingestion"
         subtitle="Drag & drop a long-form video. Chhaya will detect highlights, remove silence, and prepare clips."
       />
       <div className="cards">
