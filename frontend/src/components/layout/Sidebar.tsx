@@ -27,7 +27,7 @@ const Sidebar = () => {
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <div style={{
             width: 34, height: 34,
-            background: "linear-gradient(135deg, #7c3aed, #ec4899)",
+            background: "var(--brand-gradient)",
             borderRadius: 10, display: "flex", alignItems: "center",
             justifyContent: "center", fontSize: 14, flexShrink: 0
           }}>▶</div>
