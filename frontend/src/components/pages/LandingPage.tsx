@@ -175,8 +175,8 @@ const LandingPage = () => {
           <span className="gradient-text">Content Generation</span>
         </h1>
         <p className="lp-sub">
-          Your co-creative partner for music, visuals, and stories.
-          <em>CHHAYA</em> evolves with your unique creative signature.
+          The ultimate engine for music, visuals, and stories.<br />
+          Experience <em>CHHAYA</em> — where AI captures your creative soul.
         </p>
 
         {/* Input bar */}
