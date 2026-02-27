@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionHeader from "../SectionHeader";
 import ControlSlider from "../ControlSlider";
 import { generateAudio, submitFeedback, Generation } from "../../api";
 import { useApp } from "../../context/AppContext";
+import { useLocation } from "react-router-dom";
 
 const MOODS = ["Dreamy ambience", "Uplifted cinematic", "Reflective minimal", "Tense dramatic", "Joyful playful"];
 const TEMPOS = ["60 BPM — meditative", "72 BPM — slow tide", "96 BPM — steady pulse", "120 BPM — energized", "140 BPM — intense"];
@@ -16,14 +17,22 @@ const INSTRUMENTATION = [
 
 const AudioWorkspacePage = () => {
   const { memory, setLastGeneration, refreshMemory } = useApp();
+  const location = useLocation();
+  const visionFromLanding = location.state?.vision;
 
-  const [prompt, setPrompt] = useState("");
+  const [prompt, setPrompt] = useState(visionFromLanding || "");
   const [mood, setMood] = useState(memory?.audioStyle || MOODS[0]);
   const [tempo, setTempo] = useState(TEMPOS[1]);
   const [instrument, setInstrument] = useState(INSTRUMENTATION[0]);
   const [density, setDensity] = useState(68);
   const [rhythmic, setRhythmic] = useState(54);
   const [culturalBlend, setCulturalBlend] = useState(60);
+
+  useEffect(() => {
+    if (visionFromLanding) {
+      setPrompt(visionFromLanding);
+    }
+  }, [visionFromLanding]);
 
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<Generation | null>(null);
