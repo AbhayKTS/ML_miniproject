@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionHeader from "../SectionHeader";
 import ControlSlider from "../ControlSlider";
 import { generateText, submitFeedback, Generation } from "../../api";
 import { useApp } from "../../context/AppContext";
+import { useLocation } from "react-router-dom";
 
 const THEMES = ["Mythic futurism", "Urban folklore", "Hopepunk discovery", "Solarpunk utopia", "Biopunk nature"];
 const TONES = ["Warm visionary", "Minimalist poetic", "Energetic optimistic", "Dark contemplative", "Playful surreal"];
@@ -11,8 +12,10 @@ const GENRES = ["Short story", "Marketing copy", "Script / screenplay", "Essay /
 
 const TextWorkspacePage = () => {
   const { refreshMemory, memory, setLastGeneration } = useApp();
+  const location = useLocation();
+  const visionFromLanding = location.state?.vision;
 
-  const [prompt, setPrompt] = useState(memory?.themes?.[0] ? `Write a story inspired by ${memory.themes[0]}` : "");
+  const [prompt, setPrompt] = useState(visionFromLanding || (memory?.themes?.[0] ? `Write a story inspired by ${memory.themes[0]}` : ""));
   const [theme, setTheme] = useState(THEMES[0]);
   const [tone, setTone] = useState(memory?.tone || TONES[0]);
   const [culture, setCulture] = useState(memory?.culturalContext || CULTURES[0]);
@@ -20,6 +23,12 @@ const TextWorkspacePage = () => {
   const [originality, setOriginality] = useState(72);
   const [complexity, setComplexity] = useState(58);
   const [refinement, setRefinement] = useState(84);
+
+  useEffect(() => {
+    if (visionFromLanding) {
+      setPrompt(visionFromLanding);
+    }
+  }, [visionFromLanding]);
 
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<Generation | null>(null);

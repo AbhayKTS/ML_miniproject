@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SHOWCASE_ITEMS = [
   { id: "M7lc1UVf-VE", title: "Adaptive Storytelling" },
@@ -83,15 +83,16 @@ const SOCIAL_ICONS = [
 
 const FEATURE_PILLS = [
   { icon: "🧠", label: "Adaptive Learning" },
-  { icon: "�", label: "Multi-Modal Generation" },
-  { icon: "�", label: "Creative Memory" },
+  { icon: "🎨", label: "Multi-Modal Generation" },
+  { icon: "📖", label: "Creative Memory" },
   { icon: "✨", label: "Style Adaptation" },
-  { icon: "�", label: "Context-Aware AI" },
+  { icon: "🌐", label: "Context-Aware AI" },
   { icon: "🎭", label: "Tone Alignment" },
 ];
 
 const LandingPage = () => {
-  const [ytLink, setYtLink] = useState("");
+  const navigate = useNavigate();
+  const [creativeVision, setCreativeVision] = useState("");
   const [activeItem, setActiveItem] = useState(0);
   const railRef = useRef<HTMLDivElement>(null);
 
@@ -102,6 +103,10 @@ const LandingPage = () => {
     }, 4000);
     return () => clearInterval(id);
   }, []);
+
+  const handleStartCoCreating = () => {
+    navigate("/app/text", { state: { vision: creativeVision } });
+  };
 
   return (
     <div className="landing-root">
@@ -128,18 +133,19 @@ const LandingPage = () => {
       {/* ══════════════ NAV ══════════════ */}
       <header className="lp-nav">
         <div className="lp-nav-inner">
-          <div className="lp-logo">
+          <Link to="/" className="lp-logo">
             <span className="lp-logo-icon">▶</span>
             <span>CHHAYA</span>
-          </div>
+          </Link>
           <nav className="lp-nav-links">
-            <a href="#">Home</a>
-            <a href="#">Pricing</a>
-            <a href="#">Blog</a>
+            <Link to="/app">Dashboard</Link>
+            <Link to="/app/text">Text</Link>
+            <Link to="/app/image">Image</Link>
+            <Link to="/app/audio">Audio</Link>
           </nav>
           <div className="lp-nav-cta">
-            <Link className="lp-ghost" to="/app">Sign In</Link>
-            <Link className="lp-btn" to="/upload">Sign Up – It's Free</Link>
+            <Link className="lp-ghost" to="/app">Enter Studio</Link>
+            <Link className="lp-btn" to="/app">Get Started</Link>
           </div>
         </div>
       </header>
@@ -162,13 +168,15 @@ const LandingPage = () => {
           <input
             type="text"
             placeholder="Describe your creative vision (e.g., A cyberpunk poem)"
-            value={ytLink}
-            onChange={(e) => setYtLink(e.target.value)}
+            value={creativeVision}
+            onChange={(e) => setCreativeVision(e.target.value)}
             aria-label="Describe your vision"
             className="lp-input"
           />
           <span className="lp-clip-icon">📎</span>
-          <button className="lp-create-btn">Start Co-creating </button>
+          <button className="lp-create-btn" onClick={handleStartCoCreating}>
+            Start Co-creating
+          </button>
         </div>
 
         {/* ── Active item preview ── */}
