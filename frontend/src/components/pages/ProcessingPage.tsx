@@ -34,17 +34,14 @@ const ProcessingPage = () => {
   const navigate = useNavigate();
   const [stages, setStages] = useState(INITIAL_STAGES);
   const [notes, setNotes] = useState<string[]>([LIVE_NOTES[0]]);
-  const [running, setRunning] = useState(false);
+  const [running, setRunning] = useState(true);
   const [done, setDone] = useState(false);
   const [tick, setTick] = useState(0);
 
-  const startSimulation = () => {
+  useEffect(() => {
+    // Start simulation automatically if we navigate here
     setRunning(true);
-    setDone(false);
-    setStages(INITIAL_STAGES);
-    setNotes([LIVE_NOTES[0]]);
-    setTick(0);
-  };
+  }, []);
 
   useEffect(() => {
     if (!running) return;
@@ -73,6 +70,13 @@ const ProcessingPage = () => {
     return () => clearInterval(id);
   }, [running]);
 
+  const handleReset = () => {
+    setDone(false);
+    setStages(INITIAL_STAGES);
+    setTick(0);
+    setRunning(true);
+  };
+
   return (
     <div className="page">
       <SectionHeader
@@ -81,7 +85,7 @@ const ProcessingPage = () => {
       />
 
       <div style={{ display: "flex", gap: 12, marginBottom: 16 }}>
-        <button className="button-primary" onClick={startSimulation} disabled={running}>
+        <button className="button-primary" onClick={handleReset} disabled={running}>
           {running ? "⚙️ Processing…" : done ? "🔄 Re-run pipeline" : "▶ Start Pipeline"}
         </button>
         {done && (
