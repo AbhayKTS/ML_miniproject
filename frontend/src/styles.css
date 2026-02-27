@@ -170,8 +170,8 @@ body {
 
 .lp-side-short:hover {
   width: 240px;
-  border-color: var(--accent-soft);
-  box-shadow: 0 0 40px rgba(140, 107, 255, 0.25);
+  border-color: #8c6bff;
+  box-shadow: 0 0 40px rgba(140, 107, 255, 0.4);
   transform: translateY(-52%) scale(1.02);
 }
 
