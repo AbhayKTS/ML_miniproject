@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import SectionHeader from "../SectionHeader";
 import { submitFeedback } from "../../api";
@@ -155,9 +156,14 @@ const FeedbackPage = () => {
                   )}
                 </div>
               </div>
-              <button className="ghost-button" style={{ marginTop: 16 }} onClick={handleReset}>
-                Submit more feedback
-              </button>
+              <div style={{ display: "flex", gap: 10, marginTop: 16 }}>
+                <button className="ghost-button" onClick={handleReset}>
+                  Submit more feedback
+                </button>
+                <Link to="/app" className="ghost-button">
+                  Back to Dashboard
+                </Link>
+              </div>
             </div>
           ) : (
             <button
