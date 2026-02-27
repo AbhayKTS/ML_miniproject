@@ -7,12 +7,12 @@ const EditorPage = () => {
     <div className="page">
       <SectionHeader
         title="Editor Workspace"
-        subtitle="Fine-tune captions, overlays, templates, and framing before export."
+        subtitle="Fine-tune adaptive overlays, templates, and framing before finalizing your vision."
       />
       <div className="split">
         <div className="panel">
           <h3>Preview</h3>
-          <div className="video-preview">Video preview with safe zones</div>
+          <div className="video-preview">Adaptive preview with safe zones</div>
           <Timeline />
         </div>
         <div className="panel" style={{ display: "grid", gap: 16 }}>
@@ -20,26 +20,26 @@ const EditorPage = () => {
           <div className="panel" style={{ display: "grid", gap: 12 }}>
             <h3>Overlay Controls</h3>
             <label>Headline</label>
-            <input type="text" placeholder="Enter headline to overlay on clip" />
+            <input type="text" placeholder="Enter headline to overlay on generation" />
             <label>Color + Font</label>
             <div style={{ display: "flex", gap: 12 }}>
               <select>
-                <option>Inter Bold</option>
-                <option>Montserrat SemiBold</option>
+                <option>Outfit (Brand)</option>
+                <option>Inter</option>
                 <option>Space Grotesk</option>
               </select>
               <input type="color" defaultValue="#8c6bff" />
             </div>
             <label>Template</label>
             <select>
-              <option>QuickReel Viral</option>
-              <option>Clean Podcast</option>
-              <option>Minimal Caption</option>
+              <option>CHHAYA Adaptive</option>
+              <option>Clean Aesthetic</option>
+              <option>Minimalist Floating</option>
             </select>
-            <label>Background Audio</label>
+            <label>Background Ambience</label>
             <div className="toggle-row">
               <input type="checkbox" defaultChecked />
-              <span>Enable ambient track</span>
+              <span>Enable creative sync track</span>
             </div>
           </div>
         </div>
