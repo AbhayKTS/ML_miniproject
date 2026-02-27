@@ -5,14 +5,14 @@ import { generateAudio, submitFeedback, Generation } from "../../api";
 import { useApp } from "../../context/AppContext";
 import { useLocation } from "react-router-dom";
 
-const MOODS = ["Dreamy ambience", "Uplifted cinematic", "Reflective minimal", "Tense dramatic", "Joyful playful"];
+const MOODS = ["Romantic Latin", "Tropical party", "Dreamy ambience", "Uplifted cinematic", "Reflective minimal", "Tense dramatic", "Joyful playful"];
 const TEMPOS = ["60 BPM — meditative", "72 BPM — slow tide", "96 BPM — steady pulse", "120 BPM — energized", "140 BPM — intense"];
 const INSTRUMENTATION = [
+  "Classical guitar + Shakers",
+  "Reggaeton beats + Bass",
   "Synth pads + hand percussion",
   "Ambient strings + flute",
   "Modular textures + vocal chops",
-  "Acoustic guitar + soft piano",
-  "Electronic beats + bass synth",
 ];
 
 const AudioWorkspacePage = () => {
