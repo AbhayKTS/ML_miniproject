@@ -2,12 +2,12 @@
 import { Link, useNavigate } from "react-router-dom";
 
 const SHOWCASE_ITEMS = [
-  { id: "O0_GqX8kH20", title: "Señorita - Viral AI Remix" },
-  { id: "HCjNJDNzw8Y", title: "Havana - Tropical AI Edit" },
-  { id: "_d-Hj4b6-4g", title: "Nobody Came - Dhanda AI Flow" },
-  { id: "2w0yL_TqfM8", title: "Bheegi Bheegi - Kishore Kumar AI Restoration" },
-  { id: "KRA6y26lG9I", title: "Last Friday - Party Fusion" },
-  { id: "ft2gXv7c_2g", title: "Fairytale - Mythic AI Mix" },
+  { id: "KlyXNRrsk4A", title: "Bheegi Bheegi - AI Restoration" },
+  { id: "BQ0mxQXmLsk", title: "Fairytale - Mythic AI Mix" },
+  { id: "Pkh8UtuejGw", title: "Señorita - Viral AI Remix" },
+  { id: "2Z0Put0teCM", title: "Nobody Came - Dhanda AI Flow" },
+  { id: "wPzzphowuA0", title: "Havana - Tropical AI Edit" },
+  { id: "NkgLsX1Yeec", title: "Last Friday - Party Fusion" },
 ];
 
 function getYtThumbnail(id: string) {
@@ -117,14 +117,14 @@ const LandingPage = () => {
       {/* â”€â”€ Side Shorts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="lp-side-short lp-side-left">
         <iframe
-          src="https://www.youtube.com/embed/tPEE9ZwTnG0?autoplay=1&mute=1&loop=1&playlist=tPEE9ZwTnG0&controls=0"
+          src="https://www.youtube.com/embed/E-QDlzEEn4k?autoplay=1&mute=1&loop=1&playlist=E-QDlzEEn4k&controls=0"
           title="Left Short"
           allow="autoplay"
         />
       </div>
       <div className="lp-side-short lp-side-right">
         <iframe
-          src="https://www.youtube.com/embed/fC7oUOUEk8E?autoplay=1&mute=1&loop=1&playlist=fC7oUOUEk8E&controls=0"
+          src="https://www.youtube.com/embed/KaUuPNYHFNg?autoplay=1&mute=1&loop=1&playlist=KaUuPNYHFNg&controls=0"
           title="Right Short"
           allow="autoplay"
         />
