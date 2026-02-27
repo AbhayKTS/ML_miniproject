@@ -54,10 +54,13 @@ const blendFeedback = async (userId, feedback) => {
     try {
       const result = await model.generateContent(prompt);
       const suggested = JSON.parse(result.response.text().replace(/```json|```/g, "").trim());
+      console.log(`Gemini suggested memory updates for ${userId}:`, suggested);
       Object.assign(updates, suggested);
     } catch (error) {
-      console.warn("Gemini feedback blending failed:", error);
+      console.warn("Gemini feedback blending failed fallback to heuristic:", error);
     }
+  } else {
+    console.log(`Gemini disabled, using heuristic memory blend for ${userId}`);
   }
 
   // Fallback or additional heuristics
