@@ -79,9 +79,11 @@ const AudioWorkspacePage = () => {
 
   const togglePlay = () => {
     if (!result) return;
-    setPlaying((p) => !p);
+    const newPlaying = !playing;
+    setPlaying(newPlaying);
+    console.log(newPlaying ? "Playback started" : "Playback paused");
     // Simulate playhead advancement
-    if (!playing) {
+    if (newPlaying) {
       let pos = playPosition;
       const interval = setInterval(() => {
         pos += 1;
