@@ -113,6 +113,22 @@ const LandingPage = () => {
       {/* ── dot-grid background ────────────────── */}
       <div className="lp-bg-dots" aria-hidden="true" />
 
+      {/* ── Side Shorts ──────────────────────── */}
+      <div className="lp-side-short lp-side-left">
+        <iframe
+          src="https://www.youtube.com/embed/tPEE9ZwTnG0?autoplay=1&mute=1&loop=1&playlist=tPEE9ZwTnG0&controls=0"
+          title="Left Short"
+          allow="autoplay"
+        />
+      </div>
+      <div className="lp-side-short lp-side-right">
+        <iframe
+          src="https://www.youtube.com/embed/fC7oUOUEk8E?autoplay=1&mute=1&loop=1&playlist=fC7oUOUEk8E&controls=0"
+          title="Right Short"
+          allow="autoplay"
+        />
+      </div>
+
       {/* ── floating social icons ─────────────── */}
       <div className="social-float si-yt-wrap" aria-hidden="true">
         <div className="social-badge si-yt">{SOCIAL_ICONS[0].svg}</div>
