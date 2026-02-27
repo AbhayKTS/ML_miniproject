@@ -5,40 +5,44 @@ const ExportPage = () => {
     <div className="page">
       <SectionHeader
         title="Export & Publish"
-        subtitle="Choose format, resolution, and download your final clip."
+        subtitle="Finalize your creative asset and download the high-fidelity render."
       />
       <div className="split">
         <div className="panel controls">
-          <p style={{ color: "var(--text-muted)", marginBottom: 16, fontSize: 13 }}>Customize your clip before downloading</p>
+          <p style={{ color: "var(--text-muted)", marginBottom: 16, fontSize: 13 }}>Customize your generation before downloading</p>
           <div className="control-group">
             <label>Format</label>
             <select>
-              <option>MP4</option>
-              <option>WEBM</option>
+              <option>MP4 (Video)</option>
+              <option>PNG/JPG (Image)</option>
+              <option>WAV/MP3 (Audio)</option>
+              <option>TXT (Draft)</option>
             </select>
           </div>
           <div className="control-group">
-            <label>Aspect Ratio</label>
+            <label>Canvas / Layout</label>
             <select>
-              <option>9:16 (Shorts)</option>
-              <option>1:1 (Square)</option>
-              <option>16:9 (Landscape)</option>
+              <option>Shorts (9:16)</option>
+              <option>Social (1:1)</option>
+              <option>Cinematic (16:9)</option>
             </select>
           </div>
           <div className="control-group">
-            <label>Resolution</label>
+            <label>Quality</label>
             <select>
-              <option>1080p</option>
-              <option>720p</option>
+              <option>High Fidelity (1080p+)</option>
+              <option>Standard (720p)</option>
+              <option>Draft (480p)</option>
             </select>
           </div>
-          <button className="button-primary">Export clip</button>
+          <button className="button-primary">Finalize &amp; Export</button>
         </div>
         <div className="panel">
-          <h3>Export History</h3>
+          <h3>Generation History</h3>
           <ul style={{ marginTop: 12, color: "var(--text-muted)", paddingLeft: 18 }}>
-            <li>clip_viral_hook_01.mp4 — ready</li>
-            <li>clip_key_insight_02.mp4 — rendering</li>
+            <li>chhaya_story_01.mp4 — ready</li>
+            <li>chhaya_visual_concept_02.png — ready</li>
+            <li>chhaya_audio_track_03.wav — rendering</li>
           </ul>
           <button className="ghost-button" style={{ marginTop: 16 }}>
             Download last export
