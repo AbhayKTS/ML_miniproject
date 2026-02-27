@@ -67,6 +67,7 @@ const MemoryPage = () => {
       applyMemory(updated);
       setCtxMemory(updated);
       setSaved(true);
+      setTimeout(() => setSaved(false), 3000);
     } catch (err: any) {
       setError(err.message || "Failed to save. Is the backend running?");
     } finally {
@@ -150,7 +151,7 @@ const MemoryPage = () => {
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 <div>
                   <p style={{ fontSize: 11, opacity: 0.5, marginBottom: 4 }}>TONE</p>
-                    <span className="tag" style={{ textTransform: "capitalize" }}>{tone || "—"}</span>
+                  <span className="tag" style={{ textTransform: "capitalize" }}>{tone || "—"}</span>
                 </div>
                 <div>
                   <p style={{ fontSize: 11, opacity: 0.5, marginBottom: 4 }}>THEMES</p>
