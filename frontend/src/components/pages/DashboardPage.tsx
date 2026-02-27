@@ -114,6 +114,11 @@ const DashboardPage = () => {
           <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>Alexander Rybak's vibe has been reimagined for the Solarpunk theme.</p>
           <div className="progress-bar" style={{ marginTop: 10 }}><div className="progress" style={{ width: "82%", background: "var(--brand-gradient)" }} /></div>
         </div>
+        <div className="card" style={{ background: "rgba(200,100,255,0.05)" }}>
+          <h4>🔥 Nobody Came - Dhanda Nyoliwala</h4>
+          <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>Haryana-to-Global AI flow. Style morphing in progress.</p>
+          <div className="progress-bar" style={{ marginTop: 10 }}><div className="progress" style={{ width: "96%", background: "var(--brand-gradient)" }} /></div>
+        </div>
       </div>
     </div>
   );
