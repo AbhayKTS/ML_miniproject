@@ -29,9 +29,10 @@ const Sidebar = () => {
             width: 34, height: 34,
             background: "var(--brand-gradient)",
             borderRadius: 10, display: "flex", alignItems: "center",
-            justifyContent: "center", fontSize: 14, flexShrink: 0
+            justifyContent: "center", fontSize: 14, flexShrink: 0,
+            fontWeight: 800
           }}>▶</div>
-          <h1 style={{ fontSize: 17, letterSpacing: 1 }}>CHHAYA Studio</h1>
+          <h1 className="gradient-text" style={{ fontSize: 17, letterSpacing: 1, fontWeight: 900 }}>CHHAYA Studio</h1>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 8 }}>
           <span style={{
