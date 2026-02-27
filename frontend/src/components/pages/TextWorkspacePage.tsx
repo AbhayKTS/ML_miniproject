@@ -56,11 +56,14 @@ const TextWorkspacePage = () => {
   const handleFeedback = async (r: number) => {
     if (!result || feedbackSent) return;
     setRating(r);
+    console.log("Submitting rating:", r);
     try {
       await submitFeedback({ generationId: result.id, rating: r, edits, toneHint: tone.toLowerCase() });
       setFeedbackSent(true);
       await refreshMemory();
-    } catch { /* ignore */ }
+    } catch (err) {
+      console.error("Feedback error:", err);
+    }
   };
 
   const handleEditFeedback = async () => {
