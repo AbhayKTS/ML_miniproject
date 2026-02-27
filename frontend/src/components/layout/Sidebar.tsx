@@ -3,19 +3,19 @@ import { useApp } from "../../context/AppContext";
 
 const NAV = [
   { to: "/app", label: "📊 Overview", end: true },
-  { to: "/upload", label: "📤 Upload" },
-  { to: "/processing", label: "⚙️ Processing" },
-  { to: "/clips", label: "✂️ Clips" },
-  { to: "/editor", label: "🎬 Editor" },
-  { to: "/export", label: "📦 Export" },
+  { to: "/upload", label: "🎞️ Source", desc: "Upload long-form" },
+  { to: "/processing", label: "🧬 Analysis" },
+  { to: "/clips", label: "🎬 Generation" },
+  { to: "/editor", label: "✨ Polishing" },
+  { to: "/export", label: "🚀 Publish" },
 ];
 
 const STUDIO_NAV = [
-  { to: "/app/text", label: "✍️ Text" },
-  { to: "/app/image", label: "🖼 Image" },
-  { to: "/app/audio", label: "🎵 Audio" },
-  { to: "/app/feedback", label: "⭐ Feedback" },
-  { to: "/app/memory", label: "🧠 Memory" },
+  { to: "/app/text", label: "📜 Scripting" },
+  { to: "/app/image", label: "🌉 Visuals" },
+  { to: "/app/audio", label: "🎼 Scoring" },
+  { to: "/app/feedback", label: "💎 Refine" },
+  { to: "/app/memory", label: "🧠 Mindset" },
 ];
 
 const Sidebar = () => {
