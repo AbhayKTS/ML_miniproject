@@ -148,12 +148,12 @@ const LandingPage = () => {
       <section className="lp-hero">
         <p className="lp-kicker">#1 AI VIDEO CLIPPING TOOL</p>
         <h1 className="lp-headline">
-          Convert Your Long Video Into<br />
-          Viral Short Videos in 1 minute
+          Adaptive Creative<br />
+          Content Generation
         </h1>
         <p className="lp-sub">
-          Create <em className="lp-em">engaging</em> and <em className="lp-em">high quality</em> clips from your{" "}
-          <em className="lp-em">long video</em> with one click, by QuickReel
+          Your co-creative partner for text, images, and audio.
+          <em>CHHAYA</em> learns from you to refine every generation.
         </p>
 
         {/* Input bar */}
