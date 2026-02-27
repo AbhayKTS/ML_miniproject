@@ -250,3 +250,4 @@ const LandingPage = () => {
 
 export default LandingPage;
 // commit sync 1
+// commit sync 2
