@@ -35,14 +35,39 @@ const updateMemory = async (userId, updates) => {
   });
 };
 
+const { getModel, isGeminiEnabled } = require("./geminiClient");
+
 const blendFeedback = async (userId, feedback) => {
+  const currentMemory = await getMemory(userId);
   const updates = {};
-  if (feedback.rating && feedback.rating >= 4) {
-    updates.tone = feedback.toneHint || "warm visionary";
+
+  if (isGeminiEnabled()) {
+    const model = getModel();
+    const prompt = `Analyze user feedback on a creative generation and suggest updates for the AI's "creative memory" of this user.
+      Current Memory: ${JSON.stringify(currentMemory)}
+      User Rating: ${feedback.rating}/5
+      User Edits/Comments: "${feedback.edits || "None"}"
+      
+      Suggest updates for: tone (description), themes (array of strings), visualStyle (short desc), audioStyle (short desc), and culturalContext (short desc).
+      Return ONLY a JSON object with the suggested updates. Do not include any other text.`;
+
+    try {
+      const result = await model.generateContent(prompt);
+      const suggested = JSON.parse(result.response.text().replace(/```json|```/g, "").trim());
+      Object.assign(updates, suggested);
+    } catch (error) {
+      console.warn("Gemini feedback blending failed:", error);
+    }
   }
-  if (feedback.edits) {
-    updates.themes = ["refined", "user-guided"];    
+
+  // Fallback or additional heuristics
+  if (!updates.tone && feedback.rating && feedback.rating >= 4) {
+    updates.tone = feedback.toneHint || currentMemory.tone;
   }
+  if (!updates.themes && feedback.edits) {
+    updates.themes = [...new Set([...currentMemory.themes, "refined"])];
+  }
+
   return updateMemory(userId, updates);
 };
 
