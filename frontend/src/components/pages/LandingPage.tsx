@@ -245,6 +245,19 @@ const LandingPage = () => {
           </span>
         ))}
       </div>
+
+      {/* ══════════════ FOOTER ══════════════ */}
+      <footer style={{
+        padding: '60px 40px',
+        textAlign: 'center',
+        borderTop: '1px solid var(--border)',
+        marginTop: '80px',
+        opacity: 0.6,
+        fontSize: '14px'
+      }}>
+        <p>© 2026 CHHAYA ADAPTIVE — Enhancing Creative Content Generation Using Adaptive Generative AI</p>
+        <p style={{ marginTop: '10px' }}>Designed for multi-modal creative co-creation</p>
+      </footer>
     </div>
   );
 };
