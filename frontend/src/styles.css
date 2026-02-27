@@ -156,7 +156,7 @@ body {
 .lp-logo-icon {
   width: 36px;
   height: 36px;
-  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  background: var(--brand-gradient);
   border-radius: 10px;
   display: flex;
   align-items: center;
