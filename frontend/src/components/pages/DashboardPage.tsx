@@ -96,6 +96,25 @@ const DashboardPage = () => {
           </Link>
         ))}
       </div>
+
+      <h3 style={{ marginTop: 12, marginBottom: -8 }}>Viral Trends</h3>
+      <div className="cards" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
+        <div className="card" style={{ background: "rgba(255,100,200,0.05)" }}>
+          <h4>🎵 Señorita AI Remix</h4>
+          <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>Trending in Latin Fusion. Use 'Warm Visionary' tone for best results.</p>
+          <div className="progress-bar" style={{ marginTop: 10 }}><div className="progress" style={{ width: "85%", background: "var(--brand-gradient)" }} /></div>
+        </div>
+        <div className="card" style={{ background: "rgba(100,200,255,0.05)" }}>
+          <h4>🕺 Gangnam Flow v2</h4>
+          <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>K-Pop style adaptation is peaking. High rhythmic complexity detected.</p>
+          <div className="progress-bar" style={{ marginTop: 10 }}><div className="progress" style={{ width: "92%", background: "var(--brand-gradient)" }} /></div>
+        </div>
+        <div className="card" style={{ background: "rgba(255,200,100,0.05)" }}>
+          <h4>🎉 Friday Party Pack</h4>
+          <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>New presets for high-energy social content. Optimized for 120 BPM.</p>
+          <div className="progress-bar" style={{ marginTop: 10 }}><div className="progress" style={{ width: "70%", background: "var(--brand-gradient)" }} /></div>
+        </div>
+      </div>
     </div>
   );
 };
