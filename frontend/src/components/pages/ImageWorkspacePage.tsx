@@ -5,9 +5,9 @@ import { generateImage, submitFeedback, Generation } from "../../api";
 import { useApp } from "../../context/AppContext";
 import { useLocation } from "react-router-dom";
 
-const STYLES = ["Painterly neon", "Concept art realism", "Anime-inspired cinematic", "Watercolour impressionist", "Photorealistic digital"];
-const CULTURES = ["Coastal temple motifs", "Desert market patterns", "Nordic aurora palettes", "East Asian ink-wash", "Afro-futurist geometric"];
-const MOODS = ["Luminous & hopeful", "Dark & mysterious", "Vibrant & energetic", "Calm & meditative", "Epic & dramatic"];
+const STYLES = ["Music Video Aesthetic", "Sunset Romance", "Painterly neon", "Concept art realism", "Anime-inspired cinematic", "Watercolour impressionist", "Photorealistic digital"];
+const CULTURES = ["Caribbean vibrant", "Latin urban", "Coastal temple motifs", "Desert market patterns", "Nordic aurora palettes", "East Asian ink-wash", "Afro-futurist geometric"];
+const MOODS = ["Sensual & Warm", "Vibrant & Party", "Luminous & hopeful", "Dark & mysterious", "Calm & meditative", "Epic & dramatic"];
 
 const ImageWorkspacePage = () => {
   const { memory, setLastGeneration, refreshMemory } = useApp();
