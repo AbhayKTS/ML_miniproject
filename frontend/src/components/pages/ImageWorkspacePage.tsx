@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionHeader from "../SectionHeader";
 import ControlSlider from "../ControlSlider";
 import { generateImage, submitFeedback, Generation } from "../../api";
 import { useApp } from "../../context/AppContext";
+import { useLocation } from "react-router-dom";
 
 const STYLES = ["Painterly neon", "Concept art realism", "Anime-inspired cinematic", "Watercolour impressionist", "Photorealistic digital"];
 const CULTURES = ["Coastal temple motifs", "Desert market patterns", "Nordic aurora palettes", "East Asian ink-wash", "Afro-futurist geometric"];
@@ -10,16 +11,24 @@ const MOODS = ["Luminous & hopeful", "Dark & mysterious", "Vibrant & energetic",
 
 const ImageWorkspacePage = () => {
   const { memory, setLastGeneration, refreshMemory } = useApp();
+  const location = useLocation();
+  const visionFromLanding = location.state?.vision;
 
-  const [prompt, setPrompt] = useState("");
+  const [prompt, setPrompt] = useState(visionFromLanding || "");
   const [style, setStyle] = useState(memory?.visualStyle || STYLES[0]);
   const [culture, setCulture] = useState(memory?.culturalContext || CULTURES[0]);
   const [mood, setMood] = useState(MOODS[0]);
   const [variation, setVariation] = useState(64);
   const [texture, setTexture] = useState(70);
   const [colorHarmony, setColorHarmony] = useState(82);
-  const [refFile, setRefFile] = useState<File | null>(null);
 
+  useEffect(() => {
+    if (visionFromLanding) {
+      setPrompt(visionFromLanding);
+    }
+  }, [visionFromLanding]);
+
+  const [refFile, setRefFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<Generation | null>(null);
   const [error, setError] = useState<string | null>(null);
