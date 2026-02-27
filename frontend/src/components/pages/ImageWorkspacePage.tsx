@@ -59,11 +59,14 @@ const ImageWorkspacePage = () => {
   const handleFeedback = async (r: number) => {
     if (!result || feedbackSent) return;
     setRating(r);
+    console.log("Submitting image feedback:", r);
     try {
       await submitFeedback({ generationId: result.id, rating: r, signals: { acceptance: r >= 4 } });
       setFeedbackSent(true);
       await refreshMemory();
-    } catch { /* ignore */ }
+    } catch (err) {
+      console.error("Image feedback error:", err);
+    }
   };
 
   return (
