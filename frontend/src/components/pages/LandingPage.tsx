@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+﻿import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const SHOWCASE_ITEMS = [
@@ -82,12 +82,12 @@ const SOCIAL_ICONS = [
 ];
 
 const FEATURE_PILLS = [
-  { icon: "🧠", label: "Adaptive Learning" },
-  { icon: "🎨", label: "Multi-Modal Generation" },
-  { icon: "📖", label: "Creative Memory" },
-  { icon: "✨", label: "Style Adaptation" },
-  { icon: "🌐", label: "Context-Aware AI" },
-  { icon: "🎭", label: "Tone Alignment" },
+  { icon: "ðŸ§ ", label: "Adaptive Learning" },
+  { icon: "ðŸŽ¨", label: "Multi-Modal Generation" },
+  { icon: "ðŸ“–", label: "Creative Memory" },
+  { icon: "âœ¨", label: "Style Adaptation" },
+  { icon: "ðŸŒ", label: "Context-Aware AI" },
+  { icon: "ðŸŽ­", label: "Tone Alignment" },
 ];
 
 const LandingPage = () => {
@@ -110,10 +110,10 @@ const LandingPage = () => {
 
   return (
     <div className="landing-root">
-      {/* ── dot-grid background ────────────────── */}
+      {/* â”€â”€ dot-grid background â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="lp-bg-dots" aria-hidden="true" />
 
-      {/* ── Side Shorts ──────────────────────── */}
+      {/* â”€â”€ Side Shorts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="lp-side-short lp-side-left">
         <iframe
           src="https://www.youtube.com/embed/tPEE9ZwTnG0?autoplay=1&mute=1&loop=1&playlist=tPEE9ZwTnG0&controls=0"
@@ -129,7 +129,7 @@ const LandingPage = () => {
         />
       </div>
 
-      {/* ── floating social icons ─────────────── */}
+      {/* â”€â”€ floating social icons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="social-float si-yt-wrap" aria-hidden="true">
         <div className="social-badge si-yt">{SOCIAL_ICONS[0].svg}</div>
       </div>
@@ -146,11 +146,11 @@ const LandingPage = () => {
         <div className="social-badge si-fb">{SOCIAL_ICONS[4].svg}</div>
       </div>
 
-      {/* ══════════════ NAV ══════════════ */}
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â• NAV â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <header className="lp-nav">
         <div className="lp-nav-inner">
           <Link to="/" className="lp-logo">
-            <span className="lp-logo-icon">▶</span>
+            <span className="lp-logo-icon">â–¶</span>
             <span>CHHAYA</span>
           </Link>
           <nav className="lp-nav-links">
@@ -166,7 +166,7 @@ const LandingPage = () => {
         </div>
       </header>
 
-      {/* ══════════════ HERO ══════════════ */}
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section className="lp-hero">
         <p className="lp-kicker">ADAPTIVE GENERATIVE AI PLATFORM</p>
         <h1 className="lp-headline">
@@ -180,7 +180,7 @@ const LandingPage = () => {
 
         {/* Input bar */}
         <div className="lp-input-bar">
-          <span className="lp-input-icon">✨</span>
+          <span className="lp-input-icon">âœ¨</span>
           <input
             type="text"
             placeholder="Describe your creative vision (e.g., A cyberpunk poem)"
@@ -189,13 +189,13 @@ const LandingPage = () => {
             aria-label="Describe your vision"
             className="lp-input"
           />
-          <span className="lp-clip-icon">📎</span>
+          <span className="lp-clip-icon">ðŸ“Ž</span>
           <button className="lp-create-btn" onClick={handleStartCoCreating}>
             Start Co-creating
           </button>
         </div>
 
-        {/* ── Active item preview ── */}
+        {/* â”€â”€ Active item preview â”€â”€ */}
         <div className="lp-yt-featured">
           <div className="lp-yt-featured-thumb">
             <img
@@ -204,7 +204,7 @@ const LandingPage = () => {
               className="lp-yt-thumb-img"
             />
             <div className="lp-yt-overlay">
-              <span className="lp-play-btn">▶</span>
+              <span className="lp-play-btn">â–¶</span>
             </div>
           </div>
         </div>
@@ -235,7 +235,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* ══════════════ FEATURE PILLS ══════════════ */}
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â• FEATURE PILLS â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <div className="lp-features-bar">
         {FEATURE_PILLS.map((p) => (
           <span key={p.label} className="lp-pill">
@@ -249,3 +249,4 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
+// commit sync 1
