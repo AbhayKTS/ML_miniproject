@@ -2,8 +2,8 @@ const path = require("path");
 const fs = require("fs/promises");
 const { updateStore } = require("../data/store");
 const { v4: uuid } = require("uuid");
-const { embedCaptions } = require("../workers/captionEmbedder");
-const { cropAndResize } = require("../workers/cropper");
+const { embedCaptions } = require("../../workers/captionEmbedder");
+const { cropAndResize } = require("../../workers/cropper");
 
 const exportsDir = path.join(process.cwd(), "data", "exports");
 

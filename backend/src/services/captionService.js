@@ -1,6 +1,6 @@
 const { updateStore } = require("../data/store");
 const { v4: uuid } = require("uuid");
-const { transcribeWithWhisper } = require("../workers/whisperTranscribe");
+const { transcribeWithWhisper } = require("../../workers/whisperTranscribe");
 
 const generateCaptions = async ({ clip, style = "karaoke" }) => {
   const transcript = await transcribeWithWhisper(clip.outputPath);

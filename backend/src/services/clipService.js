@@ -2,8 +2,8 @@ const path = require("path");
 const fs = require("fs/promises");
 const { updateStore } = require("../data/store");
 const { v4: uuid } = require("uuid");
-const { detectHighlights } = require("../workers/highlightDetection");
-const { sliceVideo } = require("../workers/ffmpegSlicer");
+const { detectHighlights } = require("../../workers/highlightDetection");
+const { sliceVideo } = require("../../workers/ffmpegSlicer");
 
 const clipsDir = path.join(process.cwd(), "data", "clips");
 
