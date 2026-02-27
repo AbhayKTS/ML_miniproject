@@ -2,11 +2,12 @@
 import { Link, useNavigate } from "react-router-dom";
 
 const SHOWCASE_ITEMS = [
-  { id: "Pkh8UtuejGw", title: "Señorita - AI Vocal Synergy" },
-  { id: "dQw4w9WgXcQ", title: "Never Gonna Give You Up - HQ Restored" },
-  { id: "9bZkp7q19f0", title: "Gangnam Style - Adaptive Flow" },
-  { id: "kfVsfOSbNY0", title: "Friday (Party Remix) - AI Bass Boost" },
-  { id: "kJQP7kiw5Fk", title: "Despacito - Neural Translation" },
+  { id: "O0_GqX8kH20", title: "Señorita - Viral AI Remix" },
+  { id: "HCjNJDNzw8Y", title: "Havana - Tropical AI Edit" },
+  { id: "_d-Hj4b6-4g", title: "Nobody Came - Dhanda AI Flow" },
+  { id: "2w0yL_TqfM8", title: "Bheegi Bheegi - Kishore Kumar AI Restoration" },
+  { id: "KRA6y26lG9I", title: "Last Friday - Party Fusion" },
+  { id: "ft2gXv7c_2g", title: "Fairytale - Mythic AI Mix" },
 ];
 
 function getYtThumbnail(id: string) {
