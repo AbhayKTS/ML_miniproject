@@ -82,12 +82,12 @@ const SOCIAL_ICONS = [
 ];
 
 const FEATURE_PILLS = [
-  { icon: "✂️", label: "AI clipping" },
-  { icon: "🎬", label: "AI editing" },
-  { icon: "💬", label: "AI captioning" },
-  { icon: "🎥", label: "AI B-Roll" },
-  { icon: "🎵", label: "AI BGM" },
-  { icon: "🔇", label: "Silence & filler word remover" },
+  { icon: "🧠", label: "Adaptive Learning" },
+  { icon: "�", label: "Multi-Modal Generation" },
+  { icon: "�", label: "Creative Memory" },
+  { icon: "✨", label: "Style Adaptation" },
+  { icon: "�", label: "Context-Aware AI" },
+  { icon: "🎭", label: "Tone Alignment" },
 ];
 
 const LandingPage = () => {
