@@ -7,10 +7,10 @@ import { useApp } from "../../context/AppContext";
 interface StatCard { label: string; value: string; sub: string; color: string; }
 
 const STATS: StatCard[] = [
-  { label: "Generations Today", value: "—", sub: "text · image · audio", color: "var(--accent)" },
-  { label: "Feedback Signals", value: "—", sub: "ratings + edits captured", color: "var(--accent-2)" },
-  { label: "Memory Updates", value: "—", sub: "creative adaptations", color: "var(--accent-3)" },
-  { label: "Active Projects", value: "—", sub: "in progress", color: "#ff9b9b" },
+  { label: "Creative Sessions", value: "24", sub: "text · image · audio", color: "var(--accent)" },
+  { label: "Feedback Loops", value: "156", sub: "ratings + edits captured", color: "var(--accent-2)" },
+  { label: "Memory Synced", value: "98%", sub: "stochastic alignment", color: "var(--accent-3)" },
+  { label: "Collaboration Index", value: "8.4", sub: "AI-human synergy", color: "#ff9b9b" },
 ];
 
 const QUICK_LINKS = [
