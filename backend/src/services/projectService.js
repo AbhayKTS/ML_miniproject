@@ -23,7 +23,13 @@ const createProject = async ({ userId, name, description }) => {
   return project;
 };
 
+const getProject = async (projectId) => {
+  const store = await getStore();
+  return store.projects.find((p) => p.id === projectId);
+};
+
 module.exports = {
   listProjects,
-  createProject
+  createProject,
+  getProject
 };
