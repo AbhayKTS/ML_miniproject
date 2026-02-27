@@ -154,8 +154,8 @@ const LandingPage = () => {
       <section className="lp-hero">
         <p className="lp-kicker">ADAPTIVE GENERATIVE AI PLATFORM</p>
         <h1 className="lp-headline">
-          Adaptive Creative<br />
-          Content Generation
+          <span className="gradient-text">Adaptive Creative</span><br />
+          <span className="gradient-text">Content Generation</span>
         </h1>
         <p className="lp-sub">
           Your co-creative partner for text, images, and audio.
