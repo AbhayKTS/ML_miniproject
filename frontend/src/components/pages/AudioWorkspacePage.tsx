@@ -148,7 +148,7 @@ const AudioWorkspacePage = () => {
             onClick={handleGenerate}
             disabled={loading}
           >
-            {loading ? "🎵 Composing…" : "🎵 Generate Audio Prompt"}
+            {loading ? "🎵 Composing…" : "🎵 Create Audio Prompt"}
           </button>
         </div>
 
@@ -195,7 +195,7 @@ const AudioWorkspacePage = () => {
               </div>
 
               <div className="output-block" style={{ whiteSpace: "pre-wrap" }}>
-                🎵 <strong>Prompt for your DAW or AI music tool:</strong>
+                🎵 <strong>Prompt for your DAW or digital music tool:</strong>
                 {"\n\n"}{result.output}
               </div>
 
