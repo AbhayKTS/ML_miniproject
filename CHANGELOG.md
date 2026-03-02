@@ -9,3 +9,4 @@
 - Fix alignment issue in timeline component
 - Remove deprecated user fields
 - Update styling for primary buttons
+- Add retry mechanism for Whisper transcribe worker
