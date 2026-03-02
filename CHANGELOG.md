@@ -8,3 +8,4 @@
 - Add JSDoc comments to core functions
 - Fix alignment issue in timeline component
 - Remove deprecated user fields
+- Update styling for primary buttons
