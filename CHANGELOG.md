@@ -3,3 +3,4 @@
 - Update validation logic in backend schema
 - Add error boundary component to frontend
 - Fix unresolved promise in generation service
+- Remove unnecessary console logs
