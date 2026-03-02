@@ -5,3 +5,4 @@
 - Fix unresolved promise in generation service
 - Remove unnecessary console logs
 - Update creative engine testing suite
+- Add JSDoc comments to core functions
