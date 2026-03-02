@@ -1,8 +1,8 @@
-const { getModel, isGeminiEnabled } = require("../src/services/geminiClient");
+const { getProcessingModel, isEngineEnabled } = require("../src/services/engineClient");
 
 const transcribeWithWhisper = async (_clipPath) => {
-  if (isGeminiEnabled()) {
-    const model = getModel();
+  if (isEngineEnabled()) {
+    const model = getProcessingModel();
     const prompt = "Generate a concise transcript with timestamps for a 30-second highlight clip.";
     try {
       const result = await model.generateContent(prompt);
@@ -16,7 +16,7 @@ const transcribeWithWhisper = async (_clipPath) => {
         }))
       };
     } catch (error) {
-      console.warn("Gemini transcription fallback triggered.");
+      console.warn("Content processing transcription fallback triggered.");
     }
   }
 
