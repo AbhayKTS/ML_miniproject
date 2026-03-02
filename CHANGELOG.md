@@ -4,3 +4,4 @@
 - Add error boundary component to frontend
 - Fix unresolved promise in generation service
 - Remove unnecessary console logs
+- Update creative engine testing suite
