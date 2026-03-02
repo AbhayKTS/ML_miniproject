@@ -705,30 +705,25 @@ a {
   min-height: 100vh;
 }
 
-@keyframes ai-pulse {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.5;
-  }
-
-  50% {
-    transform: scale(1.05);
+@keyframes smart-pulse {
+  0%,
+  100% {
+    transform: scale(1);
     opacity: 1;
   }
 
-  100% {
-    transform: scale(0.95);
-    opacity: 0.5;
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
   }
 }
 
-.ai-pulse-dot {
+.smart-pulse-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--accent-3);
-  animation: ai-pulse 2s infinite ease-in-out;
-  box-shadow: 0 0 10px var(--accent-3);
+  background: var(--accent);
+  animation: smart-pulse 2s infinite ease-in-out;
 }
 
 .topbar {
