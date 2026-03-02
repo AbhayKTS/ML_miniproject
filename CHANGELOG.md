@@ -6,3 +6,4 @@
 - Remove unnecessary console logs
 - Update creative engine testing suite
 - Add JSDoc comments to core functions
+- Fix alignment issue in timeline component
