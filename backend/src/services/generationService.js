@@ -1,5 +1,5 @@
 const { updateStore } = require("../data/store");
-const { buildGenerationPlan } = require("./aiEngine");
+const { buildGenerationPlan } = require("./creativeEngine");
 const { getMemory } = require("./creativeMemory");
 const { v4: uuid } = require("uuid");
 
