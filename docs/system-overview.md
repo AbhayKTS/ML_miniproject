@@ -16,7 +16,7 @@ Chhaya is a creative co-creation platform that collaborates with users across te
   |-> Feedback & Preference Engine
   |-> Project & Asset Service
   V
-[AI/ML Layer]
+[Adaptive Processing Layer]
   |-> Creative Reasoning Engine
   |-> Constraint-Aware Creativity Module
   |-> Cultural & Tonal Alignment
@@ -40,6 +40,6 @@ Chhaya is a creative co-creation platform that collaborates with users across te
 ```
 UI Shell -> API Gateway -> Services
 Services: Auth | Projects | Generation | Memory | Feedback
-AI Engines: Reasoning | Style | Constraint | Cross-Modal
+Processing Engines: Reasoning | Style | Constraint | Cross-Modal
 Datastores: SQL | Vector | Object Storage | Logs
 ```

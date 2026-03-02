@@ -10,14 +10,14 @@ const STATS: StatCard[] = [
   { label: "Creative Sessions", value: "24", sub: "text · image · audio", color: "var(--accent)" },
   { label: "Feedback Loops", value: "156", sub: "ratings + edits captured", color: "var(--accent-2)" },
   { label: "Memory Synced", value: "98%", sub: "stochastic alignment", color: "var(--accent-3)" },
-  { label: "Collaboration Index", value: "8.4", sub: "AI-human synergy", color: "#ff9b9b" },
+  { label: "Collaboration Index", value: "8.4", sub: "User-engine synergy", color: "#ff9b9b" },
 ];
 
 const QUICK_LINKS = [
   { to: "/app/text", label: "✍️ Text Workspace", desc: "Co-create stories, scripts, and copy" },
   { to: "/app/image", label: "🖼 Image Workspace", desc: "Generate visual concept prompts" },
   { to: "/app/audio", label: "🎵 Audio Workspace", desc: "Design soundscapes and music prompts" },
-  { to: "/upload", label: "📤 Upload Video", desc: "Upload long-form video for AI clipping" },
+  { to: "/upload", label: "📤 Upload Video", desc: "Upload long-form video for highlight clipping" },
   { to: "/app/feedback", label: "⭐ Feedback", desc: "Rate & refine last generation" },
   { to: "/app/memory", label: "🧠 Creative Memory", desc: "Inspect and edit style vectors" },
 ];
@@ -101,12 +101,12 @@ const DashboardPage = () => {
       <div className="cards" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
         <div className="card" style={{ background: "rgba(255,100,200,0.05)" }}>
           <h4>🎻 Bheegi Bheegi Raaton Mein</h4>
-          <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>Kishore Kumar AI Restoration is trending. High nostalgia factor.</p>
+          <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>Kishore Kumar Digital Restoration is trending. High nostalgia factor.</p>
           <div className="progress-bar" style={{ marginTop: 10 }}><div className="progress" style={{ width: "95%", background: "var(--brand-gradient)" }} /></div>
         </div>
         <div className="card" style={{ background: "rgba(100,200,255,0.05)" }}>
           <h4>💃 Havana Sunset Mix</h4>
-          <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>Tropical AI adaptation is peaking. Perfect for vertical shorts.</p>
+          <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>Tropical adaptive adaptation is peaking. Perfect for vertical shorts.</p>
           <div className="progress-bar" style={{ marginTop: 10 }}><div className="progress" style={{ width: "88%", background: "var(--brand-gradient)" }} /></div>
         </div>
         <div className="card" style={{ background: "rgba(255,200,100,0.05)" }}>
@@ -116,7 +116,7 @@ const DashboardPage = () => {
         </div>
         <div className="card" style={{ background: "rgba(200,100,255,0.05)" }}>
           <h4>🔥 Nobody Came - Dhanda Nyoliwala</h4>
-          <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>Haryana-to-Global AI flow. Style morphing in progress.</p>
+          <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>Haryana-to-Global creative flow. Style morphing in progress.</p>
           <div className="progress-bar" style={{ marginTop: 10 }}><div className="progress" style={{ width: "96%", background: "var(--brand-gradient)" }} /></div>
         </div>
       </div>

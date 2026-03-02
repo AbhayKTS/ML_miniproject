@@ -2,11 +2,11 @@
 import { Link, useNavigate } from "react-router-dom";
 
 const SHOWCASE_ITEMS = [
-  { id: "KlyXNRrsk4A", title: "Bheegi Bheegi - AI Restoration" },
-  { id: "BQ0mxQXmLsk", title: "Fairytale - Mythic AI Mix" },
-  { id: "Pkh8UtuejGw", title: "Señorita - Viral AI Remix" },
-  { id: "2Z0Put0teCM", title: "Nobody Came - Dhanda AI Flow" },
-  { id: "wPzzphowuA0", title: "Havana - Tropical AI Edit" },
+  { id: "KlyXNRrsk4A", title: "Bheegi Bheegi - Digital Restoration" },
+  { id: "BQ0mxQXmLsk", title: "Fairytale - Mythic Studio Mix" },
+  { id: "Pkh8UtuejGw", title: "Señorita - Viral Smart Remix" },
+  { id: "2Z0Put0teCM", title: "Nobody Came - Dhanda Studio Flow" },
+  { id: "wPzzphowuA0", title: "Havana - Tropical Studio Edit" },
   { id: "NkgLsX1Yeec", title: "Last Friday - Party Fusion" },
 ];
 
@@ -87,7 +87,7 @@ const FEATURE_PILLS = [
   { icon: "🎨", label: "Multi-Modal Generation" },
   { icon: "📖", label: "Creative Memory" },
   { icon: "✨", label: "Style Adaptation" },
-  { icon: "🌍", label: "Context-Aware AI" },
+  { icon: "🌍", label: "Context-Aware Engine" },
   { icon: "🎭", label: "Tone Alignment" },
 ];
 
@@ -169,14 +169,14 @@ const LandingPage = () => {
 
       {/* --- HERO --- */}
       <section className="lp-hero">
-        <p className="lp-kicker">ADAPTIVE GENERATIVE AI PLATFORM</p>
+        <p className="lp-kicker">ADAPTIVE CREATIVE CONTENT PLATFORM</p>
         <h1 className="lp-headline">
           <span className="gradient-text">Adaptive Creative</span><br />
           <span className="gradient-text">Content Generation</span>
         </h1>
         <p className="lp-sub">
           The ultimate engine for music, visuals, and stories.<br />
-          Experience <em>CHHAYA</em> — where AI captures your creative soul.
+          Experience <em>CHHAYA</em> — where technology captures your creative soul.
         </p>
 
         {/* Input bar */}
@@ -255,7 +255,7 @@ const LandingPage = () => {
         opacity: 0.6,
         fontSize: '14px'
       }}>
-        <p>© 2026 CHHAYA ADAPTIVE — Enhancing Creative Content Generation Using Adaptive Generative AI</p>
+        <p>© 2026 CHHAYA ADAPTIVE — Enhancing Creative Content Generation Using Adaptive Systems</p>
         <p style={{ marginTop: '10px' }}>Designed for multi-modal creative co-creation</p>
       </footer>
     </div>

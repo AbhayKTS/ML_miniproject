@@ -18,7 +18,7 @@ const AppShell = () => {
           color: "var(--text-muted)",
           textAlign: "center"
         }}>
-          CHHAYA · Adaptive Generative AI Collaborator · 2026
+          CHHAYA · Adaptive Creative Studio · 2026
         </footer>
       </div>
     </div>
