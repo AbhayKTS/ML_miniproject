@@ -1,3 +1,4 @@
 # Changelog
 
 - Update validation logic in backend schema
+- Add error boundary component to frontend
