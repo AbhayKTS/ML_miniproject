@@ -12,3 +12,4 @@
 - Add retry mechanism for Whisper transcribe worker
 - Fix typo in variable name
 - Refactor audio processing module
+- Update component layout for landing page
