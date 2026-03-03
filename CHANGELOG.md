@@ -22,3 +22,4 @@
 - Refactor text generation prompts
 - Update background color in dark mode
 - Add unit tests for memory service
+- Fix API endpoint returning 500 on invalid input
