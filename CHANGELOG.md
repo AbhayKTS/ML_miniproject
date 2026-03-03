@@ -17,3 +17,4 @@
 - Fix state updates causing re-renders
 - Remove unused CSS classes
 - Update README with new setup instructions
+- Add support for multiple audio tracks
