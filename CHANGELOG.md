@@ -18,3 +18,4 @@
 - Remove unused CSS classes
 - Update README with new setup instructions
 - Add support for multiple audio tracks
+- Fix missing comma in configuration
