@@ -13,3 +13,4 @@
 - Fix typo in variable name
 - Refactor audio processing module
 - Update component layout for landing page
+- Add loading spinners to data requests
