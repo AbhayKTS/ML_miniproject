@@ -20,3 +20,4 @@
 - Add support for multiple audio tracks
 - Fix missing comma in configuration
 - Refactor text generation prompts
+- Update background color in dark mode
