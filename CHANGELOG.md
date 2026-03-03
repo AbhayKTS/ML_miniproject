@@ -15,3 +15,4 @@
 - Update component layout for landing page
 - Add loading spinners to data requests
 - Fix state updates causing re-renders
+- Remove unused CSS classes
