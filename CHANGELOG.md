@@ -21,3 +21,4 @@
 - Fix missing comma in configuration
 - Refactor text generation prompts
 - Update background color in dark mode
+- Add unit tests for memory service
