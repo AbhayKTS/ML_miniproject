@@ -10,3 +10,4 @@
 - Remove deprecated user fields
 - Update styling for primary buttons
 - Add retry mechanism for Whisper transcribe worker
+- Fix typo in variable name
