@@ -1,11 +1,759 @@
 {
   "users": [],
   "sessions": [],
-  "creative_memory": [],
-  "text_generations": [],
-  "image_generations": [],
-  "audio_generations": [],
-  "feedback_logs": [],
+  "creative_memory": [
+    {
+      "userId": "test-update-1772648203030",
+      "tone": "dreamy",
+      "themes": [
+        "sunset"
+      ],
+      "visualStyle": "evocative",
+      "audioStyle": "ambient",
+      "culturalContext": "universal",
+      "lock": false,
+      "updatedAt": "2026-03-04T18:16:43.030Z"
+    },
+    {
+      "userId": "test-lock-1772648203049",
+      "tone": "playful",
+      "themes": [
+        "exploratory"
+      ],
+      "visualStyle": "evocative",
+      "audioStyle": "ambient",
+      "culturalContext": "universal",
+      "lock": true,
+      "updatedAt": "2026-03-04T18:16:43.049Z"
+    },
+    {
+      "userId": "test-unlock-1772648203132",
+      "tone": "calm",
+      "themes": [
+        "exploratory"
+      ],
+      "visualStyle": "evocative",
+      "audioStyle": "ambient",
+      "culturalContext": "universal",
+      "lock": false,
+      "updatedAt": "2026-03-04T18:16:43.134Z"
+    },
+    {
+      "userId": "test-blend-1772648203135",
+      "tone": "energetic",
+      "themes": [
+        "city",
+        "reinforced"
+      ],
+      "visualStyle": "evocative",
+      "audioStyle": "ambient",
+      "culturalContext": "universal",
+      "lock": false,
+      "updatedAt": "2026-03-04T18:16:43.138Z"
+    },
+    {
+      "userId": "test-blend-lock-1772648203142",
+      "tone": "fixed",
+      "themes": [
+        "exploratory"
+      ],
+      "visualStyle": "evocative",
+      "audioStyle": "ambient",
+      "culturalContext": "universal",
+      "lock": true,
+      "updatedAt": "2026-03-04T18:16:43.142Z"
+    },
+    {
+      "userId": "test-fb-1772648203233",
+      "tone": "balanced",
+      "themes": [
+        "exploratory",
+        "reinforced"
+      ],
+      "visualStyle": "evocative",
+      "audioStyle": "ambient",
+      "culturalContext": "universal",
+      "lock": false,
+      "updatedAt": "2026-03-04T18:16:43.268Z"
+    },
+    {
+      "userId": "test-fb-min-1772648203275",
+      "tone": "exploring new directions",
+      "themes": [
+        "exploratory",
+        "pivoting"
+      ],
+      "visualStyle": "evocative",
+      "audioStyle": "ambient",
+      "culturalContext": "universal",
+      "lock": false,
+      "updatedAt": "2026-03-04T18:16:43.289Z"
+    },
+    {
+      "userId": "test-update-1772648226989",
+      "tone": "dreamy",
+      "themes": [
+        "sunset"
+      ],
+      "visualStyle": "evocative",
+      "audioStyle": "ambient",
+      "culturalContext": "universal",
+      "lock": false,
+      "updatedAt": "2026-03-04T18:17:06.990Z"
+    },
+    {
+      "userId": "test-lock-1772648226999",
+      "tone": "playful",
+      "themes": [
+        "exploratory"
+      ],
+      "visualStyle": "evocative",
+      "audioStyle": "ambient",
+      "culturalContext": "universal",
+      "lock": true,
+      "updatedAt": "2026-03-04T18:17:06.999Z"
+    },
+    {
+      "userId": "test-fb-1772648227010",
+      "tone": "balanced",
+      "themes": [
+        "exploratory",
+        "reinforced"
+      ],
+      "visualStyle": "evocative",
+      "audioStyle": "ambient",
+      "culturalContext": "universal",
+      "lock": false,
+      "updatedAt": "2026-03-04T18:17:07.174Z"
+    },
+    {
+      "userId": "test-fb-min-1772648227178",
+      "tone": "exploring new directions",
+      "themes": [
+        "exploratory",
+        "pivoting"
+      ],
+      "visualStyle": "evocative",
+      "audioStyle": "ambient",
+      "culturalContext": "universal",
+      "lock": false,
+      "updatedAt": "2026-03-04T18:17:07.186Z"
+    },
+    {
+      "userId": "test-fb-1772648369597",
+      "tone": "balanced",
+      "themes": [
+        "exploratory",
+        "reinforced"
+      ],
+      "visualStyle": "evocative",
+      "audioStyle": "ambient",
+      "culturalContext": "universal",
+      "lock": false,
+      "updatedAt": "2026-03-04T18:19:29.623Z"
+    }
+  ],
+  "text_generations": [
+    {
+      "id": "8de04a2b-ad72-4344-81d6-d41e516dbd55",
+      "modality": "text",
+      "prompt": "Write a haiku about rain",
+      "output": "[Chhaya] A melancholic narrative where universal motifs illuminate scenes of exploratory, crafted at 70% originality with a expansive creative arc.",
+      "reasoning": {
+        "id": "f8b1b321-307e-4fb4-8c0e-09e40dc62d16",
+        "themes": [
+          "exploratory"
+        ],
+        "tone": "melancholic",
+        "culturalContext": "universal",
+        "originality": 70,
+        "complexity": 60,
+        "styleIntensity": 50,
+        "aiAutonomy": 50,
+        "genre": null,
+        "narrativeStructure": null,
+        "visualStyle": "neutral",
+        "audioStyle": "neutral",
+        "prompt": "Write a haiku about rain",
+        "constraints": [
+          "exactly 3 lines"
+        ],
+        "riskBudget": "expansive",
+        "genreConstraint": null,
+        "narrativeConstraint": null,
+        "culturalAlignment": {
+          "region": "universal",
+          "sensitivity": "standard",
+          "authenticityChecks": [
+            "tone",
+            "motifs"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "melancholic narrative with themes of exploratory",
+        "visualAnchor": "neutral visual style, universal influences, exploratory motifs",
+        "audioAnchor": "neutral soundscape, melancholic mood, universal textures"
+      },
+      "createdAt": "2026-03-04T18:16:43.368Z",
+      "userId": "test-gen-1772648203316"
+    },
+    {
+      "id": "a355b7fa-e184-4927-9d42-6f6eeb3d3593",
+      "modality": "text",
+      "prompt": "Write a haiku about rain",
+      "output": "[Chhaya] A melancholic narrative where universal motifs illuminate scenes of exploratory, crafted at 70% originality with a expansive creative arc.",
+      "reasoning": {
+        "id": "d3bc276a-b6dc-4ca2-b66c-03e87437c18c",
+        "themes": [
+          "exploratory"
+        ],
+        "tone": "melancholic",
+        "culturalContext": "universal",
+        "originality": 70,
+        "complexity": 60,
+        "styleIntensity": 50,
+        "aiAutonomy": 50,
+        "genre": null,
+        "narrativeStructure": null,
+        "visualStyle": "neutral",
+        "audioStyle": "neutral",
+        "prompt": "Write a haiku about rain",
+        "constraints": [
+          "exactly 3 lines"
+        ],
+        "riskBudget": "expansive",
+        "genreConstraint": null,
+        "narrativeConstraint": null,
+        "culturalAlignment": {
+          "region": "universal",
+          "sensitivity": "standard",
+          "authenticityChecks": [
+            "tone",
+            "motifs"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "melancholic narrative with themes of exploratory",
+        "visualAnchor": "neutral visual style, universal influences, exploratory motifs",
+        "audioAnchor": "neutral soundscape, melancholic mood, universal textures"
+      },
+      "createdAt": "2026-03-04T18:19:29.641Z",
+      "userId": "test-gen-1772648369629"
+    },
+    {
+      "id": "fe38e987-bcae-4996-be7b-f3405fb5ad35",
+      "modality": "text",
+      "prompt": "Write a haiku about rain",
+      "output": "[Chhaya] A melancholic narrative where universal motifs illuminate scenes of exploratory, crafted at 70% originality with a expansive creative arc.",
+      "reasoning": {
+        "id": "18fa8bf4-7016-40aa-87bd-e7c355f3ae5e",
+        "themes": [
+          "exploratory"
+        ],
+        "tone": "melancholic",
+        "culturalContext": "universal",
+        "originality": 70,
+        "complexity": 60,
+        "styleIntensity": 50,
+        "aiAutonomy": 50,
+        "genre": null,
+        "narrativeStructure": null,
+        "visualStyle": "neutral",
+        "audioStyle": "neutral",
+        "prompt": "Write a haiku about rain",
+        "constraints": [
+          "exactly 3 lines"
+        ],
+        "riskBudget": "expansive",
+        "genreConstraint": null,
+        "narrativeConstraint": null,
+        "culturalAlignment": {
+          "region": "universal",
+          "sensitivity": "standard",
+          "authenticityChecks": [
+            "tone",
+            "motifs"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "melancholic narrative with themes of exploratory",
+        "visualAnchor": "neutral visual style, universal influences, exploratory motifs",
+        "audioAnchor": "neutral soundscape, melancholic mood, universal textures"
+      },
+      "createdAt": "2026-03-04T18:25:36.815Z",
+      "userId": "test-gen-1772648736808"
+    },
+    {
+      "id": "fa1be207-7487-4833-874b-fa10e9504199",
+      "modality": "text",
+      "prompt": "Write a haiku about rain",
+      "output": "[Chhaya] A melancholic narrative where universal motifs illuminate scenes of exploratory, crafted at 70% originality with a expansive creative arc.",
+      "reasoning": {
+        "id": "ea125e77-e7ce-4dcb-99aa-8ef4b0baab40",
+        "themes": [
+          "exploratory"
+        ],
+        "tone": "melancholic",
+        "culturalContext": "universal",
+        "originality": 70,
+        "complexity": 60,
+        "styleIntensity": 50,
+        "aiAutonomy": 50,
+        "genre": null,
+        "narrativeStructure": null,
+        "visualStyle": "neutral",
+        "audioStyle": "neutral",
+        "prompt": "Write a haiku about rain",
+        "constraints": [
+          "exactly 3 lines"
+        ],
+        "riskBudget": "expansive",
+        "genreConstraint": null,
+        "narrativeConstraint": null,
+        "culturalAlignment": {
+          "region": "universal",
+          "sensitivity": "standard",
+          "authenticityChecks": [
+            "tone",
+            "motifs"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "melancholic narrative with themes of exploratory",
+        "visualAnchor": "neutral visual style, universal influences, exploratory motifs",
+        "audioAnchor": "neutral soundscape, melancholic mood, universal textures"
+      },
+      "createdAt": "2026-03-04T18:26:09.679Z",
+      "userId": "test-gen-1772648769672"
+    }
+  ],
+  "image_generations": [
+    {
+      "id": "baa38873-b0ce-48e4-9708-be291a0ca1eb",
+      "modality": "image",
+      "prompt": "A starlit forest",
+      "output": "[Chhaya] Image prompt: neutral composition, universal influences, featuring exploratory, nature motifs, balanced palette.",
+      "reasoning": {
+        "id": "8e5a353d-bf08-438e-b8c6-b360c0cd39e2",
+        "themes": [
+          "exploratory",
+          "nature"
+        ],
+        "tone": "balanced",
+        "culturalContext": "universal",
+        "originality": 90,
+        "complexity": 60,
+        "styleIntensity": 50,
+        "aiAutonomy": 50,
+        "genre": null,
+        "narrativeStructure": null,
+        "visualStyle": "neutral",
+        "audioStyle": "neutral",
+        "prompt": "A starlit forest",
+        "constraints": [
+          "maintain coherence with creative intent"
+        ],
+        "riskBudget": "experimental",
+        "genreConstraint": null,
+        "narrativeConstraint": null,
+        "culturalAlignment": {
+          "region": "universal",
+          "sensitivity": "standard",
+          "authenticityChecks": [
+            "tone",
+            "motifs"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "balanced narrative with themes of exploratory, nature",
+        "visualAnchor": "neutral visual style, universal influences, exploratory and nature motifs",
+        "audioAnchor": "neutral soundscape, balanced mood, universal textures"
+      },
+      "createdAt": "2026-03-04T18:16:43.408Z",
+      "userId": "test-gen-img-1772648203380"
+    },
+    {
+      "id": "33f1b5b7-0c2d-4986-80f0-beee5ac8cc17",
+      "modality": "image",
+      "prompt": "A starlit forest",
+      "output": "[Chhaya] Image prompt: neutral composition, universal influences, featuring exploratory, nature motifs, balanced palette.",
+      "reasoning": {
+        "id": "8a61f194-a543-4117-8921-b47026d76b06",
+        "themes": [
+          "exploratory",
+          "nature"
+        ],
+        "tone": "balanced",
+        "culturalContext": "universal",
+        "originality": 90,
+        "complexity": 60,
+        "styleIntensity": 50,
+        "aiAutonomy": 50,
+        "genre": null,
+        "narrativeStructure": null,
+        "visualStyle": "neutral",
+        "audioStyle": "neutral",
+        "prompt": "A starlit forest",
+        "constraints": [
+          "maintain coherence with creative intent"
+        ],
+        "riskBudget": "experimental",
+        "genreConstraint": null,
+        "narrativeConstraint": null,
+        "culturalAlignment": {
+          "region": "universal",
+          "sensitivity": "standard",
+          "authenticityChecks": [
+            "tone",
+            "motifs"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "balanced narrative with themes of exploratory, nature",
+        "visualAnchor": "neutral visual style, universal influences, exploratory and nature motifs",
+        "audioAnchor": "neutral soundscape, balanced mood, universal textures"
+      },
+      "createdAt": "2026-03-04T18:19:29.644Z",
+      "userId": "test-gen-img-1772648369644"
+    },
+    {
+      "id": "880b8924-8392-4875-9f51-4f92db264acd",
+      "modality": "image",
+      "prompt": "A starlit forest",
+      "output": "[Chhaya] Image prompt: neutral composition, universal influences, featuring exploratory, nature motifs, balanced palette.",
+      "reasoning": {
+        "id": "4b8e07c0-18dc-4d48-9890-1466dfbe7b18",
+        "themes": [
+          "exploratory",
+          "nature"
+        ],
+        "tone": "balanced",
+        "culturalContext": "universal",
+        "originality": 90,
+        "complexity": 60,
+        "styleIntensity": 50,
+        "aiAutonomy": 50,
+        "genre": null,
+        "narrativeStructure": null,
+        "visualStyle": "neutral",
+        "audioStyle": "neutral",
+        "prompt": "A starlit forest",
+        "constraints": [
+          "maintain coherence with creative intent"
+        ],
+        "riskBudget": "experimental",
+        "genreConstraint": null,
+        "narrativeConstraint": null,
+        "culturalAlignment": {
+          "region": "universal",
+          "sensitivity": "standard",
+          "authenticityChecks": [
+            "tone",
+            "motifs"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "balanced narrative with themes of exploratory, nature",
+        "visualAnchor": "neutral visual style, universal influences, exploratory and nature motifs",
+        "audioAnchor": "neutral soundscape, balanced mood, universal textures"
+      },
+      "createdAt": "2026-03-04T18:25:36.819Z",
+      "userId": "test-gen-img-1772648736819"
+    },
+    {
+      "id": "23d715be-16bf-4140-80ca-66ce3d018f4f",
+      "modality": "image",
+      "prompt": "A starlit forest",
+      "output": "[Chhaya] Image prompt: neutral composition, universal influences, featuring exploratory, nature motifs, balanced palette.",
+      "reasoning": {
+        "id": "ec5d2fd4-b009-4da3-aa81-487e10805d5a",
+        "themes": [
+          "exploratory",
+          "nature"
+        ],
+        "tone": "balanced",
+        "culturalContext": "universal",
+        "originality": 90,
+        "complexity": 60,
+        "styleIntensity": 50,
+        "aiAutonomy": 50,
+        "genre": null,
+        "narrativeStructure": null,
+        "visualStyle": "neutral",
+        "audioStyle": "neutral",
+        "prompt": "A starlit forest",
+        "constraints": [
+          "maintain coherence with creative intent"
+        ],
+        "riskBudget": "experimental",
+        "genreConstraint": null,
+        "narrativeConstraint": null,
+        "culturalAlignment": {
+          "region": "universal",
+          "sensitivity": "standard",
+          "authenticityChecks": [
+            "tone",
+            "motifs"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "balanced narrative with themes of exploratory, nature",
+        "visualAnchor": "neutral visual style, universal influences, exploratory and nature motifs",
+        "audioAnchor": "neutral soundscape, balanced mood, universal textures"
+      },
+      "createdAt": "2026-03-04T18:26:09.683Z",
+      "userId": "test-gen-img-1772648769683"
+    }
+  ],
+  "audio_generations": [
+    {
+      "id": "019482e6-b644-4a89-b468-f52b8049882c",
+      "modality": "audio",
+      "prompt": "Gentle waves",
+      "output": "[Chhaya] Audio concept: neutral soundscape, balanced mood, universal textures, weaving exploratory, nature.",
+      "reasoning": {
+        "id": "34bf70d8-5408-4777-b217-edc4838c1d7f",
+        "themes": [
+          "exploratory",
+          "nature"
+        ],
+        "tone": "balanced",
+        "culturalContext": "universal",
+        "originality": 70,
+        "complexity": 60,
+        "styleIntensity": 50,
+        "aiAutonomy": 50,
+        "genre": null,
+        "narrativeStructure": null,
+        "visualStyle": "neutral",
+        "audioStyle": "neutral",
+        "prompt": "Gentle waves",
+        "constraints": [
+          "maintain coherence with creative intent"
+        ],
+        "riskBudget": "expansive",
+        "genreConstraint": null,
+        "narrativeConstraint": null,
+        "culturalAlignment": {
+          "region": "universal",
+          "sensitivity": "standard",
+          "authenticityChecks": [
+            "tone",
+            "motifs"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "balanced narrative with themes of exploratory, nature",
+        "visualAnchor": "neutral visual style, universal influences, exploratory and nature motifs",
+        "audioAnchor": "neutral soundscape, balanced mood, universal textures"
+      },
+      "createdAt": "2026-03-04T18:16:43.423Z",
+      "userId": "test-gen-audio-1772648203422"
+    },
+    {
+      "id": "b5fc2ac2-b304-4af1-b27a-add7019940f2",
+      "modality": "audio",
+      "prompt": "Gentle waves",
+      "output": "[Chhaya] Audio concept: neutral soundscape, balanced mood, universal textures, weaving exploratory, nature.",
+      "reasoning": {
+        "id": "3f4b6d03-f460-47d7-b93a-34802442f1fd",
+        "themes": [
+          "exploratory",
+          "nature"
+        ],
+        "tone": "balanced",
+        "culturalContext": "universal",
+        "originality": 70,
+        "complexity": 60,
+        "styleIntensity": 50,
+        "aiAutonomy": 50,
+        "genre": null,
+        "narrativeStructure": null,
+        "visualStyle": "neutral",
+        "audioStyle": "neutral",
+        "prompt": "Gentle waves",
+        "constraints": [
+          "maintain coherence with creative intent"
+        ],
+        "riskBudget": "expansive",
+        "genreConstraint": null,
+        "narrativeConstraint": null,
+        "culturalAlignment": {
+          "region": "universal",
+          "sensitivity": "standard",
+          "authenticityChecks": [
+            "tone",
+            "motifs"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "balanced narrative with themes of exploratory, nature",
+        "visualAnchor": "neutral visual style, universal influences, exploratory and nature motifs",
+        "audioAnchor": "neutral soundscape, balanced mood, universal textures"
+      },
+      "createdAt": "2026-03-04T18:19:29.649Z",
+      "userId": "test-gen-audio-1772648369649"
+    },
+    {
+      "id": "e0cdaa1d-fc6a-4544-9efb-5c37ac9410d0",
+      "modality": "audio",
+      "prompt": "Gentle waves",
+      "output": "[Chhaya] Audio concept: neutral soundscape, balanced mood, universal textures, weaving exploratory, nature.",
+      "reasoning": {
+        "id": "153e4cac-844b-4dc9-81fc-d09831a86d75",
+        "themes": [
+          "exploratory",
+          "nature"
+        ],
+        "tone": "balanced",
+        "culturalContext": "universal",
+        "originality": 70,
+        "complexity": 60,
+        "styleIntensity": 50,
+        "aiAutonomy": 50,
+        "genre": null,
+        "narrativeStructure": null,
+        "visualStyle": "neutral",
+        "audioStyle": "neutral",
+        "prompt": "Gentle waves",
+        "constraints": [
+          "maintain coherence with creative intent"
+        ],
+        "riskBudget": "expansive",
+        "genreConstraint": null,
+        "narrativeConstraint": null,
+        "culturalAlignment": {
+          "region": "universal",
+          "sensitivity": "standard",
+          "authenticityChecks": [
+            "tone",
+            "motifs"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "balanced narrative with themes of exploratory, nature",
+        "visualAnchor": "neutral visual style, universal influences, exploratory and nature motifs",
+        "audioAnchor": "neutral soundscape, balanced mood, universal textures"
+      },
+      "createdAt": "2026-03-04T18:25:36.825Z",
+      "userId": "test-gen-audio-1772648736825"
+    },
+    {
+      "id": "800fb445-ff10-4b0d-bd05-9489212feb54",
+      "modality": "audio",
+      "prompt": "Gentle waves",
+      "output": "[Chhaya] Audio concept: neutral soundscape, balanced mood, universal textures, weaving exploratory, nature.",
+      "reasoning": {
+        "id": "5d28f103-9ee9-43b5-8418-1a07d1adb0f5",
+        "themes": [
+          "exploratory",
+          "nature"
+        ],
+        "tone": "balanced",
+        "culturalContext": "universal",
+        "originality": 70,
+        "complexity": 60,
+        "styleIntensity": 50,
+        "aiAutonomy": 50,
+        "genre": null,
+        "narrativeStructure": null,
+        "visualStyle": "neutral",
+        "audioStyle": "neutral",
+        "prompt": "Gentle waves",
+        "constraints": [
+          "maintain coherence with creative intent"
+        ],
+        "riskBudget": "expansive",
+        "genreConstraint": null,
+        "narrativeConstraint": null,
+        "culturalAlignment": {
+          "region": "universal",
+          "sensitivity": "standard",
+          "authenticityChecks": [
+            "tone",
+            "motifs"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "balanced narrative with themes of exploratory, nature",
+        "visualAnchor": "neutral visual style, universal influences, exploratory and nature motifs",
+        "audioAnchor": "neutral soundscape, balanced mood, universal textures"
+      },
+      "createdAt": "2026-03-04T18:26:09.687Z",
+      "userId": "test-gen-audio-1772648769687"
+    }
+  ],
+  "feedback_logs": [
+    {
+      "id": "70144c66-25c2-4e91-bb10-be6025338488",
+      "userId": "test-fb-1772648203233",
+      "generationId": "gen-1",
+      "rating": 4,
+      "edits": "made it brighter",
+      "signals": {
+        "reuse": true,
+        "acceptance": true
+      },
+      "createdAt": "2026-03-04T18:16:43.233Z"
+    },
+    {
+      "id": "f5bad209-8788-4612-8219-7383a2682c48",
+      "userId": "test-fb-min-1772648203275",
+      "generationId": "gen-2",
+      "rating": 2,
+      "createdAt": "2026-03-04T18:16:43.275Z"
+    },
+    {
+      "id": "1d2e9dd6-f21c-4aed-9ad9-9a8683cc810c",
+      "userId": "test-fb-1772648227010",
+      "generationId": "gen-1",
+      "rating": 4,
+      "edits": "made it brighter",
+      "signals": {
+        "reuse": true,
+        "acceptance": true
+      },
+      "createdAt": "2026-03-04T18:17:07.014Z"
+    },
+    {
+      "id": "3fdae6f4-d5eb-44ad-8181-d58ca75afa1c",
+      "userId": "test-fb-min-1772648227178",
+      "generationId": "gen-2",
+      "rating": 2,
+      "createdAt": "2026-03-04T18:17:07.178Z"
+    },
+    {
+      "id": "4c23f7a6-114c-45c5-b565-e710e1924924",
+      "userId": "test-fb-1772648369597",
+      "generationId": "gen-1",
+      "rating": 4,
+      "edits": "made it brighter",
+      "signals": {
+        "reuse": true,
+        "acceptance": true
+      },
+      "createdAt": "2026-03-04T18:19:29.598Z"
+    },
+    {
+      "id": "f2c1f452-284e-41bf-a806-7d788290598d",
+      "userId": "test-fb-min-1772648369627",
+      "generationId": "gen-2",
+      "rating": 2,
+      "createdAt": "2026-03-04T18:19:29.627Z"
+    }
+  ],
   "projects": [],
   "assets": [],
   "videos": [],

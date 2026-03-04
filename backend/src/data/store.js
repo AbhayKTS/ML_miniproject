@@ -41,6 +41,8 @@ const ensureStore = async () => {
 
 const saveStore = async (store) => {
   cache = store;
+  // Ensure directory exists
+  await fs.mkdir(path.dirname(dataPath), { recursive: true });
   // Atomic write: write to temp file then rename
   const tmpPath = dataPath + ".tmp";
   await fs.writeFile(tmpPath, JSON.stringify(store, null, 2));
