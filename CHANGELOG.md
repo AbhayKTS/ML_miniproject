@@ -25,3 +25,4 @@
 - Fix API endpoint returning 500 on invalid input
 - Remove redundant API calls
 - Update navigation bar responsiveness
+- Add explicit typings to API responses
