@@ -10,6 +10,7 @@ const memoryRoutes = require("./routes/memory");
 const projectRoutes = require("./routes/projects");
 const videoRoutes = require("./routes/video");
 const { attachUser } = require("./utils/auth");
+const { cleanTempFiles } = require("./utils/cleanup");
 
 const app = express();
 
@@ -88,6 +89,9 @@ app.use((err, _req, res, _next) => {
 const PORT = process.env.PORT || 4000;
 const server = app.listen(PORT, () => {
   console.log(`Chhaya backend running on port ${PORT}`);
+  // Clean temp files on startup and every 6 hours
+  cleanTempFiles();
+  setInterval(cleanTempFiles, 6 * 60 * 60 * 1000);
 });
 
 // ── Graceful shutdown ──
