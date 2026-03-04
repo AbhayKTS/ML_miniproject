@@ -29,3 +29,4 @@
 - Fix tooltip positioning component
 - Refactor project listing view
 - Update error messages for user clarity
+- Add graceful degradation for older browsers
