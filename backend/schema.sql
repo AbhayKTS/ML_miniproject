@@ -1,6 +1,8 @@
--- Chhaya core schema (relational view)
+-- Chhaya core schema (Supabase / PostgreSQL)
+-- Run this in Supabase SQL Editor to create all tables.
+-- Updated: March 2026 — added JSONB fields, new controls, indexes.
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
   id TEXT PRIMARY KEY,
   name TEXT,
   email TEXT UNIQUE NOT NULL,
@@ -8,136 +10,160 @@ CREATE TABLE users (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE sessions (
+CREATE TABLE IF NOT EXISTS sessions (
   id TEXT PRIMARY KEY,
   user_id TEXT NOT NULL,
   intent_snapshot TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE creative_memory (
+CREATE TABLE IF NOT EXISTS creative_memory (
   id TEXT PRIMARY KEY,
-  user_id TEXT NOT NULL,
+  user_id TEXT NOT NULL UNIQUE,
   tone TEXT,
-  themes TEXT,
+  themes JSONB DEFAULT '[]'::jsonb,
   visual_style TEXT,
   audio_style TEXT,
   cultural_context TEXT,
+  genre TEXT,
+  narrative_structure TEXT,
+  style_intensity INTEGER DEFAULT 50,
+  ai_autonomy INTEGER DEFAULT 50,
   locked BOOLEAN DEFAULT FALSE,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE text_generations (
+CREATE TABLE IF NOT EXISTS text_generations (
   id TEXT PRIMARY KEY,
   user_id TEXT NOT NULL,
   prompt TEXT,
   output TEXT,
-  reasoning TEXT,
+  reasoning JSONB,
+  cross_modal JSONB,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE image_generations (
+CREATE TABLE IF NOT EXISTS image_generations (
   id TEXT PRIMARY KEY,
   user_id TEXT NOT NULL,
   prompt TEXT,
   output TEXT,
-  reasoning TEXT,
+  reasoning JSONB,
+  cross_modal JSONB,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE audio_generations (
+CREATE TABLE IF NOT EXISTS audio_generations (
   id TEXT PRIMARY KEY,
   user_id TEXT NOT NULL,
   prompt TEXT,
   output TEXT,
-  reasoning TEXT,
+  reasoning JSONB,
+  cross_modal JSONB,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE feedback_logs (
+CREATE TABLE IF NOT EXISTS feedback_logs (
   id TEXT PRIMARY KEY,
   user_id TEXT NOT NULL,
   generation_id TEXT,
   rating INTEGER,
   edits TEXT,
-  signals TEXT,
+  signals JSONB,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE projects (
+CREATE TABLE IF NOT EXISTS projects (
   id TEXT PRIMARY KEY,
   user_id TEXT NOT NULL,
   name TEXT NOT NULL,
   description TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE assets (
+CREATE TABLE IF NOT EXISTS assets (
   id TEXT PRIMARY KEY,
   project_id TEXT NOT NULL,
   type TEXT,
   uri TEXT,
-  metadata TEXT,
+  metadata JSONB,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (project_id) REFERENCES projects(id)
+  FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE
 );
 
-CREATE TABLE videos (
+CREATE TABLE IF NOT EXISTS videos (
   id TEXT PRIMARY KEY,
   user_id TEXT NOT NULL,
   filename TEXT,
   source_path TEXT,
-  status TEXT,
+  status TEXT DEFAULT 'uploaded',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE clip_jobs (
+CREATE TABLE IF NOT EXISTS clip_jobs (
   id TEXT PRIMARY KEY,
   video_id TEXT NOT NULL,
-  status TEXT,
-  progress INTEGER,
+  status TEXT DEFAULT 'pending',
+  progress INTEGER DEFAULT 0,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (video_id) REFERENCES videos(id)
+  FOREIGN KEY (video_id) REFERENCES videos(id) ON DELETE CASCADE
 );
 
-CREATE TABLE clips (
+CREATE TABLE IF NOT EXISTS clips (
   id TEXT PRIMARY KEY,
   video_id TEXT NOT NULL,
   title TEXT,
   start_time REAL,
   end_time REAL,
   aspect_ratio TEXT,
-  status TEXT,
+  output_path TEXT,
+  status TEXT DEFAULT 'pending',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (video_id) REFERENCES videos(id)
+  FOREIGN KEY (video_id) REFERENCES videos(id) ON DELETE CASCADE
 );
 
-CREATE TABLE captions (
+CREATE TABLE IF NOT EXISTS captions (
   id TEXT PRIMARY KEY,
   clip_id TEXT NOT NULL,
   style TEXT,
   transcript TEXT,
-  word_timestamps TEXT,
+  word_timestamps JSONB,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (clip_id) REFERENCES clips(id)
+  FOREIGN KEY (clip_id) REFERENCES clips(id) ON DELETE CASCADE
 );
 
-CREATE TABLE exports (
+CREATE TABLE IF NOT EXISTS exports (
   id TEXT PRIMARY KEY,
   clip_id TEXT NOT NULL,
-  format TEXT,
-  resolution TEXT,
-  aspect_ratio TEXT,
+  format TEXT DEFAULT 'mp4',
+  resolution TEXT DEFAULT '1080p',
+  aspect_ratio TEXT DEFAULT '9:16',
   output_path TEXT,
-  status TEXT,
+  status TEXT DEFAULT 'pending',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (clip_id) REFERENCES clips(id)
+  FOREIGN KEY (clip_id) REFERENCES clips(id) ON DELETE CASCADE
 );
+
+-- ─── Indexes ─────────────────────────────────────────────────
+CREATE INDEX IF NOT EXISTS idx_sessions_user ON sessions(user_id);
+CREATE INDEX IF NOT EXISTS idx_memory_user ON creative_memory(user_id);
+CREATE INDEX IF NOT EXISTS idx_text_gen_user ON text_generations(user_id);
+CREATE INDEX IF NOT EXISTS idx_image_gen_user ON image_generations(user_id);
+CREATE INDEX IF NOT EXISTS idx_audio_gen_user ON audio_generations(user_id);
+CREATE INDEX IF NOT EXISTS idx_feedback_user ON feedback_logs(user_id);
+CREATE INDEX IF NOT EXISTS idx_feedback_gen ON feedback_logs(generation_id);
+CREATE INDEX IF NOT EXISTS idx_projects_user ON projects(user_id);
+CREATE INDEX IF NOT EXISTS idx_assets_project ON assets(project_id);
+CREATE INDEX IF NOT EXISTS idx_videos_user ON videos(user_id);
+CREATE INDEX IF NOT EXISTS idx_clip_jobs_video ON clip_jobs(video_id);
+CREATE INDEX IF NOT EXISTS idx_clips_video ON clips(video_id);
+CREATE INDEX IF NOT EXISTS idx_captions_clip ON captions(clip_id);
+CREATE INDEX IF NOT EXISTS idx_exports_clip ON exports(clip_id);
