@@ -32,7 +32,9 @@ const signUp = async ({ email, password, name }) => {
     return updated;
   });
 
-  return { user, token: signToken(user) };
+  // Strip password before returning
+  const { password: _pw, ...safeUser } = user;
+  return { user: safeUser, token: signToken(user) };
 };
 
 const login = async ({ email, password }) => {
@@ -56,7 +58,9 @@ const login = async ({ email, password }) => {
   if (!valid) {
     throw new Error("Invalid credentials");
   }
-  return { user, token: signToken(user) };
+  // Strip password before returning
+  const { password: _pw, ...safeUser } = user;
+  return { user: safeUser, token: signToken(user) };
 };
 
 module.exports = {
