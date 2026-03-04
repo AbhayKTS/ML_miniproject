@@ -5,8 +5,11 @@
   "type": "commonjs",
   "scripts": {
     "dev": "node src/index.js",
-    "start": "node src/index.js",
-    "test": "node --test"
+    "start": "NODE_ENV=production node src/index.js",
+    "test": "node --test --test-concurrency=1",
+    "lint": "echo 'ESLint not configured yet'",
+    "docker:build": "docker build -t chhaya-backend .",
+    "docker:run": "docker run -p 4000:4000 --env-file .env chhaya-backend"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
