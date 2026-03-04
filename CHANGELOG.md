@@ -26,3 +26,4 @@
 - Remove redundant API calls
 - Update navigation bar responsiveness
 - Add explicit typings to API responses
+- Fix tooltip positioning component
