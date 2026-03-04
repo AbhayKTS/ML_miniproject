@@ -33,3 +33,4 @@
 - Fix clip synchronization delay
 - Remove hardcoded strings from UI
 - Update Docker container configuration
+- Add pagination to video query results
