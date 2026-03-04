@@ -35,3 +35,4 @@
 - Update Docker container configuration
 - Add pagination to video query results
 - Fix memory leak in creativeEngine listener
+- Refactor clip generation utility
