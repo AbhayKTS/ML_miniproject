@@ -27,3 +27,4 @@
 - Update navigation bar responsiveness
 - Add explicit typings to API responses
 - Fix tooltip positioning component
+- Refactor project listing view
