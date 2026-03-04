@@ -2,13 +2,17 @@ const { z } = require("zod");
 
 const generateBaseSchema = z.object({
   userId: z.string().optional(),
-  prompt: z.string().min(1),
+  prompt: z.string().min(1).max(5000),
   controls: z
     .object({
       originality: z.number().min(0).max(100).optional(),
       tone: z.string().optional(),
       complexity: z.number().min(0).max(100).optional(),
-      culturalContext: z.string().optional()
+      culturalContext: z.string().optional(),
+      styleIntensity: z.number().min(0).max(100).optional(),
+      aiAutonomy: z.number().min(0).max(100).optional(),
+      genre: z.string().optional(),
+      narrativeStructure: z.string().optional()
     })
     .optional(),
   constraints: z.array(z.string()).optional()
