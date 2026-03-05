@@ -40,3 +40,4 @@
 - Add hover effects to interactive elements
 - Fix unhandled API rejection
 - Remove unused imports in routing
+- Update default export settings
