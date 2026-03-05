@@ -43,3 +43,4 @@
 - Update default export settings
 - Add timestamp formatting utility
 - Fix color contrast on text overlays
+- Refactor project saving mechanism
