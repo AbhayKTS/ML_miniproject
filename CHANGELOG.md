@@ -37,3 +37,4 @@
 - Fix memory leak in creativeEngine listener
 - Refactor clip generation utility
 - Update animation duration for transitions
+- Add hover effects to interactive elements
