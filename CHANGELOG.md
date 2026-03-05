@@ -48,3 +48,4 @@
 - Add input sanitization for user names
 - Fix overlapping UI elements on mobile
 - Remove boilerplate code
+- Update memory cache invalidation
