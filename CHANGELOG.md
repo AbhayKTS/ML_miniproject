@@ -38,3 +38,4 @@
 - Refactor clip generation utility
 - Update animation duration for transitions
 - Add hover effects to interactive elements
+- Fix unhandled API rejection
