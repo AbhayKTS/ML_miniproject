@@ -45,3 +45,4 @@
 - Fix color contrast on text overlays
 - Refactor project saving mechanism
 - Update validation error responses
+- Add input sanitization for user names
