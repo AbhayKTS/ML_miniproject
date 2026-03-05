@@ -46,3 +46,4 @@
 - Refactor project saving mechanism
 - Update validation error responses
 - Add input sanitization for user names
+- Fix overlapping UI elements on mobile
