@@ -39,3 +39,4 @@
 - Update animation duration for transitions
 - Add hover effects to interactive elements
 - Fix unhandled API rejection
+- Remove unused imports in routing
