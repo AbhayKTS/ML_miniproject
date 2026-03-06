@@ -56,3 +56,4 @@
 - Add empty state for clips page
 - Fix broken link in footer
 - Remove commented out experimental code
+- Update environment variable template
