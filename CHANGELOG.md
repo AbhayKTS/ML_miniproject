@@ -58,3 +58,4 @@
 - Remove commented out experimental code
 - Update environment variable template
 - Add fallback image for missing avatars
+- Fix scrollbar hiding content
