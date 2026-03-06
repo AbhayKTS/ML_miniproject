@@ -55,3 +55,4 @@
 - Update cache headers on static assets
 - Add empty state for clips page
 - Fix broken link in footer
+- Remove commented out experimental code
