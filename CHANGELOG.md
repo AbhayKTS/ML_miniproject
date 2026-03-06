@@ -52,3 +52,4 @@
 - Add timeout handling to requests
 - Fix incorrect prop types in React components
 - Refactor authentication flow
+- Update cache headers on static assets
