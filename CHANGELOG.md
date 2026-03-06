@@ -50,3 +50,4 @@
 - Remove boilerplate code
 - Update memory cache invalidation
 - Add timeout handling to requests
+- Fix incorrect prop types in React components
