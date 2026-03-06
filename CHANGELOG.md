@@ -59,3 +59,4 @@
 - Update environment variable template
 - Add fallback image for missing avatars
 - Fix scrollbar hiding content
+- Refactor feedback collection logic
