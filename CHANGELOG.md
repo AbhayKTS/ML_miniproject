@@ -54,3 +54,4 @@
 - Refactor authentication flow
 - Update cache headers on static assets
 - Add empty state for clips page
+- Fix broken link in footer
