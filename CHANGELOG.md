@@ -49,3 +49,4 @@
 - Fix overlapping UI elements on mobile
 - Remove boilerplate code
 - Update memory cache invalidation
+- Add timeout handling to requests
