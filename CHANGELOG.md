@@ -64,3 +64,4 @@
 - Add keyboard shortcuts for editor
 - Fix crash on invalid video upload
 - Remove unused image assets
+- Update dependencies for security patch
