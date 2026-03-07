@@ -71,3 +71,4 @@
 - Update text formatting on workspace page
 - Add auto-save functionality to editor
 - Fix unclosed tag in AppShell
+- Remove outdated mock data
