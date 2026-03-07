@@ -69,3 +69,4 @@
 - Fix race condition in store update
 - Refactor error boundary logic
 - Update text formatting on workspace page
+- Add auto-save functionality to editor
