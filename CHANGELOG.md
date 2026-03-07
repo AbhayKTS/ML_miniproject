@@ -67,3 +67,4 @@
 - Update dependencies for security patch
 - Add user context to telemetry
 - Fix race condition in store update
+- Refactor error boundary logic
