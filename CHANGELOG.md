@@ -70,3 +70,4 @@
 - Refactor error boundary logic
 - Update text formatting on workspace page
 - Add auto-save functionality to editor
+- Fix unclosed tag in AppShell
