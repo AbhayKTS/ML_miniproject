@@ -61,3 +61,4 @@
 - Fix scrollbar hiding content
 - Refactor feedback collection logic
 - Update creative memory storage format
+- Add keyboard shortcuts for editor
