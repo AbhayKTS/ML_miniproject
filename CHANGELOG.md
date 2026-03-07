@@ -63,3 +63,4 @@
 - Update creative memory storage format
 - Add keyboard shortcuts for editor
 - Fix crash on invalid video upload
+- Remove unused image assets
