@@ -62,3 +62,4 @@
 - Refactor feedback collection logic
 - Update creative memory storage format
 - Add keyboard shortcuts for editor
+- Fix crash on invalid video upload
