@@ -88,3 +88,4 @@
 - Create Chhaya animated background for Auth page
 - Update CSS variables for auth light/dark modes
 - Refactor landing page CTA to point to Auth
+- Add loading state to Auth buttons
