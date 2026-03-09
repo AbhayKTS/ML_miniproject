@@ -91,3 +91,4 @@
 - Add loading state to Auth buttons
 - Add form validation for email and password fields
 - Update react-router-dom map for /auth route
+- Fix auth redirect on dashboard load
