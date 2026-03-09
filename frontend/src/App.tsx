@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import LandingPage from "./components/pages/LandingPage";
+import AuthPage from "./components/pages/AuthPage";
 import DashboardPage from "./components/pages/DashboardPage";
 import TextWorkspacePage from "./components/pages/TextWorkspacePage";
 import ImageWorkspacePage from "./components/pages/ImageWorkspacePage";
@@ -17,6 +18,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
+      <Route path="/auth" element={<AuthPage />} />
       <Route path="/app" element={<AppShell />}>
         <Route index element={<DashboardPage />} />
         <Route path="text" element={<TextWorkspacePage />} />
@@ -42,6 +44,7 @@ const App = () => {
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
+
   );
 };
 
