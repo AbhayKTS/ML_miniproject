@@ -90,3 +90,4 @@
 - Refactor landing page CTA to point to Auth
 - Add loading state to Auth buttons
 - Add form validation for email and password fields
+- Update react-router-dom map for /auth route
