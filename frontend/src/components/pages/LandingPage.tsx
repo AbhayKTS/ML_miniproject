@@ -161,8 +161,8 @@ const LandingPage = () => {
             <Link to="/app/audio">Audio</Link>
           </nav>
           <div className="lp-nav-cta">
-            <Link className="lp-ghost" to="/app">Enter Studio</Link>
-            <Link className="lp-btn" to="/app">Get Started</Link>
+            <Link className="lp-ghost" to="/auth">Login</Link>
+            <Link className="lp-btn" to="/auth">Get Started</Link>
           </div>
         </div>
       </header>
