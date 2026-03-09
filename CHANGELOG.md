@@ -89,3 +89,4 @@
 - Update CSS variables for auth light/dark modes
 - Refactor landing page CTA to point to Auth
 - Add loading state to Auth buttons
+- Add form validation for email and password fields
