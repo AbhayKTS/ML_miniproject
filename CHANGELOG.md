@@ -84,3 +84,4 @@
 - Update topbar component styles
 - Implement email/password signup logic
 - Implement email/password login logic
+- Add error boundary handling for Firebase auth
