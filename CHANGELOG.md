@@ -100,3 +100,4 @@
 - Add interactive switch between login and signup
 - Update landing page subheadline copy
 - Add placeholder variables for Google Auth provider
+- Fix typo in auth redirect hook
