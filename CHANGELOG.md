@@ -83,3 +83,4 @@
 - Refactor LandingPage routing for new Auth flow
 - Update topbar component styles
 - Implement email/password signup logic
+- Implement email/password login logic
