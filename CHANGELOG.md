@@ -95,3 +95,4 @@
 - Integrate Auth context into App provider
 - Refactor CSS to prevent auth layout shift
 - Update landing page video shorts layout
+- Add Chhaya title to Firebase auth config
