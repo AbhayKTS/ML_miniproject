@@ -92,3 +92,4 @@
 - Add form validation for email and password fields
 - Update react-router-dom map for /auth route
 - Fix auth redirect on dashboard load
+- Integrate Auth context into App provider
