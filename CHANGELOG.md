@@ -94,3 +94,4 @@
 - Fix auth redirect on dashboard load
 - Integrate Auth context into App provider
 - Refactor CSS to prevent auth layout shift
+- Update landing page video shorts layout
