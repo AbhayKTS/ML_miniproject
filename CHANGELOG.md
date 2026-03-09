@@ -96,3 +96,4 @@
 - Refactor CSS to prevent auth layout shift
 - Update landing page video shorts layout
 - Add Chhaya title to Firebase auth config
+- Fix social icon hover animation in landing page
