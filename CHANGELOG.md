@@ -105,3 +105,4 @@
 - Update authentication error toast notifications
 - Clean up unused auth imports
 - Finalize Firebase Auth integration
+- Update README with Firebase setup instructions
