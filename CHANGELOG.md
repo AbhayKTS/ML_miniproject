@@ -78,3 +78,4 @@
 - Add Firebase SDK for authentication
 - Initialize Firebase configuration module
 - Create foundational Auth container component
+- Add responsive styling to Auth page background
