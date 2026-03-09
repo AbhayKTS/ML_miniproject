@@ -76,3 +76,4 @@
 - Add focus state to form inputs
 - Fix double submission bug
 - Add Firebase SDK for authentication
+- Initialize Firebase configuration module
