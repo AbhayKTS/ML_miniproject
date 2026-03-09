@@ -77,3 +77,4 @@
 - Fix double submission bug
 - Add Firebase SDK for authentication
 - Initialize Firebase configuration module
+- Create foundational Auth container component
