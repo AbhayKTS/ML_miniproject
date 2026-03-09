@@ -97,3 +97,4 @@
 - Update landing page video shorts layout
 - Add Chhaya title to Firebase auth config
 - Fix social icon hover animation in landing page
+- Add interactive switch between login and signup
