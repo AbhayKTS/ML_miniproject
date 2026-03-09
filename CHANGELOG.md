@@ -93,3 +93,4 @@
 - Update react-router-dom map for /auth route
 - Fix auth redirect on dashboard load
 - Integrate Auth context into App provider
+- Refactor CSS to prevent auth layout shift
