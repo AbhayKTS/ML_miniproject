@@ -86,3 +86,4 @@
 - Implement email/password login logic
 - Add error boundary handling for Firebase auth
 - Create Chhaya animated background for Auth page
+- Update CSS variables for auth light/dark modes
