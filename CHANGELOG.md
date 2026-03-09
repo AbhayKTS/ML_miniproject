@@ -80,3 +80,4 @@
 - Create foundational Auth container component
 - Add responsive styling to Auth page background
 - Integrate Google analytics from Firebase
+- Refactor LandingPage routing for new Auth flow
