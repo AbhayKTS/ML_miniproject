@@ -75,3 +75,4 @@
 - Update build script optimization
 - Add focus state to form inputs
 - Fix double submission bug
+- Add Firebase SDK for authentication
