@@ -1,6 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import LandingPage from "./components/pages/LandingPage";
 import AuthPage from "./components/pages/AuthPage";
+import SignInPage from "./components/pages/SignInPage";
+import SignUpPage from "./components/pages/SignUpPage";
 import DashboardPage from "./components/pages/DashboardPage";
 import TextWorkspacePage from "./components/pages/TextWorkspacePage";
 import ImageWorkspacePage from "./components/pages/ImageWorkspacePage";
@@ -19,6 +21,8 @@ const App = () => {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/auth" element={<AuthPage />} />
+      <Route path="/signin" element={<SignInPage />} />
+      <Route path="/signup" element={<SignUpPage />} />
       <Route path="/app" element={<AppShell />}>
         <Route index element={<DashboardPage />} />
         <Route path="text" element={<TextWorkspacePage />} />
