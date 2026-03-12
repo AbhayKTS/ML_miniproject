@@ -103,4 +103,88 @@ router.post("/export", async (req, res) => {
   res.json(exportRecord);
 });
 
+// GET clips - returns all clips or clips for a specific video
+router.get("/clips", async (req, res) => {
+  const store = await getStore();
+  const { videoId } = req.query;
+  
+  let clips = store.clips || [];
+  if (videoId) {
+    clips = clips.filter((clip) => clip.videoId === videoId);
+  }
+  
+  // Format clips for frontend
+  const formattedClips = clips.map((clip) => ({
+    ...clip,
+    duration: formatDuration(clip.endTime - clip.startTime),
+    captionStyle: store.captions.find((c) => c.clipId === clip.id)?.style || null
+  }));
+  
+  res.json(formattedClips);
+});
+
+// GET videos - returns all uploaded videos
+router.get("/videos", async (req, res) => {
+  const store = await getStore();
+  const userId = req.user?.id;
+  
+  let videos = store.videos || [];
+  if (userId) {
+    videos = videos.filter((v) => v.userId === userId);
+  }
+  
+  res.json(videos);
+});
+
+// GET single clip by ID
+router.get("/clips/:id", async (req, res) => {
+  const store = await getStore();
+  const clip = store.clips.find((c) => c.id === req.params.id);
+  
+  if (!clip) {
+    return res.status(404).json({ error: "Clip not found" });
+  }
+  
+  const caption = store.captions.find((c) => c.clipId === clip.id);
+  res.json({ ...clip, caption });
+});
+
+// GET stats for dashboard
+router.get("/stats", async (req, res) => {
+  const store = await getStore();
+  const userId = req.user?.id;
+  
+  const textGenerations = store.text_generations?.filter((g) => !userId || g.userId === userId) || [];
+  const imageGenerations = store.image_generations?.filter((g) => !userId || g.userId === userId) || [];
+  const audioGenerations = store.audio_generations?.filter((g) => !userId || g.userId === userId) || [];
+  const feedbackLogs = store.feedback_logs?.filter((f) => !userId || f.userId === userId) || [];
+  const clips = store.clips || [];
+  const videos = store.videos || [];
+  
+  const totalSessions = textGenerations.length + imageGenerations.length + audioGenerations.length;
+  const feedbackCount = feedbackLogs.length;
+  const avgRating = feedbackLogs.length > 0 
+    ? (feedbackLogs.reduce((sum, f) => sum + (f.rating || 0), 0) / feedbackLogs.length).toFixed(1)
+    : "0.0";
+  
+  res.json({
+    creativeSessions: totalSessions,
+    feedbackLoops: feedbackCount,
+    memorySync: "98%", // Could be calculated based on memory updates
+    collaborationIndex: avgRating,
+    clipsGenerated: clips.length,
+    videosUploaded: videos.length,
+    textGenerations: textGenerations.length,
+    imageGenerations: imageGenerations.length,
+    audioGenerations: audioGenerations.length
+  });
+});
+
+// Helper function to format duration
+function formatDuration(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+}
+
 module.exports = router;

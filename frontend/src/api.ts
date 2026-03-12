@@ -1,9 +1,9 @@
 // ============================================================
 //  Chhaya Frontend API Client
-//  All calls go to the backend at localhost:4000
+//  All calls go to the backend
 // ============================================================
 
-const API_BASE = "http://localhost:4000";
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
 // ── Helper ─────────────────────────────────────────────────
 const req = async <T>(path: string, opts?: RequestInit): Promise<T> => {
@@ -256,3 +256,42 @@ export const createProject = (name: string, description?: string) =>
 // ── Health ────────────────────────────────────────────────────
 export const checkHealth = () =>
   req<{ status: string; service: string }>("/health");
+
+// ── Clips ─────────────────────────────────────────────────────
+export interface ClipWithDetails extends Clip {
+  duration: string;
+  captionStyle?: string | null;
+  title: string;
+}
+
+export const getClips = (videoId?: string) =>
+  req<ClipWithDetails[]>(`/clips${videoId ? `?videoId=${videoId}` : ""}`);
+
+export const getClipById = (clipId: string) =>
+  req<Clip & { caption?: Caption }>(`/clips/${clipId}`);
+
+// ── Videos ────────────────────────────────────────────────────
+export interface Video {
+  id: string;
+  userId: string;
+  filename: string;
+  sourcePath: string;
+  createdAt: string;
+}
+
+export const getVideos = () => req<Video[]>("/videos");
+
+// ── Dashboard Stats ───────────────────────────────────────────
+export interface DashboardStats {
+  creativeSessions: number;
+  feedbackLoops: number;
+  memorySync: string;
+  collaborationIndex: string;
+  clipsGenerated: number;
+  videosUploaded: number;
+  textGenerations: number;
+  imageGenerations: number;
+  audioGenerations: number;
+}
+
+export const getStats = () => req<DashboardStats>("/stats");

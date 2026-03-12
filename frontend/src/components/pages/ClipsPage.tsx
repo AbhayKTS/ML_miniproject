@@ -1,13 +1,29 @@
 import { useState, useEffect } from "react";
 import SectionHeader from "../SectionHeader";
 import ClipCard from "../ClipCard";
+import { getClips, ClipWithDetails } from "../../api";
 
 const ClipsPage = () => {
-  const [clips, setClips] = useState([
-    { id: "1", title: "Clip 01 · Viral Hook", duration: "00:32", status: "Captions: Karaoke Glow" },
-    { id: "2", title: "Clip 02 · Key Insight", duration: "00:21", status: "Captions: Bold Contrast" },
-    { id: "3", title: "Clip 03 · Surprise Moment", duration: "00:44", status: "Captions: Emoji Pop" },
-  ]);
+  const [clips, setClips] = useState<ClipWithDetails[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchClips = async () => {
+      try {
+        setLoading(true);
+        const data = await getClips();
+        setClips(data);
+        setError(null);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to load clips");
+        setClips([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchClips();
+  }, []);
 
   return (
     <div className="page">
@@ -16,9 +32,33 @@ const ClipsPage = () => {
         subtitle="Review the highlight reels, rename, regenerate captions, or send to the editor."
       />
       <p style={{ color: "var(--text-muted)", marginTop: 8 }}>Tip: click Play to preview a clip before editing.</p>
+      
+      {loading && (
+        <div style={{ color: "var(--text-muted)", padding: "40px 0", textAlign: "center" }}>
+          Loading clips...
+        </div>
+      )}
+      
+      {error && (
+        <div style={{ color: "#ff6b6b", padding: "20px", background: "rgba(255,107,107,0.1)", borderRadius: 8, marginTop: 16 }}>
+          {error}
+        </div>
+      )}
+      
+      {!loading && !error && clips.length === 0 && (
+        <div style={{ color: "var(--text-muted)", padding: "40px 0", textAlign: "center" }}>
+          No clips generated yet. Upload a video to get started.
+        </div>
+      )}
+      
       <div className="cards">
         {clips.map((clip) => (
-          <ClipCard key={clip.id} title={clip.title} duration={clip.duration} status={clip.status} />
+          <ClipCard 
+            key={clip.id} 
+            title={clip.title} 
+            duration={clip.duration} 
+            status={clip.captionStyle ? `Captions: ${clip.captionStyle}` : "No captions"} 
+          />
         ))}
       </div>
     </div>

@@ -2,8 +2,8 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const { buildGenerationPlan } = require("../src/services/creativeEngine");
 
-test("buildGenerationPlan creates consistent outputs", () => {
-  const plan = buildGenerationPlan({
+test("buildGenerationPlan creates consistent outputs", async () => {
+  const plan = await buildGenerationPlan({
     modality: "text",
     prompt: "A luminous harbor story",
     controls: { tone: "reflective" },

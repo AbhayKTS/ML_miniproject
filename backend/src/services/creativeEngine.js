@@ -39,54 +39,56 @@ const crossModalPlan = (intent) => {
   };
 };
 
-const { getProcessingModel, isEngineEnabled } = require("./engineClient");
+const { generateWithFallback, isEngineEnabled } = require("./engineClient");
 
 const generateOutput = async (modality, intent) => {
+  let prompt = "";
+
+  if (modality === "text") {
+    prompt = `Act as an adaptive creative collaborator (Chhaya).
+      Generate a ${intent.tone} short story or narrative script.
+      Themes: ${intent.themes.join(", ")}.
+      Cultural Context: ${intent.culturalContext}.
+      Complexity Level: ${intent.complexity}/100.
+      Creative Freedom (Originality): ${intent.originality}/100.
+      Specific Constraints: ${intent.constraints.join(". ")}.
+      Return ONLY the creative text.`;
+  } else if (modality === "image") {
+    prompt = `Act as a creative director. Generate a detailed image generation prompt for Midjourney/DALL-E.
+      Style: ${intent.tone}.
+      Motifs: ${intent.themes.join(", ")}.
+      Cultural Essence: ${intent.culturalContext}.
+      Lighting/Technique: luminous painterly.
+      Result should be high-quality and evocative.
+      Return ONLY the image prompt text.`;
+  } else {
+    prompt = `Act as a sound designer. Describe a soundscape concept or music prompt.
+      Mood: ${intent.tone}.
+      Textures: ${intent.themes.join(", ")}.
+      Cultural influence: ${intent.culturalContext}.
+      Return ONLY the audio concept description.`;
+  }
+
   if (isEngineEnabled()) {
-    const model = getProcessingModel();
-    let prompt = "";
-
-    if (modality === "text") {
-      prompt = `Act as an adaptive creative collaborator (Chhaya).
-        Generate a ${intent.tone} short story or narrative script.
-        Themes: ${intent.themes.join(", ")}.
-        Cultural Context: ${intent.culturalContext}.
-        Complexity Level: ${intent.complexity}/100.
-        Creative Freedom (Originality): ${intent.originality}/100.
-        Specific Constraints: ${intent.constraints.join(". ")}.
-        Return ONLY the creative text.`;
-    } else if (modality === "image") {
-      prompt = `Act as a creative director. Generate a detailed image generation prompt for Midjourney/DALL-E.
-        Style: ${intent.tone}.
-        Motifs: ${intent.themes.join(", ")}.
-        Cultural Essence: ${intent.culturalContext}.
-        Lighting/Technique: luminous painterly.
-        Result should be high-quality and evocative.
-        Return ONLY the image prompt text.`;
-    } else {
-      prompt = `Act as a sound designer. Describe a soundscape concept or music prompt.
-        Mood: ${intent.tone}.
-        Textures: ${intent.themes.join(", ")}.
-        Cultural influence: ${intent.culturalContext}.
-        Return ONLY the audio concept description.`;
-    }
-
     try {
-      const result = await model.generateContent(prompt);
-      return result.response.text().trim();
+      const { result, provider } = await generateWithFallback(prompt);
+      console.log(`Generation successful via ${provider}`);
+      return result.trim();
     } catch (error) {
-      console.error("Content generation error:", error);
+      console.error("All AI providers failed:", error.message);
+      // Fall through to fallback response
     }
   }
 
-  // Fallback if processing engine is disabled or fails
+  // Fallback if all AI providers fail or none configured
+  console.warn("Using static fallback response");
   if (modality === "text") {
-    return `[Fallback] Chhaya frames a ${intent.tone} narrative where ${intent.culturalContext} motifs glow through each scene, balancing ${intent.themes.join(", ")} with a ${intent.riskBudget} creative arc.`;
+    return `[Offline Mode] Chhaya frames a ${intent.tone} narrative where ${intent.culturalContext} motifs glow through each scene, balancing ${intent.themes.join(", ")} with a ${intent.riskBudget} creative arc. (AI services unavailable)`;
   }
   if (modality === "image") {
-    return `[Fallback] Image prompt: ${intent.culturalContext} skyline, ${intent.tone} palette, layered ${intent.themes.join(", ")} motifs, painterly lighting.`;
+    return `[Offline Mode] Image prompt: ${intent.culturalContext} skyline, ${intent.tone} palette, layered ${intent.themes.join(", ")} motifs, painterly lighting. (AI services unavailable)`;
   }
-  return `[Fallback] Audio prompt: ${intent.tone} ambience, ${intent.culturalContext} textures, ${intent.themes.join(", ")} motifs, slow tide rhythm.`;
+  return `[Offline Mode] Audio prompt: ${intent.tone} ambience, ${intent.culturalContext} textures, ${intent.themes.join(", ")} motifs, slow tide rhythm. (AI services unavailable)`;
 };
 
 const buildGenerationPlan = async ({ modality, prompt, controls, constraints, memory }) => {

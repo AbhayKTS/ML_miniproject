@@ -46,7 +46,15 @@ const UploadPage = () => {
     }
   };
 
-  const handleGoToProcessing = () => navigate("/processing");
+  const handleViewProcessing = () => {
+    if (videoId) {
+      localStorage.setItem("chhaya_active_video_id", videoId);
+    }
+    if (clipJobId) {
+      localStorage.setItem("chhaya_active_clip_job_id", clipJobId);
+    }
+    navigate("/processing", { state: { videoId, clipJobId } });
+  };
 
   const progressItems = stage === "uploading" || stage === "done" || stage === "clipping" || stage === "ready"
     ? [
@@ -102,8 +110,8 @@ const UploadPage = () => {
               <span className="tag" style={{ alignSelf: "flex-start" }}>
                 ✓ Clip job started · {clipJobId?.slice(0, 8)}
               </span>
-              <button className="button-primary" onClick={handleGoToProcessing}>
-                View Processing →
+              <button className="button-primary" onClick={handleViewProcessing}>
+                View Analysis →
               </button>
             </div>
           )}

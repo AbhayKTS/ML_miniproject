@@ -1,17 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SectionHeader from "../SectionHeader";
-import { checkHealth, getMemory, CreativeMemory } from "../../api";
+import { checkHealth, getStats, DashboardStats } from "../../api";
 import { useApp } from "../../context/AppContext";
 
 interface StatCard { label: string; value: string; sub: string; color: string; }
-
-const STATS: StatCard[] = [
-  { label: "Creative Sessions", value: "24", sub: "text · image · audio", color: "var(--accent)" },
-  { label: "Feedback Loops", value: "156", sub: "ratings + edits captured", color: "var(--accent-2)" },
-  { label: "Memory Synced", value: "98%", sub: "stochastic alignment", color: "var(--accent-3)" },
-  { label: "Collaboration Index", value: "8.4", sub: "User-engine synergy", color: "#ff9b9b" },
-];
 
 const QUICK_LINKS = [
   { to: "/app/text", label: "✍️ Text Workspace", desc: "Co-create stories, scripts, and copy" },
@@ -25,12 +18,29 @@ const QUICK_LINKS = [
 const DashboardPage = () => {
   const { backendOnline, memory } = useApp();
   const [serverInfo, setServerInfo] = useState<string | null>(null);
+  const [stats, setStats] = useState<DashboardStats | null>(null);
 
   useEffect(() => {
     checkHealth()
       .then((h) => setServerInfo(`${h.service} · online`))
       .catch(() => setServerInfo("backend · offline"));
+    
+    getStats()
+      .then(setStats)
+      .catch(() => setStats(null));
   }, []);
+
+  const statsCards: StatCard[] = stats ? [
+    { label: "Creative Sessions", value: String(stats.creativeSessions), sub: `text: ${stats.textGenerations} · image: ${stats.imageGenerations} · audio: ${stats.audioGenerations}`, color: "var(--accent)" },
+    { label: "Feedback Loops", value: String(stats.feedbackLoops), sub: "ratings + edits captured", color: "var(--accent-2)" },
+    { label: "Clips Generated", value: String(stats.clipsGenerated), sub: `from ${stats.videosUploaded} videos`, color: "var(--accent-3)" },
+    { label: "Collaboration Index", value: stats.collaborationIndex, sub: "User-engine synergy", color: "#ff9b9b" },
+  ] : [
+    { label: "Creative Sessions", value: "—", sub: "loading...", color: "var(--accent)" },
+    { label: "Feedback Loops", value: "—", sub: "loading...", color: "var(--accent-2)" },
+    { label: "Clips Generated", value: "—", sub: "loading...", color: "var(--accent-3)" },
+    { label: "Collaboration Index", value: "—", sub: "loading...", color: "#ff9b9b" },
+  ];
 
   return (
     <div className="page">
@@ -56,7 +66,7 @@ const DashboardPage = () => {
 
       {/* Stat cards */}
       <div className="cards" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))" }}>
-        {STATS.map((s) => (
+        {statsCards.map((s) => (
           <div className="card" key={s.label}>
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>{s.label}</p>
             <p style={{ fontSize: 32, fontWeight: 800, color: s.color, margin: "4px 0" }}>{s.value}</p>

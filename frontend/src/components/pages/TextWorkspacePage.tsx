@@ -40,6 +40,21 @@ const TextWorkspacePage = () => {
   const [feedbackSent, setFeedbackSent] = useState(false);
   const [edits, setEdits] = useState("");
 
+  const reasoning = result?.reasoning ?? {
+    tone,
+    themes: [theme],
+    culturalContext: culture,
+    originality,
+    complexity,
+    riskBudget: originality > 75 ? "expansive" : "balanced"
+  };
+
+  const crossModal = result?.crossModal ?? {
+    narrativeAnchor: `${tone} with ${theme}`,
+    visualAnchor: "Visual anchor unavailable for this draft.",
+    audioAnchor: "Audio anchor unavailable for this draft."
+  };
+
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
     setLoading(true);
@@ -168,19 +183,19 @@ const TextWorkspacePage = () => {
 
               {/* Reasoning tags */}
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                <span className="tag">🎨 {result.reasoning.tone}</span>
-                {result.reasoning.themes.map((t) => (
+                <span className="tag">🎨 {reasoning.tone}</span>
+                {reasoning.themes.map((t) => (
                   <span className="tag" key={t}>📖 {t}</span>
                 ))}
-                <span className="tag">🌍 {result.reasoning.culturalContext}</span>
-                <span className="tag">⚡ {result.reasoning.riskBudget} arc</span>
+                <span className="tag">🌍 {reasoning.culturalContext}</span>
+                <span className="tag">⚡ {reasoning.riskBudget} arc</span>
               </div>
 
               {/* Cross-modal anchors */}
               <div className="card" style={{ marginTop: 4 }}>
                 <h4 style={{ marginBottom: 8, fontSize: 13, opacity: 0.7 }}>Cross-modal continuity</h4>
-                <p style={{ fontSize: 13, color: "var(--text-muted)" }}>🖼 {result.crossModal.visualAnchor}</p>
-                <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>🎵 {result.crossModal.audioAnchor}</p>
+                <p style={{ fontSize: 13, color: "var(--text-muted)" }}>🖼 {crossModal.visualAnchor}</p>
+                <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>🎵 {crossModal.audioAnchor}</p>
               </div>
 
               {/* Feedback */}

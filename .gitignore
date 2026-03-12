@@ -10,11 +10,20 @@ backend/node_modules/
 .env.*
 backend/.env
 
+# Firebase credentials (NEVER commit)
+firebase-service-account.json
+**/firebase-service-account.json
+
 # Build / cache
 dist/
 build/
 .vite/
 .cache/
+
+# Generated media / local app data
+backend/data/uploads/
+backend/data/clips/
+backend/data/temp/
 
 # Editor files
 .DS_Store
