@@ -31,9 +31,17 @@ const attachUser = (req, _res, next) => {
   next();
 };
 
+const requireAuth = (req, res, next) => {
+  if (!req.user) {
+    return res.status(401).json({ error: "Unauthorized access" });
+  }
+  next();
+};
+
 module.exports = {
   hashPassword,
   verifyPassword,
   signToken,
-  attachUser
+  attachUser,
+  requireAuth
 };

@@ -179,6 +179,17 @@ const LandingPage = () => {
           Experience <em>CHHAYA</em> — where technology captures your creative soul.
         </p>
 
+        {/* Onboarding Guide */}
+        <div style={{ background: "rgba(255,255,255,0.05)", padding: "16px 24px", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.1)", display: "inline-block", textAlign: "left", marginBottom: "30px", maxWidth: "600px" }}>
+          <h3 style={{ fontSize: "16px", marginBottom: "12px", color: "#fff" }}>🚀 Getting Started Guide</h3>
+          <ol style={{ fontSize: "14px", color: "var(--text-muted)", margin: 0, paddingLeft: "20px", display: "flex", flexDirection: "column", gap: "8px" }}>
+            <li><strong>Login</strong> using your Google account to access your personalised dashboard.</li>
+            <li><strong>Set the tone</strong> and styles for your content in the Image, Text, and Audio studios.</li>
+            <li><strong>Co-Create</strong> by providing prompts and adjusting the complexity sliders.</li>
+            <li><strong>Provide Feedback</strong> by rating the generations to teach the AI what you like.</li>
+          </ol>
+        </div>
+
         {/* Input bar */}
         <div className="lp-input-bar">
           <span className="lp-input-icon">✨</span>

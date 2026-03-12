@@ -16,6 +16,7 @@ const STUDIO_NAV = [
   { to: "/app/audio", label: "🎼 Scoring" },
   { to: "/app/feedback", label: "💎 Refine" },
   { to: "/app/memory", label: "🧠 Mindset" },
+  { to: "/app/analytics", label: "📊 Analytics" },
 ];
 
 const Sidebar = () => {

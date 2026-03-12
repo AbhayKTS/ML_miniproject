@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../../firebase";
 
 const AuthPage = () => {
@@ -22,6 +22,16 @@ const AuthPage = () => {
             navigate("/app");
         } catch (err: any) {
             setError(err.message || "An error occurred");
+        }
+    };
+
+    const handleGoogleSignIn = async () => {
+        const provider = new GoogleAuthProvider();
+        try {
+            await signInWithPopup(auth, provider);
+            navigate("/app");
+        } catch (err: any) {
+            setError(err.message || "Failed to sign in with Google");
         }
     };
 
@@ -55,6 +65,9 @@ const AuthPage = () => {
                     />
                     <button type="submit" className="auth-btn">
                         {isLogin ? "Sign In" : "Sign Up"}
+                    </button>
+                    <button type="button" onClick={handleGoogleSignIn} className="auth-btn google-btn" style={{ marginTop: '10px', backgroundColor: '#DB4437' }}>
+                        Sign in with Google
                     </button>
                 </form>
 

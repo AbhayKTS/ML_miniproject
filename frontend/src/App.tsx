@@ -13,6 +13,7 @@ import ClipsPage from "./components/pages/ClipsPage";
 import EditorPage from "./components/pages/EditorPage";
 import ExportPage from "./components/pages/ExportPage";
 import AppShell from "./components/layout/AppShell";
+import AnalyticsDashboard from "./components/pages/AnalyticsDashboard";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="audio" element={<AudioWorkspacePage />} />
         <Route path="feedback" element={<FeedbackPage />} />
         <Route path="memory" element={<MemoryPage />} />
+        <Route path="analytics" element={<AnalyticsDashboard />} />
       </Route>
       <Route path="/upload" element={<AppShell />}>
         <Route index element={<UploadPage />} />
