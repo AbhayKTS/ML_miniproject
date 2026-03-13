@@ -3,7 +3,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-    literal:apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: "chhaya-4e0b1.firebaseapp.com",
     projectId: "chhaya-4e0b1",
     storageBucket: "chhaya-4e0b1.firebasestorage.app",
