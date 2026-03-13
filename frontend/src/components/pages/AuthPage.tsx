@@ -28,7 +28,7 @@ const AuthPage = () => {
     return (
         <div className="auth-container">
             <div className="auth-bg">
-                <img src="/src/assets/chhaya_login_bg.png" alt="Chhaya Background" />
+                <img src="/src/assets/auth_bg_new.png" alt="Chhaya Background" />
             </div>
             <div className="auth-box">
                 <h1 className="auth-title">CHHAYA</h1>
