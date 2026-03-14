@@ -10,10 +10,13 @@ const projectRoutes = require("./routes/projects");
 const videoRoutes = require("./routes/video");
 const { attachUser } = require("./utils/auth");
 
+const xss = require("xss-clean");
+
 const app = express();
 
 // Security Middlewares
 app.use(helmet());
+app.use(xss());
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
