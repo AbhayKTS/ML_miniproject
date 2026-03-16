@@ -13,6 +13,7 @@ const {
   validate
 } = require("../utils/validators");
 const { getStore } = require("../data/store");
+const { requireAuth } = require("../utils/auth");
 
 const router = express.Router();
 
@@ -21,7 +22,7 @@ const upload = multer({
   limits: { fileSize: 2 * 1024 * 1024 * 1024 }
 });
 
-router.post("/upload", upload.single("video"), async (req, res) => {
+router.post("/upload", requireAuth, upload.single("video"), async (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded" });
   }
@@ -43,7 +44,7 @@ router.post("/upload", upload.single("video"), async (req, res) => {
   res.status(201).json({ id: video.id, filename: video.filename });
 });
 
-router.post("/generate-clips", async (req, res) => {
+router.post("/generate-clips", requireAuth, async (req, res) => {
   const validation = validate(clipRequestSchema, req.body);
   if (!validation.success) {
     return res.status(400).json({ error: "Invalid payload", details: validation.errors });
@@ -63,7 +64,7 @@ router.post("/generate-clips", async (req, res) => {
   res.json(result);
 });
 
-router.post("/generate-captions", async (req, res) => {
+router.post("/generate-captions", requireAuth, async (req, res) => {
   const validation = validate(captionRequestSchema, req.body);
   if (!validation.success) {
     return res.status(400).json({ error: "Invalid payload", details: validation.errors });
@@ -79,7 +80,7 @@ router.post("/generate-captions", async (req, res) => {
   res.json(caption);
 });
 
-router.post("/export", async (req, res) => {
+router.post("/export", requireAuth, async (req, res) => {
   const validation = validate(exportRequestSchema, req.body);
   if (!validation.success) {
     return res.status(400).json({ error: "Invalid payload", details: validation.errors });
