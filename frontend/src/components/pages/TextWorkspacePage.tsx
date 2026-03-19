@@ -5,10 +5,10 @@ import { generateText, submitFeedback, Generation } from "../../api";
 import { useApp } from "../../context/AppContext";
 import { useLocation } from "react-router-dom";
 
-const THEMES = ["Latin romance", "Friday party", "Mythic futurism", "Urban folklore", "Hopepunk discovery", "Solarpunk utopia", "Biopunk nature", "Cyberpunk dystopia", "Steampunk mysteries", "Historical epics"];
+const THEMES = ["Latin romance", "Friday party", "Mythic futurism", "Urban folklore", "Hopepunk discovery", "Solarpunk utopia", "Biopunk nature", "Cyberpunk dystopia", "Steampunk mysteries", "Historical epics", "Neon noir", "High fantasy", "Cosmic horror"];
 const TONES = ["Warm visionary", "Minimalist poetic", "Energetic optimistic", "Dark contemplative", "Playful surreal", "Gritty realistic", "Satirical humorous"];
 const CULTURES = ["South Asian coastal", "Afro-futurist diaspora", "Nordic myth remix", "East Asian celestial", "Latin American magical", "Middle Eastern sci-fi"];
-const GENRES = ["Short story", "Marketing copy", "Script / screenplay", "Essay / blog", "Song lyrics"];
+const GENRES = ["Short story", "Marketing copy", "Script / screenplay", "Essay / blog", "Song lyrics", "Poetry", "Stand-up comedy routing"];
 
 const TextWorkspacePage = () => {
   const { refreshMemory, memory, setLastGeneration } = useApp();
@@ -56,7 +56,7 @@ const TextWorkspacePage = () => {
       setResult(gen);
       setLastGeneration(gen);
     } catch (err: any) {
-      setError(err.message || "Generation failed. Is the backend running?");
+      setError(err.message ? `Generation failed: ${err.message}` : "Generation failed. Please ensure the backend server is running and your input is valid.");
     } finally {
       setLoading(false);
     }
