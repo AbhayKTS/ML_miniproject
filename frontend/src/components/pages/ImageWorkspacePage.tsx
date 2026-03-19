@@ -5,9 +5,9 @@ import { generateImage, submitFeedback, Generation } from "../../api";
 import { useApp } from "../../context/AppContext";
 import { useLocation } from "react-router-dom";
 
-const STYLES = ["Music Video Aesthetic", "Sunset Romance", "Painterly neon", "Concept art realism", "Anime-inspired cinematic", "Watercolour impressionist", "Photorealistic digital", "Cyberpunk cityscapes", "Minimalist vector", "Retro pixel art"];
+const STYLES = ["Music Video Aesthetic", "Sunset Romance", "Painterly neon", "Concept art realism", "Anime-inspired cinematic", "Watercolour impressionist", "Photorealistic digital", "Cyberpunk cityscapes", "Minimalist vector", "Retro pixel art", "Vintage photography", "3D render Unreal Engine", "Gothic fantasy"];
 const CULTURES = ["Caribbean vibrant", "Latin urban", "Coastal temple motifs", "Desert market patterns", "Nordic aurora palettes", "East Asian ink-wash", "Afro-futurist geometric"];
-const MOODS = ["Sensual & Warm", "Vibrant & Party", "Luminous & hopeful", "Dark & mysterious", "Calm & meditative", "Epic & dramatic", "Melancholic & surreal", "Action-packed & fast"];
+const MOODS = ["Sensual & Warm", "Vibrant & Party", "Luminous & hopeful", "Dark & mysterious", "Calm & meditative", "Epic & dramatic", "Melancholic & surreal", "Action-packed & fast", "Ethereal & dreamy", "Grim & foreboding"];
 
 const ImageWorkspacePage = () => {
   const { memory, setLastGeneration, refreshMemory } = useApp();
@@ -59,7 +59,7 @@ const ImageWorkspacePage = () => {
       setResult(gen);
       setLastGeneration(gen);
     } catch (err: any) {
-      setError(err.message || "Generation failed. Is the backend running?");
+      setError(err.message ? `Generation failed: ${err.message}` : "Generation failed. Please ensure the backend server is running and your input is valid.");
     } finally {
       setLoading(false);
     }
