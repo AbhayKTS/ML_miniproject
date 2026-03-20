@@ -5,14 +5,16 @@ import { generateAudio, submitFeedback, Generation } from "../../api";
 import { useApp } from "../../context/AppContext";
 import { useLocation } from "react-router-dom";
 
-const MOODS = ["Romantic Latin", "Tropical party", "Dreamy ambience", "Uplifted cinematic", "Reflective minimal", "Tense dramatic", "Joyful playful"];
-const TEMPOS = ["60 BPM — meditative", "72 BPM — slow tide", "96 BPM — steady pulse", "120 BPM — energized", "140 BPM — intense"];
+const MOODS = ["Romantic Latin", "Tropical party", "Dreamy ambience", "Uplifted cinematic", "Reflective minimal", "Tense dramatic", "Joyful playful", "Dark Synthwave", "Lo-Fi Chillhop"];
+const TEMPOS = ["60 BPM — meditative", "72 BPM — slow tide", "85 BPM — lo-fi groove", "96 BPM — steady pulse", "120 BPM — energized", "140 BPM — intense", "174 BPM — liquid DnB"];
 const INSTRUMENTATION = [
   "Classical guitar + Shakers",
   "Reggaeton beats + Bass",
   "Synth pads + hand percussion",
   "Ambient strings + flute",
   "Modular textures + vocal chops",
+  "Analog synths + 808s",
+  "Acoustic piano + cello",
 ];
 
 const AudioWorkspacePage = () => {
@@ -70,7 +72,7 @@ const AudioWorkspacePage = () => {
       setResult(gen);
       setLastGeneration(gen);
     } catch (err: any) {
-      setError(err.message || "Generation failed. Is the backend running?");
+      setError(err.message ? `Generation failed: ${err.message}` : "Generation failed. Please ensure the backend server is running and your input is valid.");
     } finally {
       setLoading(false);
     }
