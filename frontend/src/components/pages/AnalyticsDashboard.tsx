@@ -41,3 +41,5 @@ const AnalyticsDashboard = () => {
 };
 
 export default AnalyticsDashboard;
+
+// internal refactor and optimization updates
