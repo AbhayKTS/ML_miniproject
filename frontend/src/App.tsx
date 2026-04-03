@@ -51,3 +51,5 @@ const App = () => {
 };
 
 export default App;
+
+// internal refactor and optimization updates
