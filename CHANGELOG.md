@@ -106,3 +106,9 @@
 - Clean up unused auth imports
 - Finalize Firebase Auth integration
 - Update README with Firebase setup instructions
+
+## [0.1.0] - 2026-04-05
+### Added
+- Initial project scaffold: backend Express server, React frontend shell
+- Firebase auth integration stubs
+- Basic routing for `/auth`, `/generate`, `/memory` endpoints
