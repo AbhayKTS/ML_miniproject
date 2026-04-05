@@ -7,3 +7,12 @@ const requestContext = (req, res, next) => {
 };
 
 module.exports = { requestContext };
+// requestContext middleware – injects correlationId into every request
+const { v4: uuidv4 } = require('uuid');
+
+const requestContext = (req, _res, next) => {
+  req.correlationId = req.headers['x-correlation-id'] || uuidv4();
+  next();
+};
+
+module.exports = { requestContext };
