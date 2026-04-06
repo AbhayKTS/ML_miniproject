@@ -20,3 +20,12 @@ const logger = {
 };
 
 module.exports = { logger };
+// Structured JSON logger using pino
+const pino = require('pino');
+
+const logger = pino({
+  level: process.env.LOG_LEVEL || 'info',
+  base: { service: 'chhaya-backend' },
+});
+
+module.exports = { logger };
