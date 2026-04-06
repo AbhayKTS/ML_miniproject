@@ -19,3 +19,13 @@ const errorHandler = (err, req, res, _next) => {
 };
 
 module.exports = { errorHandler };
+// Central error handler
+const { logger } = require('../utils/logger');
+
+const errorHandler = (err, req, res, _next) => {
+  const status = err.status || 500;
+  logger.error({ correlationId: req.correlationId, err }, 'unhandled_error');
+  res.status(status).json({ error: err.message || 'Internal Server Error' });
+};
+
+module.exports = { errorHandler };
