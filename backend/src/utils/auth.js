@@ -71,3 +71,17 @@ module.exports = {
 =======
 module.exports = { requireAuth };
 >>>>>>> 4fc186f5da84b6998f44fdef320d46c05e6f9ec4
+// Auth utilities – JWT verification and user attachment
+const admin = require('firebase-admin');
+
+const attachUser = async (req, _res, next) => {
+  const header = req.headers.authorization || '';
+  if (!header.startsWith('Bearer ')) return next();
+  try {
+    const token = header.slice(7);
+    req.user = await admin.auth().verifyIdToken(token);
+  } catch (_) { /* invalid token – treated as anonymous */ }
+  next();
+};
+
+module.exports = { attachUser };
