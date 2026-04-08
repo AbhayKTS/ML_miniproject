@@ -47,3 +47,17 @@ router.post("/firebase", async (req, res) => {
 });
 
 module.exports = router;
+// Auth routes – register / login / refresh
+const router = require('express').Router();
+
+router.post('/register', async (req, res) => {
+  // placeholder – handled client-side via Firebase SDK
+  res.json({ message: 'Use Firebase client SDK for registration' });
+});
+
+router.get('/me', (req, res) => {
+  if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
+  res.json({ uid: req.user.uid, email: req.user.email });
+});
+
+module.exports = router;
