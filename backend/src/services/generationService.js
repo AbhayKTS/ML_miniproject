@@ -149,3 +149,17 @@ const generate = async ({ modality, prompt, controls, constraints, userId, audio
 module.exports = {
   generate
 };
+// Wraps Gemini Pro API calls for text and image generation
+const { GoogleGenerativeAI } = require('@google/generative-ai');
+const { logger } = require('../utils/logger');
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+async function generateText(prompt, opts = {}) {
+  const model = genAI.getGenerativeModel({ model: 'gemini-pro', ...opts });
+  const result = await model.generateContent(prompt);
+  logger.info('text_generated', { chars: result.response.text().length });
+  return result.response.text();
+}
+
+module.exports = { generateText };
