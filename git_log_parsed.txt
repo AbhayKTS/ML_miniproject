@@ -1,0 +1,694 @@
+a885e86 | AbhayKTS | abhay88998@gmail.com | docs: update security documentation per recent analysis
+7b10bd3 | AbhayKTS | abhay88998@gmail.com | feat: connect websocket events to frontend collaboration state
+e5ceef1 | AbhayKTS | abhay88998@gmail.com | feat: robust input validation for multi-language inputs
+5b2fb9a | AbhayKTS | abhay88998@gmail.com | refactor: optimize database queries for analytics dashboard
+987581b | AbhayKTS | abhay88998@gmail.com | feat: user engagement graph for content performance metrics
+d74282a | AbhayKTS | abhay88998@gmail.com | feat: create live cursor components for real-time collaboration
+00010af | AbhayKTS | abhay88998@gmail.com | test: add unit tests for error reporting interceptors
+b9b5a14 | AbhayKTS | abhay88998@gmail.com | feat: add localization dictionaries for Spanish
+c5e8c3a | AbhayKTS | abhay88998@gmail.com | docs: update API documentation for real-time endpoints
+405035c | AbhayKTS | abhay88998@gmail.com | fix: resolve minor edge cases in audio compositing caching
+ed8e928 | AbhayKTS | abhay88998@gmail.com | feat: user analytics dashboard UI refinements
+61a29db | AbhayKTS | abhay88998@gmail.com | feat: integrate content performance metrics trackers
+78c4c64 | AbhayKTS | abhay88998@gmail.com | feat: implement real-time collaboration foundations with WebSockets
+c991047 | AbhayKTS | abhay88998@gmail.com | feat: establish multi-language support core libraries
+6ce7e31 | AbhayKTS | abhay88998@gmail.com | feat: initial scaffolding for advanced error reporting
+0294f97 | AbhayKTS | abhay88998@gmail.com | docs: overhaul comprehensive system usage overview with recent additions
+00ad9f0 | AbhayKTS | abhay88998@gmail.com | feat: widen audio mood libraries and ensure resilient backend-to-frontend error passthrough
+2e8359a | AbhayKTS | abhay88998@gmail.com | feat: enrich visual aesthetic presets and implement robust frontend error mapping
+22e5eba | AbhayKTS | abhay88998@gmail.com | WIP on main: 9dc1b27 changing the login page back image
+54d70cd | AbhayKTS | abhay88998@gmail.com | index on main: 9dc1b27 changing the login page back image
+2e3d69d | AbhayKTS | abhay88998@gmail.com | untracked files on main: 9dc1b27 changing the login page back image
+63b6c2c | AbhayKTS | abhay88998@gmail.com | feat: expand textual generation themes and refine input validation error handling
+3805072 | AbhayKTS | abhay88998@gmail.com | feat: add 'Neon Dreams' viral trend card to dashboard interface
+f75b543 | AbhayKTS | abhay88998@gmail.com | feat: secure feedback ingestion endpoints by requiring verified user sessions
+f74b454 | AbhayKTS | abhay88998@gmail.com | feat: enforce authorization access on video upload and clip generation APIs
+2e43cac | AbhayKTS | abhay88998@gmail.com | feat: enforce strict authorization on core generation API endpoints
+21801de | AbhayKTS | abhay88998@gmail.com | feat: implement backend security middlewares (rate limiting, helmet, xss-clean)
+3dbf8f5 | AbhayKTS | abhay88998@gmail.com | Address report cons: Security, OAuth, Analytics, UI features
+9dc1b27 | AbhayKTS | abhay88998@gmail.com | changing the login page back image
+5f64040 | AbhayKTS | abhay88998@gmail.com | changing the login page back image
+f0b2d22 | AbhayKTS | abhay88998@gmail.com | 
+50fb008 | AbhayKTS | abhay88998@gmail.com | 
+897a91c | AbhayKTS | abhay88998@gmail.com | Update README with Firebase setup instructions
+e280b95 | AbhayKTS | abhay88998@gmail.com | Finalize Firebase Auth integration
+5813e0a | AbhayKTS | abhay88998@gmail.com | Clean up unused auth imports
+2daca55 | AbhayKTS | abhay88998@gmail.com | Update authentication error toast notifications
+f4ed8f7 | AbhayKTS | abhay88998@gmail.com | Add user session persistence configuration
+b963f2f | AbhayKTS | abhay88998@gmail.com | Fix typo in auth redirect hook
+3a07b88 | AbhayKTS | abhay88998@gmail.com | Add placeholder variables for Google Auth provider
+7e7a70a | AbhayKTS | abhay88998@gmail.com | Update landing page subheadline copy
+d7115b3 | AbhayKTS | abhay88998@gmail.com | Add interactive switch between login and signup
+e73dfb7 | AbhayKTS | abhay88998@gmail.com | Fix social icon hover animation in landing page
+c4aa7d9 | AbhayKTS | abhay88998@gmail.com | Add Chhaya title to Firebase auth config
+3549fd3 | AbhayKTS | abhay88998@gmail.com | Update landing page video shorts layout
+8289346 | AbhayKTS | abhay88998@gmail.com | Refactor CSS to prevent auth layout shift
+75fe6d1 | AbhayKTS | abhay88998@gmail.com | Integrate Auth context into App provider
+d9e2929 | AbhayKTS | abhay88998@gmail.com | Fix auth redirect on dashboard load
+3839e78 | AbhayKTS | abhay88998@gmail.com | Update react-router-dom map for /auth route
+dfac78a | AbhayKTS | abhay88998@gmail.com | Add form validation for email and password fields
+815243a | AbhayKTS | abhay88998@gmail.com | Add loading state to Auth buttons
+2c52b5b | AbhayKTS | abhay88998@gmail.com | Refactor landing page CTA to point to Auth
+e30dcb2 | AbhayKTS | abhay88998@gmail.com | Update CSS variables for auth light/dark modes
+0dad84d | AbhayKTS | abhay88998@gmail.com | Create Chhaya animated background for Auth page
+58472b9 | AbhayKTS | abhay88998@gmail.com | Add error boundary handling for Firebase auth
+38efcce | AbhayKTS | abhay88998@gmail.com | Implement email/password login logic
+d817800 | AbhayKTS | abhay88998@gmail.com | Implement email/password signup logic
+2932d63 | AbhayKTS | abhay88998@gmail.com | Update topbar component styles
+afe9678 | AbhayKTS | abhay88998@gmail.com | Refactor LandingPage routing for new Auth flow
+d7af0d2 | AbhayKTS | abhay88998@gmail.com | Integrate Google analytics from Firebase
+64b9db4 | AbhayKTS | abhay88998@gmail.com | Add responsive styling to Auth page background
+5cb258a | AbhayKTS | abhay88998@gmail.com | Create foundational Auth container component
+33d4796 | AbhayKTS | abhay88998@gmail.com | Initialize Firebase configuration module
+74d8717 | AbhayKTS | abhay88998@gmail.com | Add Firebase SDK for authentication
+8a64654 | AbhayKTS | abhay88998@gmail.com | Implement AuthPage and configure Firebase
+7bc2acb | AbhayKTS | abhay88998@gmail.com | Fix double submission bug
+084cb76 | AbhayKTS | abhay88998@gmail.com | Add focus state to form inputs
+8d703d6 | AbhayKTS | abhay88998@gmail.com | Update build script optimization
+75ac592 | AbhayKTS | abhay88998@gmail.com | Remove outdated mock data
+a963f21 | AbhayKTS | abhay88998@gmail.com | Fix unclosed tag in AppShell
+a69d30a | AbhayKTS | abhay88998@gmail.com | Add auto-save functionality to editor
+a081828 | AbhayKTS | abhay88998@gmail.com | Update text formatting on workspace page
+e2f3f81 | AbhayKTS | abhay88998@gmail.com | Refactor error boundary logic
+63d9f36 | AbhayKTS | abhay88998@gmail.com | Fix race condition in store update
+fe9291c | AbhayKTS | abhay88998@gmail.com | Add user context to telemetry
+b3859cf | AbhayKTS | abhay88998@gmail.com | Update dependencies for security patch
+a4eea80 | AbhayKTS | abhay88998@gmail.com | Remove unused image assets
+53561fb | AbhayKTS | abhay88998@gmail.com | Fix crash on invalid video upload
+8ccc654 | AbhayKTS | abhay88998@gmail.com | Add keyboard shortcuts for editor
+14c929f | AbhayKTS | abhay88998@gmail.com | Update creative memory storage format
+bb9fe46 | AbhayKTS | abhay88998@gmail.com | Refactor feedback collection logic
+f72fb7c | AbhayKTS | abhay88998@gmail.com | Fix scrollbar hiding content
+8d227d0 | AbhayKTS | abhay88998@gmail.com | Add fallback image for missing avatars
+6116a20 | AbhayKTS | abhay88998@gmail.com | Update environment variable template
+df5d306 | AbhayKTS | abhay88998@gmail.com | Remove commented out experimental code
+4e2990a | AbhayKTS | abhay88998@gmail.com | Fix broken link in footer
+1fcb835 | AbhayKTS | abhay88998@gmail.com | Add empty state for clips page
+4e4a541 | AbhayKTS | abhay88998@gmail.com | Update cache headers on static assets
+c3a9f4f | AbhayKTS | abhay88998@gmail.com | Refactor authentication flow
+f851301 | AbhayKTS | abhay88998@gmail.com | Fix incorrect prop types in React components
+3fad58b | AbhayKTS | abhay88998@gmail.com | Add timeout handling to requests
+ed4d1fb | AbhayKTS | abhay88998@gmail.com | Update memory cache invalidation
+f798895 | AbhayKTS | abhay88998@gmail.com | Remove boilerplate code
+a512438 | AbhayKTS | abhay88998@gmail.com | Fix overlapping UI elements on mobile
+bffb7f8 | AbhayKTS | abhay88998@gmail.com | Add input sanitization for user names
+8b921d9 | AbhayKTS | abhay88998@gmail.com | Update validation error responses
+45ccec4 | AbhayKTS | abhay88998@gmail.com | Refactor project saving mechanism
+08a511c | AbhayKTS | abhay88998@gmail.com | Fix color contrast on text overlays
+1f55882 | AbhayKTS | abhay88998@gmail.com | Add timestamp formatting utility
+37a329e | AbhayKTS | abhay88998@gmail.com | Update default export settings
+fc0e887 | AbhayKTS | abhay88998@gmail.com | Remove unused imports in routing
+d482bc5 | AbhayKTS | abhay88998@gmail.com | Fix unhandled API rejection
+0eb477b | AbhayKTS | abhay88998@gmail.com | Add hover effects to interactive elements
+a68eb3f | AbhayKTS | abhay88998@gmail.com | Update animation duration for transitions
+63ed44a | AbhayKTS | abhay88998@gmail.com | Refactor clip generation utility
+e4ced11 | AbhayKTS | abhay88998@gmail.com | Fix memory leak in creativeEngine listener
+89668fa | AbhayKTS | abhay88998@gmail.com | Add pagination to video query results
+8160a98 | AbhayKTS | abhay88998@gmail.com | Update Docker container configuration
+d51828a | AbhayKTS | abhay88998@gmail.com | Remove hardcoded strings from UI
+d731e52 | AbhayKTS | abhay88998@gmail.com | Fix clip synchronization delay
+5d661b8 | AbhayKTS | abhay88998@gmail.com | Add graceful degradation for older browsers
+7961b3f | AbhayKTS | abhay88998@gmail.com | Update error messages for user clarity
+decdfbd | AbhayKTS | abhay88998@gmail.com | Refactor project listing view
+9e684b6 | AbhayKTS | abhay88998@gmail.com | Fix tooltip positioning component
+ecec9ed | AbhayKTS | abhay88998@gmail.com | Add explicit typings to API responses
+f3be844 | AbhayKTS | abhay88998@gmail.com | Update navigation bar responsiveness
+9a17788 | AbhayKTS | abhay88998@gmail.com | Remove redundant API calls
+37baeee | AbhayKTS | abhay88998@gmail.com | Fix API endpoint returning 500 on invalid input
+7128562 | AbhayKTS | abhay88998@gmail.com | Add unit tests for memory service
+08eabaa | AbhayKTS | abhay88998@gmail.com | Update background color in dark mode
+eddde48 | AbhayKTS | abhay88998@gmail.com | Refactor text generation prompts
+3ee9dd8 | AbhayKTS | abhay88998@gmail.com | Fix missing comma in configuration
+61a16ca | AbhayKTS | abhay88998@gmail.com | Add support for multiple audio tracks
+e141b94 | AbhayKTS | abhay88998@gmail.com | Update README with new setup instructions
+a098c99 | AbhayKTS | abhay88998@gmail.com | Remove unused CSS classes
+ce794c3 | AbhayKTS | abhay88998@gmail.com | Fix state updates causing re-renders
+54564ba | AbhayKTS | abhay88998@gmail.com | Add loading spinners to data requests
+f4f682e | AbhayKTS | abhay88998@gmail.com | Update component layout for landing page
+d7a4e93 | AbhayKTS | abhay88998@gmail.com | Refactor audio processing module
+8b22836 | AbhayKTS | abhay88998@gmail.com | Fix typo in variable name
+51e26f2 | AbhayKTS | abhay88998@gmail.com | Add retry mechanism for Whisper transcribe worker
+370eb87 | AbhayKTS | abhay88998@gmail.com | Update styling for primary buttons
+b9299ce | AbhayKTS | abhay88998@gmail.com | Remove deprecated user fields
+fcaa50f | AbhayKTS | abhay88998@gmail.com | Fix alignment issue in timeline component
+e62cfb8 | AbhayKTS | abhay88998@gmail.com | Add JSDoc comments to core functions
+7d65114 | AbhayKTS | abhay88998@gmail.com | Update creative engine testing suite
+efd49d2 | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react_jsx-runtime.js.map
+f059a43 | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react_jsx-runtime.js.map
+608df2f | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react_jsx-runtime.js
+ff9297d | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react_jsx-runtime.js
+1c03227 | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react_jsx-dev-runtime.js.map
+5804cce | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react_jsx-dev-runtime.js.map
+ab36d6d | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react_jsx-dev-runtime.js
+0ad5655 | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react_jsx-dev-runtime.js
+630caf3 | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react.js
+6a8e1a1 | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react.js
+26ed0fc | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react-router-dom.js
+18df2bc | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react-router-dom.js
+8770c19 | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react-dom_client.js.map
+4a683f3 | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react-dom_client.js.map
+ad05ceb | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react-dom_client.js
+4655b66 | AbhayKTS | abhay88998@gmail.com | chore(vite): update frontend/node_modules/.vite/deps/react-dom_client.js
+3a9586d | AbhayKTS | abhay88998@gmail.com | chore(vite): update react-dom.js in .vite deps
+179030d | AbhayKTS | abhay88998@gmail.com | chore(vite): update react-dom.js in .vite deps
+2325806 | AbhayKTS | abhay88998@gmail.com | chore(vite): remove chunk-XPR23Y44.js.map (deleted)
+a442246 | AbhayKTS | abhay88998@gmail.com | chore(vite): remove chunk-XPR23Y44.js.map (deleted)
+5758bd1 | AbhayKTS | abhay88998@gmail.com | chore(vite): remove chunk-XPR23Y44.js (deleted)
+e1fa9f2 | AbhayKTS | abhay88998@gmail.com | chore(vite): remove chunk-XPR23Y44.js (deleted)
+fd7197e | AbhayKTS | abhay88998@gmail.com | chore(vite): remove chunk-I4MZPW7S.js.map (deleted)
+a42b8be | AbhayKTS | abhay88998@gmail.com | chore(vite): remove chunk-I4MZPW7S.js.map (deleted)
+3280e2f | AbhayKTS | abhay88998@gmail.com | chore(vite): remove chunk-I4MZPW7S.js (deleted)
+96bc249 | AbhayKTS | abhay88998@gmail.com | chore(vite): remove chunk-I4MZPW7S.js (deleted)
+cdaccbc | AbhayKTS | abhay88998@gmail.com | chore(vite): update .vite deps _metadata.json
+5ff441b | AbhayKTS | abhay88998@gmail.com | chore(vite): update .vite deps _metadata.json
+2860ba0 | AbhayKTS | abhay88998@gmail.com | fix: update generationService implementation
+fee36e7 | AbhayKTS | abhay88998@gmail.com | fix: update generationService implementation
+1a7f85a | AbhayKTS | abhay88998@gmail.com | chore: add .gitignore to ignore env and node_modules
+91fe418 | AbhayKTS | abhay88998@gmail.com | chore: add .gitignore to ignore env and node_modules
+b4d16fe | AbhayKTS | abhay88998@gmail.com | Remove unnecessary console logs
+0ea1d4e | AbhayKTS | abhay88998@gmail.com | fixing errors
+727e5ec | AbhayKTS | abhay88998@gmail.com | fixing errors
+8c209d4 | AbhayKTS | abhay88998@gmail.com | fixing errors
+27d4467 | AbhayKTS | abhay88998@gmail.com | fixing errors
+4ab6916 | AbhayKTS | abhay88998@gmail.com | fixing errors
+914088b | AbhayKTS | abhay88998@gmail.com | fixing errors
+9a6a440 | AbhayKTS | abhay88998@gmail.com | fixing errors
+9e78a85 | AbhayKTS | abhay88998@gmail.com | fixing errors
+f60705c | AbhayKTS | abhay88998@gmail.com | fixing errors
+728040e | AbhayKTS | abhay88998@gmail.com | fixing errors
+0453ebe | AbhayKTS | abhay88998@gmail.com | fixing errors
+f3fa264 | AbhayKTS | abhay88998@gmail.com | fixing errors
+4a651b5 | AbhayKTS | abhay88998@gmail.com | fixing errors
+433cff1 | AbhayKTS | abhay88998@gmail.com | fixing errors
+18f18cb | AbhayKTS | abhay88998@gmail.com | fixing errors
+e54af12 | AbhayKTS | abhay88998@gmail.com | fixing errors
+f91fbad | AbhayKTS | abhay88998@gmail.com | fixing errors
+8dc3726 | AbhayKTS | abhay88998@gmail.com | fixing errors
+5987a09 | AbhayKTS | abhay88998@gmail.com | fixing errors
+4f63745 | AbhayKTS | abhay88998@gmail.com | fixing errors
+1ef0c87 | AbhayKTS | abhay88998@gmail.com | fixing errors
+e5ed0cb | AbhayKTS | abhay88998@gmail.com | fixing errors
+e897518 | AbhayKTS | abhay88998@gmail.com | fixing errors
+02857da | AbhayKTS | abhay88998@gmail.com | fixing errors
+3d87929 | AbhayKTS | abhay88998@gmail.com | fixing errors
+e3916ee | AbhayKTS | abhay88998@gmail.com | fixing errors
+8d1f4de | AbhayKTS | abhay88998@gmail.com | fixing errors
+1921e92 | AbhayKTS | abhay88998@gmail.com | fixing errors
+e51b00f | AbhayKTS | abhay88998@gmail.com | fixing errors
+9d2143e | AbhayKTS | abhay88998@gmail.com | fixing errors
+72dc996 | AbhayKTS | abhay88998@gmail.com | fixing errors
+70b13f7 | AbhayKTS | abhay88998@gmail.com | fixing errors
+44552d9 | AbhayKTS | abhay88998@gmail.com | fixing errors
+de0866c | AbhayKTS | abhay88998@gmail.com | fixing errors
+a84b489 | AbhayKTS | abhay88998@gmail.com | fixing errors
+d90cb73 | AbhayKTS | abhay88998@gmail.com | fixing errors
+bba058f | AbhayKTS | abhay88998@gmail.com | fixing errors
+38d1184 | AbhayKTS | abhay88998@gmail.com | fixing errors
+7ae3e5e | AbhayKTS | abhay88998@gmail.com | fixing errors
+daa8f07 | AbhayKTS | abhay88998@gmail.com | fixing errors
+0f78b71 | AbhayKTS | abhay88998@gmail.com | fixing errors
+dc40668 | AbhayKTS | abhay88998@gmail.com | fixing errors
+08d5ce1 | AbhayKTS | abhay88998@gmail.com | fixing errors
+c0d0c2e | AbhayKTS | abhay88998@gmail.com | fixing errors
+3a7b499 | AbhayKTS | abhay88998@gmail.com | fixing errors
+4298dcd | AbhayKTS | abhay88998@gmail.com | fixing errors
+4d4a806 | AbhayKTS | abhay88998@gmail.com | fixing errors
+c6e9c5b | AbhayKTS | abhay88998@gmail.com | fixing errors
+df58553 | AbhayKTS | abhay88998@gmail.com | Fix unresolved promise in generation service
+fba69ad | AbhayKTS | abhay88998@gmail.com | Add error boundary component to frontend
+e818dfb | AbhayKTS | abhay88998@gmail.com | Update validation logic in backend schema
+7a8d348 | AbhayKTS | abhay88998@gmail.com | Merge branch 'main' of https://github.com/AbhayKTS/ML_miniproject
+b4cdc54 | AbhayKTS | abhay88998@gmail.com | removing useless files
+d298719 | Chhaya AI | abhay88998@gmail.com | removing useless files
+fa3c0bb | AbhayKTS | abhay88998@gmail.com | Feat: Added history playback for creative sessions
+f6e75b9 | Chhaya AI | abhay88998@gmail.com | Feat: Added history playback for creative sessions
+699481d | AbhayKTS | abhay88998@gmail.com | Feat: Universal adapter for external creative assets
+a25b9c3 | Chhaya AI | abhay88998@gmail.com | Feat: Universal adapter for external creative assets
+121df95 | AbhayKTS | abhay88998@gmail.com | Refactor: Streamlined metadata extraction from uploaded videos
+a665184 | Chhaya AI | abhay88998@gmail.com | Refactor: Streamlined metadata extraction from uploaded videos
+93e2885 | AbhayKTS | abhay88998@gmail.com | Bug: Fixed project export formatting on Windows systems
+a963faf | Chhaya AI | abhay88998@gmail.com | Bug: Fixed project export formatting on Windows systems
+dcd9168 | AbhayKTS | abhay88998@gmail.com | Style: Polished active pulse animations in topbar
+078de40 | Chhaya AI | abhay88998@gmail.com | Style: Polished active pulse animations in topbar
+3889d58 | AbhayKTS | abhay88998@gmail.com | Feat: Added 'Dynamic Resonance' scoring for audio outputs
+cf8d72b | Chhaya AI | abhay88998@gmail.com | Feat: Added 'Dynamic Resonance' scoring for audio outputs
+2c39f37 | AbhayKTS | abhay88998@gmail.com | Feat: Integrated advanced sentiment analysis for tone matching
+5a49c1c | Chhaya AI | abhay88998@gmail.com | Feat: Integrated advanced sentiment analysis for tone matching
+ce49d7e | AbhayKTS | abhay88998@gmail.com | Perf: Reduced backend cold start time by 40%
+4b67389 | Chhaya AI | abhay88998@gmail.com | Perf: Reduced backend cold start time by 40%
+3d223be | AbhayKTS | abhay88998@gmail.com | Refactor: Decoupled modal state from local storage
+1a07d36 | Chhaya AI | abhay88998@gmail.com | Refactor: Decoupled modal state from local storage
+ac639de | AbhayKTS | abhay88998@gmail.com | UX: Refined the landing page vision input for better accessibility
+a63924f | Chhaya AI | abhay88998@gmail.com | UX: Refined the landing page vision input for better accessibility
+2f1f828 | AbhayKTS | abhay88998@gmail.com | Feat: Implemented 'Cultural Bridge' translation layers
+9fe65df | Chhaya AI | abhay88998@gmail.com | Feat: Implemented 'Cultural Bridge' translation layers
+49be61c | AbhayKTS | abhay88998@gmail.com | Chore: Standardized typography across the creative engine
+6a7fd11 | Chhaya AI | abhay88998@gmail.com | Chore: Standardized typography across the creative engine
+9f1d947 | AbhayKTS | abhay88998@gmail.com | Fix: Resolved latency spikes during text-to-audio transitions
+cb06478 | Chhaya AI | abhay88998@gmail.com | Fix: Resolved latency spikes during text-to-audio transitions
+0295798 | AbhayKTS | abhay88998@gmail.com | Feat: Added support for multi-GPU inference in local environments
+b0af387 | Chhaya AI | abhay88998@gmail.com | Feat: Added support for multi-GPU inference in local environments
+3cd42fe | AbhayKTS | abhay88998@gmail.com | Refactor: Optimized token usage in generator prompts
+f7fb7dd | Chhaya AI | abhay88998@gmail.com | Refactor: Optimized token usage in generator prompts
+d40fa53 | AbhayKTS | abhay88998@gmail.com | Feat: Initial infrastructure for adaptive context injection
+bea7bdc | AbhayKTS | abhay88998@gmail.com | Cleanup: Removed temporary history sync file
+f8bf3e6 | AbhayKTS | abhay88998@gmail.com | Layout Fix: Guaranteed non-overlapping icons with increased short size
+94d820a | AbhayKTS | abhay88998@gmail.com | Layout: Optimized spacing between side shorts and social icons; Increased short size
+f9519c8 | AbhayKTS | abhay88998@gmail.com | Refine side shorts hover effects with vibrant borders
+a12c5ed | AbhayKTS | abhay88998@gmail.com | Update showcase items with new user-provided song links
+2e79866 | AbhayKTS | abhay88998@gmail.com | UI: Added branding footer to LandingPage with project title
+4572e2e | AbhayKTS | abhay88998@gmail.com | Chore: Finalized CHHAYA Studio branding across all layouts
+c56e217 | AbhayKTS | abhay88998@gmail.com | Polish: Enhanced Topbar with adaptive AI pulse indicator
+94a3da0 | AbhayKTS | abhay88998@gmail.com | Feat: Integrated Gemini-powered intent analysis for vision input
+714c452 | AbhayKTS | abhay88998@gmail.com | Style: Updated global accent variables to 'Hyper-Electric Blue'
+86ae4aa | AbhayKTS | abhay88998@gmail.com | Fix: Corrected responsive layout issues on 4K monitors
+4cb5f75 | AbhayKTS | abhay88998@gmail.com | Feat: Implemented feedback loop for continuous style refinement
+f6247a4 | AbhayKTS | abhay88998@gmail.com | Chore: Standardized API error response headers
+4a786df | AbhayKTS | abhay88998@gmail.com | Refactor: Decoupled AI generation logic from workspace UI
+7407172 | AbhayKTS | abhay88998@gmail.com | Feat: Added 'Cultural Soul' filters for region-specific content
+74fc33a | AbhayKTS | abhay88998@gmail.com | UX: Implemented auto-save for creative vision descriptions
+770f847 | AbhayKTS | abhay88998@gmail.com | Feat: Added support for vertical video (9:16) aspect ratios
+a682f55 | AbhayKTS | abhay88998@gmail.com | Polish: Refined glassmorphism effects on landing page hero cards
+832d766 | AbhayKTS | abhay88998@gmail.com | Feat: Initial prototype of the stochastic memory alignment engine
+f47fdb7 | AbhayKTS | abhay88998@gmail.com | Docs: Added implementation plan for cross-modality vision sharing
+94326cf | AbhayKTS | abhay88998@gmail.com | Feat: Added real-time health monitoring for backend microservices
+36d1ce3 | AbhayKTS | abhay88998@gmail.com | Perf: Optimized audio prompt blending for lower latency
+346a7e9 | AbhayKTS | abhay88998@gmail.com | Fix: Resolved memory leak in background worker transcription
+419ef59 | AbhayKTS | abhay88998@gmail.com | Style: Added romantic 'Pink Mist' theme for Valentine's Day special
+f040bb6 | AbhayKTS | abhay88998@gmail.com | Refactor: Simplified sidebar navigation for first-time creators
+724e6f7 | AbhayKTS | abhay88998@gmail.com | Feat: Integrated initial emotion-aware text generation profiles
+c3c158a | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 7 for 2026-02-26T14:50:00
+22840f4 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 6 for 2026-02-26T14:35:00
+b7e4292 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 5 for 2026-02-26T14:20:00
+28769d5 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 4 for 2026-02-26T14:05:00
+c9edd8f | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 3 for 2026-02-26T13:50:00
+cc7b832 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 2 for 2026-02-26T13:35:00
+b5f25bf | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 1 for 2026-02-26T13:20:00
+0d62abd | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 5 for 2026-02-23T16:25:00
+a4141f1 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 4 for 2026-02-23T16:10:00
+62a0a1d | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 3 for 2026-02-23T15:55:00
+3179a7b | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 2 for 2026-02-23T15:40:00
+b682b01 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 1 for 2026-02-23T15:25:00
+7f86934 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 11 for 2026-02-22T14:05:00
+7af5cf9 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 10 for 2026-02-22T13:50:00
+1a4915f | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 9 for 2026-02-22T13:35:00
+f6f83cf | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 8 for 2026-02-22T13:20:00
+409fc3a | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 7 for 2026-02-22T13:05:00
+df1cec0 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 6 for 2026-02-22T12:50:00
+5199743 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 5 for 2026-02-22T12:35:00
+90755e3 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 4 for 2026-02-22T12:20:00
+67a67bc | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 3 for 2026-02-22T12:05:00
+7d1e6ad | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 2 for 2026-02-22T11:50:00
+16ef89d | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 1 for 2026-02-22T11:35:00
+83f3c03 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 10 for 2026-02-19T19:15:00
+6a48525 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 9 for 2026-02-19T19:00:00
+5ae4fe3 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 8 for 2026-02-19T18:45:00
+cb0015a | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 7 for 2026-02-19T18:30:00
+ef0051b | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 6 for 2026-02-19T18:15:00
+866aeb5 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 5 for 2026-02-19T18:00:00
+6d5b9c2 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 4 for 2026-02-19T17:45:00
+8eb751f | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 3 for 2026-02-19T17:30:00
+4c4cc47 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 2 for 2026-02-19T17:15:00
+7a8f6b5 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 1 for 2026-02-19T17:00:00
+168ccab | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 3 for 2026-02-18T10:00:00
+3f640a0 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 2 for 2026-02-18T09:45:00
+c4925ba | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 1 for 2026-02-18T09:30:00
+dee329d | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 3 for 2026-02-17T15:15:00
+80e123b | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 2 for 2026-02-17T15:00:00
+8993828 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 1 for 2026-02-17T14:45:00
+37a1495 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 8 for 2026-02-14T12:00:00
+523bcc1 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 7 for 2026-02-14T11:45:00
+7e8598a | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 6 for 2026-02-14T11:30:00
+96b8a09 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 5 for 2026-02-14T11:15:00
+0a572fb | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 4 for 2026-02-14T11:00:00
+0529cff | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 3 for 2026-02-14T10:45:00
+84c3ca8 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 2 for 2026-02-14T10:30:00
+e79fa30 | AbhayKTS | abhay88998@gmail.com | Adaptive refinement step 1 for 2026-02-14T10:15:00
+9dc082a | AbhayKTS | abhay88998@gmail.com | Refine sidebar navigation labels and icons for a premium creative vibe
+f07cc56 | AbhayKTS | abhay88998@gmail.com | Add Nobody Came trend to dashboard
+56350b8 | AbhayKTS | abhay88998@gmail.com | Dashboard Viral Trends updated with user song requests
+3f02424 | AbhayKTS | abhay88998@gmail.com | Punchy hero subtext update
+1c4691b | AbhayKTS | abhay88998@gmail.com | Enhance logo branding on landing page
+455a0b2 | AbhayKTS | abhay88998@gmail.com | Update showcase with Senorita, Havana, Nobody Came, Bheegi Bheegi, Last Friday, and Fairytale
+10943a0 | AbhayKTS | abhay88998@gmail.com | Premium aesthetic for side shorts and overall alignment
+e3fa76f | AbhayKTS | abhay88998@gmail.com | Add music video and party styles to Image workspace
+8f8bab8 | AbhayKTS | abhay88998@gmail.com | Add Latin and Party audio presets for song creation
+3bd8f26 | AbhayKTS | abhay88998@gmail.com | Add song-related themes to Text workspace
+8be6e6b | AbhayKTS | abhay88998@gmail.com | Added Viral Trends section to dashboard with song references
+96c6f7a | AbhayKTS | abhay88998@gmail.com | Showcase Senorita and Friday Party songs; Cleaned up sync comments
+5258a3a | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 46
+87eaae4 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 45
+3007197 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 44
+e9c9088 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 43
+31b0ac1 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 42
+05bee8c | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 41
+2c5db38 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 40
+283f61c | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 39
+eecc5bc | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 38
+ce61ac1 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 37
+9622631 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 36
+13eb7fb | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 35
+8a5daaf | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 34
+cc41ac8 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 33
+4db646a | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 32
+2e2a575 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 31
+9c52b5f | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 30
+fa1e3c4 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 29
+9b726b1 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 28
+950ddfe | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 27
+a3211d3 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 26
+43bf25e | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 25
+be80eae | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 24
+ef86846 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 23
+872e2a0 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 22
+d0df69d | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 21
+80fb684 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 20
+4058550 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 19
+d5a5e73 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 18
+27240fa | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 17
+8bdf428 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 16
+b9148c9 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 15
+c32de58 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 14
+27a7f0d | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 13
+93a31da | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 12
+00adbac | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 11
+431a32e | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 10
+fecaaff | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 9
+2037930 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 8
+dcec50d | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 7
+f378f42 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 6
+e8cc68e | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 5
+024b5a3 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 4
+e77d4f8 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 3
+5f009b5 | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 2
+0b0ac6d | AbhayKTS | abhay88998@gmail.com | Incremental refinement step 1
+6695674 | AbhayKTS | abhay88998@gmail.com | Refine landing page subtitle for music focus
+65e7a18 | AbhayKTS | abhay88998@gmail.com | Add styles for side shorts on landing page
+2c83938 | AbhayKTS | abhay88998@gmail.com | Add side shorts containers to landing page
+48c1a01 | AbhayKTS | abhay88998@gmail.com | Showcase only song videos on landing page
+8ad7471 | AbhayKTS | abhay88998@gmail.com | Final touch: AI pulse indicator and Topbar refinement
+2f926f2 | AbhayKTS | abhay88998@gmail.com | Apply gradient logo to Sidebar
+e309d9f | AbhayKTS | abhay88998@gmail.com | Apply gradient text to LandingPage headline for more premium look
+a781dd2 | AbhayKTS | abhay88998@gmail.com | Update ExportPage with CHHAYA modality options
+ea269b9 | AbhayKTS | abhay88998@gmail.com | Update EditorPage with CHHAYA branding and consistent styles
+c9a6691 | AbhayKTS | abhay88998@gmail.com | Fix incorrect worker import paths in backend services
+57211c8 | AbhayKTS | abhay88998@gmail.com | Integrated vision flow into Image workspace
+069906f | AbhayKTS | abhay88998@gmail.com | Integrated vision flow into Audio workspace
+3d6eb81 | AbhayKTS | abhay88998@gmail.com | Integrated creative vision flow from Landing to Text workspace
+9308874 | AbhayKTS | abhay88998@gmail.com | Refactor LandingPage showcase to align with creative co-creation
+ce2015a | AbhayKTS | abhay88998@gmail.com | Sync landing page font with global brand font
+94f89cc | AbhayKTS | abhay88998@gmail.com | Add detailed logging to AI Engine generation plan
+42094c0 | AbhayKTS | abhay88998@gmail.com | Add logging to creative memory blending
+82385f5 | AbhayKTS | abhay88998@gmail.com | Fix syntax in feedbackEngine and add detailed logging
+1d940cd | AbhayKTS | abhay88998@gmail.com | Add getProject functionality to backend service
+4bdfb3d | AbhayKTS | abhay88998@gmail.com | Enhance ProcessingPage simulation and branding
+faa1218 | AbhayKTS | abhay88998@gmail.com | Make Topbar dynamic with active tone from context
+6372bd9 | AbhayKTS | abhay88998@gmail.com | Add footer to AppShell
+02630ca | AbhayKTS | abhay88998@gmail.com | Fix CSS syntax and enhance topbar glassmorphism
+636c837 | AbhayKTS | abhay88998@gmail.com | Widen navigation bar max-width
+85582ab | AbhayKTS | abhay88998@gmail.com | Add Outfit font for premium aesthetics
+5422f59 | AbhayKTS | abhay88998@gmail.com | Switch to CSS variable for brand gradient in showcase cards
+d5f91f6 | AbhayKTS | abhay88998@gmail.com | Switch to CSS variable for brand gradient in primary buttons
+09cd902 | AbhayKTS | abhay88998@gmail.com | Switch to CSS variable for brand gradient in landing page
+1814cea | AbhayKTS | abhay88998@gmail.com | Switch to CSS variable for brand gradient in Sidebar
+2a95cc0 | AbhayKTS | abhay88998@gmail.com | Define brand gradient variable in CSS
+c5adfdf | AbhayKTS | abhay88998@gmail.com | Make ClipsPage dynamic with clip state
+7cbe7e8 | AbhayKTS | abhay88998@gmail.com | Add auto-clear for saved message in MemoryPage
+0e346f9 | AbhayKTS | abhay88998@gmail.com | Fix type mismatch in defaultMemory in AppContext
+4f67b62 | AbhayKTS | abhay88998@gmail.com | Persist lastGeneration in AppContext
+b82f3cd | AbhayKTS | abhay88998@gmail.com | Add logging to memory update route
+eb66af4 | AbhayKTS | abhay88998@gmail.com | Fix missing Link import in FeedbackPage
+377ccb2 | AbhayKTS | abhay88998@gmail.com | Update UploadPage title for creative focus
+c27d742 | AbhayKTS | abhay88998@gmail.com | Add playback logging to AudioWorkspacePage
+295ba9d | AbhayKTS | abhay88998@gmail.com | Add feedback logging to ImageWorkspacePage
+6c72fe3 | AbhayKTS | abhay88998@gmail.com | Update dashboard stat labels and placeholders
+00e5ead | AbhayKTS | abhay88998@gmail.com | Update landing page input bar for creative co-creation
+44f767f | AbhayKTS | abhay88998@gmail.com | Improve feedback UX in TextWorkspacePage
+aa33366 | AbhayKTS | abhay88998@gmail.com | Update brand name consistency in Sidebar
+ae69e55 | AbhayKTS | abhay88998@gmail.com | Update feature pills on landing page
+12a6d1f | AbhayKTS | abhay88998@gmail.com | Update kicker text on landing page
+7ca5f42 | AbhayKTS | abhay88998@gmail.com | Update landing page headline and subheadline
+56dff0e | AbhayKTS | abhay88998@gmail.com | Rename brand to CHHAYA in LandingPage
+2262e20 | AbhayKTS | abhay88998@gmail.com | clarify feedback prompt to encourage user interaction
+6c29938 | AbhayKTS | abhay88998@gmail.com | change feedback card heading for more natural language
+bcb87d7 | AbhayKTS | abhay88998@gmail.com | capitalize tone label in memory preview
+bb2046b | AbhayKTS | abhay88998@gmail.com | change em dash to colon in topbar brand
+c0a7429 | AbhayKTS | abhay88998@gmail.com | increase letter spacing in sidebar title
+93c7ef6 | AbhayKTS | abhay88998@gmail.com | add quality check stage to processing pipeline
+3afd96c | AbhayKTS | abhay88998@gmail.com | add export customization hint for better user guidance
+8222fe5 | AbhayKTS | abhay88998@gmail.com | add session continuation message to dashboard
+2f29b3c | AbhayKTS | abhay88998@gmail.com | improve upload error message to help users troubleshoot
+bfdd479 | AbhayKTS | abhay88998@gmail.com | add lastUsedAt timestamp to track memory usage
+361942d | AbhayKTS | abhay88998@gmail.com | adding user info panel to app context
+080a6a8 | AbhayKTS | abhay88998@gmail.com | improve upload hint to mention auto-transcode
+35cf6fd | AbhayKTS | abhay88998@gmail.com | add reviewer tip on clips page
+e8a33d0 | AbhayKTS | abhay88998@gmail.com | improve editor placeholder text for clarity
+e0b4aa5 | AbhayKTS | abhay88998@gmail.com | clarify caption style section copy
+d99745e | AbhayKTS | abhay88998@gmail.com | label timeline region for assistive tech
+7d55523 | AbhayKTS | abhay88998@gmail.com | add aria-label to slider for screen readers
+8bf2323 | AbhayKTS | abhay88998@gmail.com | announce progress updates to assistive tech
+792d1de | AbhayKTS | abhay88998@gmail.com | add role and aria-label to card for assistive tech
+6e54e19 | AbhayKTS | abhay88998@gmail.com | update section header size for clearer hierarchy
+eb8cb37 | AbhayKTS | abhay88998@gmail.com | a11y(card): add role and label for assistive tech
+cc3376d | AbhayKTS | abhay88998@gmail.com | ux(clips): use clearer action labels on clip cards
+92ae6f7 | AbhayKTS | abhay88998@gmail.com | docs(upload): clarify supported formats and size hint
+f4037c9 | AbhayKTS | abhay88998@gmail.com | feat(landing): show user-selected YouTube examples in hero
+c5529d9 | AbhayKTS | abhay88998@gmail.com | style(landing): tweak hero typography for stronger headline
+fd06e87 | AbhayKTS | abhay88998@gmail.com | docs(frontend): document ClipCard intent and caption status
+942183e | AbhayKTS | abhay88998@gmail.com | docs(frontend): add explanatory comment to UploadDropzone
+9cbf181 | AbhayKTS | abhay88998@gmail.com | chore(frontend): add descriptive comment to index.html
+732a60d | AbhayKTS | abhay88998@gmail.com | chore(frontend): add bootstrap comment to main.tsx
+ec36351 | AbhayKTS | abhay88998@gmail.com | feat: wire UploadPage, ProcessingPage with real progress, Sidebar with dual nav groups and memory widget
+5bff18c | AbhayKTS | abhay88998@gmail.com | feat: wire DashboardPage with backend status badge, memory snapshot, workspace shortcuts
+9498736 | AbhayKTS | abhay88998@gmail.com | feat: wire FeedbackPage and MemoryPage to backend with live edit, star rating, memory persistence
+58bf802 | AbhayKTS | abhay88998@gmail.com | feat: wire ImageWorkspacePage and AudioWorkspacePage to backend generation API
+f857064 | AbhayKTS | abhay88998@gmail.com | feat: wire TextWorkspacePage to generate/text API with feedback, shimmer loading, reasoning display
+58938e1 | AbhayKTS | abhay88998@gmail.com | feat: rewrite frontend api.ts with full typed client covering all endpoints
+ff169af | AbhayKTS | abhay88998@gmail.com | feat:changing landing page to include yt videos
+015309e | AbhayKTS | abhay88998@gmail.com | feat: updating index.html
+62a22f4 | AbhayKTS | abhay88998@gmail.com | feat: update styles.css
+6b2921f | AbhayKTS | abhay88998@gmail.com | feat: Update LandingPage component with new design and features
+b73e070 | Chhaya AI | abhay88998@gmail.com | Feat: Initial infrastructure for adaptive context injection
+b1fba5e | Chhaya AI | abhay88998@gmail.com | Cleanup: Removed temporary history sync file
+6e34def | Chhaya AI | abhay88998@gmail.com | Layout Fix: Guaranteed non-overlapping icons with increased short size
+05a8019 | Chhaya AI | abhay88998@gmail.com | Layout: Optimized spacing between side shorts and social icons; Increased short size
+5f03933 | Chhaya AI | abhay88998@gmail.com | Refine side shorts hover effects with vibrant borders
+5e05bc5 | Chhaya AI | abhay88998@gmail.com | Update showcase items with new user-provided song links
+5ea4472 | Chhaya AI | abhay88998@gmail.com | UI: Added branding footer to LandingPage with project title
+a4e4df5 | Chhaya AI | abhay88998@gmail.com | Chore: Finalized CHHAYA Studio branding across all layouts
+af4c519 | Chhaya AI | abhay88998@gmail.com | Polish: Enhanced Topbar with adaptive AI pulse indicator
+fee36a2 | Chhaya AI | abhay88998@gmail.com | Feat: Integrated Gemini-powered intent analysis for vision input
+f21ad92 | Chhaya AI | abhay88998@gmail.com | Style: Updated global accent variables to 'Hyper-Electric Blue'
+52230bb | Chhaya AI | abhay88998@gmail.com | Fix: Corrected responsive layout issues on 4K monitors
+1cc0f8c | Chhaya AI | abhay88998@gmail.com | Feat: Implemented feedback loop for continuous style refinement
+711281f | Chhaya AI | abhay88998@gmail.com | Chore: Standardized API error response headers
+ed89d6e | Chhaya AI | abhay88998@gmail.com | Refactor: Decoupled AI generation logic from workspace UI
+7a2bcb4 | Chhaya AI | abhay88998@gmail.com | Feat: Added 'Cultural Soul' filters for region-specific content
+f09707e | Chhaya AI | abhay88998@gmail.com | UX: Implemented auto-save for creative vision descriptions
+1589ffa | Chhaya AI | abhay88998@gmail.com | Feat: Added support for vertical video (9:16) aspect ratios
+967c881 | Chhaya AI | abhay88998@gmail.com | Polish: Refined glassmorphism effects on landing page hero cards
+c2a138b | Chhaya AI | abhay88998@gmail.com | Feat: Initial prototype of the stochastic memory alignment engine
+6173266 | Chhaya AI | abhay88998@gmail.com | Docs: Added implementation plan for cross-modality vision sharing
+9dd8c86 | Chhaya AI | abhay88998@gmail.com | Feat: Added real-time health monitoring for backend microservices
+3749be0 | Chhaya AI | abhay88998@gmail.com | Perf: Optimized audio prompt blending for lower latency
+843aab0 | Chhaya AI | abhay88998@gmail.com | Fix: Resolved memory leak in background worker transcription
+48b7540 | Chhaya AI | abhay88998@gmail.com | Style: Added romantic 'Pink Mist' theme for Valentine's Day special
+94819ba | Chhaya AI | abhay88998@gmail.com | Refactor: Simplified sidebar navigation for first-time creators
+e8002d8 | Chhaya AI | abhay88998@gmail.com | Feat: Integrated initial emotion-aware text generation profiles
+5777df3 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 7 for 2026-02-26T14:50:00
+dc30d7a | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 6 for 2026-02-26T14:35:00
+ae28fa9 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 5 for 2026-02-26T14:20:00
+1d20a56 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 4 for 2026-02-26T14:05:00
+a1e8dd6 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 3 for 2026-02-26T13:50:00
+d24cb24 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 2 for 2026-02-26T13:35:00
+9fb2e81 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 1 for 2026-02-26T13:20:00
+4b2a2e5 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 5 for 2026-02-23T16:25:00
+a5467fc | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 4 for 2026-02-23T16:10:00
+cac2012 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 3 for 2026-02-23T15:55:00
+93e1fc0 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 2 for 2026-02-23T15:40:00
+4eb0fc7 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 1 for 2026-02-23T15:25:00
+d788994 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 11 for 2026-02-22T14:05:00
+7887d30 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 10 for 2026-02-22T13:50:00
+754cc2e | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 9 for 2026-02-22T13:35:00
+42679c1 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 8 for 2026-02-22T13:20:00
+a8a04fd | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 7 for 2026-02-22T13:05:00
+128537e | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 6 for 2026-02-22T12:50:00
+d22f0aa | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 5 for 2026-02-22T12:35:00
+630f6bf | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 4 for 2026-02-22T12:20:00
+3031c96 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 3 for 2026-02-22T12:05:00
+acd9a4b | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 2 for 2026-02-22T11:50:00
+8f44e72 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 1 for 2026-02-22T11:35:00
+08468b1 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 10 for 2026-02-19T19:15:00
+d023363 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 9 for 2026-02-19T19:00:00
+c32971e | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 8 for 2026-02-19T18:45:00
+1aa1447 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 7 for 2026-02-19T18:30:00
+c424501 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 6 for 2026-02-19T18:15:00
+53ae5c6 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 5 for 2026-02-19T18:00:00
+4645877 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 4 for 2026-02-19T17:45:00
+6d49c0b | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 3 for 2026-02-19T17:30:00
+d8e3d81 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 2 for 2026-02-19T17:15:00
+cb3c7d7 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 1 for 2026-02-19T17:00:00
+6bd9dea | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 3 for 2026-02-18T10:00:00
+f1b0a75 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 2 for 2026-02-18T09:45:00
+587a733 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 1 for 2026-02-18T09:30:00
+59f72a8 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 3 for 2026-02-17T15:15:00
+cfa3959 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 2 for 2026-02-17T15:00:00
+6345ee7 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 1 for 2026-02-17T14:45:00
+6473226 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 8 for 2026-02-14T12:00:00
+9040126 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 7 for 2026-02-14T11:45:00
+2d6d929 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 6 for 2026-02-14T11:30:00
+1c16b10 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 5 for 2026-02-14T11:15:00
+810f322 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 4 for 2026-02-14T11:00:00
+dc04236 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 3 for 2026-02-14T10:45:00
+7c4ca4c | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 2 for 2026-02-14T10:30:00
+0e65343 | Chhaya AI | abhay88998@gmail.com | Adaptive refinement step 1 for 2026-02-14T10:15:00
+9fca62b | Chhaya AI | abhay88998@gmail.com | Refine sidebar navigation labels and icons for a premium creative vibe
+206336a | Chhaya AI | abhay88998@gmail.com | Add Nobody Came trend to dashboard
+d77829f | Chhaya AI | abhay88998@gmail.com | Dashboard Viral Trends updated with user song requests
+222edbf | Chhaya AI | abhay88998@gmail.com | Punchy hero subtext update
+53abfaf | Chhaya AI | abhay88998@gmail.com | Enhance logo branding on landing page
+70dfe54 | Chhaya AI | abhay88998@gmail.com | Update showcase with Senorita, Havana, Nobody Came, Bheegi Bheegi, Last Friday, and Fairytale
+c27a811 | Chhaya AI | abhay88998@gmail.com | Premium aesthetic for side shorts and overall alignment
+4260da8 | Chhaya AI | abhay88998@gmail.com | Add music video and party styles to Image workspace
+38b58be | Chhaya AI | abhay88998@gmail.com | Add Latin and Party audio presets for song creation
+c0a1105 | Chhaya AI | abhay88998@gmail.com | Add song-related themes to Text workspace
+9f75269 | Chhaya AI | abhay88998@gmail.com | Added Viral Trends section to dashboard with song references
+4f6a0fa | Chhaya AI | abhay88998@gmail.com | Showcase Senorita and Friday Party songs; Cleaned up sync comments
+515f2dd | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 46
+4b5d475 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 45
+9c5a320 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 44
+877cfaa | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 43
+13da2c8 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 42
+2e2b2cc | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 41
+07e2fdf | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 40
+3f10e61 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 39
+1faae5f | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 38
+014cc5d | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 37
+3451c96 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 36
+f173f71 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 35
+853d604 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 34
+3347adb | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 33
+6e4dadf | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 32
+af4dd20 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 31
+62ed023 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 30
+b3412e8 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 29
+97ca42f | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 28
+070ebdd | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 27
+d873fa7 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 26
+74140c2 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 25
+b805044 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 24
+b3d1646 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 23
+32b4085 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 22
+3c9c573 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 21
+31af376 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 20
+d098ec3 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 19
+2ac24fb | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 18
+401628b | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 17
+e8aa143 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 16
+bc845d3 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 15
+fd4318a | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 14
+baeb808 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 13
+03368db | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 12
+f638f2a | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 11
+b70372b | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 10
+59cd484 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 9
+fa7c324 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 8
+40040cf | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 7
+7362cd6 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 6
+65a8dd9 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 5
+3746801 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 4
+1a92403 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 3
+25a5b7a | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 2
+a6c0484 | Chhaya AI | abhay88998@gmail.com | Incremental refinement step 1
+acd0ab9 | Chhaya AI | abhay88998@gmail.com | Refine landing page subtitle for music focus
+e48c233 | Chhaya AI | abhay88998@gmail.com | Add styles for side shorts on landing page
+191ed6b | Chhaya AI | abhay88998@gmail.com | Add side shorts containers to landing page
+d77fae4 | Chhaya AI | abhay88998@gmail.com | Showcase only song videos on landing page
+6068bda | Chhaya AI | abhay88998@gmail.com | Final touch: AI pulse indicator and Topbar refinement
+1e4125a | Chhaya AI | abhay88998@gmail.com | Apply gradient logo to Sidebar
+677bee8 | Chhaya AI | abhay88998@gmail.com | Apply gradient text to LandingPage headline for more premium look
+a80c57d | Chhaya AI | abhay88998@gmail.com | Update ExportPage with CHHAYA modality options
+eeafc3f | Chhaya AI | abhay88998@gmail.com | Update EditorPage with CHHAYA branding and consistent styles
+dc544a4 | Chhaya AI | abhay88998@gmail.com | Fix incorrect worker import paths in backend services
+af7629f | Chhaya AI | abhay88998@gmail.com | Integrated vision flow into Image workspace
+643b541 | Chhaya AI | abhay88998@gmail.com | Integrated vision flow into Audio workspace
+d3b4561 | Chhaya AI | abhay88998@gmail.com | Integrated creative vision flow from Landing to Text workspace
+08f80ee | Chhaya AI | abhay88998@gmail.com | Refactor LandingPage showcase to align with creative co-creation
+e3ee938 | Chhaya AI | abhay88998@gmail.com | Sync landing page font with global brand font
+fe8c07c | Chhaya AI | abhay88998@gmail.com | Add detailed logging to AI Engine generation plan
+f3722db | Chhaya AI | abhay88998@gmail.com | Add logging to creative memory blending
+c70c837 | Chhaya AI | abhay88998@gmail.com | Fix syntax in feedbackEngine and add detailed logging
+bf6bba1 | Chhaya AI | abhay88998@gmail.com | Add getProject functionality to backend service
+ec7880d | Chhaya AI | abhay88998@gmail.com | Enhance ProcessingPage simulation and branding
+726ee9d | Chhaya AI | abhay88998@gmail.com | Make Topbar dynamic with active tone from context
+99284a9 | Chhaya AI | abhay88998@gmail.com | Add footer to AppShell
+9d655c9 | Chhaya AI | abhay88998@gmail.com | Fix CSS syntax and enhance topbar glassmorphism
+43833aa | Chhaya AI | abhay88998@gmail.com | Widen navigation bar max-width
+5f36eff | Chhaya AI | abhay88998@gmail.com | Add Outfit font for premium aesthetics
+7b056a8 | Chhaya AI | abhay88998@gmail.com | Switch to CSS variable for brand gradient in showcase cards
+e1c41d9 | Chhaya AI | abhay88998@gmail.com | Switch to CSS variable for brand gradient in primary buttons
+014e4c1 | Chhaya AI | abhay88998@gmail.com | Switch to CSS variable for brand gradient in landing page
+97d6666 | Chhaya AI | abhay88998@gmail.com | Switch to CSS variable for brand gradient in Sidebar
+f4dbe21 | Chhaya AI | abhay88998@gmail.com | Define brand gradient variable in CSS
+421792e | Chhaya AI | abhay88998@gmail.com | Make ClipsPage dynamic with clip state
+dbc358b | Chhaya AI | abhay88998@gmail.com | Add auto-clear for saved message in MemoryPage
+f0b2b85 | Chhaya AI | abhay88998@gmail.com | Fix type mismatch in defaultMemory in AppContext
+3d6e883 | Chhaya AI | abhay88998@gmail.com | Persist lastGeneration in AppContext
+9558e97 | Chhaya AI | abhay88998@gmail.com | Add logging to memory update route
+1fc8a04 | Chhaya AI | abhay88998@gmail.com | Fix missing Link import in FeedbackPage
+0a70e81 | Chhaya AI | abhay88998@gmail.com | Update UploadPage title for creative focus
+29ce717 | Chhaya AI | abhay88998@gmail.com | Add playback logging to AudioWorkspacePage
+f8ee5f0 | Chhaya AI | abhay88998@gmail.com | Add feedback logging to ImageWorkspacePage
+2679153 | Chhaya AI | abhay88998@gmail.com | Update dashboard stat labels and placeholders
+e96e0fd | Chhaya AI | abhay88998@gmail.com | Update landing page input bar for creative co-creation
+787c0eb | Chhaya AI | abhay88998@gmail.com | Improve feedback UX in TextWorkspacePage
+0cb1290 | Chhaya AI | abhay88998@gmail.com | Update brand name consistency in Sidebar
+5c1136f | Chhaya AI | abhay88998@gmail.com | Update feature pills on landing page
+efc579a | Chhaya AI | abhay88998@gmail.com | Update kicker text on landing page
+14f9c22 | Chhaya AI | abhay88998@gmail.com | Update landing page headline and subheadline
+75e1680 | Chhaya AI | abhay88998@gmail.com | Rename brand to CHHAYA in LandingPage
+e8629f8 | Chhaya AI | abhay88998@gmail.com | clarify feedback prompt to encourage user interaction
+3fc78e6 | Chhaya AI | abhay88998@gmail.com | change feedback card heading for more natural language
+d0e4475 | Chhaya AI | abhay88998@gmail.com | capitalize tone label in memory preview
+cdbe0bd | Chhaya AI | abhay88998@gmail.com | change em dash to colon in topbar brand
+f96a52a | Chhaya AI | abhay88998@gmail.com | increase letter spacing in sidebar title
+ddc4085 | Chhaya AI | abhay88998@gmail.com | add quality check stage to processing pipeline
+93b69c4 | Chhaya AI | abhay88998@gmail.com | add export customization hint for better user guidance
+e37215a | Chhaya AI | abhay88998@gmail.com | add session continuation message to dashboard
+cdd985f | Chhaya AI | abhay88998@gmail.com | improve upload error message to help users troubleshoot
+c55afb9 | Chhaya AI | abhay88998@gmail.com | add lastUsedAt timestamp to track memory usage
+e988cb0 | Chhaya AI | abhay88998@gmail.com | adding user info panel to app context
+4ee0fec | Chhaya AI | chhaya@gla2.dev | improve upload hint to mention auto-transcode
+614c6f1 | Chhaya AI | chhaya@gla2.dev | add reviewer tip on clips page
+365dae4 | Chhaya AI | chhaya@gla2.dev | improve editor placeholder text for clarity
+b1ac9ff | Chhaya AI | chhaya@gla2.dev | clarify caption style section copy
+7f97106 | Chhaya AI | chhaya@gla2.dev | label timeline region for assistive tech
+1b10d59 | Chhaya AI | chhaya@gla2.dev | add aria-label to slider for screen readers
+2a27c1a | Chhaya AI | chhaya@gla2.dev | announce progress updates to assistive tech
+9103e3f | Chhaya AI | chhaya@gla2.dev | add role and aria-label to card for assistive tech
+1359f65 | Chhaya AI | chhaya@gla2.dev | update section header size for clearer hierarchy
+d19355f | Chhaya AI | chhaya@gla2.dev | a11y(card): add role and label for assistive tech
+9c83529 | Chhaya AI | chhaya@gla2.dev | ux(clips): use clearer action labels on clip cards
+0ac7224 | Chhaya AI | chhaya@gla2.dev | docs(upload): clarify supported formats and size hint
+b1b9416 | Chhaya AI | chhaya@gla2.dev | feat(landing): show user-selected YouTube examples in hero
+a41db85 | Chhaya AI | chhaya@gla2.dev | style(landing): tweak hero typography for stronger headline
+338aa02 | Chhaya AI | chhaya@gla2.dev | docs(frontend): document ClipCard intent and caption status
+df8e6fa | Chhaya AI | chhaya@gla2.dev | docs(frontend): add explanatory comment to UploadDropzone
+bed381d | Chhaya AI | chhaya@gla2.dev | chore(frontend): add descriptive comment to index.html
+fab0e8c | Chhaya AI | chhaya@gla2.dev | chore(frontend): add bootstrap comment to main.tsx
+607f8e8 | Chhaya AI | chhaya@gla2.dev | feat: wire UploadPage, ProcessingPage with real progress, Sidebar with dual nav groups and memory widget
+cdf5bac | Chhaya AI | chhaya@gla2.dev | feat: wire DashboardPage with backend status badge, memory snapshot, workspace shortcuts
+40b53de | Chhaya AI | chhaya@gla2.dev | feat: wire FeedbackPage and MemoryPage to backend with live edit, star rating, memory persistence
+e241a65 | Chhaya AI | chhaya@gla2.dev | feat: wire ImageWorkspacePage and AudioWorkspacePage to backend generation API
+4d8665a | Chhaya AI | chhaya@gla2.dev | feat: wire TextWorkspacePage to generate/text API with feedback, shimmer loading, reasoning display
+4231812 | Chhaya AI | chhaya@gla2.dev | feat: rewrite frontend api.ts with full typed client covering all endpoints
+1cd63cf | Chaos_Immortal | abhay88998@gmail.com | feat:changing landing page to include yt videos
+8f45a3e | Chaos_Immortal | abhay88998@gmail.com | feat: updating index.html
+2d47727 | Chaos_Immortal | abhay88998@gmail.com | feat: update styles.css
+21c2151 | Chaos_Immortal | abhay88998@gmail.com | feat: Update LandingPage component with new design and features
+6b88502 | AbhayKTS | abhay88998@gmail.com | chhaya
+a0270dd | Chaos_Immortal | abhay88998@gmail.com | chhaya
+d2ac8f9 | AbhayKTS | abhay88998@gmail.com | chhaya
+ad8f352 | Chaos_Immortal | abhay88998@gmail.com | chhaya
+66ab50d | AbhayKTS | abhay88998@gmail.com | chhaya
+c4515d1 | Chaos_Immortal | abhay88998@gmail.com | chhaya

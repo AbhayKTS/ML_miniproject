@@ -1,1 +1,0 @@
-literal:apiKey: "AIzaSyCpGT3PIGLAsglQXjqoMR3t4KnBxZ4BHS8",==>literal:apiKey: import.meta.env.VITE_FIREBASE_API_KEY,

@@ -1,0 +1,201 @@
+TEAM ANALYSIS REPORT
+Team 128
+Project: ML_miniprojec
+At Risk
+https://github.com/AbhayKTS/ML_miniproject
+April 10, 2026 - 01:41 AM IST
+Team Members: Ansh yadav , Abhay Kumar, Adarsh Katara
+Problem Statement: Enhancing Creative Content Generation Using Adaptive Generative AI
+SCORES Analysis Scores
+Total Score
+52
+Fair
+Quality
+43
+Fair
+Security
+81
+Excellent
+Originality
+73
+Good
+Architecture
+39
+Needs Work
+Documentation
+26
+Needs Work
+Effort
+49
+Fair
+Implementation
+35
+Needs Work
+Engineering
+60
+Good
+CODE Code Metrics
+Metric
+Value
+Total Files
+1
+Lines of Code
+2,753,009
+Languages
+TypeScript: 65.7%, JavaScript: 22.1%, CSS: 11.9%, HTML: 0.3%
+Frameworks
+TypeScript, PostgreSQL, Vite, React, CSS, Supabase, Express, Node.js, WebSocket
+Architecture
+Clean Architecture
+Engineering Maturity: Tests (6 files)
+TEAM Contributors
+Total Commits: 689
+Contributor
+Commits
+Lines Changed
+Share
+Abhay Kumar
+452
++1444779/-361195
+65.6%
+Chhaya AI
+230
++735604/-183901
+33.4%
+Chaos_Immortal
+7
++22024/-5506
+1.0%
+Individual Student Scores (Based on contribution, effort, and code quality)
+Student
+Commits
+Contribution %
+Effort
+Quality
+Final Score
+Abhay Kumar
+452
+66%
+66
+76
+68
+Chhaya AI
+230
+33%
+33
+43
+35
+
+Chaos_Immortal
+7
+1%
+1
+11
+4
+INTEGRITY Commit Integrity & Deductions
+Fake Commits: 118 (17.1%) | Commit Health: At Risk
+AI Tools Detected in Commit History: gemini
+Example Flagged Commits:
+1. b73e070 - Feat: Initial infrastructure for adaptive context
+Reason: Empty Commit (No Changes), Empty Commit (No Changes)
+2. d40fa53 - Feat: Initial infrastructure for adaptive context
+Reason: Empty Commit (No Changes), Empty Commit (No Changes)
+3. f7fb7dd - Refactor: Optimized token usage in generator promp
+Reason: Empty Commit (No Changes), Empty Commit (No Changes)
+4. 3cd42fe - Refactor: Optimized token usage in generator promp
+Reason: Empty Commit (No Changes), Empty Commit (No Changes)
+5. b0af387 - Feat: Added support for multi-GPU inference in loc
+Reason: Empty Commit (No Changes), Empty Commit (No Changes)
+Marks Deducted: 0%
+AI AI Analysis & Feedback
+AI-Generated Content: 0.0% | Verdict: Beta Ready
+Features Implemented:
+- User authentication and session management
+- Landing Page
+- Text Workspace for story generation
+- Audio Workspace for music generation
+- Image Workspace for image generation
+- Feedback Page for user inputs
+Positive Feedback:
+The Chhaya project has an engaging and well-structured user interface, making the navigation among different
+creative workspaces user-friendly. The use of generative AI for creating diverse media outputs is innovative.
+Additionally, the backend's real-time capabilities with WebSocket enhance responsiveness and interactivity
+Areas for Improvement:
+The application would benefit from improving the adaptive learning features to better utilize user feedback in
+future content generation. Further integration of inputs across various media formats will elevate the overall
+user experience. Additionally, enhancing documentation and error handling is essential for more stable
+deployment
+FEATURES Feature-by-Feature Analysis
+User authentication - Fully Implemented | Quality: Good
+Good: User registration and session management are fully operational, allowing secure access to the features.
+Needs improvement: Enhance password recovery options and two-factor authentication for added security.
+Text Workspace for story generation - Fully Implemented | Quality: Excellent
+Good: Users can input themes and tones, generating creative story outputs.
+Needs improvement: Integrate real-time suggestions while inputting themes.
+Feedback Page for user inputs - Partially Implemented | Quality: Average
+
+Good: Users can submit feedback on generated content.
+Needs improvement: Establish a mechanism for the AI to learn visibly from the user feedback submitted.
+PRODUCT Product Analysis
+Value Proposition: Chhaya allows users to engage in creative content generation leveraging AI, adapting to user
+inputs and preferences.
+Target Users: Content creators, marketers, and educators seeking innovative ways to produce creative material.
+Competitive Advantage: Weaves together media types and employs user feedback for continuous improvement,
+setting it apart from standard tools.
+Market Readiness: Beta Ready
+IDEAS Suggested New Features
+1. Adaptive learning mechanism - Priority: Critical
+Why: This would significantly improve the quality of generated content based on real user feedback.
+How: Use machine learning models to analyze feedback patterns and adjust generation algorithms.
+2. Error handling for generation processes - Priority: High
+Why: Robust error handling will improve user experience and operational reliability.
+How: Implement try-catch blocks around generation logic to capture and respond to errors effectively.
+SUMMARY Overall Recommendation
+Prioritize the development of adaptive learning features and improve documentation quality to enhance usability.
+Focus on achieving better integration among media types to meet market needs effectively
+SECURITY Security Analysis
+Security Score: 81.0/100 (Secrets: 98.0, Practices: 56.0) | Secrets Detected: 1
+Detected Secrets:
+1. Google API Key [MEDIUM]
+File: replacements.txt (Line 1) | Confidence: 100%
+Security Best Practices:
+NO Rate Limiting
+NO Authentication
+NO Authorization
+OK Input Validation
+NO CORS Configuration
+NO Security Headers
+NO SQL Injection Prevention
+NO XSS Prevention
+NO CSRF Protection
+NO Password Hashing
+
+Security Recommendations:
+1. Implement Authorization [Priority: 9/10]
+Authorization is not implemented in this codebase. Check user permissions before allowing actions (e.g., only admins can
+delete data)
+2. Implement SQL Injection Prevention [Priority: 9/10]
+SQL Injection Prevention is not implemented in this codebase. Use safe database queries to prevent SQL injection attacks
+(hackers can't steal your data)
+3. ? Secret Found in Code [Priority: 8/10]
+Your code contains sensitive information that should be kept private. This is a security risk! Found in 1 location(s).
+4. Implement Authentication [Priority: 7/10]
+Authentication is only partially implemented (found in 1 file(s)). Add user login/authentication so only authorized users can
+access your app
+5. Implement XSS Prevention [Priority: 7/10]
+XSS Prevention is not implemented in this codebase. Clean user input before displaying it to prevent XSS attacks (malicious
+scripts)
+... and 5 more
+RISK Files Requiring Review
+Files flagged for potential AI generation or similarity issues:
+File
+AI %
+Risk Level
+video.js
+27%
+Low
+FLAGS Risk Flags
+- inactive
+ Last Analysis: April 10, 2026 - 01:18 AM IST
+ Generated by ProjectFlow - GitHub Analysis System
+ 

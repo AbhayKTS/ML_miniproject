@@ -55,6 +55,11 @@ router.post("/generate-clips", requireAuth, async (req, res) => {
     return res.status(404).json({ error: "Video not found" });
   }
 
+  // Authorization check
+  if (video.userId !== req.user.id) {
+    return res.status(403).json({ error: "Forbidden" });
+  }
+
   const result = await generateClips({
     video,
     minDuration: validation.data.minDuration,
@@ -76,6 +81,12 @@ router.post("/generate-captions", requireAuth, async (req, res) => {
     return res.status(404).json({ error: "Clip not found" });
   }
 
+  // Authorization check
+  const video = store.videos.find((v) => v.id === clip.videoId);
+  if (!video || video.userId !== req.user.id) {
+    return res.status(403).json({ error: "Forbidden" });
+  }
+
   const caption = await generateCaptions({ clip, style: validation.data.style });
   res.json(caption);
 });
@@ -90,6 +101,12 @@ router.post("/export", requireAuth, async (req, res) => {
   const clip = store.clips.find((entry) => entry.id === validation.data.clipId);
   if (!clip) {
     return res.status(404).json({ error: "Clip not found" });
+  }
+
+  // Authorization check
+  const video = store.videos.find((v) => v.id === clip.videoId);
+  if (!video || video.userId !== req.user.id) {
+    return res.status(403).json({ error: "Forbidden" });
   }
 
   const captions = store.captions.find((entry) => entry.clipId === clip.id);
