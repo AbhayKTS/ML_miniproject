@@ -55,3 +55,18 @@ router.post("/audio", requireAuth, handleGeneration("audio"));
 >>>>>>> 4fc186f5da84b6998f44fdef320d46c05e6f9ec4
 
 module.exports = router;
+// Generate routes – text, image, audio
+const router = require('express').Router();
+const { requireAuth } = require('../middleware/requireAuth');
+const { generateText } = require('../services/generationService');
+
+router.post('/text', requireAuth, async (req, res, next) => {
+  try {
+    const { prompt } = req.body;
+    if (!prompt) return res.status(400).json({ error: 'prompt required' });
+    const text = await generateText(prompt);
+    res.json({ text });
+  } catch (err) { next(err); }
+});
+
+module.exports = router;
