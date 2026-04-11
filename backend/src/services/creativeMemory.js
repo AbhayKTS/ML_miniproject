@@ -129,3 +129,6 @@ module.exports = {
   updateMemory,
   blendFeedback
 };
+
+// v0.2 – added TTL-based cache eviction for stale memory entries
+const MEMORY_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
