@@ -20,9 +20,13 @@ const recordFeedback = async ({ userId, generationId, rating, edits, signals }) 
     return store;
   });
 
-  console.log(`Starting feedback blending for user ${userId}...`);
-  await blendFeedback(userId, { rating, edits });
-  console.log(`Feedback blending complete for user ${userId}`);
+  try {
+    console.log(`Starting feedback blending for user ${userId}...`);
+    await blendFeedback(userId, { rating, edits });
+    console.log(`Feedback blending complete for user ${userId}`);
+  } catch (error) {
+    console.warn(`Feedback blending failed for user ${userId}:`, error?.message || error);
+  }
 
   return entry;
 };
