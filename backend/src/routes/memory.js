@@ -30,3 +30,21 @@ router.post("/update", requireAuth, async (req, res) => {
 });
 
 module.exports = router;
+// Memory routes – store and retrieve creative context
+const router = require('express').Router();
+const { requireAuth } = require('../middleware/requireAuth');
+const { getMemory, setMemory, clearMemory } = require('../services/creativeMemory');
+
+router.get('/', requireAuth, async (req, res, next) => {
+  try { res.json(await getMemory(req.user.uid)); } catch (e) { next(e); }
+});
+
+router.post('/', requireAuth, async (req, res, next) => {
+  try { res.json(await setMemory(req.user.uid, req.body)); } catch (e) { next(e); }
+});
+
+router.delete('/', requireAuth, async (req, res, next) => {
+  try { await clearMemory(req.user.uid); res.json({ ok: true }); } catch (e) { next(e); }
+});
+
+module.exports = router;
