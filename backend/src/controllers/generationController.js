@@ -1,5 +1,8 @@
 const { generate } = require("../services/generationService");
 const { generateBaseSchema, validate } = require("../utils/validators");
+const { getMemory } = require("../services/creativeMemory");
+const { findByUserId } = require("../repositories/feedbackRepository");
+const { summarizeFeedback } = require("../ai-engine/adaptiveLearning");
 
 const createGenerationHandler = (modality) => async (req, res) => {
   const validation = validate(generateBaseSchema, req.body);
@@ -52,7 +55,31 @@ const generateTripletWorkflow = async (req, res) => {
   });
 };
 
+const suggestPrompts = async (req, res) => {
+  const partial = String(req.query.q || "").trim();
+  const userId = req.user?.id || String(req.query.userId || "guest");
+
+  if (!partial) {
+    return res.json({ suggestions: [] });
+  }
+
+  const memory = await getMemory(userId);
+  const feedbackSummary = summarizeFeedback(await findByUserId(userId, 20));
+  const anchors = [...new Set([...(memory?.themes || []), ...(feedbackSummary.frequentKeywords || [])])]
+    .slice(0, 5)
+    .join(", ");
+
+  const suggestions = [
+    `${partial} in a ${memory.tone} tone`,
+    `${partial} with ${anchors || "cinematic"} motifs`,
+    `${partial} inspired by ${memory.culturalContext}`
+  ];
+
+  return res.json({ suggestions });
+};
+
 module.exports = {
   createGenerationHandler,
-  generateTripletWorkflow
+  generateTripletWorkflow,
+  suggestPrompts
 };
