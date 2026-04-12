@@ -13,6 +13,10 @@ const AuthPage = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
+        if (!auth) {
+            setError("Authentication is not configured in this local environment.");
+            return;
+        }
         try {
             if (isLogin) {
                 await signInWithEmailAndPassword(auth, email, password);
@@ -26,6 +30,10 @@ const AuthPage = () => {
     };
 
     const handleGoogleSignIn = async () => {
+        if (!auth) {
+            setError("Authentication is not configured in this local environment.");
+            return;
+        }
         const provider = new GoogleAuthProvider();
         try {
             await signInWithPopup(auth, provider);
@@ -43,6 +51,11 @@ const AuthPage = () => {
             <div className="auth-box">
                 <h1 className="auth-title">CHHAYA</h1>
                 <p className="auth-subtitle">{isLogin ? "Welcome Back" : "Create an Account"}</p>
+                {!auth && (
+                    <div className="auth-error">
+                        Local preview is running without Firebase credentials, so sign-in is disabled.
+                    </div>
+                )}
 
                 {error && <div className="auth-error">{error}</div>}
 
