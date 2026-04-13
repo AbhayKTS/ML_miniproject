@@ -1,5 +1,38 @@
 const { updateStore, getStore } = require("../data/store");
 
+const THEME_KEYWORDS = [
+  "romance",
+  "cinematic",
+  "horror",
+  "comedy",
+  "mythic",
+  "futurism",
+  "nostalgia",
+  "spiritual",
+  "energetic",
+  "minimal"
+];
+
+const tokenize = (text) =>
+  String(text || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean);
+
+const inferThemesFromEdits = (edits, currentThemes = []) => {
+  const tokens = new Set(tokenize(edits));
+  const inferred = THEME_KEYWORDS.filter((keyword) => tokens.has(keyword));
+  return [...new Set([...currentThemes, ...inferred])].slice(0, 8);
+};
+
+const inferToneFromRating = (rating, currentTone) => {
+  if (!rating) return currentTone;
+  if (rating >= 4) return currentTone;
+  if (rating <= 2) return "clear grounded";
+  return "balanced thoughtful";
+};
+
 const defaultMemory = (userId) => ({
   userId,
   tone: "warm visionary",
@@ -64,11 +97,20 @@ const blendFeedback = async (userId, feedback) => {
   }
 
   // Fallback or additional heuristics
-  if (!updates.tone && feedback.rating && feedback.rating >= 4) {
-    updates.tone = feedback.toneHint || currentMemory.tone;
+  if (!updates.tone) {
+    updates.tone = inferToneFromRating(feedback.rating, feedback.toneHint || currentMemory.tone);
   }
   if (!updates.themes && feedback.edits) {
-    updates.themes = [...new Set([...currentMemory.themes, "refined"])];
+    const inferredThemes = inferThemesFromEdits(feedback.edits, currentMemory.themes);
+    updates.themes = inferredThemes.length ? inferredThemes : [...new Set([...currentMemory.themes, "refined"])];
+  }
+
+  if (!updates.visualStyle && feedback.rating && feedback.rating <= 2) {
+    updates.visualStyle = "clean composition with lower visual noise";
+  }
+
+  if (!updates.audioStyle && feedback.rating && feedback.rating <= 2) {
+    updates.audioStyle = "structured rhythm with reduced layering";
   }
 
   return updateMemory(userId, updates);

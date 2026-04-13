@@ -3,7 +3,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "dummy-key-for-local-dev",
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: "chhaya-4e0b1.firebaseapp.com",
     projectId: "chhaya-4e0b1",
     storageBucket: "chhaya-4e0b1.firebasestorage.app",
@@ -15,4 +15,3 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const analytics = typeof window !== 'undefined' ? getAnalytics(app) : null;
 export const auth = getAuth(app);
-// End of firebase config

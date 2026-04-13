@@ -24,6 +24,7 @@ const signUp = async ({ email, password, name }) => {
     id: uuid(),
     email,
     name,
+    role: "user",
     password: await hashPassword(password)
   };
 

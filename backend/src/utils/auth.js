@@ -13,7 +13,7 @@ const verifyPassword = async (password, hashed) => {
 };
 
 const signToken = (user) => {
-  return jwt.sign({ id: user.id, email: user.email, name: user.name }, SECRET, {
+  return jwt.sign({ id: user.id, email: user.email, name: user.name, role: user.role || "user" }, SECRET, {
     expiresIn: "7d"
   });
 };

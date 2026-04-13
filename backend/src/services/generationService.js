@@ -1,34 +1,37 @@
-const { updateStore } = require("../data/store");
 const { buildGenerationPlan } = require("./creativeEngine");
 const { getMemory } = require("./creativeMemory");
-const { v4: uuid } = require("uuid");
+const { findByUserId } = require("../repositories/feedbackRepository");
+const { saveGeneration } = require("../repositories/generationRepository");
+const {
+  summarizeFeedback,
+  buildAdaptiveProfile,
+  applyAdaptiveControls
+} = require("../ai-engine/adaptiveLearning");
 
 const generate = async ({ modality, prompt, controls, constraints, userId }) => {
   const memory = await getMemory(userId);
-  const plan = buildGenerationPlan({ modality, prompt, controls, constraints, memory });
-  const generation = {
-    id: uuid(),
+  const feedbackHistory = await findByUserId(userId, 30);
+  const feedbackSummary = summarizeFeedback(feedbackHistory);
+  const adaptiveProfile = buildAdaptiveProfile({ memory, feedbackSummary });
+  const adaptiveControls = applyAdaptiveControls({ controls, adaptiveProfile });
+
+  const plan = await buildGenerationPlan({
     modality,
     prompt,
-    output: plan.output,
+    controls: adaptiveControls,
+    constraints,
+    memory
+  });
+  const safeOutput = typeof plan?.output === "string" ? plan.output : "";
+  return saveGeneration({
+    modality,
+    prompt,
+    output: safeOutput,
     reasoning: plan.intent,
     crossModal: plan.crossModal,
-    createdAt: new Date().toISOString(),
-    userId
-  };
-
-  await updateStore((store) => {
-    if (modality === "text") {
-      store.text_generations.push(generation);
-    } else if (modality === "image") {
-      store.image_generations.push(generation);
-    } else {
-      store.audio_generations.push(generation);
-    }
-    return store;
+    userId,
+    adaptiveProfile
   });
-
-  return generation;
 };
 
 module.exports = {
