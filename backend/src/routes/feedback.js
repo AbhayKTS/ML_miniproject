@@ -33,3 +33,20 @@ router.post("/", requireAuth, async (req, res) => {
 >>>>>>> 4fc186f5da84b6998f44fdef320d46c05e6f9ec4
 
 module.exports = router;
+// Feedback routes
+const router = require('express').Router();
+const { requireAuth } = require('../middleware/requireAuth');
+const repo = require('../repositories/feedbackRepository');
+
+router.post('/', requireAuth, async (req, res, next) => {
+  try {
+    const entry = await repo.save({ uid: req.user.uid, ...req.body, ts: Date.now() });
+    res.status(201).json(entry);
+  } catch (e) { next(e); }
+});
+
+router.get('/', requireAuth, async (req, res, next) => {
+  try { res.json(await repo.findByUser(req.user.uid)); } catch (e) { next(e); }
+});
+
+module.exports = router;
