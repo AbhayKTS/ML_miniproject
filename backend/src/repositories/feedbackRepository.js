@@ -32,3 +32,26 @@ module.exports = {
   saveFeedback,
   findByUserId
 };
+// Simple JSON-file feedback repository
+const fs = require('fs').promises;
+const path = require('path');
+
+const DB_PATH = path.join(__dirname, '../../data/feedback.json');
+
+async function load() {
+  try { return JSON.parse(await fs.readFile(DB_PATH, 'utf8')); }
+  catch { return []; }
+}
+
+async function save(entry) {
+  const data = await load();
+  data.push(entry);
+  await fs.writeFile(DB_PATH, JSON.stringify(data, null, 2));
+  return entry;
+}
+
+async function findByUser(uid) {
+  return (await load()).filter(e => e.uid === uid);
+}
+
+module.exports = { save, findByUser };
