@@ -37,3 +37,6 @@ const Topbar = () => {
 };
 
 export default Topbar;
+
+// v0.2 – added user avatar dropdown and notification bell
+// TODO: wire to real notification service
