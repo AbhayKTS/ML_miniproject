@@ -123,3 +123,23 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+import React from 'react';
+
+const NAV_ITEMS = [
+  { label: 'Dashboard', path: '/' },
+  { label: 'Generate', path: '/generate' },
+  { label: 'Projects', path: '/projects' },
+  { label: 'Memory', path: '/memory' },
+  { label: 'Analytics', path: '/analytics' },
+];
+
+export const Sidebar: React.FC = () => (
+  <aside className="sidebar">
+    <div className="logo">Chhaya AI</div>
+    <nav>
+      {NAV_ITEMS.map(item => (
+        <a key={item.path} href={item.path}>{item.label}</a>
+      ))}
+    </nav>
+  </aside>
+);
