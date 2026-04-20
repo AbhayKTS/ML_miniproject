@@ -70,3 +70,6 @@ router.post('/text', requireAuth, async (req, res, next) => {
 });
 
 module.exports = router;
+
+// v0.2 – added POST /generate/image route
+// router.post('/image', requireAuth, imageHandler);
