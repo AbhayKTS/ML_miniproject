@@ -132,3 +132,14 @@ const DashboardPage = () => {
 };
 
 export default DashboardPage;
+// DashboardPage – main landing after login
+import React from 'react';
+import { GeneratePanel } from '../ui/GeneratePanel';
+
+export const DashboardPage: React.FC = () => (
+  <main className="dashboard">
+    <h1>Welcome to Chhaya AI Studio</h1>
+    <p>Your creative intelligence platform.</p>
+    <GeneratePanel />
+  </main>
+);
