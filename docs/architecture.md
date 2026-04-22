@@ -20,3 +20,18 @@ Client (Web, Mobile)
         -> Object Storage (S3)
   -> Observability (Logs, Traces)
 ```
+# Chhaya AI – System Architecture
+
+## Overview
+Chhaya AI is a full-stack creative intelligence platform.
+
+## Components
+- **Frontend**: React + TypeScript (Vite), Firebase Auth
+- **Backend**: Node.js / Express, JWT via Firebase Admin SDK
+- **AI Services**: Gemini Pro (text), Stability SDXL (image), ElevenLabs (voice)
+- **Storage**: Firebase Firestore (projects), JSON file (feedback dev)
+
+## Data Flow
+```
+User → Firebase Auth → Frontend → Axios (Bearer) → Backend → AI Provider → Response
+```
