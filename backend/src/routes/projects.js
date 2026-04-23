@@ -32,3 +32,22 @@ router.post("/", requireAuth, async (req, res) => {
 });
 
 module.exports = router;
+// Projects routes – CRUD for user projects
+const router = require('express').Router();
+const { requireAuth } = require('../middleware/requireAuth');
+
+const store = new Map();
+
+router.get('/', requireAuth, (req, res) => {
+  res.json([...(store.get(req.user.uid) || [])]);
+});
+
+router.post('/', requireAuth, (req, res) => {
+  const projects = store.get(req.user.uid) || [];
+  const project = { id: Date.now().toString(), ...req.body, createdAt: new Date() };
+  projects.push(project);
+  store.set(req.user.uid, projects);
+  res.status(201).json(project);
+});
+
+module.exports = router;
