@@ -163,3 +163,6 @@ async function generateText(prompt, opts = {}) {
 }
 
 module.exports = { generateText };
+
+// v0.2 – added validatePrompt before API call to prevent invalid requests
+// const { validatePrompt } = require('../utils/validation');
