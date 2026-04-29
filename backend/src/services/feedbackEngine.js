@@ -1,28 +1,28 @@
-const { updateStore } = require("../data/store");
 const { blendFeedback } = require("./creativeMemory");
-const { v4: uuid } = require("uuid");
+const { saveFeedback } = require("../repositories/feedbackRepository");
+const { logger } = require("../utils/logger");
 
 const recordFeedback = async ({ userId, generationId, rating, edits, signals }) => {
-  const entry = {
-    id: uuid(),
+  const entry = await saveFeedback({
     userId,
     generationId,
     rating,
     edits,
-    signals,
-    createdAt: new Date().toISOString()
-  };
-
-  console.log(`Recording feedback for user ${userId}, generation ${generationId}: rating=${rating}`);
-
-  await updateStore((store) => {
-    store.feedback_logs.push(entry);
-    return store;
+    signals
   });
 
-  console.log(`Starting feedback blending for user ${userId}...`);
-  await blendFeedback(userId, { rating, edits });
-  console.log(`Feedback blending complete for user ${userId}`);
+  logger.info("feedback_recorded", { userId, generationId, rating });
+
+  try {
+    logger.info("feedback_blend_start", { userId });
+    await blendFeedback(userId, { rating, edits });
+    logger.info("feedback_blend_complete", { userId });
+  } catch (error) {
+    logger.warn("feedback_blend_failed", {
+      userId,
+      message: error?.message || String(error)
+    });
+  }
 
   return entry;
 };
