@@ -192,6 +192,16 @@ export const generateAudio = (
     body: JSON.stringify({ prompt, controls, constraints }),
   });
 
+export const generateVideo = (
+  prompt: string,
+  controls?: GenerationControls,
+  constraints?: string[]
+) =>
+  req<Generation>("/generate/video", {
+    method: "POST",
+    body: JSON.stringify({ prompt, controls, constraints }),
+  });
+
 // ── Feedback ────────────────────────────────────────────────
 export interface FeedbackEntry {
   id: string;

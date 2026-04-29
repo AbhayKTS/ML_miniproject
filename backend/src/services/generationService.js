@@ -7,6 +7,8 @@ const {
   buildAdaptiveProfile,
   applyAdaptiveControls
 } = require("../ai-engine/adaptiveLearning");
+const runwayService = require("./runwayService");
+const stabilityService = require("./stabilityService");
 
 const generate = async ({ modality, prompt, controls, constraints, userId }) => {
   const memory = await getMemory(userId);
@@ -14,6 +16,44 @@ const generate = async ({ modality, prompt, controls, constraints, userId }) => 
   const feedbackSummary = summarizeFeedback(feedbackHistory);
   const adaptiveProfile = buildAdaptiveProfile({ memory, feedbackSummary });
   const adaptiveControls = applyAdaptiveControls({ controls, adaptiveProfile });
+
+  // Handle Video separately via Runway if enabled
+  if (modality === "video" && runwayService.isRunwayEnabled()) {
+    const task = await runwayService.generateVideo(prompt, {
+      duration: adaptiveControls.duration || 5, // Default durations
+      ratio: adaptiveControls.aspectRatio || "16:9"
+    });
+
+    return saveGeneration({
+      modality,
+      prompt,
+      output: task.id, // Store taskId as output initially or handle async 
+      status: "pending",
+      reasoning: { tone: adaptiveControls.tone || "visionary", themes: memory?.themes || [] },
+      userId,
+      runwayTaskId: task.id
+    });
+  }
+
+  // Handle Image separately via Stability AI if enabled
+  if (modality === "image" && stabilityService.isStabilityEnabled()) {
+    const result = await stabilityService.generateImage(prompt, {
+      width: adaptiveControls.width || 512,
+      height: adaptiveControls.height || 512,
+      steps: adaptiveControls.steps || 30
+    });
+
+    const base64Image = result.artifacts?.[0]?.base64;
+    const output = base64Image ? `data:image/png;base64,${base64Image}` : "[Stability Generation Failed]";
+
+    return saveGeneration({
+      modality,
+      prompt,
+      output,
+      reasoning: { tone: adaptiveControls.tone || "visionary", model: "stable-diffusion-v1-6" },
+      userId
+    });
+  }
 
   const plan = await buildGenerationPlan({
     modality,

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ClipsPage from "./ClipsPage";
+import { generateVideo, generateImage, generateAudio, Generation } from "../../api";
 
 type MediaType = "video" | "image" | "audio";
 
@@ -8,12 +9,13 @@ const MediaGenerationPage = () => {
     const [mediaType, setMediaType] = useState<MediaType>("video");
     const location = useLocation();
 
-    // Mock states
+    // States
     const [videoInput, setVideoInput] = useState("");
     const [imageInput, setImageInput] = useState("");
     const [audioInput, setAudioInput] = useState("");
     const [isGenerating, setIsGenerating] = useState(false);
-    const [generatedMedia, setGeneratedMedia] = useState<string | null>(null);
+    const [generatedMedia, setGeneratedMedia] = useState<Generation | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         if (location.state?.autoSelect) {
@@ -21,13 +23,26 @@ const MediaGenerationPage = () => {
         }
     }, [location.state]);
 
-    const handleGenerateMock = () => {
+    const handleGenerate = async () => {
         setIsGenerating(true);
         setGeneratedMedia(null);
-        setTimeout(() => {
+        setError(null);
+
+        try {
+            let result: Generation;
+            if (mediaType === "video") {
+                result = await generateVideo(videoInput);
+            } else if (mediaType === "image") {
+                result = await generateImage(imageInput);
+            } else {
+                result = await generateAudio(audioInput);
+            }
+            setGeneratedMedia(result);
+        } catch (err: any) {
+            setError(err.message || "Generation failed");
+        } finally {
             setIsGenerating(false);
-            setGeneratedMedia("Success! (This is a mock generation placeholder.)");
-        }, 2000);
+        }
     };
 
     return (
@@ -77,7 +92,8 @@ const MediaGenerationPage = () => {
                                 <label>Video Generation Prompt (from Visuals workspace)</label>
                                 <textarea rows={5} placeholder="Paste your video prompt from the Prompt Studio here..." value={videoInput} onChange={(e) => setVideoInput(e.target.value)} />
                             </div>
-                            <button className="button-primary" style={{ width: '100%' }} onClick={handleGenerateMock} disabled={isGenerating}>
+                            {error && <p style={{ color: 'var(--accent-red)', marginBottom: 12 }}>{error}</p>}
+                            <button className="button-primary" style={{ width: '100%' }} onClick={handleGenerate} disabled={isGenerating}>
                                 {isGenerating ? "⏳ Rendering Video..." : "✨ Generate Video Clips"}
                             </button>
                         </div>
@@ -88,9 +104,18 @@ const MediaGenerationPage = () => {
                                     <div className="loading-shimmer" style={{ height: 160, borderRadius: 12 }} />
                                     <p style={{ marginTop: 12, textAlign: 'center', color: 'var(--text-muted)' }}>Contacting Video Synthesis Engine... (Stand-in)</p>
                                 </div>
-                            ) : generatedMedia ? (
+                            ) : (generatedMedia || error) ? (
                                 <div style={{ background: "rgba(0,0,0,0.15)", padding: 16, borderRadius: 12, border: "1px dashed rgba(255,255,255,0.1)" }}>
-                                    <p style={{ color: "var(--accent-primary)", marginBottom: 12 }}>{generatedMedia}</p>
+                                    {generatedMedia && (
+                                        <>
+                                            <p style={{ color: "var(--accent-primary)", marginBottom: 12 }}>
+                                                {generatedMedia.modality.toUpperCase()} Generated successfully (ID: {generatedMedia.id})
+                                            </p>
+                                            <div style={{ marginBottom: 12, padding: 8, background: 'rgba(0,0,0,0.2)', borderRadius: 4, maxHeight: 100, overflow: 'auto', fontSize: '12px' }}>
+                                                <code>{generatedMedia.output}</code>
+                                            </div>
+                                        </>
+                                    )}
                                     <ClipsPage />
                                 </div>
                             ) : (
@@ -118,7 +143,8 @@ const MediaGenerationPage = () => {
                                     <option>1:1 (Square)</option>
                                 </select>
                             </div>
-                            <button className="button-primary" style={{ width: '100%' }} onClick={handleGenerateMock} disabled={isGenerating}>
+                            {error && <p style={{ color: 'var(--accent-red)', marginBottom: 12 }}>{error}</p>}
+                            <button className="button-primary" style={{ width: '100%' }} onClick={handleGenerate} disabled={isGenerating}>
                                 {isGenerating ? "⏳ Rendering Image..." : "🖼 Generate High-Fidelity Image"}
                             </button>
                         </div>
@@ -131,8 +157,13 @@ const MediaGenerationPage = () => {
                                 </div>
                             ) : generatedMedia ? (
                                 <div style={{ background: "rgba(0,0,0,0.15)", padding: 16, borderRadius: 12, border: "1px dashed rgba(255,255,255,0.1)", textAlign: "center" }}>
-                                    <p style={{ color: "var(--accent-primary)", marginBottom: 12 }}>{generatedMedia}</p>
-                                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" style={{ width: '100%', borderRadius: 8, marginTop: 16 }} alt="Mock Asset" />
+                                    <p style={{ color: "var(--accent-primary)", marginBottom: 12 }}>
+                                        {generatedMedia.modality.toUpperCase()} Generated successfully
+                                    </p>
+                                    <div style={{ marginBottom: 12, padding: 8, background: 'rgba(0,0,0,0.2)', borderRadius: 4, maxHeight: 100, overflow: 'auto', fontSize: '12px' }}>
+                                        <code>{generatedMedia.prompt.slice(0, 100)}...</code>
+                                    </div>
+                                    <img src={generatedMedia.output} style={{ width: '100%', borderRadius: 8, marginTop: 16 }} alt="Generated Asset" />
                                 </div>
                             ) : (
                                 <div className="output-block" style={{ color: "var(--text-muted)", textAlign: "center", padding: "60px 20px" }}>
@@ -159,7 +190,8 @@ const MediaGenerationPage = () => {
                                     <option>03:00 (Extended)</option>
                                 </select>
                             </div>
-                            <button className="button-primary" style={{ width: '100%' }} onClick={handleGenerateMock} disabled={isGenerating}>
+                            {error && <p style={{ color: 'var(--accent-red)', marginBottom: 12 }}>{error}</p>}
+                            <button className="button-primary" style={{ width: '100%' }} onClick={handleGenerate} disabled={isGenerating}>
                                 {isGenerating ? "⏳ Rendering Audio..." : "🎵 Synthesize Audio Track"}
                             </button>
                         </div>
@@ -172,7 +204,12 @@ const MediaGenerationPage = () => {
                                 </div>
                             ) : generatedMedia ? (
                                 <div style={{ background: "rgba(0,0,0,0.15)", padding: 16, borderRadius: 12, border: "1px dashed rgba(255,255,255,0.1)", textAlign: "center" }}>
-                                    <p style={{ color: "var(--accent-primary)", marginBottom: 12 }}>{generatedMedia}</p>
+                                    <p style={{ color: "var(--accent-primary)", marginBottom: 12 }}>
+                                        {generatedMedia.modality.toUpperCase()} Generated successfully
+                                    </p>
+                                    <div style={{ marginBottom: 12, padding: 8, background: 'rgba(0,0,0,0.2)', borderRadius: 4, maxHeight: 100, overflow: 'auto', fontSize: '12px' }}>
+                                        <code>{generatedMedia.output}</code>
+                                    </div>
                                     <div style={{ height: 100, background: 'linear-gradient(90deg, #1f1c2c 0%, #928DAB 100%)', borderRadius: 8, marginTop: 16, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                         Mock Audio Waveform Player 🔊
                                     </div>
