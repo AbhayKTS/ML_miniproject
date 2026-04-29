@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
+const { execFileSync } = require("child_process");
 const authRoutes = require("./routes/auth");
 const generateRoutes = require("./routes/generate");
 const feedbackRoutes = require("./routes/feedback");
@@ -17,6 +18,49 @@ const { logger } = require("./utils/logger");
 const xss = require("xss-clean");
 
 const app = express();
+
+const getListeningPid = (port) => {
+  try {
+    const output = execFileSync("netstat", ["-ano", "-p", "tcp"], {
+      encoding: "utf8"
+    });
+
+    for (const line of output.split(/\r?\n/)) {
+      if (!line.toUpperCase().includes("LISTENING") || !line.includes(`:${port}`)) {
+        continue;
+      }
+
+      const match = line.trim().match(/(\d+)$/);
+      if (match) {
+        return Number(match[1]);
+      }
+    }
+  } catch (error) {
+    logger.warn("port_probe_failed", { port, error: error.message });
+  }
+
+  return null;
+};
+
+const freePortForDev = (port) => {
+  if (process.env.NODE_ENV === "production") {
+    return;
+  }
+
+  const pid = getListeningPid(port);
+  if (!pid || pid === process.pid) {
+    return;
+  }
+
+  try {
+    execFileSync("taskkill", ["/PID", String(pid), "/F"], {
+      stdio: "ignore"
+    });
+    logger.warn("stale_listener_killed", { port, pid });
+  } catch (error) {
+    logger.warn("stale_listener_kill_failed", { port, pid, error: error.message });
+  }
+};
 
 // Security Middlewares
 app.use(helmet());
@@ -56,6 +100,17 @@ app.use("/", videoRoutes);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
+freePortForDev(PORT);
+
+const server = app.listen(PORT, () => {
   logger.info("backend_started", { port: PORT });
+});
+
+server.on("error", (error) => {
+  if (error.code === "EADDRINUSE") {
+    logger.error("port_in_use", { port: PORT, message: "Port already in use" });
+    process.exit(1);
+  }
+
+  throw error;
 });
