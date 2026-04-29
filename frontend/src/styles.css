@@ -138,8 +138,8 @@ body {
 
 /* ── Side Shorts ── */
 .lp-side-short {
-  position: fixed;
-  top: 52%;
+  position: absolute;
+  top: 52vh;
   transform: translateY(-50%);
   width: 320px;
   aspect-ratio: 9/16;
@@ -706,6 +706,7 @@ a {
 }
 
 @keyframes smart-pulse {
+
   0%,
   100% {
     transform: scale(1);
@@ -983,6 +984,7 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
 /* ── Auth Page ── */
 .auth-container {
   display: flex;

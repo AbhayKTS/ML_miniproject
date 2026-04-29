@@ -1,5 +1,7 @@
 ﻿import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../../firebase";
+import { onAuthStateChanged, User } from "firebase/auth";
 
 const SHOWCASE_ITEMS = [
   { id: "KlyXNRrsk4A", title: "Bheegi Bheegi - Digital Restoration" },
@@ -95,7 +97,15 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const [creativeVision, setCreativeVision] = useState("");
   const [activeItem, setActiveItem] = useState(0);
+  const [user, setUser] = useState<User | null>(null);
   const railRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
   // Auto-cycle active items preview
   useEffect(() => {
@@ -156,13 +166,19 @@ const LandingPage = () => {
           </Link>
           <nav className="lp-nav-links">
             <Link to="/app">Dashboard</Link>
-            <Link to="/app/text">Text</Link>
-            <Link to="/app/image">Image</Link>
-            <Link to="/app/audio">Audio</Link>
+            <Link to="/app/generation" state={{ autoSelect: "video" }}>Video</Link>
+            <Link to="/app/generation" state={{ autoSelect: "image" }}>Image</Link>
+            <Link to="/app/generation" state={{ autoSelect: "audio" }}>Audio</Link>
           </nav>
           <div className="lp-nav-cta">
-            <Link className="lp-ghost" to="/auth">Login</Link>
-            <Link className="lp-btn" to="/auth">Get Started</Link>
+            {user ? (
+              <Link className="lp-btn" to="/app">🚀 Go to Dashboard</Link>
+            ) : (
+              <>
+                <Link className="lp-ghost" to="/auth">Login</Link>
+                <Link className="lp-btn" to="/auth">Get Started</Link>
+              </>
+            )}
           </div>
         </div>
       </header>

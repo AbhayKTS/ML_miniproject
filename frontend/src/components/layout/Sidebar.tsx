@@ -3,20 +3,9 @@ import { useApp } from "../../context/AppContext";
 
 const NAV = [
   { to: "/app", label: "📊 Overview", end: true },
-  { to: "/upload", label: "🎞️ Source", desc: "Upload long-form" },
-  { to: "/processing", label: "🧬 Analysis" },
-  { to: "/clips", label: "🎬 Generation" },
-  { to: "/editor", label: "✨ Polishing" },
+  { to: "/app/prompts", label: "✨ Prompt Studio" },
+  { to: "/app/generation", label: "🎬 Media Generation" },
   { to: "/export", label: "🚀 Publish" },
-];
-
-const STUDIO_NAV = [
-  { to: "/app/text", label: "📜 Scripting" },
-  { to: "/app/image", label: "🌉 Visuals" },
-  { to: "/app/audio", label: "🎼 Scoring" },
-  { to: "/app/feedback", label: "💎 Refine" },
-  { to: "/app/memory", label: "🧠 Mindset" },
-  { to: "/app/analytics", label: "📊 Analytics" },
 ];
 
 const Sidebar = () => {
@@ -47,27 +36,22 @@ const Sidebar = () => {
         </div>
       </div>
 
-      {/* Video pipeline nav */}
+      {/* Main Pipeline Nav */}
       <div>
-        <p style={{ fontSize: 11, color: "var(--text-muted)", marginBottom: 8, fontWeight: 600, letterSpacing: 0.5 }}>VIDEO PIPELINE</p>
+        <p style={{ fontSize: 11, color: "var(--text-muted)", marginBottom: 8, fontWeight: 600, letterSpacing: 0.5 }}>STUDIO PIPELINE</p>
         <nav>
           {NAV.map((n) => (
             <NavLink key={n.to} to={n.to} end={n.end}>
               {n.label}
             </NavLink>
           ))}
+          {/* We added Settings as its own main nav option at the bottom */}
+          <NavLink to="/app/settings">
+            ⚙️ Settings
+          </NavLink>
         </nav>
       </div>
 
-      {/* Creative studio nav */}
-      <div>
-        <p style={{ fontSize: 11, color: "var(--text-muted)", marginBottom: 8, fontWeight: 600, letterSpacing: 0.5 }}>CREATIVE STUDIO</p>
-        <nav>
-          {STUDIO_NAV.map((n) => (
-            <NavLink key={n.to} to={n.to}>{n.label}</NavLink>
-          ))}
-        </nav>
-      </div>
 
       {/* Memory widget */}
       {memory && (

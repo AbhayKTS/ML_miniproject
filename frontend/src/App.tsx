@@ -2,18 +2,16 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import LandingPage from "./components/pages/LandingPage";
 import AuthPage from "./components/pages/AuthPage";
 import DashboardPage from "./components/pages/DashboardPage";
-import TextWorkspacePage from "./components/pages/TextWorkspacePage";
-import ImageWorkspacePage from "./components/pages/ImageWorkspacePage";
-import AudioWorkspacePage from "./components/pages/AudioWorkspacePage";
+import PromptWorkspacePage from "./components/pages/PromptWorkspacePage";
+import MediaGenerationPage from "./components/pages/MediaGenerationPage";
 import FeedbackPage from "./components/pages/FeedbackPage";
-import MemoryPage from "./components/pages/MemoryPage";
+import SettingsPage from "./components/pages/SettingsPage";
 import UploadPage from "./components/pages/UploadPage";
 import ProcessingPage from "./components/pages/ProcessingPage";
 import ClipsPage from "./components/pages/ClipsPage";
 import EditorPage from "./components/pages/EditorPage";
 import ExportPage from "./components/pages/ExportPage";
 import AppShell from "./components/layout/AppShell";
-import AnalyticsDashboard from "./components/pages/AnalyticsDashboard";
 
 const App = () => {
   return (
@@ -22,12 +20,10 @@ const App = () => {
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/app" element={<AppShell />}>
         <Route index element={<DashboardPage />} />
-        <Route path="text" element={<TextWorkspacePage />} />
-        <Route path="image" element={<ImageWorkspacePage />} />
-        <Route path="audio" element={<AudioWorkspacePage />} />
+        <Route path="prompts" element={<PromptWorkspacePage />} />
+        <Route path="generation" element={<MediaGenerationPage />} />
         <Route path="feedback" element={<FeedbackPage />} />
-        <Route path="memory" element={<MemoryPage />} />
-        <Route path="analytics" element={<AnalyticsDashboard />} />
+        <Route path="settings" element={<SettingsPage />} />
       </Route>
       <Route path="/upload" element={<AppShell />}>
         <Route index element={<UploadPage />} />
@@ -46,7 +42,6 @@ const App = () => {
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
-
   );
 };
 

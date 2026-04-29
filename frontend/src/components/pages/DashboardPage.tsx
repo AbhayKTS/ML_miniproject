@@ -14,12 +14,9 @@ const STATS: StatCard[] = [
 ];
 
 const QUICK_LINKS = [
-  { to: "/app/text", label: "✍️ Text Workspace", desc: "Co-create stories, scripts, and copy" },
-  { to: "/app/image", label: "🖼 Image Workspace", desc: "Generate visual concept prompts" },
-  { to: "/app/audio", label: "🎵 Audio Workspace", desc: "Design soundscapes and music prompts" },
-  { to: "/upload", label: "📤 Upload Video", desc: "Upload long-form video for highlight clipping" },
-  { to: "/app/feedback", label: "⭐ Feedback", desc: "Rate & refine last generation" },
-  { to: "/app/memory", label: "🧠 Creative Memory", desc: "Inspect and edit style vectors" },
+  { to: "/app/prompts", label: "✨ Prompt Studio", desc: "Design creative prompts for text, image, and audio.", state: { autoSelect: "scripting" } },
+  { to: "/app/generation", label: "🎬 Media Generator", desc: "Render final video, image, or audio outputs.", state: { autoSelect: "video" } },
+  { to: "/app/settings", label: "⚙️ Settings", desc: "Manage Memory and Analytics" },
 ];
 
 const DashboardPage = () => {
@@ -65,7 +62,7 @@ const DashboardPage = () => {
         ))}
       </div>
 
-      {/* Creative Memory snapshot */}
+      {/* Creative Memory snapshot & Feedback Actions */}
       {memory && (
         <div className="card" style={{ background: "linear-gradient(135deg, rgba(140,107,255,0.12), rgba(68,208,255,0.08))", borderColor: "rgba(140,107,255,0.2)" }}>
           <h3 style={{ marginBottom: 12 }}>🧠 Active Creative Memory</h3>
@@ -77,9 +74,14 @@ const DashboardPage = () => {
             <span className="tag">🌍 {memory.culturalContext}</span>
             {memory.lock && <span className="tag" style={{ background: "rgba(255,211,112,0.15)", borderColor: "rgba(255,211,112,0.4)" }}>🔒 Locked</span>}
           </div>
-          <Link to="/app/memory" className="ghost-button" style={{ marginTop: 14, display: "inline-block" }}>
-            Edit memory profile →
-          </Link>
+          <div style={{ display: 'flex', gap: '1rem', marginTop: 14 }}>
+            <Link to="/app/settings" className="ghost-button">
+              Edit memory profile →
+            </Link>
+            <Link to="/app/feedback" className="button-primary">
+              ⭐ Provide Feedback on Last Generation
+            </Link>
+          </div>
         </div>
       )}
 
@@ -87,7 +89,7 @@ const DashboardPage = () => {
       <h3 style={{ marginTop: 8, marginBottom: -8 }}>Workspaces</h3>
       <div className="cards">
         {QUICK_LINKS.map((link) => (
-          <Link key={link.to} to={link.to} style={{ textDecoration: "none" }}>
+          <Link key={link.to} to={link.to} state={link.state} style={{ textDecoration: "none" }}>
             <div className="card dashboard-quick-card">
               <h3>{link.label}</h3>
               <p style={{ color: "var(--text-muted)", fontSize: 14, marginTop: 6 }}>{link.desc}</p>
