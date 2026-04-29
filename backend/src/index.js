@@ -63,7 +63,12 @@ const freePortForDev = (port) => {
 };
 
 // Security Middlewares
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginOpenerPolicy: "same-origin-allow-popups",
+    crossOriginEmbedderPolicy: false
+  })
+);
 app.use(xss());
 
 const limiter = rateLimit({

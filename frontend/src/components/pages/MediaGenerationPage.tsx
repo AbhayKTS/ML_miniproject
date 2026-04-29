@@ -99,7 +99,7 @@ const MediaGenerationPage = () => {
                             </button>
                         </div>
                         <div className="panel" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                            <h3 style={{ marginBottom: 12 }}>Generated Video Outputs</h3>
+                            <h3 style={{ marginBottom: 12 }}>Output Videos</h3>
                             {isGenerating ? (
                                 <div className="output-block text-loading">
                                     <div className="loading-shimmer" style={{ height: 160, borderRadius: 12 }} />
@@ -117,12 +117,11 @@ const MediaGenerationPage = () => {
                                             </div>
                                         </>
                                     )}
-                                    <ClipsPage />
                                 </div>
                             ) : (
-                                <div style={{ background: "rgba(0,0,0,0.05)", padding: 32, borderRadius: 12, textAlign: 'center', color: 'var(--text-muted)' }}>
-                                    Provide prompts first to generate your video clip highlight reels.
-                                </div>
+                                    <div className="output-block" style={{ color: "var(--text-muted)", textAlign: "center", padding: "60px 20px" }}>
+                                        Videos will appear here. No generations yet.
+                                    </div>
                             )}
                         </div>
                     </div>
