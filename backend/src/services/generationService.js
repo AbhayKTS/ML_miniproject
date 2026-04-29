@@ -9,8 +9,10 @@ const {
 } = require("../ai-engine/adaptiveLearning");
 const runwayService = require("./runwayService");
 const stabilityService = require("./stabilityService");
+const elevenLabsService = require("./elevenLabsService");
+const sunoService = require("./sunoService");
 
-const generate = async ({ modality, prompt, controls, constraints, userId }) => {
+const generate = async ({ modality, prompt, controls, constraints, userId, audio_type }) => {
   const memory = await getMemory(userId);
   const feedbackHistory = await findByUserId(userId, 30);
   const feedbackSummary = summarizeFeedback(feedbackHistory);
@@ -53,6 +55,36 @@ const generate = async ({ modality, prompt, controls, constraints, userId }) => 
       reasoning: { tone: adaptiveControls.tone || "visionary", model: "stable-diffusion-v1-6" },
       userId
     });
+  }
+
+  // Handle Audio modality (Speech vs Music)
+  if (modality === "audio") {
+    // Determine type: default to speech if it looks like a script, or if explicit
+    const type = audio_type || (prompt.length > 50 ? "speech" : "music");
+
+    if (type === "speech" && elevenLabsService.isElevenLabsEnabled()) {
+      const output = await elevenLabsService.generateSpeech(prompt, adaptiveControls.voiceId);
+      return saveGeneration({
+        modality,
+        prompt,
+        output,
+        reasoning: { tone: adaptiveControls.tone, type: "speech", model: "eleven-v2" },
+        userId
+      });
+    }
+
+    if (type === "music" && sunoService.isSunoEnabled()) {
+      const result = await sunoService.generateMusic(prompt, {
+        instrumental: adaptiveControls.instrumental ?? true
+      });
+      return saveGeneration({
+        modality,
+        prompt,
+        output: result.output,
+        reasoning: { tone: adaptiveControls.tone, type: "music", model: "suno-v3" },
+        userId
+      });
+    }
   }
 
   const plan = await buildGenerationPlan({

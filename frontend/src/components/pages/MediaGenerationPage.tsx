@@ -13,6 +13,7 @@ const MediaGenerationPage = () => {
     const [videoInput, setVideoInput] = useState("");
     const [imageInput, setImageInput] = useState("");
     const [audioInput, setAudioInput] = useState("");
+    const [audioType, setAudioType] = useState<"speech" | "music">("speech");
     const [isGenerating, setIsGenerating] = useState(false);
     const [generatedMedia, setGeneratedMedia] = useState<Generation | null>(null);
     const [error, setError] = useState<string | null>(null);
@@ -35,7 +36,7 @@ const MediaGenerationPage = () => {
             } else if (mediaType === "image") {
                 result = await generateImage(imageInput);
             } else {
-                result = await generateAudio(audioInput);
+                result = await generateAudio(audioInput, audioType);
             }
             setGeneratedMedia(result);
         } catch (err: any) {
@@ -178,21 +179,35 @@ const MediaGenerationPage = () => {
                     <div className="split">
                         <div className="panel controls">
                             <h3 style={{ marginBottom: 12 }}>🎵 Studio Audio Engine</h3>
-                            <div className="control-group">
-                                <label>Audio Scoring Prompt</label>
-                                <textarea rows={5} placeholder="Paste your audio concepts / musical score prompts here..." value={audioInput} onChange={(e) => setAudioInput(e.target.value)} />
+                            <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
+                                <button
+                                    className={audioType === "speech" ? "button-primary" : "ghost-button"}
+                                    style={{ flex: 1, padding: '8px' }}
+                                    onClick={() => setAudioType("speech")}
+                                >
+                                    🎙️ Narrator
+                                </button>
+                                <button
+                                    className={audioType === "music" ? "button-primary" : "ghost-button"}
+                                    style={{ flex: 1, padding: '8px' }}
+                                    onClick={() => setAudioType("music")}
+                                >
+                                    🎹 Scoring
+                                </button>
                             </div>
+
                             <div className="control-group">
-                                <label>Duration Limit</label>
-                                <select>
-                                    <option>00:15 (Short)</option>
-                                    <option>01:00 (Standard)</option>
-                                    <option>03:00 (Extended)</option>
-                                </select>
+                                <label>{audioType === "speech" ? "Narrator Script" : "Musical Score Prompt"}</label>
+                                <textarea
+                                    rows={5}
+                                    placeholder={audioType === "speech" ? "Paste your video script here..." : "Describe the mood, instruments, and style..."}
+                                    value={audioInput}
+                                    onChange={(e) => setAudioInput(e.target.value)}
+                                />
                             </div>
                             {error && <p style={{ color: 'var(--accent-red)', marginBottom: 12 }}>{error}</p>}
                             <button className="button-primary" style={{ width: '100%' }} onClick={handleGenerate} disabled={isGenerating}>
-                                {isGenerating ? "⏳ Rendering Audio..." : "🎵 Synthesize Audio Track"}
+                                {isGenerating ? "⏳ Synthesizing..." : `🎵 Generate ${audioType === "speech" ? "Voiceover" : "Music"}`}
                             </button>
                         </div>
                         <div className="panel" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -205,18 +220,22 @@ const MediaGenerationPage = () => {
                             ) : generatedMedia ? (
                                 <div style={{ background: "rgba(0,0,0,0.15)", padding: 16, borderRadius: 12, border: "1px dashed rgba(255,255,255,0.1)", textAlign: "center" }}>
                                     <p style={{ color: "var(--accent-primary)", marginBottom: 12 }}>
-                                        {generatedMedia.modality.toUpperCase()} Generated successfully
+                                        {generatedMedia.modality.toUpperCase()} ({audioType.toUpperCase()}) Generated successfully
                                     </p>
                                     <div style={{ marginBottom: 12, padding: 8, background: 'rgba(0,0,0,0.2)', borderRadius: 4, maxHeight: 100, overflow: 'auto', fontSize: '12px' }}>
-                                        <code>{generatedMedia.output}</code>
+                                        <code>{generatedMedia.prompt.slice(0, 100)}...</code>
                                     </div>
-                                    <div style={{ height: 100, background: 'linear-gradient(90deg, #1f1c2c 0%, #928DAB 100%)', borderRadius: 8, marginTop: 16, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                        Mock Audio Waveform Player 🔊
+                                    <div style={{ padding: '20px', background: 'var(--bg-elevated)', borderRadius: 8, marginTop: 16 }}>
+                                        <audio
+                                            controls
+                                            src={generatedMedia.output}
+                                            style={{ width: '100%' }}
+                                        />
                                     </div>
                                 </div>
                             ) : (
                                 <div className="output-block" style={{ color: "var(--text-muted)", textAlign: "center", padding: "60px 20px" }}>
-                                    Audio waveforms will appear here. No generations yet.
+                                    Audio tracks will appear here. No generations yet.
                                 </div>
                             )}
                         </div>

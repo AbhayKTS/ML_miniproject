@@ -184,12 +184,13 @@ export const generateImage = (
 
 export const generateAudio = (
   prompt: string,
+  audio_type?: string,
   controls?: GenerationControls,
   constraints?: string[]
 ) =>
   req<Generation>("/generate/audio", {
     method: "POST",
-    body: JSON.stringify({ prompt, controls, constraints }),
+    body: JSON.stringify({ prompt, audio_type, controls, constraints }),
   });
 
 export const generateVideo = (
