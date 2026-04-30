@@ -41,10 +41,6 @@ const AudioWorkspacePage = () => {
   const [hover, setHover] = useState(0);
   const [feedbackSent, setFeedbackSent] = useState(false);
 
-  // Simulated playback
-  const [playing, setPlaying] = useState(false);
-  const [playPosition, setPlayPosition] = useState(0);
-
   const effectivePrompt = prompt || `Compose a ${mood.toLowerCase()} soundscape with ${instrument}`;
 
   const handleGenerate = async () => {
@@ -53,8 +49,6 @@ const AudioWorkspacePage = () => {
     setResult(null);
     setFeedbackSent(false);
     setRating(0);
-    setPlaying(false);
-    setPlayPosition(0);
     try {
       const gen = await generateAudio(
         effectivePrompt,
@@ -84,22 +78,6 @@ const AudioWorkspacePage = () => {
       setFeedbackSent(true);
       await refreshMemory();
     } catch { /* ignore */ }
-  };
-
-  const togglePlay = () => {
-    if (!result) return;
-    const newPlaying = !playing;
-    setPlaying(newPlaying);
-    console.log(newPlaying ? "Playback started" : "Playback paused");
-    // Simulate playhead advancement
-    if (newPlaying) {
-      let pos = playPosition;
-      const interval = setInterval(() => {
-        pos += 1;
-        setPlayPosition(pos);
-        if (pos >= 100) { clearInterval(interval); setPlaying(false); setPlayPosition(0); }
-      }, 120);
-    }
   };
 
   return (
@@ -175,29 +153,22 @@ const AudioWorkspacePage = () => {
 
           {result && !loading && (
             <>
-              {/* Simulated Waveform player */}
-              <div className="audio-player">
-                <button className="audio-play-btn" onClick={togglePlay}>
-                  {playing ? "⏸" : "▶"}
-                </button>
-                <div className="audio-waveform">
-                  {Array.from({ length: 40 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className={`wave-bar${i / 40 * 100 <= playPosition ? " wave-bar--active" : ""}`}
-                      style={{ height: `${15 + Math.abs(Math.sin(i * 0.6)) * 30 + (i % 4 === 0 ? 15 : 0)}px` }}
-                    />
-                  ))}
+              {result.output.startsWith("data:audio") ? (
+                <div className="card" style={{ padding: 16 }}>
+                  <audio controls src={result.output} style={{ width: "100%" }} />
                 </div>
-                <span className="audio-time">
-                  {Math.floor(playPosition * 0.6)}s / 60s
-                </span>
-              </div>
+              ) : (
+                <div className="output-block" style={{ color: "var(--text-muted)" }}>
+                  Generated output is not an inline audio payload.
+                </div>
+              )}
 
-              <div className="output-block" style={{ whiteSpace: "pre-wrap" }}>
-                🎵 <strong>Prompt for your DAW or digital music tool:</strong>
-                {"\n\n"}{result.output}
-              </div>
+              {result.output.startsWith("data:audio") ? null : (
+                <div className="output-block" style={{ whiteSpace: "pre-wrap" }}>
+                  🎵 <strong>Prompt for your DAW or digital music tool:</strong>
+                  {"\n\n"}{result.output}
+                </div>
+              )}
 
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                 <span className="tag">🎼 {mood}</span>
