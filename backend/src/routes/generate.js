@@ -1,6 +1,7 @@
 const express = require("express");
 const { generate } = require("../services/generationService");
 const { generateBaseSchema, validate } = require("../utils/validators");
+const { requireAuth } = require("../utils/auth");
 
 const router = express.Router();
 
@@ -22,8 +23,8 @@ const handleGeneration = (modality) => async (req, res) => {
   return res.json(result);
 };
 
-router.post("/text", handleGeneration("text"));
-router.post("/image", handleGeneration("image"));
-router.post("/audio", handleGeneration("audio"));
+router.post("/text", requireAuth, handleGeneration("text"));
+router.post("/image", requireAuth, handleGeneration("image"));
+router.post("/audio", requireAuth, handleGeneration("audio"));
 
 module.exports = router;

@@ -1,10 +1,11 @@
 const express = require("express");
 const { recordFeedback } = require("../services/feedbackEngine");
 const { feedbackSchema, validate } = require("../utils/validators");
+const { requireAuth } = require("../utils/auth");
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", requireAuth, async (req, res) => {
   const validation = validate(feedbackSchema, req.body);
   if (!validation.success) {
     return res.status(400).json({ error: "Invalid payload", details: validation.errors });

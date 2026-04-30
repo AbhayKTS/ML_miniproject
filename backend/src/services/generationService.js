@@ -1,4 +1,4 @@
-const { updateStore } = require("../data/store");
+const { insertGeneration } = require("../repositories/generationRepository");
 const { buildGenerationPlan } = require("./creativeEngine");
 const { getMemory } = require("./creativeMemory");
 const { v4: uuid } = require("uuid");
@@ -17,16 +17,7 @@ const generate = async ({ modality, prompt, controls, constraints, userId }) => 
     userId
   };
 
-  await updateStore((store) => {
-    if (modality === "text") {
-      store.text_generations.push(generation);
-    } else if (modality === "image") {
-      store.image_generations.push(generation);
-    } else {
-      store.audio_generations.push(generation);
-    }
-    return store;
-  });
+  await insertGeneration(generation);
 
   return generation;
 };
