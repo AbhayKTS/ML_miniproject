@@ -54,39 +54,17 @@ const { getProcessingModel, isEngineEnabled } = require("./engineClient");
 
 const generateOutput = async (modality, intent) => {
   if (modality === "text") {
-    if (!process.env.HUGGING_FACE_API_KEY) {
-      throw new Error("HUGGING_FACE_API_KEY is missing — cannot generate text.");
-    }
-    const prompt = `Act as an adaptive creative collaborator (Chhaya).
-      Generate a ${intent.tone} short story or narrative script.
-      Genre: ${intent.genre || "open"}.
-      Themes: ${intent.themes.join(", ")}.
-      Cultural Context: ${intent.culturalContext}.
-      Complexity Level: ${intent.complexity}/100.
-      Creative Freedom (Originality): ${intent.originality}/100.
-      Specific Constraints: ${intent.constraints.join(". ")}.
-      Return ONLY the creative text.`;
-    const model = process.env.HUGGING_FACE_TEXT_MODEL || "mistralai/Mistral-7B-Instruct-v0.3";
-    const url = `https://api-inference.huggingface.co/models/${model}`;
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${process.env.HUGGING_FACE_API_KEY}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ inputs: prompt, parameters: { max_new_tokens: 500 } })
-    });
+    const userPrompt = intent.prompt || "write a short creative story";
+    const systemContext = `You are Chhaya, an adaptive creative collaborator. Write in a ${intent.tone} style. Genre: ${intent.genre || "open"}. Themes: ${intent.themes.join(", ")}. Cultural Context: ${intent.culturalContext}. Constraints: ${intent.constraints.join(". ")}.`;
+    const fullPrompt = `${systemContext}\n\nUser request: ${userPrompt}\n\nResponse:`;
+    const encodedPrompt = encodeURIComponent(fullPrompt);
+    const url = `https://text.pollinations.ai/${encodedPrompt}`;
+    console.log(`[Text] Calling Pollinations.ai text`);
+    const response = await fetch(url);
     if (!response.ok) {
-      const text = await response.text().catch(() => "");
-      throw new Error(`HuggingFace Text API Error: ${response.status} ${text}`);
+      throw new Error(`Pollinations text error: ${response.status}`);
     }
-    const data = await response.json();
-    // HF returns [{generated_text: "..."}] or similar
-    if (Array.isArray(data) && data[0]?.generated_text) {
-      return data[0].generated_text.replace(prompt, "").trim();
-    }
-    if (typeof data === "string") return data;
-    return JSON.stringify(data);
+    return (await response.text()).trim();
   } 
   
   if (modality === "image") {
