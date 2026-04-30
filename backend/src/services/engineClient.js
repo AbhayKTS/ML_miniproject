@@ -5,11 +5,13 @@ const client = apiKey ? new GoogleGenerativeAI(apiKey) : null;
 
 const isEngineEnabled = () => Boolean(client);
 
-const getProcessingModel = (modelName = "creative-v1") => {
+const getProcessingModel = (modelName = "gemini-1.5-flash") => {
   if (!client) {
     return null;
   }
-  return client.getGenerativeModel({ model: modelName });
+  // Remove "models/" prefix if present because getGenerativeModel adds it implicitly
+  const cleanName = modelName.replace("models/", "");
+  return client.getGenerativeModel({ model: cleanName });
 };
 
 module.exports = {

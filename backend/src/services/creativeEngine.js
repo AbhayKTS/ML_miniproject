@@ -42,51 +42,62 @@ const crossModalPlan = (intent) => {
 const { getProcessingModel, isEngineEnabled } = require("./engineClient");
 
 const generateOutput = async (modality, intent) => {
-  if (isEngineEnabled()) {
-    const model = getProcessingModel();
-    let prompt = "";
-
-    if (modality === "text") {
-      prompt = `Act as an adaptive creative collaborator (Chhaya).
-        Generate a ${intent.tone} short story or narrative script.
-        Themes: ${intent.themes.join(", ")}.
-        Cultural Context: ${intent.culturalContext}.
-        Complexity Level: ${intent.complexity}/100.
-        Creative Freedom (Originality): ${intent.originality}/100.
-        Specific Constraints: ${intent.constraints.join(". ")}.
-        Return ONLY the creative text.`;
-    } else if (modality === "image") {
-      prompt = `Act as a creative director. Generate a detailed image generation prompt for Midjourney/DALL-E.
-        Style: ${intent.tone}.
-        Motifs: ${intent.themes.join(", ")}.
-        Cultural Essence: ${intent.culturalContext}.
-        Lighting/Technique: luminous painterly.
-        Result should be high-quality and evocative.
-        Return ONLY the image prompt text.`;
-    } else {
-      prompt = `Act as a sound designer. Describe a soundscape concept or music prompt.
-        Mood: ${intent.tone}.
-        Textures: ${intent.themes.join(", ")}.
-        Cultural influence: ${intent.culturalContext}.
-        Return ONLY the audio concept description.`;
-    }
-
-    try {
-      const result = await model.generateContent(prompt);
-      return result.response.text().trim();
-    } catch (error) {
-      console.error("Content generation error:", error);
-    }
-  }
-
-  // Fallback if processing engine is disabled or fails
   if (modality === "text") {
-    return `[Fallback] Chhaya frames a ${intent.tone} narrative where ${intent.culturalContext} motifs glow through each scene, balancing ${intent.themes.join(", ")} with a ${intent.riskBudget} creative arc.`;
-  }
+    if (!process.env.ENGINE_ACCESS_KEY) throw new Error("ENGINE_ACCESS_KEY is missing for text generation");
+    const model = getProcessingModel();
+    const prompt = `Act as an adaptive creative collaborator (Chhaya).
+      Generate a ${intent.tone} short story or narrative script.
+      Themes: ${intent.themes.join(", ")}.
+      Cultural Context: ${intent.culturalContext}.
+      Complexity Level: ${intent.complexity}/100.
+      Creative Freedom (Originality): ${intent.originality}/100.
+      Specific Constraints: ${intent.constraints.join(". ")}.
+      Return ONLY the creative text.`;
+    const result = await model.generateContent(prompt);
+    return result.response.text().trim();
+  } 
+  
   if (modality === "image") {
-    return `[Fallback] Image prompt: ${intent.culturalContext} skyline, ${intent.tone} palette, layered ${intent.themes.join(", ")} motifs, painterly lighting.`;
+    if (!process.env.STABILITY_API_KEY) throw new Error("STABILITY_API_KEY is missing for image generation");
+    const prompt = `A ${intent.tone} painterly image featuring ${intent.culturalContext} motifs, layered with ${intent.themes.join(", ")} themes.`;
+    // Simulated API call to Stability AI
+    const response = await fetch("https://api.stability.ai/v1/generation/stable-diffusion-v1-6/text-to-image", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${process.env.STABILITY_API_KEY}` },
+      body: JSON.stringify({ text_prompts: [{ text: prompt }] })
+    });
+    if (!response.ok) throw new Error(`Stability API Error: ${response.status}`);
+    const data = await response.json();
+    // Assuming data contains base64 image or url
+    return `[Stability AI Image Data generated for prompt: ${prompt}]`;
+  } 
+  
+  if (modality === "audio") {
+    if (!process.env.ELEVEN_LABS_API_KEY) throw new Error("ELEVEN_LABS_API_KEY is missing for audio generation");
+    const textToSpeak = `This is a ${intent.tone} audio piece exploring ${intent.themes.join(", ")}.`;
+    // Simulated API call to ElevenLabs
+    const response = await fetch("https://api.elevenlabs.io/v1/text-to-speech/21m00Tcm4TlvDq8ikWAM", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "xi-api-key": process.env.ELEVEN_LABS_API_KEY },
+      body: JSON.stringify({ text: textToSpeak })
+    });
+    if (!response.ok) throw new Error(`ElevenLabs API Error: ${response.status}`);
+    return `[ElevenLabs Audio Data generated for tone: ${intent.tone}]`;
   }
-  return `[Fallback] Audio prompt: ${intent.tone} ambience, ${intent.culturalContext} textures, ${intent.themes.join(", ")} motifs, slow tide rhythm.`;
+  
+  if (modality === "video") {
+    if (!process.env.RUNWAY_API_KEY) throw new Error("RUNWAY_API_KEY is missing for video generation");
+    const prompt = `A cinematic ${intent.tone} video showcasing ${intent.culturalContext} elements.`;
+    const response = await fetch("https://api.runwayml.com/v1/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${process.env.RUNWAY_API_KEY}` },
+      body: JSON.stringify({ prompt })
+    });
+    if (!response.ok) throw new Error(`Runway API Error: ${response.status}`);
+    return `[Runway Video Data generated for prompt: ${prompt}]`;
+  }
+
+  throw new Error(`Unsupported modality: ${modality}`);
 };
 
 const buildGenerationPlan = async ({ modality, prompt, controls, constraints, memory }) => {

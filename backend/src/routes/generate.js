@@ -12,15 +12,20 @@ const handleGeneration = (modality) => async (req, res) => {
   }
 
   const userId = req.user?.id || validation.data.userId || "guest";
-  const result = await generate({
-    modality,
-    prompt: validation.data.prompt,
-    controls: validation.data.controls,
-    constraints: validation.data.constraints,
-    userId
-  });
+  try {
+    const result = await generate({
+      modality,
+      prompt: validation.data.prompt,
+      controls: validation.data.controls,
+      constraints: validation.data.constraints,
+      userId
+    });
 
-  return res.json(result);
+    return res.json(result);
+  } catch (err) {
+    console.error("Generation route error:", err);
+    return res.status(500).json({ error: "Content generation failed", details: err.message });
+  }
 };
 
 router.post("/text", requireAuth, handleGeneration("text"));

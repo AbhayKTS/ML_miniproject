@@ -9,6 +9,9 @@ interface AppState {
     setMemory: (m: CreativeMemory) => void;
     setLastGeneration: (g: Generation) => void;
     refreshMemory: () => Promise<void>;
+    isAuthenticated: boolean;
+    login: (id: string) => void;
+    logout: () => void;
 }
 
 const defaultMemory: CreativeMemory = {
@@ -30,6 +33,9 @@ const AppContext = createContext<AppState>({
     setMemory: () => { },
     setLastGeneration: () => { },
     refreshMemory: async () => { },
+    isAuthenticated: false,
+    login: () => { },
+    logout: () => { },
 });
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
@@ -37,6 +43,15 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     const [backendOnline, setBackendOnline] = useState(false);
     const [memory, setMemory] = useState<CreativeMemory | null>(null);
     const [lastGeneration, setLastGeneration] = useState<Generation | null>(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    const login = (id: string) => {
+        setIsAuthenticated(true);
+    };
+
+    const logout = () => {
+        setIsAuthenticated(false);
+    };
 
     const refreshMemory = async () => {
         try {
@@ -78,7 +93,10 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
                 lastGeneration,
                 setMemory,
                 setLastGeneration: handleSetLastGeneration,
-                refreshMemory
+                refreshMemory,
+                isAuthenticated,
+                login,
+                logout
             }}
         >
             {children}

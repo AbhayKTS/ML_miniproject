@@ -5,7 +5,7 @@ const { v4: uuid } = require("uuid");
 
 const generate = async ({ modality, prompt, controls, constraints, userId }) => {
   const memory = await getMemory(userId);
-  const plan = buildGenerationPlan({ modality, prompt, controls, constraints, memory });
+  const plan = await buildGenerationPlan({ modality, prompt, controls, constraints, memory });
   const generation = {
     id: uuid(),
     modality,

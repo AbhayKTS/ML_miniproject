@@ -1,41 +1,25 @@
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const admin = require("./firebaseAdmin");
 
-const SECRET = process.env.JWT_SECRET || "chhaya-dev-secret";
-
-const hashPassword = async (password) => {
-  const salt = await bcrypt.genSalt(10);
-  return bcrypt.hash(password, salt);
-};
-
-const verifyPassword = async (password, hashed) => {
-  return bcrypt.compare(password, hashed);
-};
-
-const signToken = (user) => {
-  return jwt.sign({ id: user.id, email: user.email, name: user.name, role: user.role || 'user' }, SECRET, {
-    expiresIn: "7d"
-  });
-};
-
-const attachUser = (req, _res, next) => {
+const requireAuth = async (req, res, next) => {
   const header = req.headers.authorization;
-  if (header && header.startsWith("Bearer ")) {
-    try {
-      const token = header.replace("Bearer ", "");
-      req.user = jwt.verify(token, SECRET);
-    } catch (error) {
-      req.user = null;
-    }
+  if (!header || !header.startsWith("Bearer ")) {
+    return res.status(401).json({ error: "Unauthorized access. Token missing." });
   }
-  next();
-};
 
-const requireAuth = (req, res, next) => {
-  if (!req.user) {
-    return res.status(401).json({ error: "Unauthorized access. Please login." });
+  const token = header.replace("Bearer ", "");
+  try {
+    const decodedToken = await admin.auth().verifyIdToken(token);
+    req.user = {
+      id: decodedToken.uid,
+      email: decodedToken.email,
+      name: decodedToken.name || decodedToken.email,
+      role: decodedToken.role || 'user'
+    };
+    next();
+  } catch (error) {
+    console.error("Firebase auth error:", error);
+    return res.status(401).json({ error: "Unauthorized access. Invalid token." });
   }
-  next();
 };
 
 const requireRole = (role) => (req, res, next) => {
@@ -46,10 +30,6 @@ const requireRole = (role) => (req, res, next) => {
 };
 
 module.exports = {
-  hashPassword,
-  verifyPassword,
-  signToken,
-  attachUser,
   requireAuth,
   requireRole
 };

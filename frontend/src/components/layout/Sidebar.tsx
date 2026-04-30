@@ -1,5 +1,6 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useApp } from "../../context/AppContext";
+import { signOut } from "../../firebase";
 
 const NAV = [
   { to: "/app", label: "📊 Overview", end: true },
@@ -19,7 +20,19 @@ const STUDIO_NAV = [
 ];
 
 const Sidebar = () => {
-  const { backendOnline, memory } = useApp();
+  const { backendOnline, memory, logout } = useApp();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      localStorage.removeItem("chhaya_token");
+      logout();
+      navigate("/login");
+    } catch (e) {
+      console.error("Sign out failed", e);
+    }
+  };
 
   return (
     <aside className="sidebar">
@@ -79,6 +92,15 @@ const Sidebar = () => {
           {memory.lock && <p style={{ fontSize: 11, color: "#ffd370", marginTop: 4 }}>🔒 Locked</p>}
         </div>
       )}
+
+      <div style={{ marginTop: "auto", paddingTop: "20px" }}>
+        <button 
+          onClick={handleSignOut}
+          style={{ width: "100%", background: "transparent", color: "var(--text-muted)", border: "1px solid var(--border)", padding: "8px", borderRadius: "6px", cursor: "pointer", fontFamily: "inherit", fontSize: "12px", transition: "all 0.2s" }}
+        >
+          Sign Out
+        </button>
+      </div>
     </aside>
   );
 };
