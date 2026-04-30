@@ -1,28 +1,35 @@
 const admin = require("firebase-admin");
+const path = require("path");
+const fs = require("fs");
 
-let app;
+if (!admin.apps.length) {
+  try {
+    // Priority 1: Load from the JSON file directly (most reliable — no dotenv escaping issues)
+    const jsonPath = path.resolve(__dirname, "../../chhaya-4e0b1-firebase-adminsdk-fbsvc-19f7dc9d89.json");
+    let serviceAccount;
 
-try {
-  let credential;
-  if (process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT) {
-    try {
-      // Try to parse as JSON string
-      const serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT);
-      credential = admin.credential.cert(serviceAccount);
-    } catch (e) {
-      // Fallback to file path
-      credential = admin.credential.cert(process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT);
+    if (fs.existsSync(jsonPath)) {
+      serviceAccount = require(jsonPath);
+      console.log("Firebase Admin: loaded service account from JSON file");
+    } else if (process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT) {
+      // Priority 2: Parse from env var, fixing escaped newlines
+      const raw = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
+      serviceAccount = JSON.parse(raw);
+      // dotenv may keep \\n as literal — fix the private_key
+      if (serviceAccount.private_key) {
+        serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, "\n");
+      }
+      console.log("Firebase Admin: loaded service account from env var");
+    } else {
+      throw new Error("No Firebase service account found (neither JSON file nor env var)");
     }
-  } else {
-      console.warn("FIREBASE_ADMIN_SERVICE_ACCOUNT not set. Firebase Admin may not initialize correctly.");
-  }
 
-  app = admin.initializeApp({
-    credential: credential,
-  });
-} catch (error) {
-  if (!/already exists/.test(error.message)) {
-    console.error("Firebase admin initialization error", error.stack);
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount)
+    });
+    console.log("Firebase Admin Initialized successfully");
+  } catch (error) {
+    console.error("Firebase Admin initialization error:", error.message);
   }
 }
 
