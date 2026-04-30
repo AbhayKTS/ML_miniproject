@@ -43,7 +43,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     const [backendOnline, setBackendOnline] = useState(false);
     const [memory, setMemory] = useState<CreativeMemory | null>(null);
     const [lastGeneration, setLastGeneration] = useState<Generation | null>(null);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(Boolean(localStorage.getItem("chhaya_token")));
 
     const login = (id: string) => {
         setIsAuthenticated(true);
