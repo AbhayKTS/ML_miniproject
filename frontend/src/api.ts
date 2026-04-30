@@ -3,11 +3,25 @@
 //  All calls go to the backend at localhost:4000
 // ============================================================
 
+import { auth } from "./firebase";
+
 const API_BASE = "http://localhost:4000";
 
 // ── Helper ─────────────────────────────────────────────────
 const req = async <T>(path: string, opts?: RequestInit): Promise<T> => {
-  const token = localStorage.getItem("chhaya_token");
+  // Always get a fresh Firebase ID token (auto-refreshes if expired)
+  let token: string | null = null;
+  try {
+    const user = auth.currentUser;
+    if (user) {
+      token = await user.getIdToken(/* forceRefresh */ false);
+      localStorage.setItem("chhaya_token", token);
+    } else {
+      token = localStorage.getItem("chhaya_token");
+    }
+  } catch {
+    token = localStorage.getItem("chhaya_token");
+  }
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
@@ -15,6 +29,10 @@ const req = async <T>(path: string, opts?: RequestInit): Promise<T> => {
   };
   const res = await fetch(`${API_BASE}${path}`, { ...opts, headers });
   if (!res.ok) {
+    if (res.status === 401) {
+      localStorage.removeItem("chhaya_token");
+      window.location.href = "/login";
+    }
     const err = await res.json().catch(() => ({ error: "Request failed" }));
     throw new Error(err.error || `HTTP ${res.status}`);
   }
@@ -28,7 +46,7 @@ export interface AuthResult {
 }
 
 export const registerUser = (name: string, email: string, password: string) =>
-  req<AuthResult>("/auth/register", {
+  req<AuthResult>("/auth/signup", {
     method: "POST",
     body: JSON.stringify({ name, email, password }),
   });
