@@ -1,65 +1,20 @@
-const { updateStore, getStore } = require("../data/store");
-const { hashPassword, verifyPassword, signToken } = require("../utils/auth");
-const { supabase, isSupabaseEnabled } = require("./supabaseClient");
-const { v4: uuid } = require("uuid");
+const admin = require('../utils/firebaseAdmin');
 
-const signUp = async ({ email, password, name }) => {
-  if (isSupabaseEnabled()) {
-    const { data, error } = await supabase.auth.signUp({
+const signUp = async ({ name, email, password }) => {
+  try {
+    const userRecord = await admin.auth().createUser({
       email,
       password,
-      options: { data: { name } }
+      displayName: name,
     });
-    if (error) {
-      throw new Error(error.message);
-    }
-    return { user: data.user, token: data.session?.access_token };
+    return { user: { id: userRecord.uid, email: userRecord.email, name: userRecord.displayName }, token: "USE_CLIENT_SDK_FOR_TOKEN" };
+  } catch (err) {
+    throw new Error(err.message);
   }
-
-  const store = await getStore();
-  if (store.users.find((user) => user.email === email)) {
-    throw new Error("User already exists");
-  }
-  const user = {
-    id: uuid(),
-    email,
-    name,
-    password: await hashPassword(password)
-  };
-
-  await updateStore((updated) => {
-    updated.users.push(user);
-    return updated;
-  });
-
-  return { user, token: signToken(user) };
 };
 
 const login = async ({ email, password }) => {
-  if (isSupabaseEnabled()) {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
-    if (error) {
-      throw new Error(error.message);
-    }
-    return { user: data.user, token: data.session?.access_token };
-  }
-
-  const store = await getStore();
-  const user = store.users.find((entry) => entry.email === email);
-  if (!user) {
-    throw new Error("Invalid credentials");
-  }
-  const valid = await verifyPassword(password, user.password);
-  if (!valid) {
-    throw new Error("Invalid credentials");
-  }
-  return { user, token: signToken(user) };
+  throw new Error("Use Firebase Client SDK for email/password login and pass the JWT token to the backend.");
 };
 
-module.exports = {
-  signUp,
-  login
-};
+module.exports = { signUp, login };
