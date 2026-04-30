@@ -19,7 +19,7 @@ describe("Feedback Engine", () => {
       generationId: "gen-1",
       rating: 5,
       edits: "Made it brighter",
-      signals: {}
+      signals: { reuse: true, acceptance: true }
     };
 
     const result = await recordFeedback(feedbackPayload);
@@ -34,7 +34,8 @@ describe("Feedback Engine", () => {
     expect(blendFeedback).toHaveBeenCalledTimes(1);
     expect(blendFeedback).toHaveBeenCalledWith("user-1", {
       rating: 5,
-      edits: "Made it brighter"
+      edits: "Made it brighter",
+      signals: { reuse: true, acceptance: true }
     });
 
     expect(result).toHaveProperty("id");
