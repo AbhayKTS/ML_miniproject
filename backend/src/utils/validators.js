@@ -8,7 +8,13 @@ const generateBaseSchema = z.object({
       originality: z.number().min(0).max(100).optional(),
       tone: z.string().optional(),
       complexity: z.number().min(0).max(100).optional(),
-      culturalContext: z.string().optional()
+      culturalContext: z.string().optional(),
+      theme: z.string().optional(),
+      genre: z.string().optional(),
+      styleIntensity: z.number().min(0).max(100).optional(),
+      mood: z.string().optional(),
+      tempo: z.string().optional(),
+      instrumentation: z.string().optional()
     })
     .optional(),
   constraints: z.array(z.string()).optional()
