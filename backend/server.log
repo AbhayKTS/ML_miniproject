@@ -1,0 +1,17 @@
+
+> chhaya-backend@0.1.0 dev
+> node src/index.js
+
+◇ injected env (3) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+WARNING: ENGINE_ACCESS_KEY is missing from environment variables.
+Checking if port 4000 is in use...
+Successfully cleared port 4000.
+Chhaya backend running on port 4000
+Building generation plan for image...
+Intent analyzed for user: {"id":"8a2edcc4-0c23-497e-b68e-d1642f2e0326","themes":["fantasy","mythic futurism"],"tone":"warm visionary","culturalContext":"coastal ritual","originality":70,"complexity":60,"prompt":"A magical forest","constraints":["maintain narrative continuity"],"riskBudget":"balanced","culturalAlignment":{"region":"coastal ritual","sensitivity":"high","authenticityChecks":["tone","motifs","language"]}}
+HuggingFace Image API failed, using placeholder: HuggingFace Image API Error: 404
+Generation complete for image. Output length: 114 chars.
+Building generation plan for audio...
+Intent analyzed for user: {"id":"a77a5320-2f00-4d46-9ae1-98a07390b53d","themes":["mythic futurism"],"tone":"epic","culturalContext":"coastal ritual","originality":70,"complexity":60,"mood":"epic","prompt":"Epic synth wave","constraints":["maintain narrative continuity"],"riskBudget":"balanced","culturalAlignment":{"region":"coastal ritual","sensitivity":"high","authenticityChecks":["tone","motifs","language"]}}
+HuggingFace Audio API failed, using placeholder: HuggingFace Audio API Error: 404
+Generation complete for audio. Output length: 58882 chars.
