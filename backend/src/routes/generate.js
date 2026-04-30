@@ -73,3 +73,6 @@ module.exports = router;
 
 // v0.2 – added POST /generate/image route
 // router.post('/image', requireAuth, imageHandler);
+
+// v0.3 – added rate-limit header logging for generation endpoint
+// logger.info('rate_limit_headers', req.rateLimit);
