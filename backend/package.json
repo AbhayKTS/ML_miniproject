@@ -6,23 +6,25 @@
   "scripts": {
     "dev": "node src/index.js",
     "start": "node src/index.js",
-    "test": "node --test"
+    "test": "jest"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "@huggingface/inference": "^2.8.1",
+    "@supabase/supabase-js": "^2.49.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
     "express": "^4.19.2",
-    "@google/generative-ai": "^0.21.0",
+    "express-rate-limit": "^7.4.0",
+    "firebase-admin": "^12.0.0",
+    "helmet": "^8.0.0",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
-    "@supabase/supabase-js": "^2.49.1",
-    "uuid": "^9.0.1",
-    "zod": "^3.23.3",
-    "helmet": "^8.0.0",
-    "express-rate-limit": "^7.4.0",
-    "xss-clean": "^0.1.4",
     "sanitize-html": "^2.13.0",
-    "firebase-admin": "^12.0.0"
+    "uuid": "^9.0.1",
+    "xss-clean": "^0.1.4",
+    "zod": "^3.23.3"
   },
   "devDependencies": {
     "jest": "^29.7.0"
