@@ -11,7 +11,6 @@ const feedbackRoutes = require("./routes/feedback");
 const memoryRoutes = require("./routes/memory");
 const projectRoutes = require("./routes/projects");
 const videoRoutes = require("./routes/video");
-const videoRoutes = require("./routes/video");
 
 const app = express();
 
@@ -29,9 +28,17 @@ const limiter = rateLimit({
 app.use(limiter);
 
 app.use(cors({
-  origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : true,
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 }));
+
+app.use((req, res, next) => {
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
+  next();
+});
+
 app.use(express.json({ limit: "2mb" }));
 
 app.get("/health", (_req, res) => {
