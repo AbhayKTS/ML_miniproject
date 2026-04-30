@@ -36,68 +36,68 @@ const Sidebar = () => {
 
   return (
     <aside className="sidebar">
-      <div>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{
-            width: 34, height: 34,
-            background: "var(--brand-gradient)",
-            borderRadius: 10, display: "flex", alignItems: "center",
-            justifyContent: "center", fontSize: 14, flexShrink: 0,
-            fontWeight: 800
-          }}>▶</div>
-          <h1 className="gradient-text" style={{ fontSize: 17, letterSpacing: 1, fontWeight: 900 }}>CHHAYA Studio</h1>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 8 }}>
-          <span style={{
-            width: 7, height: 7, borderRadius: "50%",
-            background: backendOnline ? "#44d06f" : "#ff6b6b",
-            display: "inline-block", flexShrink: 0
-          }} />
-          <p style={{ color: "var(--text-muted)", fontSize: 12 }}>
-            {backendOnline ? "backend online" : "backend offline"}
-          </p>
+      <div style={{ marginBottom: 32 }}>
+        <h2 style={{ 
+          fontSize: 22, 
+          background: 'linear-gradient(45deg, var(--accent), var(--accent-hover))', 
+          WebkitBackgroundClip: 'text', 
+          WebkitTextFillColor: 'transparent',
+          marginBottom: 4
+        }}>
+          Chhaya Studio
+        </h2>
+        <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "var(--text-muted)" }}>
+          <div className={`status-indicator ${backendOnline ? "online" : "offline"}`} />
+          {backendOnline ? "Engine Connected" : "Local Mode"}
         </div>
       </div>
 
-      {/* Video pipeline nav */}
-      <div>
-        <p style={{ fontSize: 11, color: "var(--text-muted)", marginBottom: 8, fontWeight: 600, letterSpacing: 0.5 }}>VIDEO PIPELINE</p>
-        <nav>
-          {NAV.map((n) => (
-            <NavLink key={n.to} to={n.to} end={n.end}>
-              {n.label}
+      <div style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: 24 }}>
+        <nav style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+          {NAV.map((item) => (
+            <NavLink 
+              key={item.to} 
+              to={item.to} 
+              end={item.end}
+              className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+            >
+              {item.label}
+              {item.desc && <span style={{ display: "block", fontSize: 11, opacity: 0.6, marginLeft: 26, marginTop: 2 }}>{item.desc}</span>}
             </NavLink>
           ))}
         </nav>
-      </div>
 
-      {/* Creative studio nav */}
-      <div>
-        <p style={{ fontSize: 11, color: "var(--text-muted)", marginBottom: 8, fontWeight: 600, letterSpacing: 0.5 }}>CREATIVE STUDIO</p>
-        <nav>
-          {STUDIO_NAV.map((n) => (
-            <NavLink key={n.to} to={n.to}>{n.label}</NavLink>
-          ))}
-        </nav>
-      </div>
-
-      {/* Memory widget */}
-      {memory && (
-        <div className="mini-card" style={{ textAlign: "left" }}>
-          <p style={{ fontSize: 10, opacity: 0.5, marginBottom: 6, letterSpacing: 0.5 }}>ACTIVE MEMORY</p>
-          <p style={{ fontSize: 12, fontWeight: 600 }}>{memory.tone}</p>
-          <p style={{ fontSize: 11, color: "var(--text-muted)", marginTop: 2 }}>
-            {memory.themes.slice(0, 2).join(", ")}
-          </p>
-          {memory.lock && <p style={{ fontSize: 11, color: "#ffd370", marginTop: 4 }}>🔒 Locked</p>}
+        <div>
+          <h4 style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 1, color: "var(--text-muted)", marginBottom: 12, marginLeft: 12 }}>
+            Creative Suite
+          </h4>
+          <nav style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+            {STUDIO_NAV.map((item) => (
+              <NavLink 
+                key={item.to} 
+                to={item.to} 
+                className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
         </div>
-      )}
+      </div>
 
-      <div style={{ marginTop: "auto", paddingTop: "20px" }}>
-        <button 
-          onClick={handleSignOut}
-          style={{ width: "100%", background: "transparent", color: "var(--text-muted)", border: "1px solid var(--border)", padding: "8px", borderRadius: "6px", cursor: "pointer", fontFamily: "inherit", fontSize: "12px", transition: "all 0.2s" }}
-        >
+      <div style={{ marginTop: 24, paddingTop: 24, borderTop: "1px solid var(--border)", display: "flex", flexDirection: "column", gap: 12 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div className="avatar">
+            U
+          </div>
+          <div style={{ flex: 1, overflow: "hidden" }}>
+            <div style={{ fontSize: 13, fontWeight: 500, whiteSpace: "nowrap", textOverflow: "ellipsis" }}>User Profile</div>
+            <div style={{ fontSize: 11, color: "var(--text-muted)", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>
+              {memory?.visualStyle ? memory.visualStyle.split(" ")[0] : "New"} Creator
+            </div>
+          </div>
+        </div>
+        <button className="button-ghost" onClick={handleSignOut} style={{ width: "100%", justifyContent: "center" }}>
           Sign Out
         </button>
       </div>
