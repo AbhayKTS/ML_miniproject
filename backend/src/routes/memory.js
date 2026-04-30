@@ -1,16 +1,17 @@
 const express = require("express");
 const { getMemory, updateMemory } = require("../services/creativeMemory");
 const { memoryUpdateSchema, validate } = require("../utils/validators");
+const { requireAuth } = require("../utils/auth");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", requireAuth, async (req, res) => {
   const userId = req.user?.id || req.query.userId || "guest";
   const memory = await getMemory(userId);
   res.json(memory);
 });
 
-router.post("/update", async (req, res) => {
+router.post("/update", requireAuth, async (req, res) => {
   const validation = validate(memoryUpdateSchema, req.body);
   if (!validation.success) {
     return res.status(400).json({ error: "Invalid payload", details: validation.errors });
