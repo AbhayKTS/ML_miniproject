@@ -23,7 +23,8 @@ const handleGeneration = (modality) => async (req, res) => {
 
     return res.json(result);
   } catch (err) {
-    console.error("Generation route error:", err);
+    console.error("Generation route error:", err.message);
+    console.error("Stack:", err.stack);
     return res.status(500).json({ error: "Content generation failed", details: err.message });
   }
 };
