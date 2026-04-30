@@ -152,17 +152,25 @@ const ImageWorkspacePage = () => {
 
           {result && !loading && (
             <>
-              {/* Simulated image preview box */}
-              <div className="image-concept-box">
-                <div className="image-concept-gradient" />
-                <div className="image-concept-label">
-                  <span className="tag">🖼 Image Prompt Generated</span>
+              {result.output.startsWith("data:image") ? (
+                <div className="image-concept-box" style={{ background: "transparent", padding: 0, overflow: "hidden" }}>
+                  <img
+                    src={result.output}
+                    alt="Generated visual"
+                    style={{ width: "100%", display: "block", borderRadius: 12 }}
+                  />
                 </div>
-              </div>
+              ) : (
+                <div className="output-block" style={{ color: "var(--text-muted)" }}>
+                  Generated output is not an inline image payload.
+                </div>
+              )}
 
-              <div className="output-block" style={{ whiteSpace: "pre-wrap" }}>
-                {result.output}
-              </div>
+              {result.output.startsWith("data:image") ? null : (
+                <div className="output-block" style={{ whiteSpace: "pre-wrap" }}>
+                  {result.output}
+                </div>
+              )}
 
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                 <span className="tag">🎨 {result.reasoning.tone}</span>
