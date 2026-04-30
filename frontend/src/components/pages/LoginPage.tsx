@@ -1,34 +1,43 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useApp } from "../../context/AppContext";
-import { signInWithGoogle } from "../../firebase";
+import { signInWithGoogle, loginWithEmail } from "../../firebase";
 
 const LoginPage = () => {
-  const navigate = useNavigate();
-  const { login } = useApp();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const { login } = useApp();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email && password) {
-      login(email);
-      navigate("/app");
-    } else {
+    if (!email || !password) {
       setError("Please enter an email and password.");
+      return;
+    }
+
+    try {
+      setError("");
+      const userCredential = await loginWithEmail(email, password);
+      const token = await userCredential.user.getIdToken();
+      localStorage.setItem("chhaya_token", token);
+      login(userCredential.user.uid);
+      navigate("/app");
+    } catch (e: any) {
+      setError(e.message || "Invalid email/password.");
     }
   };
 
   const handleGoogleLogin = async () => {
     try {
-      const user = await signInWithGoogle();
-      const token = await user.getIdToken();
+      const userCredential = await signInWithGoogle();
+      const token = await userCredential.user.getIdToken();
       localStorage.setItem("chhaya_token", token);
-      login(user.uid);
+      login(userCredential.user.uid);
       navigate("/app");
-    } catch (e) {
-      setError("Failed to sign in with Google.");
+    } catch (e: any) {
+      setError(e.message || "Failed to sign in with Google.");
     }
   };
 
