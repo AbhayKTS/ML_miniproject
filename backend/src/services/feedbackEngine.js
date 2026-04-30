@@ -18,7 +18,7 @@ const recordFeedback = async ({ userId, generationId, rating, edits, signals }) 
   await insertFeedback(entry);
 
   console.log(`Starting feedback blending for user ${userId}...`);
-  await blendFeedback(userId, { rating, edits });
+  await blendFeedback(userId, { rating, edits, signals: signals || {} });
   console.log(`Feedback blending complete for user ${userId}`);
 
   return entry;
