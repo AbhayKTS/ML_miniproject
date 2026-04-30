@@ -66,7 +66,7 @@ const freePortForDev = (port) => {
 app.use(
   helmet({
     crossOriginOpenerPolicy: "same-origin-allow-popups",
-    crossOriginEmbedderPolicy: false
+    crossOriginEmbedderPolicy: false,
   })
 );
 app.use(xss());

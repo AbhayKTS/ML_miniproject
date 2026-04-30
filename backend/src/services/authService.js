@@ -60,7 +60,30 @@ const login = async ({ email, password }) => {
   return { user, token: signToken(user) };
 };
 
+const loginWithFirebase = async ({ email, name }) => {
+  const store = await getStore();
+  let user = store.users.find((entry) => entry.email === email);
+
+  if (!user) {
+    user = {
+      id: uuid(),
+      email,
+      name: name || email.split("@")[0],
+      role: "user",
+      password: await hashPassword(uuid())
+    };
+
+    await updateStore((updated) => {
+      updated.users.push(user);
+      return updated;
+    });
+  }
+
+  return { user, token: signToken(user) };
+};
+
 module.exports = {
   signUp,
-  login
+  login,
+  loginWithFirebase
 };

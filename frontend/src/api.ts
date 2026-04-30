@@ -13,7 +13,11 @@ const req = async <T>(path: string, opts?: RequestInit): Promise<T> => {
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
     ...(opts?.headers as Record<string, string> | undefined),
   };
-  const res = await fetch(`${API_BASE}${path}`, { ...opts, headers });
+  const res = await fetch(`${API_BASE}${path}`, {
+    ...opts,
+    headers,
+    credentials: "include",
+  });
   if (!res.ok) {
     const err = await res.json().catch(() => ({ error: "Request failed" }));
     throw new Error(err.error || `HTTP ${res.status}`);
@@ -28,7 +32,7 @@ export interface AuthResult {
 }
 
 export const registerUser = (name: string, email: string, password: string) =>
-  req<AuthResult>("/auth/register", {
+  req<AuthResult>("/auth/signup", {
     method: "POST",
     body: JSON.stringify({ name, email, password }),
   });
@@ -37,6 +41,12 @@ export const loginUser = (email: string, password: string) =>
   req<AuthResult>("/auth/login", {
     method: "POST",
     body: JSON.stringify({ email, password }),
+  });
+
+export const loginWithFirebase = (email: string, name?: string) =>
+  req<AuthResult>("/auth/firebase", {
+    method: "POST",
+    body: JSON.stringify({ email, name }),
   });
 
 // ── Video Upload ────────────────────────────────────────────
@@ -172,12 +182,32 @@ export const generateText = (
     body: JSON.stringify({ prompt, controls, constraints }),
   });
 
+export const generateTextPrompt = (
+  prompt: string,
+  controls?: GenerationControls,
+  constraints?: string[]
+) =>
+  req<Generation>("/generate/prompt/text", {
+    method: "POST",
+    body: JSON.stringify({ prompt, controls, constraints }),
+  });
+
 export const generateImage = (
   prompt: string,
   controls?: GenerationControls,
   constraints?: string[]
 ) =>
   req<Generation>("/generate/image", {
+    method: "POST",
+    body: JSON.stringify({ prompt, controls, constraints }),
+  });
+
+export const generateImagePrompt = (
+  prompt: string,
+  controls?: GenerationControls,
+  constraints?: string[]
+) =>
+  req<Generation>("/generate/prompt/image", {
     method: "POST",
     body: JSON.stringify({ prompt, controls, constraints }),
   });
@@ -191,6 +221,16 @@ export const generateAudio = (
   req<Generation>("/generate/audio", {
     method: "POST",
     body: JSON.stringify({ prompt, audio_type, controls, constraints }),
+  });
+
+export const generateAudioPrompt = (
+  prompt: string,
+  controls?: GenerationControls,
+  constraints?: string[]
+) =>
+  req<Generation>("/generate/prompt/audio", {
+    method: "POST",
+    body: JSON.stringify({ prompt, controls, constraints }),
   });
 
 export const generateVideo = (

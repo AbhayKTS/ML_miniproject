@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import SectionHeader from "../SectionHeader";
 import ControlSlider from "../ControlSlider";
-import { generateText, submitFeedback, Generation } from "../../api";
+import { generateTextPrompt, submitFeedback, Generation } from "../../api";
 import { useApp } from "../../context/AppContext";
 import { useLocation } from "react-router-dom";
 
@@ -48,7 +48,7 @@ const TextWorkspacePage = () => {
     setFeedbackSent(false);
     setRating(0);
     try {
-      const gen = await generateText(
+      const gen = await generateTextPrompt(
         prompt,
         { tone: tone.toLowerCase(), culturalContext: culture.toLowerCase(), originality, complexity },
         [`genre: ${genre}`, `theme: ${theme}`, `refinement level: ${refinement}`]

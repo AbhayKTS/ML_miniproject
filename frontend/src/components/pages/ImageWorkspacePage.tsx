@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import SectionHeader from "../SectionHeader";
 import ControlSlider from "../ControlSlider";
-import { generateImage, submitFeedback, Generation } from "../../api";
+import { generateImagePrompt, submitFeedback, Generation } from "../../api";
 import { useApp } from "../../context/AppContext";
 import { useLocation } from "react-router-dom";
 
@@ -46,7 +46,7 @@ const ImageWorkspacePage = () => {
     setFeedbackSent(false);
     setRating(0);
     try {
-      const gen = await generateImage(
+      const gen = await generateImagePrompt(
         effectivePrompt,
         {
           tone: mood.toLowerCase(),

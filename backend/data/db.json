@@ -1,8 +1,242 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": "fbcdff8b-f306-403f-a2e6-ab6fbb918e20",
+      "email": "abhay88998@gmail.com",
+      "name": "Abhay Kumar",
+      "role": "user",
+      "password": "$2a$10$VKCpGy1grs4VvWhO007fSOD7J17u7qjVIbkbYDpeyEK2kWhMwDIai"
+    }
+  ],
   "sessions": [],
   "creative_memory": [],
-  "text_generations": [],
+  "text_generations": [
+    {
+      "id": "93074bfa-b255-4ecb-bc52-e50d6332d130",
+      "modality": "text",
+      "prompt": "Write a story inspired by mythic futurism",
+      "output": "[Fallback] Chhaya frames a warm visionary narrative where coastal ritual motifs glow through each scene, balancing mythic futurism with a balanced creative arc.",
+      "reasoning": {
+        "id": "860d57e6-d889-4080-85b1-80130873da3d",
+        "themes": [
+          "mythic futurism"
+        ],
+        "tone": "warm visionary",
+        "culturalContext": "coastal ritual",
+        "originality": 72,
+        "complexity": 58,
+        "prompt": "Write a story inspired by mythic futurism",
+        "constraints": [
+          "genre: Short story",
+          "theme: Latin romance",
+          "refinement level: 84"
+        ],
+        "riskBudget": "balanced",
+        "culturalAlignment": {
+          "region": "coastal ritual",
+          "sensitivity": "high",
+          "authenticityChecks": [
+            "tone",
+            "motifs",
+            "language"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "warm visionary with mythic futurism",
+        "visualAnchor": "luminous painterly with layered coastal motifs",
+        "audioAnchor": "ambient synth textures with rhythmic tide"
+      },
+      "adaptiveProfile": {
+        "toneBias": "warm visionary",
+        "originalityWeight": 0.7,
+        "complexityWeight": 0.6,
+        "reinforcementTags": []
+      },
+      "createdAt": "2026-04-30T10:56:44.471Z",
+      "userId": "fbcdff8b-f306-403f-a2e6-ab6fbb918e20"
+    },
+    {
+      "id": "bf745395-db18-4d8f-92ec-2f720a91b6aa",
+      "modality": "text",
+      "prompt": "Write a story inspired by mythic futurism",
+      "output": "[Fallback] Chhaya frames a warm visionary narrative where coastal ritual motifs glow through each scene, balancing mythic futurism with a balanced creative arc.",
+      "reasoning": {
+        "id": "611b052a-1237-497e-a54d-f629057a839b",
+        "themes": [
+          "mythic futurism"
+        ],
+        "tone": "warm visionary",
+        "culturalContext": "coastal ritual",
+        "originality": 72,
+        "complexity": 58,
+        "prompt": "Write a story inspired by mythic futurism",
+        "constraints": [
+          "genre: Short story",
+          "theme: Latin romance",
+          "refinement level: 84"
+        ],
+        "riskBudget": "balanced",
+        "culturalAlignment": {
+          "region": "coastal ritual",
+          "sensitivity": "high",
+          "authenticityChecks": [
+            "tone",
+            "motifs",
+            "language"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "warm visionary with mythic futurism",
+        "visualAnchor": "luminous painterly with layered coastal motifs",
+        "audioAnchor": "ambient synth textures with rhythmic tide"
+      },
+      "adaptiveProfile": {
+        "toneBias": "warm visionary",
+        "originalityWeight": 0.7,
+        "complexityWeight": 0.6,
+        "reinforcementTags": []
+      },
+      "createdAt": "2026-04-30T11:01:23.732Z",
+      "userId": "fbcdff8b-f306-403f-a2e6-ab6fbb918e20"
+    },
+    {
+      "id": "780360d3-7c08-46a6-8160-249382be3fc7",
+      "modality": "text",
+      "prompt": "generate a story based in murim world of demonic sect",
+      "output": "[Fallback] Chhaya frames a warm visionary narrative where south asian coastal motifs glow through each scene, balancing mythic futurism with a balanced creative arc.",
+      "reasoning": {
+        "id": "88698ea8-f91a-4f72-bef6-d316aa17e538",
+        "themes": [
+          "mythic futurism"
+        ],
+        "tone": "warm visionary",
+        "culturalContext": "south asian coastal",
+        "originality": 72,
+        "complexity": 58,
+        "prompt": "generate a story based in murim world of demonic sect",
+        "constraints": [
+          "genre: Short story",
+          "theme: Latin romance",
+          "refinement level: 84"
+        ],
+        "riskBudget": "balanced",
+        "culturalAlignment": {
+          "region": "south asian coastal",
+          "sensitivity": "high",
+          "authenticityChecks": [
+            "tone",
+            "motifs",
+            "language"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "warm visionary with mythic futurism",
+        "visualAnchor": "luminous painterly with layered coastal motifs",
+        "audioAnchor": "ambient synth textures with rhythmic tide"
+      },
+      "adaptiveProfile": {
+        "toneBias": "warm visionary",
+        "originalityWeight": 0.7,
+        "complexityWeight": 0.6,
+        "reinforcementTags": []
+      },
+      "createdAt": "2026-04-30T11:07:28.675Z",
+      "userId": "fbcdff8b-f306-403f-a2e6-ab6fbb918e20"
+    },
+    {
+      "id": "fc8609a6-293a-42f7-a5b8-1e99c5bcf686",
+      "modality": "text",
+      "prompt": "murim world and demon sect story",
+      "output": "[Fallback] Chhaya frames a warm visionary narrative where south asian coastal motifs glow through each scene, balancing mythic futurism with a balanced creative arc.",
+      "reasoning": {
+        "id": "5c80e297-5564-4476-877d-a82a4d7e503c",
+        "themes": [
+          "mythic futurism"
+        ],
+        "tone": "warm visionary",
+        "culturalContext": "south asian coastal",
+        "originality": 72,
+        "complexity": 58,
+        "prompt": "murim world and demon sect story",
+        "constraints": [
+          "genre: Short story",
+          "theme: Latin romance",
+          "refinement level: 84"
+        ],
+        "riskBudget": "balanced",
+        "culturalAlignment": {
+          "region": "south asian coastal",
+          "sensitivity": "high",
+          "authenticityChecks": [
+            "tone",
+            "motifs",
+            "language"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "warm visionary with mythic futurism",
+        "visualAnchor": "luminous painterly with layered coastal motifs",
+        "audioAnchor": "ambient synth textures with rhythmic tide"
+      },
+      "adaptiveProfile": {
+        "toneBias": "warm visionary",
+        "originalityWeight": 0.7,
+        "complexityWeight": 0.6,
+        "reinforcementTags": []
+      },
+      "createdAt": "2026-04-30T11:07:59.194Z",
+      "userId": "fbcdff8b-f306-403f-a2e6-ab6fbb918e20"
+    },
+    {
+      "id": "37c45a0d-f21b-474e-a05f-35c15f534640",
+      "modality": "text",
+      "prompt": "murim world and demonic sect",
+      "output": "[Fallback] Chhaya frames a warm visionary narrative where south asian coastal motifs glow through each scene, balancing mythic futurism with a balanced creative arc.",
+      "reasoning": {
+        "id": "bafe65f7-865a-4927-af00-f125557d6788",
+        "themes": [
+          "mythic futurism"
+        ],
+        "tone": "warm visionary",
+        "culturalContext": "south asian coastal",
+        "originality": 72,
+        "complexity": 58,
+        "prompt": "murim world and demonic sect",
+        "constraints": [
+          "genre: Short story",
+          "theme: Latin romance",
+          "refinement level: 84"
+        ],
+        "riskBudget": "balanced",
+        "culturalAlignment": {
+          "region": "south asian coastal",
+          "sensitivity": "high",
+          "authenticityChecks": [
+            "tone",
+            "motifs",
+            "language"
+          ]
+        }
+      },
+      "crossModal": {
+        "narrativeAnchor": "warm visionary with mythic futurism",
+        "visualAnchor": "luminous painterly with layered coastal motifs",
+        "audioAnchor": "ambient synth textures with rhythmic tide"
+      },
+      "adaptiveProfile": {
+        "toneBias": "warm visionary",
+        "originalityWeight": 0.7,
+        "complexityWeight": 0.6,
+        "reinforcementTags": []
+      },
+      "createdAt": "2026-04-30T11:13:30.266Z",
+      "userId": "fbcdff8b-f306-403f-a2e6-ab6fbb918e20"
+    }
+  ],
   "image_generations": [],
   "audio_generations": [],
   "feedback_logs": [],

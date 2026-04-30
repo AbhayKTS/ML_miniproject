@@ -12,12 +12,32 @@ const stabilityService = require("./stabilityService");
 const elevenLabsService = require("./elevenLabsService");
 const sunoService = require("./sunoService");
 
-const generate = async ({ modality, prompt, controls, constraints, userId, audio_type }) => {
+const generate = async ({ modality, prompt, controls, constraints, userId, audio_type, mode }) => {
   const memory = await getMemory(userId);
   const feedbackHistory = await findByUserId(userId, 30);
   const feedbackSummary = summarizeFeedback(feedbackHistory);
   const adaptiveProfile = buildAdaptiveProfile({ memory, feedbackSummary });
   const adaptiveControls = applyAdaptiveControls({ controls, adaptiveProfile });
+
+  if (mode === "prompt") {
+    const plan = await buildGenerationPlan({
+      modality,
+      prompt,
+      controls: adaptiveControls,
+      constraints,
+      memory
+    });
+    const safeOutput = typeof plan?.output === "string" ? plan.output : "";
+    return saveGeneration({
+      modality,
+      prompt,
+      output: safeOutput,
+      reasoning: plan.intent,
+      crossModal: plan.crossModal,
+      userId,
+      adaptiveProfile
+    });
+  }
 
   // Handle Video separately via Runway if enabled
   if (modality === "video" && runwayService.isRunwayEnabled()) {

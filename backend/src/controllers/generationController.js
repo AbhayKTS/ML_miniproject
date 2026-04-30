@@ -4,7 +4,7 @@ const { getMemory } = require("../services/creativeMemory");
 const { findByUserId } = require("../repositories/feedbackRepository");
 const { summarizeFeedback } = require("../ai-engine/adaptiveLearning");
 
-const createGenerationHandler = (modality) => async (req, res) => {
+const createGenerationHandler = (modality, options = {}) => async (req, res) => {
   const validation = validate(generateBaseSchema, req.body);
   if (!validation.success) {
     return res.status(400).json({ error: "Invalid payload", details: validation.errors });
@@ -16,7 +16,8 @@ const createGenerationHandler = (modality) => async (req, res) => {
     prompt: validation.data.prompt,
     controls: validation.data.controls,
     constraints: validation.data.constraints,
-    userId
+    userId,
+    mode: options.mode || req.query.mode
   });
 
   return res.json(result);

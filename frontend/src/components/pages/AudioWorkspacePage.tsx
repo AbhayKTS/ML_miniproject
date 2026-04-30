@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import SectionHeader from "../SectionHeader";
 import ControlSlider from "../ControlSlider";
-import { generateAudio, submitFeedback, Generation } from "../../api";
+import { generateAudioPrompt, submitFeedback, Generation } from "../../api";
 import { useApp } from "../../context/AppContext";
 import { useLocation } from "react-router-dom";
 
@@ -58,7 +58,7 @@ const AudioWorkspacePage = () => {
     setPlaying(false);
     setPlayPosition(0);
     try {
-      const gen = await generateAudio(
+      const gen = await generateAudioPrompt(
         effectivePrompt,
         {
           mood: mood.toLowerCase(),

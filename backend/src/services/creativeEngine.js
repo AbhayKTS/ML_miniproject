@@ -39,7 +39,7 @@ const crossModalPlan = (intent) => {
   };
 };
 
-const { getProcessingModel, isEngineEnabled } = require("./engineClient");
+const { getProcessingModel, isEngineEnabled, generateGeminiText } = require("./engineClient");
 
 const generateOutput = async (modality, intent) => {
   if (isEngineEnabled()) {
@@ -72,6 +72,11 @@ const generateOutput = async (modality, intent) => {
     }
 
     try {
+      const restText = await generateGeminiText(prompt);
+      if (restText) {
+        return restText;
+      }
+
       const result = await model.generateContent(prompt);
       return result.response.text().trim();
     } catch (error) {
