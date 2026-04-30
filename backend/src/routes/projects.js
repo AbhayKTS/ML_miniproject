@@ -1,16 +1,17 @@
 const express = require("express");
 const { listProjects, createProject } = require("../services/projectService");
 const { projectSchema, validate } = require("../utils/validators");
+const { requireAuth } = require("../utils/auth");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", requireAuth, async (req, res) => {
   const userId = req.user?.id || req.query.userId || "guest";
   const projects = await listProjects(userId);
   res.json(projects);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", requireAuth, async (req, res) => {
   const validation = validate(projectSchema, req.body);
   if (!validation.success) {
     return res.status(400).json({ error: "Invalid payload", details: validation.errors });
