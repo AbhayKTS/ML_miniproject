@@ -1,13 +1,24 @@
 const { v4: uuid } = require("uuid");
+const { HfInference } = require("@huggingface/inference");
 
 const analyzeIntent = ({ prompt, controls, memory }) => {
+  const baseThemes = memory?.themes?.length ? memory.themes : ["mythic futurism"];
+  const themes = controls?.theme
+    ? [...new Set([controls.theme, ...baseThemes])]
+    : baseThemes;
+
   return {
     id: uuid(),
-    themes: memory?.themes?.length ? memory.themes : ["mythic futurism"],
-    tone: controls?.tone || memory?.tone || "warm visionary",
+    themes,
+    tone: controls?.tone || controls?.mood || memory?.tone || "warm visionary",
     culturalContext: controls?.culturalContext || memory?.culturalContext || "coastal ritual",
     originality: controls?.originality ?? 70,
     complexity: controls?.complexity ?? 60,
+    genre: controls?.genre,
+    styleIntensity: controls?.styleIntensity,
+    mood: controls?.mood,
+    tempo: controls?.tempo,
+    instrumentation: controls?.instrumentation,
     prompt
   };
 };
@@ -43,48 +54,75 @@ const { getProcessingModel, isEngineEnabled } = require("./engineClient");
 
 const generateOutput = async (modality, intent) => {
   if (modality === "text") {
-    if (!process.env.ENGINE_ACCESS_KEY) throw new Error("ENGINE_ACCESS_KEY is missing for text generation");
-    const model = getProcessingModel();
+    if (!process.env.HUGGING_FACE_API_KEY) {
+      throw new Error("HUGGING_FACE_API_KEY is missing — cannot generate text.");
+    }
     const prompt = `Act as an adaptive creative collaborator (Chhaya).
       Generate a ${intent.tone} short story or narrative script.
+      Genre: ${intent.genre || "open"}.
       Themes: ${intent.themes.join(", ")}.
       Cultural Context: ${intent.culturalContext}.
       Complexity Level: ${intent.complexity}/100.
       Creative Freedom (Originality): ${intent.originality}/100.
       Specific Constraints: ${intent.constraints.join(". ")}.
       Return ONLY the creative text.`;
-    const result = await model.generateContent(prompt);
-    return result.response.text().trim();
+    const model = process.env.HUGGING_FACE_TEXT_MODEL || "mistralai/Mistral-7B-Instruct-v0.3";
+    const url = `https://api-inference.huggingface.co/models/${model}`;
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${process.env.HUGGING_FACE_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ inputs: prompt, parameters: { max_new_tokens: 500 } })
+    });
+    if (!response.ok) {
+      const text = await response.text().catch(() => "");
+      throw new Error(`HuggingFace Text API Error: ${response.status} ${text}`);
+    }
+    const data = await response.json();
+    // HF returns [{generated_text: "..."}] or similar
+    if (Array.isArray(data) && data[0]?.generated_text) {
+      return data[0].generated_text.replace(prompt, "").trim();
+    }
+    if (typeof data === "string") return data;
+    return JSON.stringify(data);
   } 
   
   if (modality === "image") {
-    if (!process.env.STABILITY_API_KEY) throw new Error("STABILITY_API_KEY is missing for image generation");
-    const prompt = `A ${intent.tone} painterly image featuring ${intent.culturalContext} motifs, layered with ${intent.themes.join(", ")} themes.`;
-    // Simulated API call to Stability AI
-    const response = await fetch("https://api.stability.ai/v1/generation/stable-diffusion-v1-6/text-to-image", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${process.env.STABILITY_API_KEY}` },
-      body: JSON.stringify({ text_prompts: [{ text: prompt }] })
-    });
-    if (!response.ok) throw new Error(`Stability API Error: ${response.status}`);
-    const data = await response.json();
-    // Assuming data contains base64 image or url
-    return `[Stability AI Image Data generated for prompt: ${prompt}]`;
-  } 
-  
-  if (modality === "audio") {
-    if (!process.env.ELEVEN_LABS_API_KEY) throw new Error("ELEVEN_LABS_API_KEY is missing for audio generation");
-    const textToSpeak = `This is a ${intent.tone} audio piece exploring ${intent.themes.join(", ")}.`;
-    // Simulated API call to ElevenLabs
-    const response = await fetch("https://api.elevenlabs.io/v1/text-to-speech/21m00Tcm4TlvDq8ikWAM", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "xi-api-key": process.env.ELEVEN_LABS_API_KEY },
-      body: JSON.stringify({ text: textToSpeak })
-    });
-    if (!response.ok) throw new Error(`ElevenLabs API Error: ${response.status}`);
-    return `[ElevenLabs Audio Data generated for tone: ${intent.tone}]`;
+    const imagePrompt = `${intent.prompt}. Style: ${intent.tone}, ${intent.culturalContext} motifs, themes of ${intent.themes.join(", ")}.`;
+    const encodedPrompt = encodeURIComponent(imagePrompt);
+    const url = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=768&height=512&nologo=true&seed=${Math.floor(Math.random() * 99999)}`;
+    console.log(`[Image] Calling Pollinations.ai`);
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Pollinations.ai image error: ${response.status}`);
+    }
+    const buffer = Buffer.from(await response.arrayBuffer());
+    const base64 = buffer.toString("base64");
+    return `data:image/jpeg;base64,${base64}`;
   }
   
+  if (modality === "audio") {
+    const { execSync } = require("child_process");
+    const fs = require("fs");
+    const os = require("os");
+    const path = require("path");
+
+    const audioText = intent.prompt || `A ${intent.tone} soundscape exploring ${intent.themes.join(", ")} with ${intent.instrumentation || "blended instrumentation"}.`;
+    const tmpAiff = path.join(os.tmpdir(), `chhaya_${Date.now()}.aiff`);
+    const tmpWav  = path.join(os.tmpdir(), `chhaya_${Date.now()}.wav`);
+    console.log(`[Audio] Using macOS say → afconvert → WAV`);
+
+    execSync(`say -o "${tmpAiff}" "${audioText.replace(/"/g, '\\"')}"`);
+    execSync(`afconvert -f WAVE -d LEI16@22050 "${tmpAiff}" "${tmpWav}"`);
+    const buffer = fs.readFileSync(tmpWav);
+    fs.unlinkSync(tmpAiff);
+    fs.unlinkSync(tmpWav);
+    return `data:audio/wav;base64,${buffer.toString("base64")}`;
+  }
+  
+
   if (modality === "video") {
     if (!process.env.RUNWAY_API_KEY) throw new Error("RUNWAY_API_KEY is missing for video generation");
     const prompt = `A cinematic ${intent.tone} video showcasing ${intent.culturalContext} elements.`;
