@@ -5,7 +5,7 @@ const fs = require("fs");
 if (!admin.apps.length) {
   try {
     // Priority 1: Load from the JSON file directly (most reliable — no dotenv escaping issues)
-    const jsonPath = path.resolve(__dirname, "../../chhaya-4e0b1-firebase-adminsdk-fbsvc-19f7dc9d89.json");
+    const jsonPath = path.resolve(__dirname, "../../miniml-d9ea9-firebase-adminsdk-fbsvc-76fd2c1381.json");
     let serviceAccount;
 
     if (fs.existsSync(jsonPath)) {

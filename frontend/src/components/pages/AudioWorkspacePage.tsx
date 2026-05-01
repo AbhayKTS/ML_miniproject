@@ -3,7 +3,7 @@ import SectionHeader from "../SectionHeader";
 import ControlSlider from "../ControlSlider";
 import { generateAudio, submitFeedback, Generation } from "../../api";
 import { useApp } from "../../context/AppContext";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const MOODS = ["Romantic Latin", "Tropical party", "Dreamy ambience", "Uplifted cinematic", "Reflective minimal", "Tense dramatic", "Joyful playful"];
 const TEMPOS = ["60 BPM — meditative", "72 BPM — slow tide", "96 BPM — steady pulse", "120 BPM — energized", "140 BPM — intense"];
@@ -17,6 +17,7 @@ const INSTRUMENTATION = [
 
 const AudioWorkspacePage = () => {
   const { memory, setLastGeneration, refreshMemory } = useApp();
+  const navigate = useNavigate();
   const location = useLocation();
   const visionFromLanding = location.state?.vision;
 
@@ -85,6 +86,11 @@ const AudioWorkspacePage = () => {
       <SectionHeader
         title="Audio Workspace"
         subtitle="Design adaptive soundscapes with mood, tempo, and cultural instrumentation presets."
+        rightContent={
+          <button className="button-primary" onClick={() => navigate("/")}>
+            Resources
+          </button>
+        }
       />
 
       <div className="split">

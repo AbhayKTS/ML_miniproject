@@ -3,7 +3,7 @@ import SectionHeader from "../SectionHeader";
 import ControlSlider from "../ControlSlider";
 import { generateText, submitFeedback, Generation } from "../../api";
 import { useApp } from "../../context/AppContext";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const THEMES = ["Latin romance", "Friday party", "Mythic futurism", "Urban folklore", "Hopepunk discovery", "Solarpunk utopia", "Biopunk nature"];
 const TONES = ["Warm visionary", "Minimalist poetic", "Energetic optimistic", "Dark contemplative", "Playful surreal"];
@@ -12,6 +12,7 @@ const GENRES = ["Short story", "Marketing copy", "Script / screenplay", "Essay /
 
 const TextWorkspacePage = () => {
   const { refreshMemory, memory, setLastGeneration } = useApp();
+  const navigate = useNavigate();
   const location = useLocation();
   const visionFromLanding = location.state?.vision;
 
@@ -89,6 +90,11 @@ const TextWorkspacePage = () => {
       <SectionHeader
         title="Text Workspace"
         subtitle="Co-create stories, scripts, and copy with Chhaya's adaptive creative engine."
+        rightContent={
+          <button className="button-primary" onClick={() => navigate("/")}>
+            Resources
+          </button>
+        }
       />
 
       <div className="split">

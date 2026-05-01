@@ -1,13 +1,10 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useApp } from "../../context/AppContext";
-import { signOut } from "../../firebase";
+import { signOut, auth } from "../../firebase";
+import { useEffect, useState } from "react";
 
 const NAV = [
   { to: "/app", label: "📊 Overview", end: true },
-  { to: "/upload", label: "🎞️ Source", desc: "Upload long-form" },
-  { to: "/processing", label: "🧬 Analysis" },
-  { to: "/clips", label: "🎬 Generation" },
-  { to: "/editor", label: "✨ Polishing" },
   { to: "/export", label: "🚀 Publish" },
 ];
 
@@ -22,6 +19,15 @@ const STUDIO_NAV = [
 const Sidebar = () => {
   const { backendOnline, memory, logout } = useApp();
   const navigate = useNavigate();
+  const [firebaseUser, setFirebaseUser] = useState(auth.currentUser);
+
+  useEffect(() => {
+    return auth.onAuthStateChanged((u) => setFirebaseUser(u));
+  }, []);
+
+  const displayName = firebaseUser?.displayName || firebaseUser?.email?.split("@")[0] || "Creator";
+  const avatarLetter = displayName[0]?.toUpperCase() || "C";
+  const displayEmail = firebaseUser?.email || "";
 
   const handleSignOut = async () => {
     try {
@@ -88,12 +94,14 @@ const Sidebar = () => {
       <div style={{ marginTop: 24, paddingTop: 24, borderTop: "1px solid var(--border)", display: "flex", flexDirection: "column", gap: 12 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <div className="avatar">
-            U
+            {firebaseUser?.photoURL
+              ? <img src={firebaseUser.photoURL} alt="avatar" style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover" }} />
+              : avatarLetter}
           </div>
           <div style={{ flex: 1, overflow: "hidden" }}>
-            <div style={{ fontSize: 13, fontWeight: 500, whiteSpace: "nowrap", textOverflow: "ellipsis" }}>User Profile</div>
-            <div style={{ fontSize: 11, color: "var(--text-muted)", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>
-              {memory?.visualStyle ? memory.visualStyle.split(" ")[0] : "New"} Creator
+            <div style={{ fontSize: 13, fontWeight: 500, whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden" }}>{displayName}</div>
+            <div style={{ fontSize: 11, color: "var(--text-muted)", whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden" }}>
+              {displayEmail}
             </div>
           </div>
         </div>

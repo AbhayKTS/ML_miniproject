@@ -5,7 +5,8 @@
 
 import { auth } from "./firebase";
 
-const API_BASE = "http://localhost:4000";
+// In dev: localhost:4000  |  In production: /api (Firebase Hosting rewrite → Cloud Function)
+const API_BASE = import.meta.env.PROD ? "/api" : "http://localhost:4000";
 
 // ── Helper ─────────────────────────────────────────────────
 const req = async <T>(path: string, opts?: RequestInit): Promise<T> => {

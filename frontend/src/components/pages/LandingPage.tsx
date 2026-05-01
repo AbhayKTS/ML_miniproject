@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const SHOWCASE_ITEMS = [
@@ -159,9 +159,10 @@ const LandingPage = () => {
             <Link to="/app/text">Text</Link>
             <Link to="/app/image">Image</Link>
             <Link to="/app/audio">Audio</Link>
+            <Link to="/app/resources">Resources</Link>
           </nav>
           <div className="lp-nav-cta">
-            <Link className="lp-ghost" to="/app">Enter Studio</Link>
+            <Link className="lp-ghost" to="/app/resources">View Published Content</Link>
             <Link className="lp-btn" to="/app">Get Started</Link>
           </div>
         </div>

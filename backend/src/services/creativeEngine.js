@@ -82,22 +82,35 @@ const generateOutput = async (modality, intent) => {
   }
   
   if (modality === "audio") {
-    const { execSync } = require("child_process");
-    const fs = require("fs");
-    const os = require("os");
-    const path = require("path");
-
     const audioText = intent.prompt || `A ${intent.tone} soundscape exploring ${intent.themes.join(", ")} with ${intent.instrumentation || "blended instrumentation"}.`;
-    const tmpAiff = path.join(os.tmpdir(), `chhaya_${Date.now()}.aiff`);
-    const tmpWav  = path.join(os.tmpdir(), `chhaya_${Date.now()}.wav`);
-    console.log(`[Audio] Using macOS say → afconvert → WAV`);
 
-    execSync(`say -o "${tmpAiff}" "${audioText.replace(/"/g, '\\"')}"`);
-    execSync(`afconvert -f WAVE -d LEI16@22050 "${tmpAiff}" "${tmpWav}"`);
-    const buffer = fs.readFileSync(tmpWav);
-    fs.unlinkSync(tmpAiff);
-    fs.unlinkSync(tmpWav);
-    return `data:audio/wav;base64,${buffer.toString("base64")}`;
+    if (process.platform === "darwin") {
+      // macOS dev — use native say + afconvert
+      const { execSync } = require("child_process");
+      const fs = require("fs");
+      const os = require("os");
+      const path = require("path");
+      const tmpAiff = path.join(os.tmpdir(), `chhaya_${Date.now()}.aiff`);
+      const tmpWav  = path.join(os.tmpdir(), `chhaya_${Date.now()}.wav`);
+      console.log(`[Audio] Using macOS say → afconvert → WAV`);
+      execSync(`say -o "${tmpAiff}" "${audioText.replace(/"/g, '\\"')}"`);
+      execSync(`afconvert -f WAVE -d LEI16@22050 "${tmpAiff}" "${tmpWav}"`);
+      const buffer = fs.readFileSync(tmpWav);
+      fs.unlinkSync(tmpAiff);
+      fs.unlinkSync(tmpWav);
+      return `data:audio/wav;base64,${buffer.toString("base64")}`;
+    } else {
+      // Cloud Functions / Linux — use Google Translate TTS (no key needed)
+      const encoded = encodeURIComponent(audioText.slice(0, 200)); // max 200 chars
+      const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encoded}&tl=en&client=tw-ob&ttsspeed=1`;
+      console.log(`[Audio] Using Google Translate TTS (Cloud Functions)`);
+      const response = await fetch(url, {
+        headers: { "User-Agent": "Mozilla/5.0" }
+      });
+      if (!response.ok) throw new Error(`TTS error: ${response.status}`);
+      const buffer = Buffer.from(await response.arrayBuffer());
+      return `data:audio/mpeg;base64,${buffer.toString("base64")}`;
+    }
   }
   
 

@@ -15,6 +15,8 @@ import AppShell from "./components/layout/AppShell";
 import LoginPage from "./components/pages/LoginPage";
 import { useApp } from "./context/AppContext";
 
+import ResourcesPage from "./components/pages/ResourcesPage";
+
 const AuthGuard = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useApp();
   if (!isAuthenticated) {
@@ -35,6 +37,7 @@ const App = () => {
         <Route path="audio" element={<AudioWorkspacePage />} />
         <Route path="feedback" element={<FeedbackPage />} />
         <Route path="memory" element={<MemoryPage />} />
+        <Route path="resources" element={<ResourcesPage />} />
       </Route>
       <Route path="/upload" element={<AuthGuard><AppShell /></AuthGuard>}>
         <Route index element={<UploadPage />} />
