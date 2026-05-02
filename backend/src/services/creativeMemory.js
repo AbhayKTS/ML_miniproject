@@ -132,3 +132,6 @@ module.exports = {
 
 // v0.2 – added TTL-based cache eviction for stale memory entries
 const MEMORY_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+
+// v0.3 – persist memory snapshots to disk for session recovery
+// import { writeSnapshot, readSnapshot } from '../utils/snapshot';
