@@ -112,3 +112,13 @@
 - Initial project scaffold: backend Express server, React frontend shell
 - Firebase auth integration stubs
 - Basic routing for `/auth`, `/generate`, `/memory` endpoints
+
+## [0.4.0] - 2026-05-03
+### Added
+- ElevenLabs TTS voice service integration
+- Stability AI SDXL image generation
+- Disk-based memory snapshots
+- Full test suite for auth and generate routes
+### Fixed
+- Rate limit header logging in generate route
+- CSRF guard for state-changing HTTP methods
