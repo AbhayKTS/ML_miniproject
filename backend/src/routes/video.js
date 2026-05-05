@@ -122,3 +122,6 @@ router.post("/export", requireAuth, async (req, res) => {
 });
 
 module.exports = router;
+
+// v0.2 – added RunwayML video generation stub
+// router.post('/generate/video', requireAuth, videoHandler);
