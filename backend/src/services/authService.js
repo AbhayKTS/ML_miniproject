@@ -1,20 +1,17 @@
-const { updateStore, getStore } = require("../data/store");
-const { hashPassword, verifyPassword, signToken } = require("../utils/auth");
-const { supabase, isSupabaseEnabled } = require("./supabaseClient");
-const { v4: uuid } = require("uuid");
+const admin = require('../utils/firebaseAdmin');
 
-const signUp = async ({ email, password, name }) => {
-  if (isSupabaseEnabled()) {
-    const { data, error } = await supabase.auth.signUp({
+const signUp = async ({ name, email, password }) => {
+  try {
+    const userRecord = await admin.auth().createUser({
       email,
       password,
-      options: { data: { name } }
+      displayName: name,
     });
-    if (error) {
-      throw new Error(error.message);
-    }
-    return { user: data.user, token: data.session?.access_token };
+    return { user: { id: userRecord.uid, email: userRecord.email, name: userRecord.displayName }, token: "USE_CLIENT_SDK_FOR_TOKEN" };
+  } catch (err) {
+    throw new Error(err.message);
   }
+<<<<<<< HEAD
 
   const store = await getStore();
   if (store.users.find((user) => user.email === email)) {
@@ -34,32 +31,15 @@ const signUp = async ({ email, password, name }) => {
   });
 
   return { user, token: signToken(user) };
+=======
+>>>>>>> 4fc186f5da84b6998f44fdef320d46c05e6f9ec4
 };
 
 const login = async ({ email, password }) => {
-  if (isSupabaseEnabled()) {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
-    if (error) {
-      throw new Error(error.message);
-    }
-    return { user: data.user, token: data.session?.access_token };
-  }
-
-  const store = await getStore();
-  const user = store.users.find((entry) => entry.email === email);
-  if (!user) {
-    throw new Error("Invalid credentials");
-  }
-  const valid = await verifyPassword(password, user.password);
-  if (!valid) {
-    throw new Error("Invalid credentials");
-  }
-  return { user, token: signToken(user) };
+  throw new Error("Use Firebase Client SDK for email/password login and pass the JWT token to the backend.");
 };
 
+<<<<<<< HEAD
 const loginWithFirebase = async ({ email, name }) => {
   const store = await getStore();
   let user = store.users.find((entry) => entry.email === email);
@@ -87,3 +67,6 @@ module.exports = {
   login,
   loginWithFirebase
 };
+=======
+module.exports = { signUp, login };
+>>>>>>> 4fc186f5da84b6998f44fdef320d46c05e6f9ec4

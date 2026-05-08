@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+const { insertGeneration } = require("../repositories/generationRepository");
+>>>>>>> 4fc186f5da84b6998f44fdef320d46c05e6f9ec4
 const { buildGenerationPlan } = require("./creativeEngine");
 const { getMemory } = require("./creativeMemory");
 const { findByUserId } = require("../repositories/feedbackRepository");
@@ -14,6 +18,7 @@ const sunoService = require("./sunoService");
 
 const generate = async ({ modality, prompt, controls, constraints, userId, audio_type, mode }) => {
   const memory = await getMemory(userId);
+<<<<<<< HEAD
   const feedbackHistory = await findByUserId(userId, 30);
   const feedbackSummary = summarizeFeedback(feedbackHistory);
   const adaptiveProfile = buildAdaptiveProfile({ memory, feedbackSummary });
@@ -108,6 +113,11 @@ const generate = async ({ modality, prompt, controls, constraints, userId, audio
   }
 
   const plan = await buildGenerationPlan({
+=======
+  const plan = await buildGenerationPlan({ modality, prompt, controls, constraints, memory });
+  const generation = {
+    id: uuid(),
+>>>>>>> 4fc186f5da84b6998f44fdef320d46c05e6f9ec4
     modality,
     prompt,
     controls: adaptiveControls,
@@ -121,9 +131,19 @@ const generate = async ({ modality, prompt, controls, constraints, userId, audio
     output: safeOutput,
     reasoning: plan.intent,
     crossModal: plan.crossModal,
+<<<<<<< HEAD
     userId,
     adaptiveProfile
   });
+=======
+    createdAt: new Date().toISOString(),
+    userId
+  };
+
+  await insertGeneration(generation);
+
+  return generation;
+>>>>>>> 4fc186f5da84b6998f44fdef320d46c05e6f9ec4
 };
 
 module.exports = {

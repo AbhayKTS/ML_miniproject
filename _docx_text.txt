@@ -1,0 +1,8337 @@
+         
+       
+ 
+Institute of Engineering &amp; Technology
+                 
+           
+ 
+Department of Computer Engineering &amp; Application
+   
+          
+ 
+Deepfake
+ 
+Video
+ 
+Detection
+ 
+And 
+Analysis
+A
+ 
+Project
+ 
+Report
+ 
+submitted
+ 
+in
+ 
+partial
+ 
+fulfilment
+ 
+of
+ 
+the
+ 
+requirements
+ 
+       
+for
+ 
+the award of the degree of
+                                
+      
+Bachelor
+ 
+of
+ 
+Technology
+                                                                                          
+  
+        in
+                                  
+     
+  
+Computer
+ 
+Science
+ 
+and
+ 
+Engineering
+(AIML)
+                                                     
+by
+                            
+ 
+ 
+  
+   
+Priyanshu Bhardwaj(2215500114) 
+                                      
+ 
+Rahul
+ 
+Gangwar(2215500118) 
+                                       
+     
+ 
+Sachin Kumar(2215500125)
+Group
+ 
+No.:
+ 
+02
+Under
+ 
+the
+ 
+Guidance
+ 
+of
+<w:tab w:val="left" w:pos="6829"/><w:tab w:val="left" w:pos="10473"/></w:tabs><w:rPr><w:sz w:val="36"/></w:rPr></w:pPr><w:r><w:rPr><w:spacing w:val="-2"/><w:w w:val="70"/><w:sz w:val="36"/></w:rPr><w:t>Mr.
+ 
+Preshit
+ 
+Mangesh
+ 
+Desai
+</w:r><w:r><w:rPr><w:spacing w:val="-2"/><w:w w:val="70"/><w:sz w:val="36"/></w:rPr><w:t>Signature
+ 
+:
+ 
+</w:r></w:p><w:p w:rsidR="004251DE" w:rsidRDefault="004251DE" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="Heading1"/><w:ind w:left="995" w:right="1314" w:firstLine="445"/><w:rPr><w:sz w:val="36"/></w:rPr></w:pPr></w:p><w:p w:rsidR="008A42F6" w:rsidRDefault="008A42F6" w:rsidP="008A42F6"><w:pPr><w:spacing w:line="338" w:lineRule="exact"/><w:rPr><w:b/><w:sz w:val="41"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="41"/></w:rPr><w:t xml:space="preserve">  
+         
+DECLARATION
+We, 
+Shivam Gupta, Satyam Kumar Singh, Priyanshu Bhardwaj , Ayush Agrawal , Rahul Gangwar , and
+ 
+Sachin Kumar 
+students of B.Tech in
+ 
+Computer Science and Engineering (Artificial Intelligence and Machine Learning) at GLA University, Mathura, hereby solemnly declare that the project report entitled 
+―Deepfake Video Detection and Analysis 
+‖ submitted in partial fulfillment of the requirements for the award of the degree of Bachelor of Technology, is an authentic record of our original work carried out during the eighth semester under the valuable guidance and supervision of 
+Mr. Preshit Mangesh Desai 
+, Department of Computer Engineering &amp; Applications.
+We further declare that the work presented in this report is a result of our own efforts, research, and contributions, except where explicit references have been made.
+ 
+The
+ 
+findings,
+ 
+designs,
+ 
+implementations, and conclusions
+ 
+drawn are
+ 
+based
+ 
+on the project conducted by us. This work has not been submitted elsewhere, either in part or in full, for the award of any degree, diploma, or academic qualification.
+We also acknowledge that we have adhered to the ethical guidelines, academic integrity, and project norms set by the University throughout the course of this 
+project.
+CERTIFICATE
+This is to certify that the project report entitled ―
+Deepfake Video Detection and Analysis‖ 
+submitted by Shivam Gupta (2215500144), Satyam Kumar Singh (2215500139), Priyanshu Bhardwaj (2215500114), Ayush Agrawal (2215500040)
+, Rahul Gangwar (2215500118) , and Sachin kumar (2215500125) in partial fulfillment of the requirements for the award of the degree of Bachelor of Technology in Computer Science and Engineering (Artificial Intelligence and Machine Learning) from GLA University, Mathura, is a bona fide record of the original work carried out by them under my supervision and guidance during the academic year 2025–2026.
+The work embodied in this report is genuine to the best of my knowledge and has not been submitted, either in part or in full, for the award of any other degree or diploma in this or any other institution. The students have fulfilled all the requirements as per the academic guidelines prescribed by the University.
+                       
+Mr.
+ 
+Preshit
+ 
+Mangesh
+ 
+Desai
+Technical
+ 
+Trainer
+Department
+ 
+of
+ 
+Computer
+ 
+Engineering
+ 
+&amp;
+ 
+Applications GLA University, Mathura
+                        
+ACKNOWLEDGEMENT
+The successful completion of any project is never the work of a single individual.
+ 
+It is the
+ 
+culmination of
+ 
+collective
+ 
+effort,
+ 
+guidance,
+ 
+and
+ 
+support
+ 
+from
+ 
+many
+ 
+quarters. We take this opportunity to express our profound gratitude to all those who have contributed directly or indirectly to the successful execution of this project.
+First and foremost, we extend our deepest gratitude to our project guide, Mr. Preshit Mangesh Desai , Technical Trainer , Department of Computer Engineering &amp; Applications, for her continuous guidance, constructive criticism, and immense patience throughout the duration of this work. His deep knowledge of artificial intelligence, generous sharing of ideas, and constant encouragement have been the cornerstone of this project.
+We are also grateful to the Head of Department and all faculty members for providing the necessary infrastructure and academic environment. Finally, we thank our parents and friends for their unwavering moral support.
+ABSTRACT
+The growing computation power has made the deep learning algorithms so pow-
+ 
+erful that creating a indistinguishable human synthesized video popularly called as
+ 
+deep fakes have became very simple.
+ 
+Scenarios where these realistic face swapped
+ 
+deep fakes are used to create political distress, fake terrorism events, revenge porn,
+ 
+blackmail peoples are easily envisioned.
+ 
+In this work,
+ 
+we describe a new deep
+ 
+learning-based
+ 
+method
+ 
+that
+ 
+can
+ 
+effectively
+ 
+distinguish
+ 
+AI-generated
+ 
+fake
+ 
+videos
+ 
+from real videos.Our method is capable of automatically detecting the replacement
+ 
+and reenactment deep fakes. We are trying to use Artificial Intelligence(AI) to fight
+ 
+Artificial Intelligence(AI). Our system uses a Res-Next Convolution neural network
+ 
+to extract the frame-level features and these features and further used to train the
+ 
+Long Short Term Memory(LSTM) based Recurrent Neural Network(RNN) to clas-
+ 
+sify whether the video is subject to any kind of manipulation or not, i.e whether the
+ 
+video is deep fake or real video.
+ 
+To emulate the real time scenarios and make the
+ 
+model perform better on real time data, we evaluate our method on large amount of
+ 
+balanced and mixed data-set prepared by mixing the various available data-set like
+ 
+Face-Forensic++[1], Deepfake detection challenge[2], and Celeb-DF[3].
+ 
+We also
+ 
+show how our system can achieve competitive result using very simple and robust
+ 
+approach.
+Keywords:
+Res-Next
+ 
+Convolution
+ 
+neural
+ 
+network.
+ 
+Recurrent
+ 
+Neural
+ 
+Network
+ 
+(RNN).
+Long
+ 
+Short
+ 
+Term
+ 
+Memory(LSTM).
+ 
+Computer
+ 
+vision
+Contents
+<w:tab w:val="left" w:pos="542"/><w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:spacing w:before="386"/></w:pPr><w:r><w:t>Synopsis
+<w:t>1
+<w:tab w:val="left" w:pos="542"/><w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs></w:pPr><w:r><w:t>Technical
+ 
+Keywords
+<w:t>2
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="3196"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:spacing w:before="84"/><w:ind w:left="542" w:firstLine="0"/></w:pPr><w:hyperlink w:anchor="_TOC_250068" w:history="1"><w:r w:rsidR="00813258"><w:t>2.1
+<w:t>Area
+ 
+of
+ 
+Project
+<w:t>.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+<w:t>2
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:ind w:left="542" w:firstLine="0"/></w:pPr><w:hyperlink w:anchor="_TOC_250067" w:history="1"><w:r w:rsidR="00813258"><w:t>2.2
+<w:t>Technical
+ 
+Keywords
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+<w:t>2
+<w:tab w:val="left" w:pos="542"/><w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs></w:pPr><w:r><w:t>Introduction
+<w:t>3
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:spacing w:before="84"/><w:ind w:left="542" w:firstLine="0"/></w:pPr><w:hyperlink w:anchor="_TOC_250066" w:history="1"><w:r w:rsidR="00813258"><w:t>3.1
+<w:t>Project
+ 
+Idea
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+<w:t>3
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:ind w:left="542" w:firstLine="0"/></w:pPr><w:hyperlink w:anchor="_TOC_250065" w:history="1"><w:r w:rsidR="00813258"><w:t>3.2
+<w:t>Motivation
+ 
+of
+ 
+the
+ 
+Project
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+<w:t>4
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="3411"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:ind w:left="542" w:firstLine="0"/></w:pPr><w:hyperlink w:anchor="_TOC_250064" w:history="1"><w:r w:rsidR="00813258"><w:t>3.3
+<w:t>Literature
+ 
+Survey
+<w:t>.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+<w:t>5
+<w:tab w:val="left" w:pos="542"/><w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs></w:pPr><w:r><w:t>Problem
+ 
+Definition
+ 
+and
+ 
+scope
+<w:t>7
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="3626"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:spacing w:before="84"/><w:ind w:left="542" w:firstLine="0"/></w:pPr><w:hyperlink w:anchor="_TOC_250063" w:history="1"><w:r w:rsidR="00813258"><w:t>4.1
+<w:t>Problem
+ 
+Statement
+<w:t>.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+<w:t>7
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="4702"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:ind w:left="1202" w:firstLine="0"/></w:pPr><w:hyperlink w:anchor="_TOC_250062" w:history="1"><w:r w:rsidR="00813258"><w:t>4.1.1
+<w:t>Goals
+ 
+and
+ 
+objectives
+<w:t>.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+<w:t>7
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:ind w:left="1202" w:firstLine="0"/></w:pPr><w:hyperlink w:anchor="_TOC_250061" w:history="1"><w:r w:rsidR="00813258"><w:t>4.1.2
+<w:t>Statement
+ 
+of
+ 
+scope
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+<w:t>8
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:spacing w:before="84"/><w:ind w:left="542" w:firstLine="0"/></w:pPr><w:hyperlink w:anchor="_TOC_250060" w:history="1"><w:r w:rsidR="00813258"><w:t>4.2
+<w:t>Major
+ 
+Constraints
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+<w:t>8
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250059" w:history="1"><w:r w:rsidR="00813258"><w:t>Methodologies
+ 
+of
+ 
+Problem
+ 
+solving
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+<w:t>9
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="3411"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:ind w:left="1202" w:firstLine="0"/></w:pPr><w:hyperlink w:anchor="_TOC_250058" w:history="1"><w:r w:rsidR="00813258"><w:t>4.3.1
+<w:t>Analysis
+<w:t>.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+ 
+.
+<w:t>9
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/></w:pPr><w:hyperlink w:anchor="_TOC_250057" w:history="1"><w:r w:rsidR="00813258"><w:t>Design
+<w:t>10
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250056" w:history="1"><w:r w:rsidR="00813258"><w:t>Development
+<w:t>10
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250055" w:history="1"><w:r w:rsidR="00813258"><w:t>Evaluation
+<w:t>10
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/></w:pPr><w:hyperlink w:anchor="_TOC_250054" w:history="1"><w:r w:rsidR="00813258"><w:t>Outcome
+<w:t>10
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250053" w:history="1"><w:r w:rsidR="00813258"><w:t>Applications
+<w:t>10
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250052" w:history="1"><w:r w:rsidR="00813258"><w:t>Hardware
+ 
+Resources
+ 
+Required
+<w:t>10
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250051" w:history="1"><w:r w:rsidR="00813258"><w:t>Software
+ 
+Resources
+ 
+Required
+<w:t>11
+<w:tab w:val="left" w:pos="542"/><w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:spacing w:before="371"/></w:pPr><w:r><w:t>Project
+ 
+Plan
+<w:t>12
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250050" w:history="1"><w:r w:rsidR="00813258"><w:t>Project
+ 
+Model
+ 
+Analysis
+<w:t>12
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250049" w:history="1"><w:r w:rsidR="00813258"><w:t>Reconciled
+ 
+Estimates
+<w:t>13
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:spacing w:before="84" w:after="20"/></w:pPr><w:hyperlink w:anchor="_TOC_250048" w:history="1"><w:r w:rsidR="00813258"><w:t>Cost
+ 
+Estimation
+ 
+using
+ 
+COCOMO(Constructive
+ 
+Cost)
+ 
+Model
+<w:t>13
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="88"/></w:pPr><w:hyperlink w:anchor="_TOC_250047" w:history="1"><w:r w:rsidR="00813258"><w:t>Risk
+ 
+Management
+ 
+w.r.t.
+ 
+NP
+ 
+Hard
+ 
+analysis
+<w:t>14
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250046" w:history="1"><w:r w:rsidR="00813258"><w:t>Risk
+ 
+Identification
+<w:t>14
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250045" w:history="1"><w:r w:rsidR="00813258"><w:t>Risk
+ 
+Analysis
+<w:t>14
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/></w:pPr><w:hyperlink w:anchor="_TOC_250044" w:history="1"><w:r w:rsidR="00813258"><w:t>Project
+ 
+Schedule
+<w:t>16
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250043" w:history="1"><w:r w:rsidR="00813258"><w:t>Project
+ 
+task
+ 
+set
+<w:t>16
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250042" w:history="1"><w:r w:rsidR="00813258"><w:t>Timeline
+ 
+chart
+<w:t>16
+<w:tab w:val="left" w:pos="542"/><w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs></w:pPr><w:r><w:t>Software
+ 
+requirement
+ 
+specification
+<w:t>17
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/></w:pPr><w:hyperlink w:anchor="_TOC_250041" w:history="1"><w:r w:rsidR="00813258"><w:t>Introduction
+<w:t>17
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250040" w:history="1"><w:r w:rsidR="00813258"><w:t>Purpose
+ 
+and
+ 
+Scope
+ 
+of
+ 
+Document
+<w:t>17
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250039" w:history="1"><w:r w:rsidR="00813258"><w:t>Use
+ 
+Case
+ 
+View
+<w:t>17
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/></w:pPr><w:hyperlink w:anchor="_TOC_250038" w:history="1"><w:r w:rsidR="00813258"><w:t>Functional
+ 
+Model
+ 
+and
+ 
+Description
+<w:t>18
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250037" w:history="1"><w:r w:rsidR="00813258"><w:t>Data
+ 
+Flow
+ 
+Diagram
+<w:t>18
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250036" w:history="1"><w:r w:rsidR="00813258"><w:t>Activity
+ 
+Diagram:
+<w:t>20
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/></w:pPr><w:hyperlink w:anchor="_TOC_250035" w:history="1"><w:r w:rsidR="00813258"><w:t>Non
+ 
+Functional
+ 
+Requirements:
+<w:t>21
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250034" w:history="1"><w:r w:rsidR="00813258"><w:t>Sequence
+ 
+Diagram
+<w:t>22
+<w:tab w:val="left" w:pos="542"/><w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs></w:pPr><w:r><w:t>Detailed
+ 
+Design
+ 
+Document
+<w:t>23
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250033" w:history="1"><w:r w:rsidR="00813258"><w:t>Introduction
+<w:t>23
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/></w:pPr><w:hyperlink w:anchor="_TOC_250032" w:history="1"><w:r w:rsidR="00813258"><w:t>System
+ 
+Architecture
+<w:t>23
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250031" w:history="1"><w:r w:rsidR="00813258"><w:t>Architectural
+ 
+Design
+<w:t>25
+<w:tab w:val="left" w:pos="2192"/><w:tab w:val="left" w:pos="2193"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:ind w:left="2192" w:hanging="991"/></w:pPr><w:hyperlink w:anchor="_TOC_250030" w:history="1"><w:r w:rsidR="00813258"><w:t>Module
+ 
+1
+ 
+:
+ 
+Data-set
+ 
+Gathering
+<w:t>25
+<w:tab w:val="left" w:pos="2192"/><w:tab w:val="left" w:pos="2193"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/><w:ind w:left="2192" w:hanging="991"/></w:pPr><w:hyperlink w:anchor="_TOC_250029" w:history="1"><w:r w:rsidR="00813258"><w:t>Module
+ 
+2
+ 
+:
+ 
+Pre-processing
+<w:t>26
+<w:tab w:val="left" w:pos="2192"/><w:tab w:val="left" w:pos="2193"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:ind w:left="2192" w:hanging="991"/></w:pPr><w:hyperlink w:anchor="_TOC_250028" w:history="1"><w:r w:rsidR="00813258"><w:t>Module
+ 
+3:
+ 
+Data-set
+ 
+split
+<w:t>27
+<w:tab w:val="left" w:pos="2192"/><w:tab w:val="left" w:pos="2193"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:ind w:left="2192" w:hanging="991"/></w:pPr><w:hyperlink w:anchor="_TOC_250027" w:history="1"><w:r w:rsidR="00813258"><w:t>Module
+ 
+4:
+ 
+Model
+ 
+Architecture
+<w:t>28
+<w:tab w:val="left" w:pos="2192"/><w:tab w:val="left" w:pos="2193"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/><w:ind w:left="2192" w:hanging="991"/></w:pPr><w:hyperlink w:anchor="_TOC_250026" w:history="1"><w:r w:rsidR="00813258"><w:t>Module
+ 
+5:
+ 
+Hyper-parameter
+ 
+tuning
+<w:t>29
+<w:tab w:val="left" w:pos="542"/><w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs></w:pPr><w:r><w:t>Project
+ 
+Implementation
+<w:t>31
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250025" w:history="1"><w:r w:rsidR="00813258"><w:t>Introduction
+<w:t>31
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250024" w:history="1"><w:r w:rsidR="00813258"><w:t>Tools
+ 
+and
+ 
+Technologies
+ 
+Used
+<w:t>32
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/></w:pPr><w:hyperlink w:anchor="_TOC_250023" w:history="1"><w:r w:rsidR="00813258"><w:t>Planning
+<w:t>32
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250022" w:history="1"><w:r w:rsidR="00813258"><w:t>UML
+ 
+Tools
+<w:t>32
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250021" w:history="1"><w:r w:rsidR="00813258"><w:t>Programming
+ 
+Languages
+<w:t>32
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/></w:pPr><w:hyperlink w:anchor="_TOC_250020" w:history="1"><w:r w:rsidR="00813258"><w:t>Programming
+ 
+Frameworks
+<w:t>32
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250019" w:history="1"><w:r w:rsidR="00813258"><w:t>IDE
+<w:t>32
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250018" w:history="1"><w:r w:rsidR="00813258"><w:t>Versioning
+ 
+Control
+<w:t>32
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84" w:after="225"/></w:pPr><w:hyperlink w:anchor="_TOC_250017" w:history="1"><w:r w:rsidR="00813258"><w:t>Cloud
+ 
+Services
+<w:t>32
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="88"/></w:pPr><w:hyperlink w:anchor="_TOC_250016" w:history="1"><w:r w:rsidR="00813258"><w:t>Application
+ 
+and
+ 
+web
+ 
+servers:
+<w:t>33
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250015" w:history="1"><w:r w:rsidR="00813258"><w:t>Libraries
+<w:t>33
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250014" w:history="1"><w:r w:rsidR="00813258"><w:t>Algorithm
+ 
+Details
+<w:t>33
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/></w:pPr><w:hyperlink w:anchor="_TOC_250013" w:history="1"><w:r w:rsidR="00813258"><w:t>Dataset
+ 
+Details
+<w:t>33
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250012" w:history="1"><w:r w:rsidR="00813258"><w:t>Preprocessing
+ 
+Details
+<w:t>33
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250011" w:history="1"><w:r w:rsidR="00813258"><w:t>Model
+ 
+Details
+<w:t>34
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250010" w:history="1"><w:r w:rsidR="00813258"><w:t>Model
+ 
+Training
+ 
+Details
+<w:t>37
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/></w:pPr><w:hyperlink w:anchor="_TOC_250009" w:history="1"><w:r w:rsidR="00813258"><w:t>Model
+ 
+Prediction
+ 
+Details
+<w:t>39
+<w:tab w:val="left" w:pos="542"/><w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs></w:pPr><w:r><w:t>Software
+ 
+Testing
+<w:t>40
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250008" w:history="1"><w:r w:rsidR="00813258"><w:t>Type
+ 
+of
+ 
+Testing
+ 
+Used
+<w:t>40
+<w:tab w:val="left" w:pos="1202"/><w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/></w:pPr><w:hyperlink w:anchor="_TOC_250007" w:history="1"><w:r w:rsidR="00813258"><w:t>Test
+ 
+Cases
+ 
+and
+ 
+Test
+ 
+Results
+<w:t>41
+<w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs></w:pPr><w:r><w:t>Results
+ 
+and
+ 
+Discussion
+<w:t>42
+<w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250006" w:history="1"><w:r w:rsidR="00813258"><w:t>Screen
+ 
+shots
+<w:t>42
+<w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250005" w:history="1"><w:r w:rsidR="00813258"><w:t>Outputs
+<w:t>46
+<w:tab w:val="left" w:pos="2120"/><w:tab w:val="left" w:pos="2121"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/></w:pPr><w:hyperlink w:anchor="_TOC_250004" w:history="1"><w:r w:rsidR="00813258"><w:t>Model
+ 
+results
+<w:t>46
+<w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs></w:pPr><w:r><w:t>Deployment
+ 
+and
+ 
+Maintenance
+<w:t>48
+<w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250003" w:history="1"><w:r w:rsidR="00813258"><w:t>Deployment
+<w:t>48
+<w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs><w:spacing w:before="84"/></w:pPr><w:hyperlink w:anchor="_TOC_250002" w:history="1"><w:r w:rsidR="00813258"><w:t>Maintenance
+<w:t>48
+<w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs></w:pPr><w:r><w:t>Conclusion
+ 
+and
+ 
+Future
+ 
+Scope
+<w:t>50
+<w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250001" w:history="1"><w:r w:rsidR="00813258"><w:t>Conclusion
+<w:t>50
+<w:tab w:val="left" w:pos="1203"/><w:tab w:val="right" w:leader="dot" w:pos="9713"/></w:tabs></w:pPr><w:hyperlink w:anchor="_TOC_250000" w:history="1"><w:r w:rsidR="00813258"><w:t>Future
+ 
+Scope
+<w:t>50
+<w:tab w:val="left" w:pos="542"/><w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:spacing w:before="371"/></w:pPr><w:r><w:t>References
+<w:t>51
+<w:tab w:val="left" w:pos="542"/><w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs></w:pPr><w:r><w:t>Project
+ 
+Planner
+<w:t>53
+<w:tab w:val="left" w:pos="542"/><w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs></w:pPr><w:r><w:t>Paper
+ 
+Published
+ 
+Summary
+<w:t>55
+<w:tab w:val="left" w:pos="542"/><w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs></w:pPr><w:r><w:t>Participation
+ 
+Certificate
+<w:t>59
+<w:tab w:val="left" w:pos="542"/><w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:spacing w:before="371"/></w:pPr><w:r><w:t>Plagiarism
+ 
+Report
+<w:t>60
+<w:tab w:val="left" w:pos="542"/><w:tab w:val="left" w:pos="543"/><w:tab w:val="right" w:pos="9713"/></w:tabs><w:sectPr w:rsidR="00813258"><w:type w:val="continuous"/><w:pgSz w:w="11910" w:h="16840"/><w:pgMar w:top="899" w:right="440" w:bottom="1069" w:left="1040" w:header="720" w:footer="720" w:gutter="0"/><w:cols w:space="720"/></w:sectPr></w:pPr><w:r><w:t>Information
+ 
+of
+ 
+Project
+ 
+Group
+ 
+Members
+<w:t>61
+Chapter
+ 
+1
+ 
+Synopsis
+Deep fake is a technique for human image synthesis based on neural network tools
+ 
+like GAN(Generative Adversarial Network) or Auto Encoders etc.
+ 
+These tools su-
+ 
+per impose target images onto source videos using a deep learning techniques and
+ 
+create a realistic looking deep fake video.
+ 
+These deep-fake video are so real that it
+ 
+becomes
+ 
+impossible
+ 
+to
+ 
+spot
+ 
+difference
+ 
+by
+ 
+the
+ 
+naked
+ 
+eyes.
+ 
+In
+ 
+this
+ 
+work,
+ 
+we
+ 
+describe
+ 
+a new deep learning-based method that can effectively distinguish AI-generated fake
+ 
+videos
+ 
+from
+ 
+real
+ 
+videos.
+ 
+We
+ 
+are
+ 
+using
+ 
+the
+ 
+limitation
+ 
+of
+ 
+the
+ 
+deep
+ 
+fake
+ 
+creation
+ 
+tools
+ 
+as
+ 
+a
+ 
+powerful
+ 
+way
+ 
+to
+ 
+distinguish
+ 
+between
+ 
+the
+ 
+pristine
+ 
+and
+ 
+deep
+ 
+fake
+ 
+videos.
+ 
+Dur-
+ 
+ing the creation of the deep fake the current deep fake creation tools leaves some
+ 
+distinguishable artifacts in the frames which may not be visible to the human being
+ 
+but the trained neural networks can spot the changes. Deepfake creation tools leave
+ 
+distinctive artefacts in the resulting Deep Fake videos, and we show that they can be
+ 
+effectively
+ 
+captured
+ 
+by
+ 
+Res-Next
+ 
+Convolution
+ 
+Neural
+ 
+Networks.
+Our system uses a Res-Next Convolution Neural Networks to extract frame-level
+ 
+features.
+ 
+These features are then used to train a Long Short Term Memory(LSTM)
+ 
+based
+ 
+Recurrent
+ 
+Neural
+ 
+Network(RNN)
+ 
+to
+ 
+classify
+ 
+whether
+ 
+the
+ 
+video
+ 
+is
+ 
+subject
+ 
+to
+ 
+any kind of manipulation or not, i.e whether the video is deep fake or real video. We
+ 
+proposed to evaluate our method against a large set of deep fake videos collected
+ 
+from multiple video websites.
+ 
+We are tried to make the deep fake detection model
+ 
+perform better on real time data.
+ 
+To achieve this we trained our model on combi-
+ 
+nation of available data-sets.So that our model can learn the features from different
+ 
+kind of images. We extracted a adequate amount of videos from Face-Forensic++[1],
+ 
+Deepfake detection challenge[2], and Celeb-DF[3] data-sets. We also evaluated our
+ 
+model against the large amount of real time data like YouTube data-set to achieve
+ 
+competitive
+ 
+results
+ 
+in
+ 
+the
+ 
+real
+ 
+time
+ 
+scenario’s.
+Chapter
+ 
+2
+ 
+Technical
+ 
+Keywords
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs><w:spacing w:before="354"/></w:pPr><w:bookmarkStart w:id="0" w:name="_TOC_250068"/><w:r><w:t>Area
+ 
+of
+ 
+Project
+Our project is a Deep learning project which is a sub branch of Artificial Intelligence
+ 
+and deals with the human brain inspired neural network technology.
+ 
+Computer vi-
+ 
+sion plays an important role in our project.
+ 
+It helps in processing the video and
+ 
+frames with the help of Open-CV. A PyTorch trained model is a classifier to classify
+ 
+the
+ 
+source
+ 
+video
+ 
+as
+ 
+deepfake
+ 
+or
+ 
+pristine.
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs></w:pPr><w:bookmarkStart w:id="1" w:name="_TOC_250067"/><w:r><w:t>Technical
+ 
+Keywords
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="367"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Deep
+ 
+learning
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Computer
+ 
+vision
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Res-Next
+ 
+Convolution
+ 
+Neural
+ 
+Network
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Long
+ 
+short-term
+ 
+memory
+ 
+(LSTM)
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>OpenCV
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Face
+ 
+Recognition
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>GAN
+ 
+(Generative
+ 
+Adversarial
+ 
+Network)
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>PyTorch.
+Chapter
+ 
+3
+ 
+Introduction
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs><w:spacing w:before="354"/></w:pPr><w:bookmarkStart w:id="2" w:name="_TOC_250066"/><w:r><w:t>Project
+ 
+Idea
+In the world of ever growing Social media platforms, Deepfakes are con-
+ 
+sidered as the major threat of the AI. There are many Scenarios where these
+ 
+realistic face swapped deepfakes are used to create political distress, fake ter-
+ 
+rorism events, revenge porn, blackmail peoples are easily envisioned.Some of
+ 
+the
+ 
+examples
+ 
+are
+ 
+Brad
+ 
+Pitt,
+ 
+Angelina
+ 
+Jolie
+ 
+nude
+ 
+videos.
+It becomes very important to spot the difference between the deepfake and pris-
+ 
+tine video.
+ 
+We are using AI to fight AI.Deepfakes are created using tools like
+ 
+FaceApp[11] and Face Swap [12], which using pre-trained neural networks like
+ 
+GAN or Auto encoders for these deepfakes creation. Our method uses a LSTM
+ 
+based
+ 
+artificial
+ 
+neural
+ 
+network
+ 
+to
+ 
+process
+ 
+the
+ 
+sequential
+ 
+temporal
+ 
+analysis
+ 
+of
+ 
+the video frames and pre-trained Res-Next CNN to extract the frame level fea-
+ 
+tures.   ResNext Convolution neural network extracts the frame-level features
+ 
+and these features are further used to train the Long Short Term Memory based
+ 
+artificial
+ 
+Recurrent
+ 
+Neural
+ 
+Network
+ 
+to
+ 
+classify
+ 
+the
+ 
+video
+ 
+as
+ 
+Deepfake
+ 
+or
+ 
+real.
+ 
+To emulate the real time scenarios and make the model perform better on real
+ 
+time data, we trained our method with large amount of balanced and combi-
+ 
+nation of various available dataset like FaceForensic++[1], Deepfake detection
+ 
+challenge[2],
+ 
+and
+ 
+Celeb-DF[3].
+Further to make the ready to use for the customers, we have developed a front
+ 
+end
+ 
+application
+ 
+where
+ 
+the
+ 
+user
+ 
+the
+ 
+user
+ 
+will
+ 
+upload
+ 
+the
+ 
+video.
+ 
+The
+ 
+video
+ 
+will
+ 
+be processed by the model and the output will be rendered back to the user with
+ 
+the
+ 
+classification
+ 
+of
+ 
+the
+ 
+video
+ 
+as
+ 
+deepfake
+ 
+or
+ 
+real
+ 
+and
+ 
+confidence
+ 
+of
+ 
+the
+ 
+model.
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs><w:spacing w:before="161"/></w:pPr><w:bookmarkStart w:id="3" w:name="_TOC_250065"/><w:r><w:lastRenderedPageBreak/><w:t>Motivation
+ 
+of
+ 
+the
+ 
+Project
+The increasing sophistication of mobile camera technology and the ever-
+ 
+growing reach of social media and media sharing portals have made the cre-
+ 
+ation and propagation of digital videos more convenient than ever before. Deep
+ 
+learning has given rise to technologies that would have been thought impossi-
+ 
+ble only a handful of years ago. Modern generative models are one example of
+ 
+these, capable of synthesizing hyper realistic images, speech, music, and even
+ 
+video. These models have found use in a wide variety of applications, including
+ 
+making the world more accessible through text-to-speech, and helping generate
+ 
+training
+ 
+data
+ 
+for
+ 
+medical
+ 
+imaging.
+Like any trans-formative technology, this has created new challenges. So-called
+ 
+"deep fakes"
+ 
+produced by deep generative
+ 
+models that can manipulate
+ 
+video
+ 
+and audio clips.
+ 
+Since their first appearance in late 2017, many open-source
+ 
+deep fake generation methods and tools have emerged now, leading to a grow-
+ 
+ing number of synthesized media clips.
+ 
+While many are likely intended to be
+ 
+humorous, others could be harmful to individuals and society.
+ 
+Until recently,
+ 
+the number of fake videos and their degrees of realism has been increasing due
+ 
+to
+ 
+availability
+ 
+of
+ 
+the
+ 
+editing
+ 
+tools,
+ 
+the
+ 
+high
+ 
+demand
+ 
+on
+ 
+domain
+ 
+expertise.
+Spreading of the Deep fakes over the social media platforms have become very
+ 
+common leading to spamming and peculating wrong information over the plat-
+ 
+form.
+ 
+Just imagine a deep fake of our prime minister declaring war against
+ 
+neighboring countries, or a Deep fake of reputed celebrity abusing the fans.
+ 
+These types of the deep fakes will be terrible, and lead to threatening, mislead-
+ 
+ing
+ 
+of
+ 
+common
+ 
+people.
+To overcome such a situation, Deep fake detection is very important.
+ 
+So, we
+ 
+describe a new deep learning-based method that can effectively distinguish AI-
+ 
+generated fake videos (Deep Fake Videos) from real videos.
+ 
+It’s incredibly
+ 
+important to develop technology that can spot fakes, so that the deep fakes can
+ 
+be
+ 
+identified
+ 
+and
+ 
+prevented
+ 
+from
+ 
+spreading
+ 
+over
+ 
+the
+ 
+internet.
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs><w:spacing w:before="161"/></w:pPr><w:bookmarkStart w:id="4" w:name="_TOC_250064"/><w:r><w:lastRenderedPageBreak/><w:t>Literature
+ 
+Survey
+Face Warping Artifacts [15] used the approach to detect artifacts by com-
+ 
+paring the generated face areas and their surrounding regions with a dedicated
+ 
+Convolutional Neural Network model. In this work there were two-fold of Face
+ 
+Artifacts.
+Their method is based on the observations that current deepfake algorithm can
+ 
+only generate images of limited resolutions, which are then needed to be fur-
+ 
+ther transformed to match the faces to be replaced in the source video.
+ 
+Their
+ 
+method
+ 
+has
+ 
+not
+ 
+considered
+ 
+the
+ 
+temporal
+ 
+analysis
+ 
+of
+ 
+the
+ 
+frames.
+Detection by Eye Blinking [16] describes a new method for detecting the deep-
+ 
+fakes by the eye blinking as a crucial parameter leading to classification of the
+ 
+videos as deepfake or pristine. The Long-term Recurrent Convolution Network
+ 
+(LRCN) was used for temporal analysis of the cropped frames of eye blinking.
+ 
+As today the deepfake generation algorithms have become so powerful that lack
+ 
+of eye blinking can not be the only clue for detection of the deepfakes.
+ 
+There
+ 
+must be certain other parameters must be considered for the detection of deep-
+ 
+fakes like teeth enchantment, wrinkles on faces, wrong placement of eyebrows
+ 
+etc.
+Capsule networks to detect forged images and videos [17] uses a method that
+ 
+uses a capsule network to detect forged,
+ 
+manipulated images and videos in
+ 
+different scenarios, like replay attack detection and computer-generated video
+ 
+detection.
+In their method, they have used random noise in the training phase which is not
+ 
+a good option. Still the model performed beneficial in their dataset but may fail
+ 
+on real time data due to noise in training. Our method is proposed to be trained
+ 
+on
+ 
+noiseless
+ 
+and
+ 
+real
+ 
+time
+ 
+datasets.
+Recurrent Neural Network [18] (RNN) for deepfake detection used the ap-
+ 
+proach of using RNN for sequential processing of the frames along with Ima-
+ 
+geNet pre-trained model. Their process used the HOHO [19] dataset consisting
+ 
+of
+ 
+just
+ 
+600
+ 
+videos.
+Their dataset consists small number of videos and same type of videos, which
+ 
+may not perform very well on the real time data. We will be training out model
+ 
+on
+ 
+large
+ 
+number
+ 
+of
+ 
+Realtime
+ 
+data.
+Synthetic Portrait Videos using Biological Signals [20] approach extract bio-
+ 
+logical signals from facial regions on pristine and deepfake portrait video pairs.
+ 
+Applied transformations to compute the spatial coherence and temporal consis-
+ 
+tency, capture the signal characteristics in feature vector and photoplethysmog-
+ 
+raphy (PPG) maps, and further train a probabilistic Support Vector Machine
+ 
+(SVM) and a Convolutional Neural Network (CNN). Then, the average of au-
+ 
+thenticity probabilities is used to classify whether the video is a deepfake or a
+ 
+pristine.
+Fake Catcher detects fake content with high accuracy, independent of the gener-
+ 
+ator, content, resolution, and quality of the video. Due to lack of discriminator
+ 
+leading
+ 
+to
+ 
+the
+ 
+loss
+ 
+in
+ 
+their
+ 
+findings
+ 
+to
+ 
+preserve
+ 
+biological
+ 
+signals,
+ 
+formulating
+ 
+a
+ 
+differentiable
+ 
+loss
+ 
+function
+ 
+that
+ 
+follows
+ 
+the
+ 
+proposed
+ 
+signal
+ 
+processing
+ 
+steps
+ 
+is
+ 
+not
+ 
+straight
+ 
+forward
+ 
+process.
+Chapter
+ 
+4
+Problem
+ 
+Definition
+ 
+and
+ 
+scope
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs></w:pPr><w:bookmarkStart w:id="5" w:name="_TOC_250063"/><w:r><w:t>Problem
+ 
+Statement
+Convincing
+ 
+manipulations
+ 
+of
+ 
+digital
+ 
+images
+ 
+and
+ 
+videos
+ 
+have
+ 
+been
+ 
+demonstrated
+ 
+for several decades through the use of visual effects, recent advances in deep learn-
+ 
+ing have led to a dramatic increase in the realism of fake content and the accessibility
+ 
+in which it can be created. These so-called AI-synthesized media (popularly referred
+ 
+to as deep fakes).Creating the Deep Fakes using the Artificially intelligent tools are
+ 
+simple task.
+ 
+But, when it comes to detection of these Deep Fakes, it is major chal-
+ 
+lenge. Already in the history there are many examples where the deepfakes are used
+ 
+as powerful way to create political tension[14], fake terrorism events, revenge porn,
+ 
+blackmail peoples etc.So it becomes very important to detect these deepfake and
+ 
+avoid the percolation of deepfake through social media platforms. We have taken a
+ 
+step
+ 
+forward
+ 
+in
+ 
+detecting
+ 
+the
+ 
+deep
+ 
+fakes
+ 
+using
+ 
+LSTM
+ 
+based
+ 
+artificial
+ 
+Neural
+ 
+network.
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:ind w:hanging="862"/></w:pPr><w:bookmarkStart w:id="6" w:name="_TOC_250062"/><w:r><w:t>Goals
+ 
+and
+ 
+objectives
+Goal
+ 
+and
+ 
+Objectives:
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Our
+ 
+project
+ 
+aims
+ 
+at
+ 
+discovering
+ 
+the
+ 
+distorted
+ 
+truth
+ 
+of
+ 
+the
+ 
+deep
+ 
+fakes.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Our
+ 
+project
+ 
+will
+ 
+reduce
+ 
+the
+ 
+Abuses’
+ 
+and
+ 
+misleading
+ 
+of
+ 
+the
+ 
+common
+ 
+people
+ 
+on
+ 
+the
+ 
+world
+ 
+wide
+ 
+web.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="198"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Our
+ 
+project
+ 
+will
+ 
+distinguish
+ 
+and
+ 
+classify
+ 
+the
+ 
+video
+ 
+as
+ 
+deepfake
+ 
+or
+ 
+pristine.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Provide
+ 
+a
+ 
+easy
+ 
+to
+ 
+use
+ 
+system
+ 
+for
+ 
+used
+ 
+to
+ 
+upload
+ 
+the
+ 
+video
+ 
+and
+ 
+distinguish
+ 
+whether
+ 
+the
+ 
+video
+ 
+is
+ 
+real
+ 
+or
+ 
+fake.
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="114"/></w:pPr><w:bookmarkStart w:id="7" w:name="_TOC_250061"/><w:r><w:t>Statement
+ 
+of
+ 
+scope
+There are many tools available for creating the deep fakes, but for deep fake
+ 
+detection
+ 
+there
+ 
+is
+ 
+hardly
+ 
+any
+ 
+tool
+ 
+available.
+ 
+Our
+ 
+approach
+ 
+for
+ 
+detecting
+ 
+the
+ 
+deep fakes will be great contribution in avoiding the percolation of the deep
+ 
+fakes over the world wide web. We will be providing a web-based platform for
+ 
+the user to upload the video and classify it as fake or real. This project can be
+ 
+scaled up from developing a web-based platform to a browser plugin for au-
+ 
+tomatic deep fake detection’s. Even big application like WhatsApp, Facebook
+ 
+can integrate this project with their application for easy pre-detection of deep
+ 
+fakes before sending to another user. A description of the software with Size of
+ 
+input, bounds on input, input validation, input dependency, i/o state diagram,
+ 
+Major inputs, and outputs are described without regard to implementation de-
+ 
+tail.
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs></w:pPr><w:bookmarkStart w:id="8" w:name="_TOC_250060"/><w:r><w:t>Major
+ 
+Constraints
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="366" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>User:
+ 
+User
+ 
+of
+ 
+the
+ 
+application
+ 
+will
+ 
+be
+ 
+able
+ 
+detect
+ 
+the
+ 
+whether
+ 
+the
+ 
+uploaded
+ 
+video
+ 
+is
+ 
+fake
+ 
+or
+ 
+real,
+ 
+Along
+ 
+with
+ 
+the
+ 
+model
+ 
+confidence
+ 
+of
+ 
+the
+ 
+prediction.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Prediction:
+ 
+The User will be able to see the playing video with the output on
+ 
+the
+ 
+face
+ 
+along
+ 
+with
+ 
+the
+ 
+confidence
+ 
+of
+ 
+the
+ 
+model.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="198" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Easy and User-friendly User-Interface:
+ 
+Users seem to prefer a more sim-
+ 
+plified process of Deep Fake video detection.
+ 
+Hence, a straight forward and
+ 
+user-friendly
+ 
+interface
+ 
+is
+ 
+implemented.The
+ 
+UI
+ 
+contains
+ 
+a
+ 
+browse
+ 
+tab
+ 
+to
+ 
+select
+ 
+the video for processing.
+ 
+It reduces the complications and at the same time
+ 
+enrich
+ 
+the
+ 
+user
+ 
+experience.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="196" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Cross-platform compatibility:
+ 
+with an ever-increasing target market, acces-
+ 
+sibility should be your main priority. By enabling a cross-platform compatibil-
+ 
+ity feature, you can increase your reach to across different platforms.
+ 
+Being a
+ 
+server side application it will run on any device that has a web browser installed
+ 
+in
+ 
+it.
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs><w:spacing w:before="161"/></w:pPr><w:bookmarkStart w:id="9" w:name="_TOC_250059"/><w:r><w:lastRenderedPageBreak/><w:t>Methodologies
+ 
+of
+ 
+Problem
+ 
+solving
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="368"/></w:pPr><w:bookmarkStart w:id="10" w:name="_TOC_250058"/><w:bookmarkEnd w:id="10"/><w:r><w:t>Analysis
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="275"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Solution
+ 
+Requirement
+We
+ 
+analysed
+ 
+the
+ 
+problem
+ 
+statement
+ 
+and
+ 
+found
+ 
+the
+ 
+feasibility
+ 
+of
+ 
+the
+ 
+solution
+ 
+of the problem.
+ 
+We read different research paper as mentioned in 3.3.
+ 
+After
+ 
+checking
+ 
+the
+ 
+feasibility
+ 
+of
+ 
+the
+ 
+problem
+ 
+statement.
+ 
+The
+ 
+next
+ 
+step
+ 
+is
+ 
+the
+ 
+data-
+ 
+set gathering and analysis.
+ 
+We analysed the data set in different approach of
+ 
+training
+ 
+like
+ 
+negatively
+ 
+or
+ 
+positively
+ 
+trained
+ 
+i.e
+ 
+training
+ 
+the
+ 
+model
+ 
+with
+ 
+only
+ 
+fake or real video’s but found that it may lead to addition of extra bias in the
+ 
+model leading to inaccurate predictions. So after doing lot of research we found
+ 
+that the balanced training of the algorithm is the best way to avoid the bias and
+ 
+variance
+ 
+in
+ 
+the
+ 
+algorithm
+ 
+and
+ 
+get
+ 
+a
+ 
+good
+ 
+accuracy.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="163"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Solution
+ 
+Constraints
+We analysed the solution in terms of cost,speed of processing,requirements,level
+ 
+of
+ 
+expertise,
+ 
+availability
+ 
+of
+ 
+equipment’s.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="166"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Parameter
+ 
+Identified
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="251"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Blinking
+ 
+of
+ 
+eyes
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="152"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Teeth
+ 
+enchantment
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="151"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Bigger
+ 
+distance
+ 
+for
+ 
+eyes
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="152"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Moustaches
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="152"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Double
+ 
+edges,
+ 
+eyes,
+ 
+ears,
+ 
+nose
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="151"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Iris
+ 
+segmentation
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="152"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Wrinkles
+ 
+on
+ 
+face
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="152"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Inconsistent
+ 
+head
+ 
+pose
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="151"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Face
+ 
+angle
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="152"/><w:ind w:hanging="477"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Skin
+ 
+tone
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="151"/><w:ind w:hanging="477"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Facial
+ 
+Expressions
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="152"/><w:ind w:hanging="477"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Lighting
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="152"/><w:ind w:hanging="477"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Different
+ 
+Pose
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="151"/><w:ind w:hanging="477"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Double
+ 
+chins
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="152"/><w:ind w:hanging="477"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Hairstyle
+<w:tab w:val="left" w:pos="1213"/></w:tabs><w:spacing w:before="151"/><w:ind w:hanging="477"/><w:jc w:val="left"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Higher
+ 
+cheek
+ 
+bones
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="114"/></w:pPr><w:bookmarkStart w:id="11" w:name="_TOC_250057"/><w:bookmarkEnd w:id="11"/><w:r><w:t>Design
+After
+ 
+research
+ 
+and
+ 
+analysis
+ 
+we
+ 
+developed
+ 
+the
+ 
+system
+ 
+architecture
+ 
+of
+ 
+the
+ 
+solution
+ 
+as mentioned in the Chapter 6.
+ 
+We decided the baseline architecture of the Model
+ 
+which
+ 
+includes
+ 
+the
+ 
+different
+ 
+layers
+ 
+and
+ 
+their
+ 
+numbers.
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs></w:pPr><w:bookmarkStart w:id="12" w:name="_TOC_250056"/><w:bookmarkEnd w:id="12"/><w:r><w:t>Development
+After analysis we decided to use the PyTorch framework along with python3 lan-
+ 
+guage for programming.
+ 
+PyTorch is chosen as it has good support to CUDA i.e
+ 
+Graphic
+ 
+Processing
+ 
+Unit
+ 
+(GPU)
+ 
+and
+ 
+it
+ 
+is
+ 
+customize-able.
+ 
+Google
+ 
+Cloud
+ 
+Platform
+ 
+for
+ 
+training
+ 
+the
+ 
+final
+ 
+model
+ 
+on
+ 
+large
+ 
+number
+ 
+of
+ 
+data-set.
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs></w:pPr><w:bookmarkStart w:id="13" w:name="_TOC_250055"/><w:bookmarkEnd w:id="13"/><w:r><w:t>Evaluation
+We evaluated our model with a large number of real time dataset which include
+ 
+YouTube videos dataset. Confusion Matrix approach is used to evaluate the accuracy
+ 
+of
+ 
+the
+ 
+trained
+ 
+model.
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs></w:pPr><w:bookmarkStart w:id="14" w:name="_TOC_250054"/><w:bookmarkEnd w:id="14"/><w:r><w:t>Outcome
+The outcome of the solution is trained deepfake detection models that will help the
+ 
+users
+ 
+to
+ 
+check
+ 
+if
+ 
+the
+ 
+new
+ 
+video
+ 
+is
+ 
+deepfake
+ 
+or
+ 
+real.
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs><w:spacing w:before="1"/></w:pPr><w:bookmarkStart w:id="15" w:name="_TOC_250053"/><w:bookmarkEnd w:id="15"/><w:r><w:t>Applications
+Web based application will be used by the user to upload the video and submit the
+ 
+video for processing. The model will pre-process the video and predict whether the
+ 
+uploaded
+ 
+video
+ 
+is
+ 
+a
+ 
+deepfake
+ 
+or
+ 
+real
+ 
+video.
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs></w:pPr><w:bookmarkStart w:id="16" w:name="_TOC_250052"/><w:r><w:t>Hardware
+ 
+Resources
+ 
+Required
+In this project, a computer with sufficient processing power is needed. This project
+ 
+requires
+ 
+too
+ 
+much
+ 
+processing
+ 
+power,
+ 
+due
+ 
+to
+ 
+the
+ 
+image
+ 
+and
+ 
+video
+ 
+batch
+ 
+processing.
+<w:tab w:val="left" w:pos="770"/></w:tabs><w:spacing w:before="197"/><w:ind w:hanging="334"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Client-side
+ 
+Requirements:
+ 
+Browser:
+ 
+Any
+ 
+Compatible
+ 
+browser
+ 
+device
+Table
+ 
+4.1:
+ 
+Hardware
+ 
+Requirements
+<w:tblPr><w:tblW w:w="0" w:type="auto"/><w:tblInd w:w="1120" w:type="dxa"/><w:tblBorders><w:top w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:left w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:bottom w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:right w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:insideH w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:insideV w:val="single" w:sz="4" w:space="0" w:color="000000"/></w:tblBorders><w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="0" w:type="dxa"/><w:right w:w="0" w:type="dxa"/></w:tblCellMar><w:tblLook w:val="01E0" w:firstRow="1" w:lastRow="1" w:firstColumn="1" w:lastColumn="1" w:noHBand="0" w:noVBand="0"/></w:tblPr><w:tblGrid><w:gridCol w:w="932"/><w:gridCol w:w="2126"/><w:gridCol w:w="4538"/></w:tblGrid><w:tr w:rsidR="00813258" w:rsidTr="004251DE"><w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="932" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="98" w:right="90"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Sr.
+ 
+No.
+<w:tcPr><w:tcW w:w="2126" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="103" w:right="94"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Parameter
+<w:tcPr><w:tcW w:w="4538" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="103" w:right="94"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Minimum
+ 
+Requirement
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="932" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="8"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>1
+<w:tcPr><w:tcW w:w="2126" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="103" w:right="94"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Intel
+ 
+Xeon
+ 
+E5
+ 
+2637
+<w:tcPr><w:tcW w:w="4538" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="1863"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>3.5
+ 
+GHz
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="932" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="8"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>2
+<w:tcPr><w:tcW w:w="2126" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="103" w:right="94"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>RAM
+<w:tcPr><w:tcW w:w="4538" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="103" w:right="94"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>16
+ 
+GB
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="932" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="8"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>3
+<w:tcPr><w:tcW w:w="2126" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="103" w:right="94"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Hard
+ 
+Disk
+<w:tcPr><w:tcW w:w="4538" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="103" w:right="94"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>100
+ 
+GB
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="932" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="8"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>4
+<w:tcPr><w:tcW w:w="2126" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="103" w:right="94"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Graphic
+ 
+card
+<w:tcPr><w:tcW w:w="4538" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="004D36D7" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="103" w:right="94"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Optional
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs></w:pPr><w:bookmarkStart w:id="17" w:name="_TOC_250051"/><w:r><w:t>Software
+ 
+Resources
+ 
+Required
+Platform
+ 
+:
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Operating
+ 
+System:
+ 
+Windows
+ 
+7+
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Programming
+ 
+Language
+ 
+:
+ 
+Python
+ 
+3.0
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Framework:
+ 
+PyTorch
+ 
+1.4
+ 
+,
+ 
+Django
+ 
+3.0
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Cloud
+ 
+platform:
+ 
+Google
+ 
+Cloud
+ 
+Platform
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Libraries
+ 
+:
+ 
+OpenCV,
+ 
+Face-recognition
+Chapter
+ 
+5
+ 
+Project
+ 
+Plan
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs><w:spacing w:before="354"/></w:pPr><w:bookmarkStart w:id="18" w:name="_TOC_250050"/><w:r><w:t>Project
+ 
+Model
+ 
+Analysis
+We Use Spiral model As the Software development model focuses on the people do-
+ 
+ing the work,how they work together and risk handling. We are using Spiral because,
+ 
+It ensures changes can be made quicker and throughout the development process by
+ 
+having consistent evaluations to assess the product with the expected outcomes re-
+ 
+quested.
+ 
+As we developed the application in the various modules,
+ 
+spiral model is
+ 
+best suited for this type of application.
+ 
+An Spiral approach provides a unique op-
+ 
+portunity for clients to be involved throughout the project, from prioritizing features
+ 
+to iteration planning and review sessions to frequent algorithms containing new fea-
+ 
+tures. However, this also requires clients to understand that they are seeing a work in
+ 
+progress
+ 
+in
+ 
+exchange
+ 
+for
+ 
+this
+ 
+added
+ 
+benefit
+ 
+of
+ 
+transparency.
+ 
+As
+ 
+our
+ 
+model
+ 
+consists
+ 
+of
+ 
+lot
+ 
+of
+ 
+risk
+ 
+and
+ 
+spiral
+ 
+model
+ 
+is
+ 
+capable
+ 
+of
+ 
+handling
+ 
+the
+ 
+risks
+ 
+that’s
+ 
+the
+ 
+reason
+ 
+we
+ 
+are
+ 
+using
+ 
+spiral
+ 
+model
+ 
+for
+ 
+product
+ 
+development.
+Figure
+ 
+5.1:
+ 
+Spiral
+ 
+Methodology
+ 
+SDLC
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="114"/></w:pPr><w:bookmarkStart w:id="19" w:name="_TOC_250049"/><w:r><w:t>Reconciled
+ 
+Estimates
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="277"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Cost
+ 
+Estimate
+ 
+:
+ 
+Rs
+ 
+11,600
+Table
+ 
+5.1:
+ 
+Cost
+ 
+Estimation
+<w:tblPr><w:tblW w:w="0" w:type="auto"/><w:tblInd w:w="986" w:type="dxa"/><w:tblBorders><w:top w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:left w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:bottom w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:right w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:insideH w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:insideV w:val="single" w:sz="4" w:space="0" w:color="000000"/></w:tblBorders><w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="0" w:type="dxa"/><w:right w:w="0" w:type="dxa"/></w:tblCellMar><w:tblLook w:val="01E0" w:firstRow="1" w:lastRow="1" w:firstColumn="1" w:lastColumn="1" w:noHBand="0" w:noVBand="0"/></w:tblPr><w:tblGrid><w:gridCol w:w="1948"/><w:gridCol w:w="5917"/></w:tblGrid><w:tr w:rsidR="00813258" w:rsidTr="004251DE"><w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="1948" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Cost(in
+ 
+Rs)
+<w:tcPr><w:tcW w:w="5917" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Description
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="1948" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>5260
+<w:tcPr><w:tcW w:w="5917" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Pre-processing
+ 
+the
+ 
+dataset
+ 
+on
+ 
+GCP
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="1948" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>2578
+<w:tcPr><w:tcW w:w="5917" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Training
+ 
+models
+ 
+on
+ 
+on
+ 
+GCP
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="1948" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>761
+<w:tcPr><w:tcW w:w="5917" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Google
+ 
+Colab
+ 
+Pro
+ 
+subscription
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="1948" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>3000
+<w:tcPr><w:tcW w:w="5917" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Deploying
+ 
+project
+ 
+to
+ 
+GCP
+ 
+using
+ 
+Cloud
+ 
+engine
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Time
+ 
+Estimates
+ 
+:
+ 
+12
+ 
+Months
+ 
+(refer
+ 
+Appendix
+ 
+B)
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:ind w:hanging="862"/></w:pPr><w:bookmarkStart w:id="20" w:name="_TOC_250048"/><w:r><w:t>Cost
+ 
+Estimation
+ 
+using
+ 
+COCOMO(Constructive
+ 
+Cost)
+ 
+Model
+Since
+ 
+we
+ 
+have
+ 
+small
+ 
+team
+ 
+,
+ 
+less-rigid
+ 
+requirements,
+ 
+long
+ 
+deadline
+ 
+we
+ 
+are
+ 
+using
+ 
+the
+ 
+organic
+ 
+COCOMO[23]
+ 
+model.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Efforts Applied:
+ 
+It defines the Amount of labor that will be required to com-
+ 
+plete
+ 
+a
+ 
+task.
+ 
+It
+ 
+is
+ 
+measured
+ 
+in
+ 
+person-months
+ 
+units.
+E
+ 
+f
+ 
+f ortApplied
+(
+E
+) = 
+a
+b
+(
+KLOC
+)
+b
+b
+ 
+E
+ 
+=
+ 
+2
+.
+4
+(
+20
+.
+5
+)
+1
+.
+05
+E
+ 
+=
+ 
+57
+.
+2206
+PM
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t xml:space="preserve">Development Time: 
+Simply means the amount of time required for the com-
+ 
+pletion of the job,
+ 
+which is,
+ 
+of course,
+ 
+proportional to the effort put.
+ 
+It is
+ 
+measured
+ 
+in
+ 
+the
+ 
+units
+ 
+of
+ 
+time
+ 
+such
+ 
+as
+ 
+weeks,
+ 
+months.
+DevelopmentTime
+(
+D
+)
+ 
+=
+ 
+c
+b
+(
+E
+)
+d
+b
+ 
+D
+ 
+=
+ 
+2
+.
+5
+(
+57
+.
+2206
+)
+0
+.
+38
+D
+ 
+=
+ 
+11
+.
+6
+M
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>People
+ 
+Required:
+ 
+The
+ 
+number
+ 
+of
+ 
+developed
+ 
+needed
+ 
+to
+ 
+complete
+ 
+the
+ 
+project.
+PeopleRequired
+(
+P
+)
+ 
+=
+ 
+E
+D
+P
+ 
+=
+ 
+57
+.
+2206
+11
+.
+6
+P
+ 
+=
+ 
+4
+.
+93
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs><w:ind w:hanging="776"/></w:pPr><w:bookmarkStart w:id="21" w:name="_TOC_250047"/><w:r><w:t>Risk
+ 
+Management
+ 
+w.r.t.
+ 
+NP
+ 
+Hard
+ 
+analysis
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="368"/><w:ind w:hanging="862"/></w:pPr><w:bookmarkStart w:id="22" w:name="_TOC_250046"/><w:r><w:t>Risk
+ 
+Identification
+Before the training, we need to prepare thousands of images for both persons.
+ 
+We
+ 
+can
+ 
+take
+ 
+a
+ 
+shortcut
+ 
+and
+ 
+use
+ 
+a
+ 
+face
+ 
+detection
+ 
+library
+ 
+to
+ 
+scrape
+ 
+facial
+ 
+pictures
+ 
+from
+ 
+their videos. Spend significant time to improve the quality of your facial pictures. It
+ 
+impacts
+ 
+your
+ 
+final
+ 
+result
+ 
+significantly.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="230"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Remove
+ 
+any
+ 
+picture
+ 
+frames
+ 
+that
+ 
+contain
+ 
+more
+ 
+than
+ 
+one
+ 
+person.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="276" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Make
+ 
+sure
+ 
+you
+ 
+have
+ 
+an
+ 
+abundance
+ 
+of
+ 
+video
+ 
+footage.
+ 
+Extract
+ 
+facial
+ 
+pictures
+ 
+contain
+ 
+different
+ 
+pose,
+ 
+face
+ 
+angle,
+ 
+and
+ 
+facial
+ 
+expressions.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="192"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Some
+ 
+resembling
+ 
+of
+ 
+both
+ 
+persons
+ 
+may
+ 
+help,
+ 
+like
+ 
+similar
+ 
+face
+ 
+shape.
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:ind w:hanging="862"/></w:pPr><w:bookmarkStart w:id="23" w:name="_TOC_250045"/><w:r><w:t>Risk
+ 
+Analysis
+In Deepfakes, it creates a mask on the created face so it can blend in with the target
+ 
+video.
+ 
+To
+ 
+further
+ 
+eliminate
+ 
+the
+ 
+artifacts
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="232"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Apply
+ 
+a
+ 
+Gaussian
+ 
+filter
+ 
+to
+ 
+further
+ 
+diffuse
+ 
+the
+ 
+mask
+ 
+boundary
+ 
+area.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="276"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Configure
+ 
+the
+ 
+application
+ 
+to
+ 
+expand
+ 
+or
+ 
+contract
+ 
+the
+ 
+mask
+ 
+further.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="275"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Control
+ 
+the
+ 
+shape
+ 
+of
+ 
+the
+ 
+mask.
+Table
+ 
+5.2:
+ 
+Risk
+ 
+Description
+<w:tblPr><w:tblW w:w="0" w:type="auto"/><w:tblInd w:w="121" w:type="dxa"/><w:tblBorders><w:top w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:left w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:bottom w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:right w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:insideH w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:insideV w:val="single" w:sz="4" w:space="0" w:color="000000"/></w:tblBorders><w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="0" w:type="dxa"/><w:right w:w="0" w:type="dxa"/></w:tblCellMar><w:tblLook w:val="01E0" w:firstRow="1" w:lastRow="1" w:firstColumn="1" w:lastColumn="1" w:noHBand="0" w:noVBand="0"/></w:tblPr><w:tblGrid><w:gridCol w:w="499"/><w:gridCol w:w="4735"/><w:gridCol w:w="1313"/><w:gridCol w:w="1119"/><w:gridCol w:w="964"/><w:gridCol w:w="960"/></w:tblGrid><w:tr w:rsidR="00813258" w:rsidTr="004251DE"><w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="499" w:type="dxa"/><w:vMerge w:val="restart"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>ID
+<w:tcPr><w:tcW w:w="4735" w:type="dxa"/><w:vMerge w:val="restart"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Risk
+ 
+Description
+<w:tcPr><w:tcW w:w="1313" w:type="dxa"/><w:vMerge w:val="restart"/><w:tcBorders><w:right w:val="single" w:sz="8" w:space="0" w:color="000000"/></w:tcBorders></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="123"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Probability
+<w:tcPr><w:tcW w:w="3043" w:type="dxa"/><w:gridSpan w:val="3"/><w:tcBorders><w:left w:val="single" w:sz="8" w:space="0" w:color="000000"/></w:tcBorders></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="1166" w:right="1154"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Impact
+<w:trPr><w:trHeight w:val="423"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="499" w:type="dxa"/><w:vMerge/><w:tcBorders><w:top w:val="nil"/></w:tcBorders></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:rPr><w:sz w:val="2"/><w:szCs w:val="2"/></w:rPr></w:pPr></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="4735" w:type="dxa"/><w:vMerge/><w:tcBorders><w:top w:val="nil"/></w:tcBorders></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:rPr><w:sz w:val="2"/><w:szCs w:val="2"/></w:rPr></w:pPr></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1313" w:type="dxa"/><w:vMerge/><w:tcBorders><w:top w:val="nil"/><w:right w:val="single" w:sz="8" w:space="0" w:color="000000"/></w:tcBorders></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:rPr><w:sz w:val="2"/><w:szCs w:val="2"/></w:rPr></w:pPr></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1119" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:before="70"/><w:ind w:left="98" w:right="90"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Schedule
+<w:tcPr><w:tcW w:w="964" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:before="70"/><w:ind w:left="103" w:right="90"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Quality
+<w:tcPr><w:tcW w:w="960" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:before="70"/><w:ind w:left="102" w:right="88"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Overall
+<w:trPr><w:trHeight w:val="720"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="499" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="8"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>1
+<w:tcPr><w:tcW w:w="4735" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:right="110"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Does
+ 
+it
+ 
+over
+ 
+blur
+ 
+comparing
+ 
+with
+ 
+other
+ 
+non-
+ 
+facial
+ 
+areas
+ 
+of
+ 
+the
+ 
+video?
+<w:tcPr><w:tcW w:w="1313" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="395" w:right="388"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Low
+<w:tcPr><w:tcW w:w="1119" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="98" w:right="90"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Low
+<w:tcPr><w:tcW w:w="964" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="103" w:right="90"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>High
+<w:tcPr><w:tcW w:w="960" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="102" w:right="88"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>High
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="499" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="8"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>2
+<w:tcPr><w:tcW w:w="4735" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Does
+ 
+it
+ 
+flick?
+<w:tcPr><w:tcW w:w="1313" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="395" w:right="388"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>High
+<w:tcPr><w:tcW w:w="1119" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="98" w:right="90"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Low
+<w:tcPr><w:tcW w:w="964" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="103" w:right="90"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>High
+<w:tcPr><w:tcW w:w="960" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="102" w:right="88"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>High
+<w:trPr><w:trHeight w:val="720"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="499" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="8"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>3
+<w:tcPr><w:tcW w:w="4735" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:line="252" w:lineRule="auto"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="95"/><w:sz w:val="24"/></w:rPr><w:t>Does
+ 
+it
+ 
+have
+ 
+a
+ 
+change
+ 
+of
+ 
+skin
+ 
+tone
+ 
+near
+ 
+the
+ 
+edge
+ 
+of
+ 
+the
+ 
+face?
+<w:tcPr><w:tcW w:w="1313" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="395" w:right="388"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Low
+<w:tcPr><w:tcW w:w="1119" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="98" w:right="90"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>High
+<w:tcPr><w:tcW w:w="964" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="103" w:right="90"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>High
+<w:tcPr><w:tcW w:w="960" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="102" w:right="88"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Low
+<w:trPr><w:trHeight w:val="720"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="499" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="8"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>4
+<w:tcPr><w:tcW w:w="4735" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:right="109"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Does
+ 
+it
+ 
+have
+ 
+a
+ 
+double
+ 
+chin,
+ 
+double
+ 
+eyebrows,
+ 
+double
+ 
+edges
+ 
+on
+ 
+the
+ 
+face?
+<w:tcPr><w:tcW w:w="1313" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="395" w:right="388"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>High
+<w:tcPr><w:tcW w:w="1119" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="98" w:right="90"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Low
+<w:tcPr><w:tcW w:w="964" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="103" w:right="90"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>High
+<w:tcPr><w:tcW w:w="960" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="102" w:right="88"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Low
+<w:trPr><w:trHeight w:val="720"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="499" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="8"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>5
+<w:tcPr><w:tcW w:w="4735" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:right="109"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>When
+ 
+the
+ 
+face
+ 
+is
+ 
+partially
+ 
+blocked
+ 
+by
+ 
+hands
+ 
+or
+ 
+other
+ 
+things,
+ 
+does
+ 
+it
+ 
+flick
+ 
+or
+ 
+get
+ 
+blurry?
+<w:tcPr><w:tcW w:w="1313" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="395" w:right="388"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>High
+<w:tcPr><w:tcW w:w="1119" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="98" w:right="90"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>High
+<w:tcPr><w:tcW w:w="964" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="103" w:right="90"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>High
+<w:tcPr><w:tcW w:w="960" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="102" w:right="88"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>High
+Table
+ 
+5.3:
+ 
+Risk
+ 
+Probability
+ 
+definitions
+<w:tblPr><w:tblW w:w="0" w:type="auto"/><w:tblInd w:w="2134" w:type="dxa"/><w:tblBorders><w:top w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:left w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:bottom w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:right w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:insideH w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:insideV w:val="single" w:sz="4" w:space="0" w:color="000000"/></w:tblBorders><w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="0" w:type="dxa"/><w:right w:w="0" w:type="dxa"/></w:tblCellMar><w:tblLook w:val="01E0" w:firstRow="1" w:lastRow="1" w:firstColumn="1" w:lastColumn="1" w:noHBand="0" w:noVBand="0"/></w:tblPr><w:tblGrid><w:gridCol w:w="1310"/><w:gridCol w:w="2897"/><w:gridCol w:w="1363"/></w:tblGrid><w:tr w:rsidR="00813258" w:rsidTr="004251DE"><w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="1310" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="100" w:right="93"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Probability
+<w:tcPr><w:tcW w:w="2897" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="102" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Value
+<w:tcPr><w:tcW w:w="1363" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="99" w:right="93"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Description
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="1310" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="100" w:right="93"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>High
+<w:tcPr><w:tcW w:w="2897" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="102" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Probability
+ 
+of
+ 
+occurrence
+ 
+is
+<w:tcPr><w:tcW w:w="1363" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:before="61"/><w:ind w:left="99" w:right="93"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Verdana"/><w:i/><w:w w:val="95"/><w:sz w:val="24"/></w:rPr><w:t>&gt;
+ 
+75%
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="1310" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="100" w:right="93"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Medium
+<w:tcPr><w:tcW w:w="2897" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="102" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Probability
+ 
+of
+ 
+occurrence
+ 
+is
+<w:tcPr><w:tcW w:w="1363" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:before="77"/><w:ind w:left="99" w:right="93"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="105"/><w:sz w:val="24"/></w:rPr><w:t>26
+ 
+−
+ 
+75%
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="1310" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="100" w:right="93"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Low
+<w:tcPr><w:tcW w:w="2897" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="102" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Probability
+ 
+of
+ 
+occurrence
+ 
+is
+<w:tcPr><w:tcW w:w="1363" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:before="61"/><w:ind w:left="99" w:right="93"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Verdana"/><w:i/><w:w w:val="95"/><w:sz w:val="24"/></w:rPr><w:t>&lt;
+ 
+25%
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs><w:spacing w:before="161"/></w:pPr><w:bookmarkStart w:id="24" w:name="_TOC_250044"/><w:r><w:lastRenderedPageBreak/><w:t>Project
+ 
+Schedule
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="368"/></w:pPr><w:bookmarkStart w:id="25" w:name="_TOC_250043"/><w:r><w:t>Project
+ 
+task
+ 
+set
+Major
+ 
+Tasks
+ 
+in
+ 
+the
+ 
+Project
+ 
+stages
+ 
+are
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Task
+ 
+1:
+ 
+Data-set
+ 
+gathering
+ 
+and
+ 
+analysis
+This
+ 
+task
+ 
+consists
+ 
+of
+ 
+downloading
+ 
+the
+ 
+dataset.
+ 
+Analysing
+ 
+the
+ 
+dataset
+ 
+and
+ 
+mak-
+ 
+ing
+ 
+the
+ 
+dataset
+ 
+ready
+ 
+for
+ 
+the
+ 
+preprocessing.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="198"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Task
+ 
+2
+ 
+:
+ 
+Module
+ 
+1
+ 
+implementation
+Module
+ 
+1
+ 
+implementation
+ 
+consists
+ 
+of
+ 
+splitting
+ 
+the
+ 
+video
+ 
+to
+ 
+frames
+ 
+and
+ 
+cropping
+ 
+each
+ 
+frame
+ 
+consisting
+ 
+of
+ 
+face.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Task
+ 
+3:
+ 
+Pre-processing
+Pre-processing
+ 
+includes
+ 
+the
+ 
+creation
+ 
+of
+ 
+the
+ 
+new
+ 
+dataset
+ 
+which
+ 
+includes
+ 
+only
+ 
+face
+ 
+cropped
+ 
+videos.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="198"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Task
+ 
+4:
+ 
+Module
+ 
+2
+ 
+implementation
+Module
+ 
+2
+ 
+implementation
+ 
+consists
+ 
+of
+ 
+implementation
+ 
+of
+ 
+DataLoader
+ 
+for
+ 
+load-
+ 
+ing
+ 
+the
+ 
+video
+ 
+and
+ 
+labels.
+ 
+Training
+ 
+a
+ 
+base
+ 
+line
+ 
+model
+ 
+on
+ 
+small
+ 
+amount
+ 
+of
+ 
+data.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Task
+ 
+5
+ 
+:
+ 
+Hyper
+ 
+parameter
+ 
+tuning
+This
+ 
+task
+ 
+includes
+ 
+the
+ 
+changing
+ 
+of
+ 
+the
+ 
+Learning
+ 
+rate,
+ 
+batch
+ 
+size,
+ 
+weight
+ 
+decay
+ 
+and
+ 
+model
+ 
+architecture
+ 
+until
+ 
+the
+ 
+maximum
+ 
+accuracy
+ 
+is
+ 
+achieved.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="198"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Task
+ 
+6
+ 
+:
+ 
+Training
+ 
+the
+ 
+final
+ 
+model
+The
+ 
+final
+ 
+model
+ 
+on
+ 
+large
+ 
+dataset
+ 
+is
+ 
+trained
+ 
+based
+ 
+on
+ 
+the
+ 
+best
+ 
+hyper
+ 
+parameter
+ 
+identified
+ 
+in
+ 
+the
+ 
+Task
+ 
+5.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Task
+ 
+7
+ 
+:
+ 
+Front
+ 
+end
+ 
+Development
+This
+ 
+task
+ 
+includes
+ 
+the
+ 
+front
+ 
+end
+ 
+development
+ 
+and
+ 
+integration
+ 
+of
+ 
+the
+ 
+back-end
+ 
+and
+ 
+front-end.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="198"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Task 8 :
+ 
+Testing
+The
+ 
+complete
+ 
+application
+ 
+is
+ 
+tested
+ 
+using
+ 
+unit
+ 
+testing,
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:ind w:hanging="862"/></w:pPr><w:bookmarkStart w:id="26" w:name="_TOC_250042"/><w:r><w:t>Timeline
+ 
+chart
+Please
+ 
+refer
+ 
+Annex
+ 
+C
+ 
+for
+ 
+the
+ 
+planner
+Chapter
+ 
+6
+Software
+ 
+requirement
+ 
+specification
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs></w:pPr><w:bookmarkStart w:id="27" w:name="_TOC_250041"/><w:bookmarkEnd w:id="27"/><w:r><w:t>Introduction
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="368"/></w:pPr><w:bookmarkStart w:id="28" w:name="_TOC_250040"/><w:r><w:t>Purpose
+ 
+and
+ 
+Scope
+ 
+of
+ 
+Document
+This document lays out a project plan for the development of Deepfake video de-
+ 
+tection using neural network.The intended readers of this document are current and
+ 
+future
+ 
+developers
+ 
+working
+ 
+on
+ 
+Deepfake
+ 
+video
+ 
+detection
+ 
+using
+ 
+neural
+ 
+network
+ 
+and
+ 
+the sponsors of the project.
+ 
+The plan will include,
+ 
+but is not restricted to,
+ 
+a sum-
+ 
+mary
+ 
+of
+ 
+the
+ 
+system
+ 
+functionality,
+ 
+the
+ 
+scope
+ 
+of
+ 
+the
+ 
+project
+ 
+from
+ 
+the
+ 
+perspective
+ 
+of
+ 
+the “Deepfake video detection” team (me and my mentors), use case diagram, Data
+ 
+flow diagram,activity diagram, functional and non- functional requirements, project
+ 
+risks and how those risks will be mitigated, the process by which we will develop the
+ 
+project,
+ 
+and
+ 
+metrics
+ 
+and
+ 
+measurements
+ 
+that
+ 
+will
+ 
+be
+ 
+recorded
+ 
+throughout
+ 
+the
+ 
+project.
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="1"/></w:pPr><w:r><w:rPr><w:noProof/><w:lang w:bidi="hi-IN"/></w:rPr><w:drawing><wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="251680768" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1"><wp:simplePos x="0" y="0"/><wp:positionH relativeFrom="page"><wp:posOffset>2123444</wp:posOffset></wp:positionH><wp:positionV relativeFrom="paragraph"><wp:posOffset>634560</wp:posOffset></wp:positionV><wp:extent cx="3293998" cy="2261616"/><wp:effectExtent l="0" t="0" r="0" b="0"/><wp:wrapNone/><wp:docPr id="72" name="image2.png"/><wp:cNvGraphicFramePr><a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/></wp:cNvGraphicFramePr><a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="4" name="image2.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="rId12" cstate="print"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="3293998" cy="2261616"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:anchor></w:drawing></w:r><w:bookmarkStart w:id="29" w:name="_TOC_250039"/><w:r><w:t>Use
+ 
+Case
+ 
+View
+Figure
+ 
+6.1:
+ 
+Use
+ 
+case
+ 
+diagram
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs><w:spacing w:before="114"/></w:pPr><w:bookmarkStart w:id="30" w:name="_TOC_250038"/><w:r><w:t>Functional
+ 
+Model
+ 
+and
+ 
+Description
+A description of each major software function, along with data flow (structured anal-
+ 
+ysis) or class hierarchy (Analysis Class diagram with class description for object
+ 
+oriented
+ 
+system)
+ 
+is
+ 
+presented.
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs></w:pPr><w:bookmarkStart w:id="31" w:name="_TOC_250037"/><w:r><w:t>Data
+ 
+Flow
+ 
+Diagram
+DFD
+ 
+Level-0
+Figure
+ 
+6.2:
+ 
+DFD
+ 
+Level
+ 
+0
+DFD
+ 
+level
+ 
+–
+ 
+0
+ 
+indicates
+ 
+the
+ 
+basic
+ 
+flow
+ 
+of
+ 
+data
+ 
+in
+ 
+the
+ 
+system.
+ 
+In
+ 
+this
+ 
+System
+ 
+Input
+ 
+is
+ 
+given
+ 
+equal
+ 
+importance
+ 
+as
+ 
+that
+ 
+for
+ 
+Output.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="198"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Input:
+ 
+Here
+ 
+input
+ 
+to
+ 
+the
+ 
+system
+ 
+is
+ 
+uploading
+ 
+video.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>System:
+ 
+In
+ 
+system
+ 
+it
+ 
+shows
+ 
+all
+ 
+the
+ 
+details
+ 
+of
+ 
+the
+ 
+Video.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Output:
+ 
+Output
+ 
+of
+ 
+this
+ 
+system
+ 
+is
+ 
+it
+ 
+shows
+ 
+the
+ 
+fake
+ 
+video
+ 
+or
+ 
+not.
+Hence,
+ 
+the
+ 
+data
+ 
+flow
+ 
+diagram
+ 
+indicates
+ 
+the
+ 
+visualization
+ 
+of
+ 
+system
+ 
+with
+ 
+its
+ 
+input
+ 
+and
+ 
+output
+ 
+flow.
+DFD
+ 
+Level-1
+<w:tab w:val="left" w:pos="519"/></w:tabs><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>DFD
+ 
+Level
+ 
+–
+ 
+1
+ 
+gives
+ 
+more
+ 
+in
+ 
+and
+ 
+out
+ 
+information
+ 
+of
+ 
+the
+ 
+system.
+<w:tab w:val="left" w:pos="519"/></w:tabs><w:spacing w:before="84"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Where
+ 
+system
+ 
+gives
+ 
+detailed
+ 
+information
+ 
+of
+ 
+the
+ 
+procedure
+ 
+taking
+ 
+place.
+Figure
+ 
+6.3:
+ 
+DFD
+ 
+Level
+ 
+1
+DFD
+ 
+Level-2
+[1]
+ 
+DFD
+ 
+level-2
+ 
+enhances
+ 
+the
+ 
+functionality
+ 
+used
+ 
+by
+ 
+user
+ 
+etc.
+Figure
+ 
+6.4:
+ 
+DFD
+ 
+Level
+ 
+2
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="114"/></w:pPr><w:bookmarkStart w:id="32" w:name="_TOC_250036"/><w:r><w:t>Activity
+ 
+Diagram:
+Training
+ 
+Workflow:
+Figure
+ 
+6.5:
+ 
+Training
+ 
+Workflow
+Testing
+ 
+Workflow:
+Figure
+ 
+6.6:
+ 
+Testing
+ 
+Workflow
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:ind w:hanging="862"/></w:pPr><w:bookmarkStart w:id="33" w:name="_TOC_250035"/><w:r><w:t>Non
+ 
+Functional
+ 
+Requirements:
+Performance
+ 
+Requirement
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>The
+ 
+software
+ 
+should
+ 
+be
+ 
+efficiently
+ 
+designed
+ 
+so
+ 
+as
+ 
+to
+ 
+give
+ 
+reliable
+ 
+recognition
+ 
+of
+ 
+fake
+ 
+videos
+ 
+and
+ 
+so
+ 
+that
+ 
+it
+ 
+can
+ 
+be
+ 
+used
+ 
+for
+ 
+more
+ 
+pragmatic
+ 
+purpose.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>The
+ 
+design
+ 
+is
+ 
+versatile
+ 
+and
+ 
+user
+ 
+friendly.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>The
+ 
+application
+ 
+is
+ 
+fast,
+ 
+reliable
+ 
+and
+ 
+time
+ 
+saving.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>The
+ 
+system
+ 
+have
+ 
+universal
+ 
+adaptations.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>The
+ 
+system
+ 
+is
+ 
+compatible
+ 
+with
+ 
+future
+ 
+upgradation
+ 
+and
+ 
+easy
+ 
+integration.
+Safety
+ 
+Requirement
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>The Data integrity is preserved. Once the video is uploaded to the system. It is
+ 
+only processed by the algorithm. The videos are kept secured from the human
+ 
+interventions,
+ 
+as
+ 
+the
+ 
+uploaded
+ 
+video
+ 
+is
+ 
+not
+ 
+are
+ 
+not
+ 
+able
+ 
+for
+ 
+human
+ 
+manipulation.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>To extent the safety of the videos uploaded by the user will be deleted after 30
+ 
+min
+ 
+from
+ 
+the
+ 
+server.
+Security
+ 
+Requirement
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>While uploading the video, the video will be encrypted using a certain symmet-
+ 
+ric encryption algorithm. On server also the video is in encrypted format only.
+ 
+The video is only decrypted from preprocessing till we get the output.
+ 
+After
+ 
+getting
+ 
+the
+ 
+output
+ 
+the
+ 
+video
+ 
+is
+ 
+again
+ 
+encrypted.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>This
+ 
+cryptography
+ 
+will
+ 
+help
+ 
+in
+ 
+maintain
+ 
+the
+ 
+security
+ 
+and
+ 
+integrity
+ 
+of
+ 
+the
+ 
+video.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>SSL
+ 
+certification
+ 
+is
+ 
+made
+ 
+mandatory
+ 
+for
+ 
+Data
+ 
+security.
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="425"/><w:ind w:hanging="862"/></w:pPr><w:r><w:rPr><w:noProof/><w:lang w:bidi="hi-IN"/></w:rPr><w:drawing><wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="251681792" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1"><wp:simplePos x="0" y="0"/><wp:positionH relativeFrom="page"><wp:posOffset>1070203</wp:posOffset></wp:positionH><wp:positionV relativeFrom="paragraph"><wp:posOffset>953043</wp:posOffset></wp:positionV><wp:extent cx="5424678" cy="1858518"/><wp:effectExtent l="0" t="0" r="0" b="0"/><wp:wrapNone/><wp:docPr id="78" name="image8.png"/><wp:cNvGraphicFramePr><a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/></wp:cNvGraphicFramePr><a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="16" name="image8.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="rId18" cstate="print"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="5424678" cy="1858518"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:anchor></w:drawing></w:r><w:bookmarkStart w:id="34" w:name="_TOC_250034"/><w:r><w:t>Sequence
+ 
+Diagram
+Figure
+ 
+6.7:
+ 
+Sequence
+ 
+Diagram
+Chapter
+ 
+7
+Detailed
+ 
+Design
+ 
+Document
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs></w:pPr><w:bookmarkStart w:id="35" w:name="_TOC_250033"/><w:bookmarkEnd w:id="35"/><w:r><w:t>Introduction
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="368"/></w:pPr><w:r><w:rPr><w:noProof/><w:lang w:bidi="hi-IN"/></w:rPr><w:drawing><wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="251682816" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1"><wp:simplePos x="0" y="0"/><wp:positionH relativeFrom="page"><wp:posOffset>1199923</wp:posOffset></wp:positionH><wp:positionV relativeFrom="paragraph"><wp:posOffset>891213</wp:posOffset></wp:positionV><wp:extent cx="5118423" cy="3706939"/><wp:effectExtent l="0" t="0" r="0" b="0"/><wp:wrapNone/><wp:docPr id="79" name="image9.png"/><wp:cNvGraphicFramePr><a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/></wp:cNvGraphicFramePr><a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="18" name="image9.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="rId19" cstate="print"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="5118423" cy="3706939"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:anchor></w:drawing></w:r><w:bookmarkStart w:id="36" w:name="_TOC_250032"/><w:r><w:t>System
+ 
+Architecture
+Figure
+ 
+7.1:
+ 
+System
+ 
+Architecture
+In this system,
+ 
+we have trained our PyTorch deepfake detection model on equal
+ 
+number of real and fake videos in order to avoid the bias in the model. The system
+ 
+architecture
+ 
+of
+ 
+the
+ 
+model
+ 
+is
+ 
+showed
+ 
+in
+ 
+the
+ 
+figure.
+ 
+In
+ 
+the
+ 
+development
+ 
+phase,
+ 
+we
+ 
+have
+taken
+ 
+a
+ 
+dataset,
+ 
+preprocessed
+ 
+the
+ 
+dataset
+ 
+and
+ 
+created
+ 
+a
+ 
+new
+ 
+processed
+ 
+dataset
+ 
+which
+ 
+only
+ 
+includes
+ 
+the
+ 
+face
+ 
+cropped
+ 
+videos.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197"/><w:ind w:hanging="262"/><w:rPr><w:b/><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Creating
+ 
+deepfake
+ 
+videos
+To detect the deepfake videos it is very important to understand the creation
+ 
+process of the deepfake. Majority of the tools including the GAN and autoencoders
+ 
+takes a source image and target video as input.   These tools split the video into
+ 
+frames , detect the face in the video and replace the source face with target face on
+ 
+each frame. Then the replaced frames are then combined using different pre-trained
+ 
+models. These models also enhance the quality of video my removing the left-over
+ 
+traces by the deepfake creation model. Which result in creation of a deepfake looks
+ 
+realistic in nature.
+ 
+We have also used the same approach to detect the deepfakes.
+ 
+Deepfakes
+ 
+created
+ 
+using
+ 
+the
+ 
+pretrained
+ 
+neural
+ 
+networks
+ 
+models
+ 
+are
+ 
+very
+ 
+realistic
+ 
+that it is almost impossible to spot the difference by the naked eyes.
+ 
+But in reality,
+ 
+the deepfakes creation tools leaves some of the traces or artifacts in the video which
+ 
+may not be noticeable by the naked eyes. The motive of this paper to identify these
+ 
+unnoticeable traces and distinguishable artifacts of these videos and classified it as
+ 
+deepfake
+ 
+or
+ 
+real
+ 
+video.
+Figure
+ 
+7.2:
+ 
+Deepfake
+ 
+generation
+Figure
+ 
+7.3:
+ 
+Face
+ 
+Swapped
+ 
+deepfake
+ 
+generation
+Tools
+ 
+for
+ 
+deep
+ 
+fake
+ 
+creation.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Faceswap
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="105"/><w:sz w:val="28"/></w:rPr><w:t>Faceit
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Deep
+ 
+Face
+ 
+Lab
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Deepfake
+ 
+Capsule
+ 
+GAN
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Large
+ 
+resolution
+ 
+face
+ 
+masked
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs><w:spacing w:before="1"/></w:pPr><w:bookmarkStart w:id="37" w:name="_TOC_250031"/><w:r><w:t>Architectural
+ 
+Design
+<w:tab w:val="left" w:pos="1044"/><w:tab w:val="left" w:pos="1045"/></w:tabs><w:spacing w:before="367"/><w:ind w:left="1044" w:hanging="933"/></w:pPr><w:bookmarkStart w:id="38" w:name="_TOC_250030"/><w:r><w:t>Module
+ 
+1
+ 
+:
+ 
+Data-set
+ 
+Gathering
+For making the model efficient for real time prediction.
+ 
+We have gathered the data
+ 
+from different available data-sets like FaceForensic++(FF)[1], Deepfake detection
+ 
+challenge(DFDC)[2], and Celeb-DF[3].
+ 
+Futher we have mixed the dataset the col-
+ 
+lected datasets and created our own new dataset, to accurate and real time detection
+ 
+on different kind of videos. To avoid the training bias of the model we have consid-
+ 
+ered
+ 
+50%
+ 
+Real
+ 
+and
+ 
+50%
+ 
+fake
+ 
+videos.
+Deep
+ 
+fake
+ 
+detection
+ 
+challenge
+ 
+(DFDC)
+ 
+dataset
+ 
+[3]
+ 
+consist
+ 
+of
+ 
+certain
+ 
+audio
+ 
+alerted
+ 
+video,
+ 
+as
+ 
+audio
+ 
+deepfake
+ 
+are
+ 
+out
+ 
+of
+ 
+scope
+ 
+for
+ 
+this
+ 
+paper.
+ 
+We
+ 
+preprocessed
+ 
+the
+ 
+DFDC
+ 
+dataset
+ 
+and
+ 
+removed
+ 
+the
+ 
+audio
+ 
+altered
+ 
+videos
+ 
+from
+ 
+the
+ 
+dataset
+ 
+by
+ 
+running
+ 
+a
+ 
+python
+ 
+script.
+After preprocessing of the DFDC dataset, we have taken 1500 Real and 1500
+ 
+Fake videos from the DFDC dataset.
+ 
+1000 Real and 1000 Fake videos from the
+ 
+FaceForensic++(FF)[1] dataset and 500 Real and 500 Fake videos from the Celeb-
+ 
+DF[3] dataset. Which makes our total dataset consisting 3000 Real, 3000 fake videos
+ 
+and
+ 
+6000
+ 
+videos
+ 
+in
+ 
+total.
+ 
+Figure
+ 
+2
+ 
+depicts
+ 
+the
+ 
+distribution
+ 
+of
+ 
+the
+ 
+data-sets.
+Figure
+ 
+7.4:
+ 
+Dataset
+<w:tab w:val="left" w:pos="1044"/><w:tab w:val="left" w:pos="1045"/></w:tabs><w:ind w:left="1044" w:hanging="934"/></w:pPr><w:bookmarkStart w:id="39" w:name="_TOC_250029"/><w:r><w:t>Module
+ 
+2
+ 
+:
+ 
+Pre-processing
+In
+ 
+this
+ 
+step,
+ 
+the
+ 
+videos
+ 
+are
+ 
+preprocessed
+ 
+and
+ 
+all
+ 
+the
+ 
+unrequired
+ 
+and
+ 
+noise
+ 
+is
+ 
+removed
+ 
+from
+ 
+videos.
+ 
+Only
+ 
+the
+ 
+required
+ 
+portion
+ 
+of
+ 
+the
+ 
+video
+ 
+i.e
+ 
+face
+ 
+is
+ 
+detected
+ 
+and
+ 
+cropped.
+ 
+The
+ 
+first
+ 
+steps
+ 
+in
+ 
+the
+ 
+preprocessing
+ 
+of
+ 
+the
+ 
+video
+ 
+is
+ 
+to
+ 
+split
+ 
+the
+ 
+video
+ 
+into
+ 
+frames.
+After splitting the video into frames the face is detected in each of the frame and the
+ 
+frame is cropped along the face. Later the cropped frame is again converted to a new
+ 
+video by combining each frame of the video. The process is followed for each video
+ 
+which leads to creation of processed dataset containing face only videos. The frame
+ 
+that
+ 
+does
+ 
+not
+ 
+contain
+ 
+the
+ 
+face
+ 
+is
+ 
+ignored
+ 
+while
+ 
+preprocessing.
+To maintain the uniformity of number of frames, we have selected a threshold
+ 
+value based on the mean of total frames count of each video.
+ 
+Another reason for
+ 
+selecting
+ 
+a
+ 
+threshold
+ 
+value
+ 
+is
+ 
+limited
+ 
+computation
+ 
+power.
+ 
+As
+ 
+a
+ 
+video
+ 
+of
+ 
+10
+ 
+second
+ 
+at
+ 
+30
+ 
+frames
+ 
+per
+ 
+second(fps)
+ 
+will
+ 
+have
+ 
+total
+ 
+300
+ 
+frames
+ 
+and
+ 
+it
+ 
+is
+ 
+computationally
+ 
+very difficult to process the 300 frames at a single time in the experimental envi-
+ 
+ronment.
+ 
+So,
+ 
+based
+ 
+on
+ 
+our
+ 
+Graphic
+ 
+Processing
+ 
+Unit
+ 
+(GPU)
+ 
+computational
+ 
+power
+ 
+in experimental environment we have selected 150 frames as the threshold value.
+ 
+While
+ 
+saving
+ 
+the
+ 
+frames
+ 
+to
+ 
+the
+ 
+new
+ 
+dataset
+ 
+we
+ 
+have
+ 
+only
+ 
+saved
+ 
+the
+ 
+first
+ 
+150
+ 
+frames
+ 
+of the video to the new video.
+ 
+To demonstrate the proper use of Long Short-Term
+ 
+Memory (LSTM) we have considered the frames in the sequential manner i.e.
+ 
+first
+ 
+150 frames and not randomly. The newly created video is saved at frame rate of 30
+ 
+fps
+ 
+and
+ 
+resolution
+ 
+of
+ 
+112
+ 
+x
+ 
+112.
+Figure
+ 
+7.5:
+ 
+Pre-processing
+ 
+of
+ 
+video
+<w:tab w:val="left" w:pos="1044"/><w:tab w:val="left" w:pos="1045"/></w:tabs><w:spacing w:before="194"/><w:ind w:left="1044" w:hanging="933"/></w:pPr><w:bookmarkStart w:id="40" w:name="_TOC_250028"/><w:r><w:t>Module
+ 
+3:
+ 
+Data-set
+ 
+split
+The dataset is split into train and test dataset with a ratio of 70% train videos (4,200)
+ 
+and
+ 
+30%
+ 
+(1,800)
+ 
+test
+ 
+videos.
+ 
+The
+ 
+train
+ 
+and
+ 
+test
+ 
+split
+ 
+is
+ 
+a
+ 
+balanced
+ 
+split
+ 
+i.e
+ 
+50%
+ 
+of
+ 
+the
+ 
+real
+ 
+and
+ 
+50%
+ 
+of
+ 
+fake
+ 
+videos
+ 
+in
+ 
+each
+ 
+split.
+Figure
+ 
+7.6:
+ 
+Train
+ 
+test
+ 
+split
+<w:tab w:val="left" w:pos="1044"/><w:tab w:val="left" w:pos="1045"/></w:tabs><w:ind w:left="1044" w:hanging="934"/></w:pPr><w:bookmarkStart w:id="41" w:name="_TOC_250027"/><w:r><w:t>Module
+ 
+4:
+ 
+Model
+ 
+Architecture
+Our model is a combination of CNN and RNN. We have used the Pre- trained
+ 
+ResNext CNN model to extract the features at frame level and based on the extracted
+ 
+features a LSTM network is trained to classify the video as deepfake or pristine. Us-
+ 
+ing
+ 
+the
+ 
+Data
+ 
+Loader
+ 
+on
+ 
+training
+ 
+split
+ 
+of
+ 
+videos
+ 
+the
+ 
+labels
+ 
+of
+ 
+the
+ 
+videos
+ 
+are
+ 
+loaded
+ 
+and
+ 
+fitted
+ 
+into
+ 
+the
+ 
+model
+ 
+for
+ 
+training.
+ResNext
+ 
+:
+Instead of writing the code from scratch, we used the pre-trained model of ResNext
+ 
+for feature extraction.
+ 
+ResNext is Residual CNN network optimized for high per-
+ 
+formance on deeper neural networks.
+ 
+For the experimental purpose we have used
+ 
+resnext50_32x4d model.
+ 
+We have used a ResNext of 50 layers and 32 x 4 dimen-
+ 
+sions.
+Following, we will be fine-tuning the network by adding extra required layers
+ 
+and
+ 
+selecting
+ 
+a
+ 
+proper
+ 
+learning
+ 
+rate
+ 
+to
+ 
+properly
+ 
+converge
+ 
+the
+ 
+gradient
+ 
+descent
+ 
+of
+ 
+the model.
+ 
+The 2048-dimensional feature vectors after the last pooling layers of
+ 
+ResNext
+ 
+is
+ 
+used
+ 
+as
+ 
+the
+ 
+sequential
+ 
+LSTM
+ 
+input.
+LSTM
+ 
+for
+ 
+Sequence
+ 
+Processing:
+2048-dimensional
+ 
+feature
+ 
+vectors
+ 
+is
+ 
+fitted
+ 
+as
+ 
+the
+ 
+input
+ 
+to
+ 
+the
+ 
+LSTM.
+ 
+We
+ 
+are
+ 
+using
+ 
+1 LSTM layer with 2048 latent dimensions and 2048 hidden layers along with 0.4
+ 
+chance
+ 
+of
+ 
+dropout,
+ 
+which
+ 
+is
+ 
+capable
+ 
+to
+ 
+do
+ 
+achieve
+ 
+our
+ 
+objective.
+ 
+LSTM
+ 
+is
+ 
+used
+ 
+to
+process the frames in a sequential manner so that the temporal analysis of the video
+ 
+can be made, by comparing the frame at ‘t’ second with the frame of ‘t-n’ seconds.
+ 
+Where
+ 
+n
+ 
+can
+ 
+be
+ 
+any
+ 
+number
+ 
+of
+ 
+frames
+ 
+before
+ 
+t.
+The model also consists of Leaky Relu activation function.
+ 
+A linear layer of 2048
+ 
+input features and 2 output features are used to make the model capable of learning
+ 
+the average rate of correlation between eh input and output.
+ 
+An adaptive average
+ 
+polling
+ 
+layer
+ 
+with
+ 
+the
+ 
+output
+ 
+parameter
+ 
+1
+ 
+is
+ 
+used
+ 
+in
+ 
+the
+ 
+model.
+ 
+Which
+ 
+gives
+ 
+the
+ 
+the
+ 
+target
+ 
+output
+ 
+size
+ 
+of
+ 
+the
+ 
+image
+ 
+of
+ 
+the
+ 
+form
+ 
+H
+ 
+x
+ 
+W.
+ 
+For
+ 
+sequential
+ 
+processing
+ 
+of
+ 
+the frames a Sequential Layer is used.
+ 
+The batch size of 4 is used to perform the
+ 
+batch training.
+ 
+A SoftMax layer is used to get the confidence of the model during
+ 
+predication.
+Figure
+ 
+7.7:
+ 
+Overview
+ 
+of
+ 
+our
+ 
+model
+<w:tab w:val="left" w:pos="1044"/><w:tab w:val="left" w:pos="1045"/></w:tabs><w:ind w:left="1044" w:hanging="934"/></w:pPr><w:bookmarkStart w:id="42" w:name="_TOC_250026"/><w:r><w:t>Module
+ 
+5:
+ 
+Hyper-parameter
+ 
+tuning
+It
+ 
+is
+ 
+the
+ 
+process
+ 
+of
+ 
+choosing
+ 
+the
+ 
+perfect
+ 
+hyper-parameters
+ 
+for
+ 
+achieving
+ 
+the
+ 
+maxi-
+ 
+mum
+ 
+accuracy.
+ 
+After
+ 
+reiterating
+ 
+many
+ 
+times
+ 
+on
+ 
+the
+ 
+model.
+ 
+The
+ 
+best
+ 
+hyper-parameters
+ 
+for
+ 
+our
+ 
+dataset
+ 
+are
+ 
+chosen.
+ 
+To
+ 
+enable
+ 
+the
+ 
+adaptive
+ 
+learning
+ 
+rate
+ 
+Adam[21]
+ 
+optimizer
+ 
+with
+ 
+the
+ 
+model
+ 
+parameters
+ 
+is
+ 
+used.
+ 
+The
+ 
+learning
+ 
+rate
+ 
+is
+ 
+tuned
+ 
+to
+ 
+1e-5
+ 
+(0.00001)
+ 
+to
+achieve
+ 
+a
+ 
+better
+ 
+global
+ 
+minimum
+ 
+of
+ 
+gradient
+ 
+descent.
+ 
+The
+ 
+weight
+ 
+decay
+ 
+used
+ 
+is
+ 
+1e-3.
+As
+ 
+this
+ 
+is
+ 
+a
+ 
+classification
+ 
+problem
+ 
+so
+ 
+to
+ 
+calculate
+ 
+the
+ 
+loss
+ 
+cross
+ 
+entropy
+ 
+approach
+ 
+is used.To use the available computation power properly the batch training is used.
+ 
+The batch size is taken of 4.
+ 
+Batch size of 4 is tested to be ideal size for training in
+ 
+our
+ 
+development
+ 
+environment.
+The
+ 
+User
+ 
+Interface
+ 
+for
+ 
+the
+ 
+application
+ 
+is
+ 
+developed
+ 
+using
+ 
+Django
+ 
+framework.
+Django
+ 
+is
+ 
+used
+ 
+to
+ 
+enable
+ 
+the
+ 
+scalability
+ 
+of
+ 
+the
+ 
+application
+ 
+in
+ 
+the
+ 
+future.
+The first page of the User interface i.e index.html contains a tab to browse and
+ 
+upload the video. The uploaded video is then passed to the model and prediction is
+ 
+made by the model. The model returns the output whether the video is real or fake
+ 
+along
+ 
+with
+ 
+the
+ 
+confidence
+ 
+of
+ 
+the
+ 
+model.
+ 
+The
+ 
+output
+ 
+is
+ 
+rendered
+ 
+in
+ 
+the
+ 
+predict.html
+ 
+on
+ 
+the
+ 
+face
+ 
+of
+ 
+the
+ 
+playing
+ 
+video.
+Chapter
+ 
+8
+Project
+ 
+Implementation
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs></w:pPr><w:bookmarkStart w:id="43" w:name="_TOC_250025"/><w:bookmarkEnd w:id="43"/><w:r><w:t>Introduction
+There
+ 
+are
+ 
+many
+ 
+examples
+ 
+where
+ 
+deepfake
+ 
+creation
+ 
+technology
+ 
+is
+ 
+used
+ 
+to
+ 
+mis-
+ 
+lead
+ 
+the
+ 
+people
+ 
+on
+ 
+social
+ 
+media
+ 
+platform
+ 
+by
+ 
+sharing
+ 
+the
+ 
+false
+ 
+deepfake
+ 
+videos
+ 
+of
+ 
+the
+ 
+famous
+ 
+personalities
+ 
+like
+ 
+Mark
+ 
+Zuckerberg
+ 
+Eve
+ 
+of
+ 
+House
+ 
+A.I.
+ 
+Hearing,
+ 
+Don-
+ 
+ald Trump’s Breaking Bad series where he was introduces as James McGill, Barack
+ 
+Obama’s public service announcement and many more [5]. These types of deepfakes
+ 
+creates a huge panic among the normal people, which arises the need to spot these
+ 
+deepfakes
+ 
+accurately
+ 
+so
+ 
+that
+ 
+they
+ 
+can
+ 
+be
+ 
+distinguished
+ 
+from
+ 
+the
+ 
+real
+ 
+videos.
+Latest advances in the technology have changed the field of video manipulation.
+ 
+The advances in the modern open source deep learning frameworks like TensorFlow,
+ 
+Keras,
+ 
+PyTorch along with cheap access to the high computation power has driven
+ 
+the paradigm shift. The Conventional autoencoders[10] and Generative Adversarial
+ 
+Network (GAN) pretrained models have made the tampering of the realistic videos
+ 
+and images very easy.
+ 
+Moreover, access to these pretrained models through the
+ 
+smartphones and desktop applications like FaceApp and Face Swap has made the
+ 
+deepfake creation a childish thing.
+ 
+These applications generate a highly realistic
+ 
+synthesized transformation of faces in real videos. These apps also provide the user
+ 
+with more functionalities like changing the face hair style, gender, age and other
+ 
+attributes. These apps also allow the user to create a very high quality and indistin-
+ 
+guishable deepfakes.
+ 
+Although some malignant deepfake videos exist, but till now
+ 
+they remain a minority.
+ 
+So far, the released tools [11,12] that generate deepfake
+ 
+videos are being extensively used to create fake celebrity pornographic videos or
+ 
+revenge porn [13]. Some of the examples are Brad Pitt, Angelina Jolie nude videos.
+ 
+The real looking nature of the deepfake videos makes the celebraties and other fa-
+ 
+mous
+ 
+personalities
+ 
+the
+ 
+target
+ 
+of
+ 
+pornographic
+ 
+material,
+ 
+fake
+ 
+surveillance
+ 
+videos,
+ 
+fake
+news and malicious hoaxes.
+ 
+The Deepfakes are very much popular in creating the
+ 
+political tension [14]. Due to which it becomes very important to detect the deepfake
+ 
+videos
+ 
+and
+ 
+avoid
+ 
+the
+ 
+percolation
+ 
+of
+ 
+the
+ 
+deepfakes
+ 
+on
+ 
+the
+ 
+social
+ 
+media
+ 
+platforms.
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs></w:pPr><w:bookmarkStart w:id="44" w:name="_TOC_250024"/><w:r><w:t>Tools
+ 
+and
+ 
+Technologies
+ 
+Used
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="367"/></w:pPr><w:bookmarkStart w:id="45" w:name="_TOC_250023"/><w:bookmarkEnd w:id="45"/><w:r><w:t>Planning
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="277"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>OpenProject
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs></w:pPr><w:bookmarkStart w:id="46" w:name="_TOC_250022"/><w:r><w:t>UML
+ 
+Tools
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="277"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>draw.io
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs></w:pPr><w:bookmarkStart w:id="47" w:name="_TOC_250021"/><w:r><w:t>Programming
+ 
+Languages
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="277"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Python3
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>JavaScript
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs></w:pPr><w:bookmarkStart w:id="48" w:name="_TOC_250020"/><w:r><w:t>Programming
+ 
+Frameworks
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="277"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>PyTorch
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Django
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs></w:pPr><w:bookmarkStart w:id="49" w:name="_TOC_250019"/><w:bookmarkEnd w:id="49"/><w:r><w:t>IDE
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="277"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Google
+ 
+Colab
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Jupyter
+ 
+Notebook
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Visual
+ 
+Studio
+ 
+Code
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="1"/></w:pPr><w:bookmarkStart w:id="50" w:name="_TOC_250018"/><w:r><w:t>Versioning
+ 
+Control
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="277"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Git
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs></w:pPr><w:bookmarkStart w:id="51" w:name="_TOC_250017"/><w:r><w:t>Cloud
+ 
+Services
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="277"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Google
+ 
+Cloud
+ 
+Platform
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="114"/></w:pPr><w:bookmarkStart w:id="52" w:name="_TOC_250016"/><w:r><w:t>Application
+ 
+and
+ 
+web
+ 
+servers:
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="277"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Google
+ 
+Cloud
+ 
+Engine
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs></w:pPr><w:bookmarkStart w:id="53" w:name="_TOC_250015"/><w:bookmarkEnd w:id="53"/><w:r><w:t>Libraries
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="277"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>torch
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>torchvision
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>os
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>numpy
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>cv2
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="105"/><w:sz w:val="28"/></w:rPr><w:t>matplotlib
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>face_recognition
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>json
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>pandas
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:ind w:hanging="477"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>copy
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:ind w:hanging="477"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>glob
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:ind w:hanging="477"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>random
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:ind w:hanging="477"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>sklearn
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs></w:pPr><w:bookmarkStart w:id="54" w:name="_TOC_250014"/><w:r><w:t>Algorithm
+ 
+Details
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="367"/></w:pPr><w:bookmarkStart w:id="55" w:name="_TOC_250013"/><w:r><w:t>Dataset
+ 
+Details
+Refer
+ 
+7.2.1
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="1"/></w:pPr><w:bookmarkStart w:id="56" w:name="_TOC_250012"/><w:r><w:t>Preprocessing
+ 
+Details
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="275"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Using
+ 
+glob
+ 
+we
+ 
+imported
+ 
+all
+ 
+the
+ 
+videos
+ 
+in
+ 
+the
+ 
+directory
+ 
+in
+ 
+a
+ 
+python
+ 
+list.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>cv2.VideoCapture
+ 
+is
+ 
+used
+ 
+to
+ 
+read
+ 
+the
+ 
+videos
+ 
+and
+ 
+get
+ 
+the
+ 
+mean
+ 
+number
+ 
+of
+ 
+frames
+ 
+in
+ 
+each
+ 
+video.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="103" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>To maintain uniformity, based on mean a value 150 is selected as idea value for
+ 
+creating
+ 
+the
+ 
+new
+ 
+dataset.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>The
+ 
+video
+ 
+is
+ 
+split
+ 
+into
+ 
+frames
+ 
+and
+ 
+the
+ 
+frames
+ 
+are
+ 
+cropped
+ 
+on
+ 
+face
+ 
+location.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>The
+ 
+face
+ 
+cropped
+ 
+frames
+ 
+are
+ 
+again
+ 
+written
+ 
+to
+ 
+new
+ 
+video
+ 
+using
+ 
+VideoWriter.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>The new video is written at 30 frames per second and with the resolution of 112
+ 
+x
+ 
+112
+ 
+pixels
+ 
+in
+ 
+the
+ 
+mp4
+ 
+format.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Instead of selecting the random videos, to make the proper use of LSTM for
+ 
+temporal
+ 
+sequence
+ 
+analysis
+ 
+the
+ 
+first
+ 
+150
+ 
+frames
+ 
+are
+ 
+written
+ 
+to
+ 
+the
+ 
+new
+ 
+video.
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="1"/><w:ind w:hanging="862"/></w:pPr><w:bookmarkStart w:id="57" w:name="_TOC_250011"/><w:r><w:t>Model
+ 
+Details
+The
+ 
+model
+ 
+consists
+ 
+of
+ 
+following
+ 
+layers:
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="281" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t xml:space="preserve">ResNext CNN : 
+The pre-trained model of Residual Convolution Neural Net-
+ 
+work is used.
+ 
+The model name is resnext50_32x4d()[22].
+ 
+This model consists
+ 
+of 50 layers and 32 x 4 dimensions.
+ 
+Figure shows the detailed implementation
+ 
+of
+ 
+model.
+Figure
+ 
+8.1:
+ 
+ResNext
+ 
+Architecture
+Figure
+ 
+8.2:
+ 
+ResNext
+ 
+Working
+Figure
+ 
+8.3:
+ 
+Overview
+ 
+of
+ 
+ResNext
+ 
+Architecture
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="233" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Sequential Layer :
+ 
+Sequential is a container of Modules that can be stacked
+ 
+together and run at the same time.
+ 
+Sequential layer is used to store feature
+ 
+vector returned by the ResNext model in a ordered way.   So that it can be
+ 
+passed
+ 
+to
+ 
+the
+ 
+LSTM
+ 
+sequentially.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t xml:space="preserve">LSTM Layer : 
+LSTM is used for sequence processing and spot the temporal
+ 
+change between the frames.2048-dimensional feature vectors is fitted as the
+ 
+input to the
+ 
+LSTM. We are using
+ 
+1 LSTM layer with 2048
+ 
+latent dimensions
+ 
+and
+ 
+2048
+ 
+hidden
+ 
+layers
+ 
+along
+ 
+with
+ 
+0.4
+ 
+chance
+ 
+of
+ 
+dropout,
+ 
+which
+ 
+is
+ 
+capable
+ 
+to
+ 
+do achieve our objective.
+ 
+LSTM is used to process the frames in a sequential
+ 
+manner so that the temporal analysis of the video can be made,
+ 
+by comparing
+ 
+the frame at ‘t’ second with the frame of ‘t-n’ seconds.
+ 
+Where n can be any
+ 
+number
+ 
+of
+ 
+frames
+ 
+before
+ 
+t.
+Figure
+ 
+8.4:
+ 
+Overview
+ 
+of
+ 
+LSTM
+ 
+Architecture
+Figure
+ 
+8.5:
+ 
+Internal
+ 
+LSTM
+ 
+Architecture
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="233" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>ReLU:
+A Rectified Linear Unit is activation function that has output 0 if the
+ 
+input is less than 0,
+ 
+and raw output otherwise.
+ 
+That is,
+ 
+if the input is greater
+ 
+than 0, the output is equal to the input. The operation of ReLU is closer to the
+ 
+way
+ 
+our
+ 
+biological
+ 
+neurons
+ 
+work.
+ 
+ReLU
+ 
+is
+ 
+non-linear
+ 
+and
+ 
+has
+ 
+the
+ 
+advantage
+ 
+of not having any backpropagation errors unlike the sigmoid function, also for
+ 
+larger Neural Networks,
+ 
+the speed of building models based off on ReLU is
+ 
+very
+ 
+fast.
+Figure
+ 
+8.6:
+ 
+Relu
+ 
+Activation
+ 
+function
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="113" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Dropout Layer :
+Dropout layer with the value of 0.4 is used to avoid over-
+ 
+fitting in the model and it can help a model generalize by randomly setting the
+ 
+output for a given neuron to 0.
+ 
+In setting the output to 0, the cost function
+ 
+becomes more sensitive to neighbouring neurons changing the way the weights
+ 
+will
+ 
+be
+ 
+updated
+ 
+during
+ 
+the
+ 
+process
+ 
+of
+ 
+backpropagation.
+Figure
+ 
+8.7:
+ 
+Dropout
+ 
+layer
+ 
+overview
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="233" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t xml:space="preserve">Adaptive Average Pooling Layer : 
+It is used To reduce variance, reduce com-
+ 
+putation complexity and extract low level features from neighbourhood.2 di-
+ 
+mensional
+ 
+Adaptive
+ 
+Average
+ 
+Pooling
+ 
+Layer
+ 
+is
+ 
+used
+ 
+in
+ 
+the
+ 
+model.
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="1"/><w:ind w:hanging="862"/></w:pPr><w:bookmarkStart w:id="58" w:name="_TOC_250010"/><w:r><w:t>Model
+ 
+Training
+ 
+Details
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="275" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Train Test Split:
+The dataset is split into train and test dataset with a ratio of
+ 
+70% train videos (4,200) and 30% (1,800) test videos.
+ 
+The train and test split is
+ 
+a balanced split i.e 50% of the real and 50% of fake videos in each split. Refer
+ 
+figure
+ 
+7.6
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Data Loader:
+ 
+It is used to load the videos and their labels with a batch size of
+ 
+4.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Training:
+ 
+The training is done for 20 epochs with a learning rate of 1e-5
+ 
+(0.00001),weight
+ 
+decay
+ 
+of
+ 
+1e-3
+ 
+(0.001)
+ 
+using
+ 
+the
+ 
+Adam
+ 
+optimizer.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Adam optimizer[21]:
+ 
+To enable the adaptive learning rate Adam optimizer
+ 
+with
+ 
+the
+ 
+model
+ 
+parameters
+ 
+is
+ 
+used.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="113" w:line="302" w:lineRule="auto"/><w:ind w:right="710"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Cross Entropy:
+ 
+To calculate the loss function Cross Entropy approach is used
+ 
+because
+ 
+we
+ 
+are
+ 
+training
+ 
+a
+ 
+classification
+ 
+problem.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t xml:space="preserve">Softmax Layer: 
+A Softmax function is a type of squashing function. Squash-
+ 
+ing functions limit the output of the function into the range 0 to 1. This allows
+ 
+the output to be interpreted directly as a probability.
+ 
+Similarly, softmax func-
+ 
+tions are multi-class sigmoids, meaning they are used in determining probabil-
+ 
+ity of multiple classes at once. Since the outputs of a softmax function can be
+ 
+interpreted as a probability (i.e.they must sum to 1), a softmax layer is typically
+ 
+the final layer used in neural network functions.
+ 
+It is important to note that a
+ 
+softmax
+ 
+layer
+ 
+must
+ 
+have
+ 
+the
+ 
+same
+ 
+number
+ 
+of
+ 
+nodes
+ 
+as
+ 
+the
+ 
+output
+ 
+later.
+In our case softmax layer has two output nodes i.e REAL or FAKE, also Soft-
+ 
+max
+ 
+layer
+ 
+provide
+ 
+us
+ 
+the
+ 
+confidence(probability)
+ 
+of
+ 
+prediction.
+Figure
+ 
+8.8:
+ 
+Softmax
+ 
+Layer
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="233" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Confusion
+ 
+Matrix:
+ 
+A
+ 
+confusion
+ 
+matrix
+ 
+is
+ 
+a
+ 
+summary
+ 
+of
+ 
+prediction
+ 
+results
+ 
+on
+ 
+a classification problem.
+ 
+The number of correct and incorrect predictions are
+ 
+summarized with count values and broken down by each class.
+ 
+This is the key
+ 
+to
+ 
+the
+ 
+confusion
+ 
+matrix.
+ 
+The
+ 
+confusion
+ 
+matrix
+ 
+shows
+ 
+the
+ 
+ways
+ 
+in
+ 
+which
+ 
+your
+classification model is confused when it makes predictions. It gives us insight
+ 
+not
+ 
+only
+ 
+into
+ 
+the
+ 
+errors
+ 
+being
+ 
+made
+ 
+by
+ 
+a
+ 
+classifier
+ 
+but
+ 
+more
+ 
+importantly
+ 
+the
+ 
+types
+ 
+of
+ 
+errors
+ 
+that
+ 
+are
+ 
+being
+ 
+made.
+Confusion
+ 
+matrix
+ 
+is
+ 
+used
+ 
+to
+ 
+evaluate
+ 
+our
+ 
+model
+ 
+and
+ 
+calculate
+ 
+the
+ 
+accuracy.
+<w:tab w:val="left" w:pos="698"/><w:tab w:val="left" w:pos="2757"/></w:tabs><w:spacing w:before="282" w:line="302" w:lineRule="auto"/><w:ind w:right="710"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="28"/></w:rPr><w:t>Export
+ 
+Model:
+</w:r><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>After
+ 
+the
+ 
+model
+ 
+is
+ 
+trained,
+ 
+we
+ 
+have
+ 
+exported
+ 
+the
+ 
+model.
+ 
+So
+ 
+that
+ 
+it
+ 
+can
+ 
+be
+ 
+used
+ 
+for
+ 
+prediction
+ 
+on
+ 
+real
+ 
+time
+ 
+data.
+<w:tab w:val="left" w:pos="972"/><w:tab w:val="left" w:pos="973"/></w:tabs><w:spacing w:before="1"/><w:ind w:hanging="862"/></w:pPr><w:bookmarkStart w:id="59" w:name="_TOC_250009"/><w:r><w:t>Model
+ 
+Prediction
+ 
+Details
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="275"/><w:ind w:hanging="262"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>The
+ 
+model
+ 
+is
+ 
+loaded
+ 
+in
+ 
+the
+ 
+application
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>The
+ 
+new
+ 
+video
+ 
+for
+ 
+prediction
+ 
+is
+ 
+preprocessed(refer
+ 
+8.3.2,
+ 
+7.2.2)
+ 
+and
+ 
+passed
+ 
+to
+ 
+the
+ 
+loaded
+ 
+model
+ 
+for
+ 
+prediction
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>The
+ 
+trained
+ 
+model
+ 
+performs
+ 
+the
+ 
+prediction
+ 
+and
+ 
+return
+ 
+if
+ 
+the
+ 
+video
+ 
+is
+ 
+a
+ 
+real
+ 
+or
+ 
+fake
+ 
+along
+ 
+with
+ 
+the
+ 
+confidence
+ 
+of
+ 
+the
+ 
+prediction.
+Chapter
+ 
+9
+ 
+Software
+ 
+Testing
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs><w:spacing w:before="354"/></w:pPr><w:bookmarkStart w:id="60" w:name="_TOC_250008"/><w:r><w:t>Type
+ 
+of
+ 
+Testing
+ 
+Used
+Functional
+ 
+Testing
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Unit
+ 
+Testing
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Integration
+ 
+Testing
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>System
+ 
+Testing
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Interface
+ 
+Testing
+Non-functional
+ 
+Testing
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="1"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Performance
+ 
+Testing
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="282"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Load
+ 
+Testing
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="283"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Compatibility
+ 
+Testing
+<w:tab w:val="left" w:pos="886"/><w:tab w:val="left" w:pos="887"/></w:tabs><w:spacing w:before="161"/></w:pPr><w:bookmarkStart w:id="61" w:name="_TOC_250007"/><w:r><w:lastRenderedPageBreak/><w:t>Test
+ 
+Cases
+ 
+and
+ 
+Test
+ 
+Results
+Test
+ 
+Cases
+Table
+ 
+9.1:
+ 
+Test
+ 
+Case
+ 
+Report
+<w:tblPr><w:tblW w:w="0" w:type="auto"/><w:tblInd w:w="251" w:type="dxa"/><w:tblBorders><w:top w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:left w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:bottom w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:right w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:insideH w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:insideV w:val="single" w:sz="4" w:space="0" w:color="000000"/></w:tblBorders><w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="0" w:type="dxa"/><w:right w:w="0" w:type="dxa"/></w:tblCellMar><w:tblLook w:val="01E0" w:firstRow="1" w:lastRow="1" w:firstColumn="1" w:lastColumn="1" w:noHBand="0" w:noVBand="0"/></w:tblPr><w:tblGrid><w:gridCol w:w="958"/><w:gridCol w:w="2515"/><w:gridCol w:w="2515"/><w:gridCol w:w="2515"/><w:gridCol w:w="832"/></w:tblGrid><w:tr w:rsidR="00813258" w:rsidTr="004251DE"><w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="958" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="101" w:right="94"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Case
+ 
+id
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Test
+ 
+Case
+ 
+Description
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Expected
+ 
+Result
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Actual
+ 
+Result
+<w:tcPr><w:tcW w:w="832" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="100" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Status
+<w:trPr><w:trHeight w:val="720"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="958" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="7"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>1
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:right="111"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Upload
+ 
+a
+ 
+word
+ 
+file
+ 
+in-
+ 
+stead
+ 
+of
+ 
+video
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:tabs><w:tab w:val="left" w:pos="1911"/></w:tabs><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:left="121" w:right="113"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Error
+ 
+message:
+</w:r><w:r><w:rPr><w:spacing w:val="-2"/><w:sz w:val="24"/></w:rPr><w:t>Only
+ 
+video
+ 
+files
+ 
+allowed
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:tabs><w:tab w:val="left" w:pos="1911"/></w:tabs><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:left="121" w:right="113"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Error
+ 
+message:
+</w:r><w:r><w:rPr><w:spacing w:val="-2"/><w:sz w:val="24"/></w:rPr><w:t>Only
+ 
+video
+ 
+files
+ 
+allowed
+<w:tcPr><w:tcW w:w="832" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="100" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Pass
+<w:trPr><w:trHeight w:val="720"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="958" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="7"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>2
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:right="103"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Upload a 200MB video
+ 
+file
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:tabs><w:tab w:val="left" w:pos="1951"/></w:tabs><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:left="121" w:right="113"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Error
+ 
+message:
+</w:r><w:r><w:rPr><w:spacing w:val="-2"/><w:sz w:val="24"/></w:rPr><w:t>Max
+ 
+limit
+ 
+100MB
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:tabs><w:tab w:val="left" w:pos="1951"/></w:tabs><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:left="121" w:right="113"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Error
+ 
+message:
+</w:r><w:r><w:rPr><w:spacing w:val="-2"/><w:sz w:val="24"/></w:rPr><w:t>Max
+ 
+limit
+ 
+100MB
+<w:tcPr><w:tcW w:w="832" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="100" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Pass
+<w:trPr><w:trHeight w:val="1009"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="958" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="7"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>3
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:line="252" w:lineRule="auto"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Upload
+ 
+a
+ 
+file
+ 
+without
+ 
+any
+ 
+faces
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:left="121" w:right="113"/><w:jc w:val="both"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:spacing w:val="-1"/><w:sz w:val="24"/></w:rPr><w:t>Error
+ 
+message:No
+ 
+faces
+ 
+detected.
+ 
+Cannot pro-
+ 
+cess
+ 
+the
+ 
+video.
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:left="121" w:right="113"/><w:jc w:val="both"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:spacing w:val="-1"/><w:sz w:val="24"/></w:rPr><w:t>Error
+ 
+message:No
+ 
+faces
+ 
+detected.
+ 
+Cannot pro-
+ 
+cess
+ 
+the
+ 
+video.
+<w:tcPr><w:tcW w:w="832" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="100" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Pass
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="958" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="7"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>4
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Videos
+ 
+with
+ 
+many
+ 
+faces
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Fake
+ 
+/
+ 
+Real
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Fake
+<w:tcPr><w:tcW w:w="832" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="100" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Pass
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="958" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="7"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>5
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Deepfake
+ 
+video
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Fake
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Fake
+<w:tcPr><w:tcW w:w="832" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="100" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Pass
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="958" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="7"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>6
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Enter
+ 
+/predict
+ 
+in
+ 
+URL
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Redirect
+ 
+to
+ 
+/upload
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Redirect
+ 
+to
+ 
+/upload
+<w:tcPr><w:tcW w:w="832" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="100" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Pass
+<w:trPr><w:trHeight w:val="720"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="958" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="7"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>7
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:tabs><w:tab w:val="left" w:pos="879"/><w:tab w:val="left" w:pos="1783"/></w:tabs><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:right="113"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Press
+<w:t>upload
+</w:r><w:r><w:rPr><w:spacing w:val="-2"/><w:sz w:val="24"/></w:rPr><w:t>button
+ 
+without
+ 
+selecting
+ 
+video
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Alert
+ 
+message:
+ 
+Please
+ 
+select
+ 
+video
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Alert
+ 
+message:
+ 
+Please
+ 
+select
+ 
+video
+<w:tcPr><w:tcW w:w="832" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="100" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Pass
+<w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="958" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="7"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>8
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Upload
+ 
+a
+ 
+Real
+ 
+video
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Real
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Real
+<w:tcPr><w:tcW w:w="832" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="100" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Pass
+<w:trPr><w:trHeight w:val="720"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="958" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="7"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:w w:val="99"/><w:sz w:val="24"/></w:rPr><w:t>9
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:right="111"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Upload
+ 
+a
+ 
+face
+ 
+cropped
+ 
+real
+ 
+video
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Real
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Real
+<w:tcPr><w:tcW w:w="832" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="100" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Pass
+<w:trPr><w:trHeight w:val="720"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="958" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="101" w:right="94"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>10
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:right="111"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Upload
+ 
+a
+ 
+face
+ 
+cropped
+ 
+fake
+ 
+video
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Fake
+<w:tcPr><w:tcW w:w="2515" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="121"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Fake
+<w:tcPr><w:tcW w:w="832" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="100" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Pass
+Chapter
+ 
+10
+Results
+ 
+and
+ 
+Discussion
+<w:tab w:val="left" w:pos="1058"/><w:tab w:val="left" w:pos="1059"/></w:tabs></w:pPr><w:bookmarkStart w:id="62" w:name="_TOC_250006"/><w:r><w:t>Screen
+ 
+shots
+                                  
+Figure
+ 
+10.1:
+ 
+Home
+ 
+Page
+Figure
+ 
+10.2:
+ 
+Uploading
+ 
+Real
+ 
+Video
+                             
+                                                   
+Figure
+ 
+10.3:
+ 
+Real
+ 
+Video
+ 
+Output
+                                    
+Figure
+ 
+10.
+6
+:
+ 
+Real
+ 
+Video
+ 
+Output
+                                   
+Figure
+ 
+10.4:
+ 
+Uploading
+ 
+Fake
+ 
+Video
+                     
+  
+   
+                                             
+Figure
+ 
+10.5:
+ 
+Fake
+ 
+video
+ 
+Output
+                                 
+                                             
+Figure
+ 
+10.
+6
+:
+ 
+Fake
+ 
+video
+ 
+Output
+                                  
+                    
+Table
+ 
+10.1: 
+Trained
+ 
+Model
+ 
+Results
+<w:tblPr><w:tblW w:w="0" w:type="auto"/><w:tblInd w:w="365" w:type="dxa"/><w:tblBorders><w:top w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:left w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:bottom w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:right w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:insideH w:val="single" w:sz="4" w:space="0" w:color="000000"/><w:insideV w:val="single" w:sz="4" w:space="0" w:color="000000"/></w:tblBorders><w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="0" w:type="dxa"/><w:right w:w="0" w:type="dxa"/></w:tblCellMar><w:tblLook w:val="01E0" w:firstRow="1" w:lastRow="1" w:firstColumn="1" w:lastColumn="1" w:noHBand="0" w:noVBand="0"/></w:tblPr><w:tblGrid><w:gridCol w:w="3150"/><w:gridCol w:w="1800"/><w:gridCol w:w="1980"/><w:gridCol w:w="2250"/></w:tblGrid><w:tr w:rsidR="00813258" w:rsidTr="00813258"><w:trPr><w:trHeight w:val="431"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="3150" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Model
+ 
+Name
+<w:tcPr><w:tcW w:w="1800" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Dataset
+<w:tcPr><w:tcW w:w="1980" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="101" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>No.
+ 
+of
+ 
+videos
+<w:tcPr><w:tcW w:w="2250" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="00813258"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="0" w:right="92"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Accuracy
+<w:trPr><w:trHeight w:val="1009"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="3150" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>model_90_acc
+_20_frames_
+ 
+FF_data
+<w:tcPr><w:tcW w:w="1800" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>FaceForensic++
+<w:tcPr><w:tcW w:w="1980" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="101" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>2000
+<w:tcPr><w:tcW w:w="2250" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="97" w:right="92"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>90.95477
+<w:trPr><w:trHeight w:val="1009"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="3150" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>model_95_acc
+_40_frames_
+ 
+FF_data
+<w:tcPr><w:tcW w:w="1800" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>FaceForensic++
+<w:tcPr><w:tcW w:w="1980" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="101" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>2000
+<w:tcPr><w:tcW w:w="2250" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="97" w:right="92"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>95.22613
+<w:trPr><w:trHeight w:val="1009"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="3150" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>model_97_acc
+_60_frames_
+ 
+FF_data
+<w:tcPr><w:tcW w:w="1800" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>FaceForensic++
+<w:tcPr><w:tcW w:w="1980" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="101" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>2000
+<w:tcPr><w:tcW w:w="2250" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="97" w:right="92"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>97.48743
+<w:trPr><w:trHeight w:val="1009"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="3150" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>model_97_acc
+_80_frames_
+ 
+FF_data
+<w:tcPr><w:tcW w:w="1800" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>FaceForensic++
+<w:tcPr><w:tcW w:w="1980" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="101" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>2000
+<w:tcPr><w:tcW w:w="2250" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="97" w:right="92"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>97.73366
+<w:trPr><w:trHeight w:val="1009"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="3150" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>model_97_acc
+_100_frames_
+ 
+FF_data
+<w:tcPr><w:tcW w:w="1800" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>FaceForensic++
+<w:tcPr><w:tcW w:w="1980" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="101" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>2000
+<w:tcPr><w:tcW w:w="2250" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="97" w:right="92"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>97.76180
+<w:trPr><w:trHeight w:val="1009"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="3150" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>model_93_acc
+_100_frames_
+ 
+celeb_FF_data
+<w:tcPr><w:tcW w:w="1800" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:spacing w:line="252" w:lineRule="auto"/><w:ind w:right="110"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:spacing w:val="-1"/><w:sz w:val="24"/></w:rPr><w:t>Celeb-DF
+ 
++
+ 
+FaceForen-
+ 
+sic++
+<w:tcPr><w:tcW w:w="1980" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="101" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>3000
+<w:tcPr><w:tcW w:w="2250" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="97" w:right="92"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>93.97781
+<w:trPr><w:trHeight w:val="1009"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="3150" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>model_87_acc
+_20_frames_
+ 
+final_data
+<w:tcPr><w:tcW w:w="1800" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:jc w:val="left"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>Our
+ 
+Dataset
+<w:tcPr><w:tcW w:w="1980" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="101" w:right="95"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>6000
+<w:tcPr><w:tcW w:w="2250" w:type="dxa"/></w:tcPr><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="004251DE"><w:pPr><w:pStyle w:val="TableParagraph"/><w:ind w:left="97" w:right="92"/><w:rPr><w:sz w:val="24"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t>87.79160
+Chapter
+ 
+11
+Deployment
+ 
+and
+ 
+Maintenance
+<w:tab w:val="left" w:pos="1058"/><w:tab w:val="left" w:pos="1059"/></w:tabs></w:pPr><w:bookmarkStart w:id="65" w:name="_TOC_250003"/><w:bookmarkEnd w:id="65"/><w:r><w:t>Deployment
+Following
+ 
+are
+ 
+the
+ 
+steps
+ 
+to
+ 
+be
+ 
+followed
+ 
+for
+ 
+the
+ 
+deployment
+ 
+of
+ 
+the
+ 
+application.
+Environment Setup
+Install Python 3.10.x
+Install Visual C++ Build Tools (Windows)
+pip install -r requirements.txt
+Project Structure Setup
+Create "Uploaded_Files" folder in DeepFake_Detection directory
+Create "model" folder in DeepFake_Detection directory
+Download 
+df_model.pt
+ and place it in the model folder
+Run the Application
+<w:tab w:val="left" w:pos="916"/><w:tab w:val="left" w:pos="1832"/><w:tab w:val="left" w:pos="2748"/><w:tab w:val="left" w:pos="3664"/><w:tab w:val="left" w:pos="4580"/><w:tab w:val="left" w:pos="5496"/><w:tab w:val="left" w:pos="6412"/><w:tab w:val="left" w:pos="7328"/><w:tab w:val="left" w:pos="8244"/><w:tab w:val="left" w:pos="9160"/><w:tab w:val="left" w:pos="10076"/><w:tab w:val="left" w:pos="10992"/><w:tab w:val="left" w:pos="11908"/><w:tab w:val="left" w:pos="12824"/><w:tab w:val="left" w:pos="13740"/><w:tab w:val="left" w:pos="14656"/></w:tabs><w:autoSpaceDE/><w:autoSpaceDN/><w:spacing w:line="326" w:lineRule="atLeast"/><w:rPr><w:rFonts w:ascii="Courier New" w:hAnsi="Courier New" w:cs="Courier New"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:bidi="hi-IN"/></w:rPr></w:pPr><w:r w:rsidRPr="007C731C"><w:rPr><w:rFonts w:ascii="Courier New" w:hAnsi="Courier New" w:cs="Courier New"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:bidi="hi-IN"/></w:rPr><w:t>cd DeepFake_Detection
+<w:tab w:val="left" w:pos="916"/><w:tab w:val="left" w:pos="1832"/><w:tab w:val="left" w:pos="2748"/><w:tab w:val="left" w:pos="3664"/><w:tab w:val="left" w:pos="4580"/><w:tab w:val="left" w:pos="5496"/><w:tab w:val="left" w:pos="6412"/><w:tab w:val="left" w:pos="7328"/><w:tab w:val="left" w:pos="8244"/><w:tab w:val="left" w:pos="9160"/><w:tab w:val="left" w:pos="10076"/><w:tab w:val="left" w:pos="10992"/><w:tab w:val="left" w:pos="11908"/><w:tab w:val="left" w:pos="12824"/><w:tab w:val="left" w:pos="13740"/><w:tab w:val="left" w:pos="14656"/></w:tabs><w:autoSpaceDE/><w:autoSpaceDN/><w:spacing w:line="326" w:lineRule="atLeast"/><w:rPr><w:rFonts w:ascii="Courier New" w:hAnsi="Courier New" w:cs="Courier New"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:bidi="hi-IN"/></w:rPr></w:pPr><w:r w:rsidRPr="007C731C"><w:rPr><w:rFonts w:ascii="Courier New" w:hAnsi="Courier New" w:cs="Courier New"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:bidi="hi-IN"/></w:rPr><w:t>python server.py
+Access the application at 
+http://localhost:5000
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="193"/><w:rPr><w:sz w:val="28"/></w:rPr><w:sectPr w:rsidR="00813258" w:rsidRPr="00813258"><w:pgSz w:w="11910" w:h="16840"/><w:pgMar w:top="800" w:right="440" w:bottom="560" w:left="1040" w:header="252" w:footer="377" w:gutter="0"/><w:cols w:space="720"/></w:sectPr></w:pPr></w:p><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="00813258"><w:pPr><w:pStyle w:val="BodyText"/><w:rPr><w:sz w:val="20"/></w:rPr></w:pPr></w:p><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="00813258"><w:pPr><w:pStyle w:val="BodyText"/><w:rPr><w:sz w:val="20"/></w:rPr></w:pPr></w:p><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="00813258"><w:pPr><w:pStyle w:val="BodyText"/><w:spacing w:before="11"/><w:rPr><w:sz w:val="16"/></w:rPr></w:pPr></w:p><w:p w:rsidR="00813258" w:rsidRDefault="00813258" w:rsidP="00813258"><w:pPr><w:spacing w:before="118"/><w:ind w:left="112"/><w:rPr><w:b/><w:sz w:val="49"/></w:rPr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="49"/></w:rPr><w:t>Chapter
+ 
+12
+Conclusion
+ 
+and
+ 
+Future
+ 
+Scope
+<w:tab w:val="left" w:pos="1058"/><w:tab w:val="left" w:pos="1059"/></w:tabs></w:pPr><w:bookmarkStart w:id="67" w:name="_TOC_250001"/><w:bookmarkEnd w:id="67"/><w:r><w:t>Conclusion
+We
+ 
+presented
+ 
+a
+ 
+neural
+ 
+network-based
+ 
+approach
+ 
+to
+ 
+classify
+ 
+the
+ 
+video
+ 
+as
+ 
+deep
+ 
+fake
+ 
+or real, along with the confidence of proposed model.
+ 
+Our method is capable of
+ 
+predicting
+ 
+the
+ 
+output
+ 
+by
+ 
+processing
+ 
+1
+ 
+second
+ 
+of
+ 
+video
+ 
+(10
+ 
+frames
+ 
+per
+ 
+second)
+ 
+with
+ 
+a good accuracy.
+ 
+We implemented the model by using pre-trained ResNext CNN
+ 
+model to extract the frame level features and LSTM for temporal sequence process-
+ 
+ing to spot the changes between the t and t-1 frame. Our model can process the video
+ 
+in
+ 
+the
+ 
+frame
+ 
+sequence
+ 
+of
+ 
+10,20,40,60,80,100.
+<w:tab w:val="left" w:pos="1058"/><w:tab w:val="left" w:pos="1059"/></w:tabs><w:ind w:hanging="948"/></w:pPr><w:bookmarkStart w:id="68" w:name="_TOC_250000"/><w:r><w:t>Future
+ 
+Scope
+There is always a scope for enhancements in any developed system, especially
+ 
+when the project build using latest trending technology and has a good scope in
+ 
+future.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="257" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Web
+ 
+based
+ 
+platform
+ 
+can
+ 
+be
+ 
+upscaled
+ 
+to
+ 
+a
+ 
+browser
+ 
+plugin
+ 
+for
+ 
+ease
+ 
+of
+ 
+access
+ 
+to
+ 
+the
+ 
+user.
+<w:tab w:val="left" w:pos="698"/></w:tabs><w:spacing w:before="197" w:line="302" w:lineRule="auto"/><w:ind w:right="709"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Currently
+ 
+only
+ 
+Face
+ 
+Deep
+ 
+Fakes
+ 
+are
+ 
+being
+ 
+detected
+ 
+by
+ 
+the
+ 
+algorithm,
+ 
+but
+ 
+the
+ 
+algorithm
+ 
+can
+ 
+be
+ 
+enhanced
+ 
+in
+ 
+detecting
+ 
+full
+ 
+body
+ 
+deep
+ 
+fakes.
+Appendix A
+ 
+References
+<w:tab w:val="left" w:pos="560"/></w:tabs><w:spacing w:before="320" w:line="302" w:lineRule="auto"/><w:ind w:right="709" w:firstLine="0"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Andreas Rossler,
+ 
+Davide Cozzolino,
+ 
+Luisa Verdoliva,
+ 
+Christian Riess,
+ 
+Justus
+ 
+Thies,Matthias Nießner, “FaceForensics++:
+ 
+Learning to Detect Manipulated Facial
+ 
+Images”
+ 
+in
+ 
+arXiv:1901.08971.
+<w:tab w:val="left" w:pos="502"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="140" w:firstLine="0"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Deepfake
+ 
+detection
+ 
+challenge
+ 
+dataset
+ 
+:
+ 
+https://www.kaggle.com/c/deepf
+ak
+e-detection-
+ 
+challenge/data
+ 
+Accessed
+ 
+on
+ 
+26
+ 
+March,
+ 
+2020
+<w:tab w:val="left" w:pos="547"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709" w:firstLine="0"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Yuezun
+ 
+Li
+ 
+,
+ 
+Xin
+ 
+Yang
+ 
+,
+ 
+Pu
+ 
+Sun
+ 
+,
+ 
+Honggang
+ 
+Qi
+ 
+and
+ 
+Siwei
+ 
+Lyu
+ 
+“Celeb-DF:
+ 
+A
+ 
+Large-scale
+ 
+Challenging
+ 
+Dataset
+ 
+for
+ 
+DeepFake
+ 
+Forensics”
+ 
+in
+ 
+arXiv:1909.12962
+<w:tab w:val="left" w:pos="518"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709" w:firstLine="0"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Deepfake Video of Mark Zuckerberg Goes Viral on Eve of House A.I. Hearing :
+ 
+https://fortune.com/2019/06/12/deepfake-mark-zuckerberg/ Accessed on 26 March,
+ 
+2020
+<w:tab w:val="left" w:pos="519"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709" w:firstLine="0"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>10
+ 
+deepfake
+ 
+examples
+ 
+that
+ 
+terrified
+ 
+and
+ 
+amused
+ 
+the
+ 
+internet
+ 
+:
+ 
+https://www
+.creativ
+ebloq.com/features/deepfake-examples
+ 
+Accessed
+ 
+on
+ 
+26
+ 
+March,
+ 
+2020
+<w:tab w:val="left" w:pos="519"/></w:tabs><w:spacing w:line="321" w:lineRule="exact"/><w:ind w:left="518" w:hanging="407"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>TensorFlow:
+ 
+https://www.tensorflo
+w.org/
+ 
+(Accessed
+ 
+on
+ 
+26
+ 
+March,
+ 
+2020)
+<w:tab w:val="left" w:pos="519"/></w:tabs><w:spacing w:before="79"/><w:ind w:left="518" w:hanging="407"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Keras:
+ 
+https://keras.io/
+ 
+(Accessed
+ 
+on
+ 
+26
+ 
+March,
+ 
+2020)
+<w:tab w:val="left" w:pos="519"/></w:tabs><w:spacing w:before="84"/><w:ind w:left="518" w:hanging="407"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>PyTorch
+ 
+:
+ 
+https://pytorch.org/
+ 
+(Accessed
+ 
+on
+ 
+26
+ 
+March,
+ 
+2020)
+<w:tab w:val="left" w:pos="520"/></w:tabs><w:spacing w:before="83" w:line="302" w:lineRule="auto"/><w:ind w:right="709" w:firstLine="0"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>G. Antipov, M. Baccouche, and J.-L. Dugelay. Face aging with conditional gen-
+ 
+erative
+ 
+adversarial
+ 
+networks.
+ 
+arXiv:1702.01983,
+ 
+Feb.
+ 
+2017
+<w:tab w:val="left" w:pos="649"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709" w:firstLine="0"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>J. Thies et al. Face2Face: Real-time face capture and reenactment of rgb videos.
+ 
+Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition,
+ 
+pages
+ 
+2387–2395,
+ 
+June
+ 
+2016.
+ 
+Las
+ 
+Vegas,
+ 
+NV.
+<w:tab w:val="left" w:pos="662"/></w:tabs><w:spacing w:line="321" w:lineRule="exact"/><w:ind w:left="661" w:hanging="550"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Face
+ 
+app:
+ 
+https://www
+.f
+aceapp.com/
+ 
+(Accessed
+ 
+on
+ 
+26
+ 
+March,
+ 
+2020)
+<w:tab w:val="left" w:pos="662"/></w:tabs><w:spacing w:before="83"/><w:ind w:left="661" w:hanging="550"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Face
+ 
+Swap
+ 
+:
+ 
+https://faceswaponline.com/
+ 
+(Accessed
+ 
+on
+ 
+26
+ 
+March,
+ 
+2020)
+<w:tab w:val="left" w:pos="662"/></w:tabs><w:spacing w:before="83" w:line="302" w:lineRule="auto"/><w:ind w:right="676" w:firstLine="0"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Deepfakes,
+ 
+Revenge
+ 
+Porn,
+ 
+And
+ 
+The
+ 
+Impact
+ 
+On
+ 
+Women
+ 
+:
+ 
+https://www.forbes.com/sites/chenxiwang/2019/11/01/deepf
+akes-rev
+enge-porn-and-
+ 
+the-impact-on-women/
+<w:tab w:val="left" w:pos="662"/></w:tabs><w:spacing w:line="321" w:lineRule="exact"/><w:ind w:left="661" w:hanging="550"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>The
+ 
+rise
+ 
+of
+ 
+the
+ 
+deepfake
+ 
+and
+ 
+the
+ 
+threat
+ 
+to
+ 
+democracy
+ 
+:
+https://www
+.the
+guardian.com/technology/ng-interacti
+v
+e/2019/jun/22/the-rise-of-
+ 
+the-deepfake-and-the-threat-to-democracy(Accessed
+ 
+on
+ 
+26
+ 
+March,
+ 
+2020)
+<w:tab w:val="left" w:pos="669"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709" w:firstLine="0"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Yuezun Li, Siwei Lyu, “ExposingDF Videos By Detecting Face Warping Arti-
+ 
+facts,”
+ 
+in
+ 
+arXiv:1811.00656v3.
+<w:tab w:val="left" w:pos="707"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709" w:firstLine="0"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Yuezun Li,
+ 
+Ming-Ching Chang and Siwei Lyu “Exposing AI Created Fake
+ 
+Videos
+ 
+by
+ 
+Detecting
+ 
+Eye
+ 
+Blinking”
+ 
+in
+ 
+arXiv:1806.02877v2.
+<w:tab w:val="left" w:pos="691"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709" w:firstLine="0"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Huy H. Nguyen , Junichi Yamagishi, and Isao Echizen “ Using capsule net-
+ 
+works
+ 
+to
+ 
+detect
+ 
+forged
+ 
+images
+ 
+and
+ 
+videos
+ 
+”
+ 
+in
+ 
+arXiv:1810.11215.
+<w:tab w:val="left" w:pos="679"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709" w:firstLine="0"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>D. Güera and E. J. Delp, "Deepfake Video Detection Using Recurrent Neural
+ 
+Networks," 2018 15th IEEE International Conference on Advanced Video and Sig-
+ 
+nal
+ 
+Based
+ 
+Surveillance
+ 
+(AVSS),
+ 
+Auckland,
+ 
+New
+ 
+Zealand,
+ 
+2018,
+ 
+pp.
+ 
+1-6.
+<w:tab w:val="left" w:pos="674"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709" w:firstLine="0"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>I. Laptev, M. Marszalek, C. Schmid, and B. Rozenfeld.
+ 
+Learning realistic hu-
+ 
+man actions from movies. Proceedings of the IEEE Conference on Computer Vision
+ 
+and
+ 
+Pattern
+ 
+Recognition,
+ 
+pages
+ 
+1–8,
+ 
+June
+ 
+2008.
+ 
+Anchorage,
+ 
+AK
+<w:tab w:val="left" w:pos="692"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709" w:firstLine="0"/><w:jc w:val="both"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Umur Aybars Ciftci, ˙Ilke Demir, Lijun Yin “Detection of Synthetic Portrait
+ 
+Videos
+ 
+using
+ 
+Biological
+ 
+Signals”
+ 
+in
+ 
+arXiv:1901.02212v2
+<w:tab w:val="left" w:pos="662"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="1709" w:firstLine="0"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>D.
+ 
+P.
+ 
+Kingma
+ 
+and
+ 
+J.
+ 
+Ba.
+ 
+Adam:
+ 
+A
+ 
+method
+ 
+for
+ 
+stochastic
+ 
+optimization.
+ 
+arXiv:1412.6980,
+ 
+Dec.
+ 
+2014.
+<w:tab w:val="left" w:pos="676"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="709" w:firstLine="0"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>ResNext
+ 
+Model
+ 
+:
+ 
+https://pytorch.org/hub/pytorch_vision_resnext/
+ 
+accessed
+ 
+on
+ 
+06
+ 
+April
+ 
+2020
+<w:tab w:val="left" w:pos="645"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="672" w:firstLine="0"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:hyperlink r:id="rId55"><w:r w:rsidR="00813258"><w:rPr><w:sz w:val="28"/></w:rPr><w:t>https://www.geeksfor
+geeks.or
+g/software-engineering-cocomo-model/
+ 
+Accessed
+ 
+on
+ 
+15
+ 
+April
+ 
+2020
+<w:tab w:val="left" w:pos="662"/></w:tabs><w:spacing w:line="302" w:lineRule="auto"/><w:ind w:right="3994" w:firstLine="0"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>Deepfake
+ 
+Video
+ 
+Detection
+ 
+using
+ 
+Neural
+ 
+Networks
+ 
+http://www.ijsrd.com/articles/IJSRDV8I10860.pdf
+<w:tab w:val="left" w:pos="660"/></w:tabs><w:spacing w:line="321" w:lineRule="exact"/><w:ind w:left="659" w:hanging="548"/><w:rPr><w:sz w:val="28"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="28"/></w:rPr><w:t>International
+ 
+Journal
+ 
+for
+ 
+Scientific
+ 
+Research
+ 
+and
+ 
+Development
+ 
+http://ijsrd.com/
+Appendix
+ 
+B
+ 
+Project
+ 
+Planner
+Figure
+ 
+B.1:
+ 
+Complete
+ 
+Project
+ 
+Plan
+Figure
+ 
+B.2:
+ 
+Project
+ 
+Plan
+ 
+1
+Figure
+ 
+B.3:
+ 
+Project
+ 
+Plan
+ 
+2

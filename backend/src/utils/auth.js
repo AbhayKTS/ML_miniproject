@@ -1,8 +1,10 @@
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const admin = require('./firebaseAdmin');
 
-const SECRET = process.env.JWT_SECRET || "chhaya-dev-secret";
+const requireAuth = async (req, res, next) => {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) return res.status(401).json({ error: 'Unauthorized — no token provided' });
 
+<<<<<<< HEAD
 const hashPassword = async (password) => {
   const salt = await bcrypt.genSalt(10);
   return bcrypt.hash(password, salt);
@@ -39,10 +41,19 @@ const attachUser = (req, _res, next) => {
         req.user = null;
       }
     }
+=======
+  try {
+    const decodedToken = await admin.auth().verifyIdToken(token);
+    req.user = { id: decodedToken.uid, email: decodedToken.email };
+    next();
+  } catch (error) {
+    console.error("Auth middleware error:", error.message);
+    res.status(401).json({ error: 'Invalid token', details: error.message });
+>>>>>>> 4fc186f5da84b6998f44fdef320d46c05e6f9ec4
   }
-  next();
 };
 
+<<<<<<< HEAD
 const requireAuth = (req, res, next) => {
   if (!req.user) {
     return res.status(401).json({ error: "Unauthorized access" });
@@ -57,3 +68,6 @@ module.exports = {
   attachUser,
   requireAuth
 };
+=======
+module.exports = { requireAuth };
+>>>>>>> 4fc186f5da84b6998f44fdef320d46c05e6f9ec4

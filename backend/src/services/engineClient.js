@@ -9,11 +9,17 @@ const client = apiKey ? new GoogleGenerativeAI(apiKey) : null;
 
 const isEngineEnabled = () => Boolean(client);
 
+<<<<<<< HEAD
 const getProcessingModel = (modelName = process.env.GEMINI_MODEL || "gemini-1.5-flash-latest") => {
+=======
+const getProcessingModel = (modelName = "gemini-1.5-flash") => {
+>>>>>>> 4fc186f5da84b6998f44fdef320d46c05e6f9ec4
   if (!client) {
     return null;
   }
-  return client.getGenerativeModel({ model: modelName });
+  // Remove "models/" prefix if present because getGenerativeModel adds it implicitly
+  const cleanName = modelName.replace("models/", "");
+  return client.getGenerativeModel({ model: cleanName });
 };
 
 const generateGeminiText = (prompt, modelName = process.env.GEMINI_MODEL || "gemini-1.5-flash-latest") => {

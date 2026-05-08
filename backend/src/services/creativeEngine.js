@@ -1,13 +1,24 @@
 const { v4: uuid } = require("uuid");
+const { HfInference } = require("@huggingface/inference");
 
 const analyzeIntent = ({ prompt, controls, memory }) => {
+  const baseThemes = memory?.themes?.length ? memory.themes : ["mythic futurism"];
+  const themes = controls?.theme
+    ? [...new Set([controls.theme, ...baseThemes])]
+    : baseThemes;
+
   return {
     id: uuid(),
-    themes: memory?.themes?.length ? memory.themes : ["mythic futurism"],
-    tone: controls?.tone || memory?.tone || "warm visionary",
+    themes,
+    tone: controls?.tone || controls?.mood || memory?.tone || "warm visionary",
     culturalContext: controls?.culturalContext || memory?.culturalContext || "coastal ritual",
     originality: controls?.originality ?? 70,
     complexity: controls?.complexity ?? 60,
+    genre: controls?.genre,
+    styleIntensity: controls?.styleIntensity,
+    mood: controls?.mood,
+    tempo: controls?.tempo,
+    instrumentation: controls?.instrumentation,
     prompt
   };
 };
@@ -42,6 +53,7 @@ const crossModalPlan = (intent) => {
 const { getProcessingModel, isEngineEnabled, generateGeminiText } = require("./engineClient");
 
 const generateOutput = async (modality, intent) => {
+<<<<<<< HEAD
   if (isEngineEnabled()) {
     const model = getProcessingModel();
     let prompt = "";
@@ -85,13 +97,69 @@ const generateOutput = async (modality, intent) => {
   }
 
   // Fallback if processing engine is disabled or fails
+=======
+>>>>>>> 4fc186f5da84b6998f44fdef320d46c05e6f9ec4
   if (modality === "text") {
-    return `[Fallback] Chhaya frames a ${intent.tone} narrative where ${intent.culturalContext} motifs glow through each scene, balancing ${intent.themes.join(", ")} with a ${intent.riskBudget} creative arc.`;
-  }
+    const userPrompt = intent.prompt || "write a short creative story";
+    const systemContext = `You are Chhaya, an adaptive creative collaborator. Write in a ${intent.tone} style. Genre: ${intent.genre || "open"}. Themes: ${intent.themes.join(", ")}. Cultural Context: ${intent.culturalContext}. Constraints: ${intent.constraints.join(". ")}.`;
+    const fullPrompt = `${systemContext}\n\nUser request: ${userPrompt}\n\nResponse:`;
+    const encodedPrompt = encodeURIComponent(fullPrompt);
+    const url = `https://text.pollinations.ai/${encodedPrompt}`;
+    console.log(`[Text] Calling Pollinations.ai text`);
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Pollinations text error: ${response.status}`);
+    }
+    return (await response.text()).trim();
+  } 
+  
   if (modality === "image") {
-    return `[Fallback] Image prompt: ${intent.culturalContext} skyline, ${intent.tone} palette, layered ${intent.themes.join(", ")} motifs, painterly lighting.`;
+    const imagePrompt = `${intent.prompt}. Style: ${intent.tone}, ${intent.culturalContext} motifs, themes of ${intent.themes.join(", ")}.`;
+    const encodedPrompt = encodeURIComponent(imagePrompt);
+    const url = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=768&height=512&nologo=true&seed=${Math.floor(Math.random() * 99999)}`;
+    console.log(`[Image] Calling Pollinations.ai`);
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Pollinations.ai image error: ${response.status}`);
+    }
+    const buffer = Buffer.from(await response.arrayBuffer());
+    const base64 = buffer.toString("base64");
+    return `data:image/jpeg;base64,${base64}`;
   }
-  return `[Fallback] Audio prompt: ${intent.tone} ambience, ${intent.culturalContext} textures, ${intent.themes.join(", ")} motifs, slow tide rhythm.`;
+  
+  if (modality === "audio") {
+    const { execSync } = require("child_process");
+    const fs = require("fs");
+    const os = require("os");
+    const path = require("path");
+
+    const audioText = intent.prompt || `A ${intent.tone} soundscape exploring ${intent.themes.join(", ")} with ${intent.instrumentation || "blended instrumentation"}.`;
+    const tmpAiff = path.join(os.tmpdir(), `chhaya_${Date.now()}.aiff`);
+    const tmpWav  = path.join(os.tmpdir(), `chhaya_${Date.now()}.wav`);
+    console.log(`[Audio] Using macOS say → afconvert → WAV`);
+
+    execSync(`say -o "${tmpAiff}" "${audioText.replace(/"/g, '\\"')}"`);
+    execSync(`afconvert -f WAVE -d LEI16@22050 "${tmpAiff}" "${tmpWav}"`);
+    const buffer = fs.readFileSync(tmpWav);
+    fs.unlinkSync(tmpAiff);
+    fs.unlinkSync(tmpWav);
+    return `data:audio/wav;base64,${buffer.toString("base64")}`;
+  }
+  
+
+  if (modality === "video") {
+    if (!process.env.RUNWAY_API_KEY) throw new Error("RUNWAY_API_KEY is missing for video generation");
+    const prompt = `A cinematic ${intent.tone} video showcasing ${intent.culturalContext} elements.`;
+    const response = await fetch("https://api.runwayml.com/v1/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${process.env.RUNWAY_API_KEY}` },
+      body: JSON.stringify({ prompt })
+    });
+    if (!response.ok) throw new Error(`Runway API Error: ${response.status}`);
+    return `[Runway Video Data generated for prompt: ${prompt}]`;
+  }
+
+  throw new Error(`Unsupported modality: ${modality}`);
 };
 
 const buildGenerationPlan = async ({ modality, prompt, controls, constraints, memory }) => {

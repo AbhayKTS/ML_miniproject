@@ -1,0 +1,70 @@
+12	Heading 1	Deepfake Video Detection And Analysis
+32	Heading 3	DECLARATION
+40	Heading 3	CERTIFICATE
+48	Heading 4	Mr. Preshit Mangesh Desai
+96	Heading 1	Area of Project
+99	Heading 1	Technical Keywords
+112	Heading 1	Project Idea
+118	Heading 1	Motivation of the Project
+128	Heading 1	Literature Survey
+147	Heading 1	Problem Statement
+150	Heading 2	Goals and objectives
+158	Heading 2	Statement of scope
+162	Heading 1	Major Constraints
+168	Heading 1	Methodologies of Problem solving
+169	Heading 2	Analysis
+193	Heading 2	Design
+196	Heading 2	Development
+199	Heading 2	Evaluation
+202	Heading 1	Outcome
+205	Heading 1	Applications
+208	Heading 1	Hardware Resources Required
+217	Heading 1	Software Resources Required
+230	Heading 1	Project Model Analysis
+236	Heading 2	Reconciled Estimates
+243	Heading 2	Cost Estimation using COCOMO(Constructive Cost) Model
+268	Heading 1	Risk Management w.r.t. NP Hard analysis
+269	Heading 2	Risk Identification
+275	Heading 2	Risk Analysis
+301	Heading 1	Project Schedule
+302	Heading 2	Project task set
+321	Heading 2	Timeline chart
+334	Heading 1	Introduction
+335	Heading 2	Purpose and Scope of Document
+338	Heading 2	Use Case View
+347	Heading 1	Functional Model and Description
+350	Heading 2	Data Flow Diagram
+387	Heading 2	Activity Diagram:
+403	Heading 2	Non Functional Requirements:
+424	Heading 2	Sequence Diagram
+439	Heading 1	Introduction
+440	Heading 2	System Architecture
+467	Heading 1	Architectural Design
+468	Heading 2	Module 1 : Data-set Gathering
+480	Heading 2	Module 2 : Pre-processing
+493	Heading 2	Module 3: Data-set split
+505	Heading 2	Module 4: Model Architecture
+525	Heading 2	Module 5: Hyper-parameter tuning
+545	Heading 1	Introduction
+553	Heading 1	Tools and Technologies Used
+554	Heading 2	Planning
+557	Heading 2	UML Tools
+560	Heading 2	Programming Languages
+564	Heading 2	Programming Frameworks
+568	Heading 2	IDE
+573	Heading 2	Versioning Control
+576	Heading 2	Cloud Services
+580	Heading 2	Application and web servers:
+583	Heading 2	Libraries
+598	Heading 1	Algorithm Details
+599	Heading 2	Dataset Details
+602	Heading 2	Preprocessing Details
+613	Heading 2	Model Details
+657	Heading 2	Model Training Details
+685	Heading 2	Model Prediction Details
+693	Heading 1	Type of Testing Used
+707	Heading 1	Test Cases and Test Results
+718	Heading 1	Screen shots
+785	Heading 1	Deployment
+810	Heading 1	Conclusion
+813	Heading 1	Future Scope

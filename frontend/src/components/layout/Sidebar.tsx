@@ -1,5 +1,6 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useApp } from "../../context/AppContext";
+import { signOut } from "../../firebase";
 
 const NAV = [
   { to: "/app", label: "📊 Overview", end: true },
@@ -9,33 +10,39 @@ const NAV = [
 ];
 
 const Sidebar = () => {
-  const { backendOnline, memory } = useApp();
+  const { backendOnline, memory, logout } = useApp();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      localStorage.removeItem("chhaya_token");
+      logout();
+      navigate("/login");
+    } catch (e) {
+      console.error("Sign out failed", e);
+    }
+  };
 
   return (
     <aside className="sidebar">
-      <div>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{
-            width: 34, height: 34,
-            background: "var(--brand-gradient)",
-            borderRadius: 10, display: "flex", alignItems: "center",
-            justifyContent: "center", fontSize: 14, flexShrink: 0,
-            fontWeight: 800
-          }}>▶</div>
-          <h1 className="gradient-text" style={{ fontSize: 17, letterSpacing: 1, fontWeight: 900 }}>CHHAYA Studio</h1>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 8 }}>
-          <span style={{
-            width: 7, height: 7, borderRadius: "50%",
-            background: backendOnline ? "#44d06f" : "#ff6b6b",
-            display: "inline-block", flexShrink: 0
-          }} />
-          <p style={{ color: "var(--text-muted)", fontSize: 12 }}>
-            {backendOnline ? "backend online" : "backend offline"}
-          </p>
+      <div style={{ marginBottom: 32 }}>
+        <h2 style={{ 
+          fontSize: 22, 
+          background: 'linear-gradient(45deg, var(--accent), var(--accent-hover))', 
+          WebkitBackgroundClip: 'text', 
+          WebkitTextFillColor: 'transparent',
+          marginBottom: 4
+        }}>
+          Chhaya Studio
+        </h2>
+        <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "var(--text-muted)" }}>
+          <div className={`status-indicator ${backendOnline ? "online" : "offline"}`} />
+          {backendOnline ? "Engine Connected" : "Local Mode"}
         </div>
       </div>
 
+<<<<<<< HEAD
       {/* Main Pipeline Nav */}
       <div>
         <p style={{ fontSize: 11, color: "var(--text-muted)", marginBottom: 8, fontWeight: 600, letterSpacing: 0.5 }}>STUDIO PIPELINE</p>
@@ -43,6 +50,19 @@ const Sidebar = () => {
           {NAV.map((n) => (
             <NavLink key={n.to} to={n.to} end={n.end}>
               {n.label}
+=======
+      <div style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: 24 }}>
+        <nav style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+          {NAV.map((item) => (
+            <NavLink 
+              key={item.to} 
+              to={item.to} 
+              end={item.end}
+              className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+            >
+              {item.label}
+              {item.desc && <span style={{ display: "block", fontSize: 11, opacity: 0.6, marginLeft: 26, marginTop: 2 }}>{item.desc}</span>}
+>>>>>>> 4fc186f5da84b6998f44fdef320d46c05e6f9ec4
             </NavLink>
           ))}
           {/* We added Settings as its own main nav option at the bottom */}
@@ -50,8 +70,8 @@ const Sidebar = () => {
             ⚙️ Settings
           </NavLink>
         </nav>
-      </div>
 
+<<<<<<< HEAD
 
       {/* Memory widget */}
       {memory && (
@@ -62,8 +82,42 @@ const Sidebar = () => {
             {memory.themes.slice(0, 2).join(", ")}
           </p>
           {memory.lock && <p style={{ fontSize: 11, color: "#ffd370", marginTop: 4 }}>🔒 Locked</p>}
+=======
+        <div>
+          <h4 style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 1, color: "var(--text-muted)", marginBottom: 12, marginLeft: 12 }}>
+            Creative Suite
+          </h4>
+          <nav style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+            {STUDIO_NAV.map((item) => (
+              <NavLink 
+                key={item.to} 
+                to={item.to} 
+                className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
+>>>>>>> 4fc186f5da84b6998f44fdef320d46c05e6f9ec4
         </div>
-      )}
+      </div>
+
+      <div style={{ marginTop: 24, paddingTop: 24, borderTop: "1px solid var(--border)", display: "flex", flexDirection: "column", gap: 12 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div className="avatar">
+            U
+          </div>
+          <div style={{ flex: 1, overflow: "hidden" }}>
+            <div style={{ fontSize: 13, fontWeight: 500, whiteSpace: "nowrap", textOverflow: "ellipsis" }}>User Profile</div>
+            <div style={{ fontSize: 11, color: "var(--text-muted)", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>
+              {memory?.visualStyle ? memory.visualStyle.split(" ")[0] : "New"} Creator
+            </div>
+          </div>
+        </div>
+        <button className="button-ghost" onClick={handleSignOut} style={{ width: "100%", justifyContent: "center" }}>
+          Sign Out
+        </button>
+      </div>
     </aside>
   );
 };

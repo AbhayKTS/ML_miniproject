@@ -1,13 +1,18 @@
 const express = require("express");
 const { getMemory, updateMemory } = require("../services/creativeMemory");
 const { memoryUpdateSchema, validate } = require("../utils/validators");
+const { requireAuth } = require("../utils/auth");
 
 const { requireAuth } = require("../utils/auth");
 
 const router = express.Router();
 
 router.get("/", requireAuth, async (req, res) => {
+<<<<<<< HEAD
   const userId = req.user.id;
+=======
+  const userId = req.user?.id || req.query.userId || "guest";
+>>>>>>> 4fc186f5da84b6998f44fdef320d46c05e6f9ec4
   const memory = await getMemory(userId);
   res.json(memory);
 });

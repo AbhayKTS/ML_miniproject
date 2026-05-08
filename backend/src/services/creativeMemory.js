@@ -73,6 +73,7 @@ const { getProcessingModel, isEngineEnabled } = require("./engineClient");
 const blendFeedback = async (userId, feedback) => {
   const currentMemory = await getMemory(userId);
   const updates = {};
+  const signals = feedback.signals || {};
 
   if (isEngineEnabled()) {
     const model = getProcessingModel();
@@ -80,6 +81,7 @@ const blendFeedback = async (userId, feedback) => {
       Current Memory: ${JSON.stringify(currentMemory)}
       User Rating: ${feedback.rating}/5
       User Edits/Comments: "${feedback.edits || "None"}"
+      Implicit Signals: ${JSON.stringify(signals)}
       
       Suggest updates for: tone (description), themes (array of strings), visualStyle (short desc), audioStyle (short desc), and culturalContext (short desc).
       Return ONLY a JSON object with the suggested updates. Do not include any other text.`;
@@ -111,6 +113,12 @@ const blendFeedback = async (userId, feedback) => {
 
   if (!updates.audioStyle && feedback.rating && feedback.rating <= 2) {
     updates.audioStyle = "structured rhythm with reduced layering";
+  }
+  if (!updates.lock && signals.reuse === true) {
+    updates.lock = true;
+  }
+  if (!updates.tone && signals.acceptance === false) {
+    updates.tone = "balanced exploratory";
   }
 
   return updateMemory(userId, updates);
