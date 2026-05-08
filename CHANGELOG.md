@@ -122,3 +122,13 @@
 ### Fixed
 - Rate limit header logging in generate route
 - CSRF guard for state-changing HTTP methods
+
+## [0.5.0] - 2026-05-08
+### Added
+- AnalyticsPage with per-user event stats
+- FeedbackForm UI component
+- RunwayML video generation stub
+- Full creativeMemory service test suite
+### Improved
+- API reference docs updated with all new routes
+- AI service rate limit documentation
